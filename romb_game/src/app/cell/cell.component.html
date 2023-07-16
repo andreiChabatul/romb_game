@@ -1,14 +1,6 @@
 <div appColorCell [occupied]="cell.occupied" class="cell-container">
     <span>{{cell.occupied}}</span>
-    <div appColorLine [state]="cell.topState" class="line line-container_top line-container_horisontal"
-        (click)="clickLine('top')"></div>
-
-    <div appColorLine [state]="cell.rightState" class="line line-container_right line-container_vertical"
-        (click)="clickLine('right')">
+    <div appColorLine [state]="cell.top" class="line" (click)="clickLine('top')"></div>
+    <div appColorLine [state]="cell.left" class="line line-container_vertical" (click)="clickLine('left')">
     </div>
-    <div appColorLine [state]="cell.leftState" class="line line-container_left line-container_vertical"
-        (click)="clickLine('left')">
-    </div>
-    <div appColorLine [state]="cell.bottomState" class="line line-container_bottom line-container_horisontal"
-        (click)="clickLine('bottom')"></div>
 </div>

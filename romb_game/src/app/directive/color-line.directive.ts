@@ -1,20 +1,18 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { stateCell } from '../types';
-import { colorPlayerOne } from '../types';
-import { colorPlayerTwo } from '../types';
+import { colorPlayerOne, colorPlayerTwo } from '../const';
 
 @Directive({
   selector: '[appColorLine]'
 })
-export class ColorLineDirective implements OnInit {
+export class ColorLineDirective implements OnChanges {
 
   @Input() state: stateCell
 
   constructor(private el: ElementRef) { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     let color: string;
-    let isActive: boolean = true;
     let zIndex: number = 1;
     let event = 'none';
 
@@ -29,9 +27,8 @@ export class ColorLineDirective implements OnInit {
         color = '#00003A';
         break;
       default:
-        color = '#D2DDE2';
+        color = '#A0CEE5';
         zIndex = 0;
-        isActive = false;
         event = 'auto';
         break;
     }

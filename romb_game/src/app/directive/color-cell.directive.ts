@@ -1,22 +1,25 @@
-import { Directive, ElementRef, Input } from '@angular/core';
-import { colorPlayerOne, colorPlayerTwo, occupied } from '../types';
+import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
+import { stateCell } from '../types';
+import { colorPlayerOne, colorPlayerTwo } from '../const';
 
 @Directive({
   selector: '[appColorCell]'
 })
-export class ColorCellDirective {
+export class ColorCellDirective implements OnChanges {
 
-  @Input() occupied: occupied
+  @Input() occupied: stateCell
 
   constructor(private el: ElementRef) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
 
-    let color: string = 'FFFFFF';
-    this.occupied === '1' ? color = colorPlayerOne : '';
-    this.occupied === '2' ? color = colorPlayerTwo : '';
-    this.el.nativeElement.style.backgroundColor = color;
-
+    if (this.occupied === 'playerOne' || this.occupied === 'playerTwo') {
+      this.el.nativeElement.style.backgroundColor = "#D1E3E7"
+      this.occupied === 'playerOne'
+        ? this.el.nativeElement.style.color = colorPlayerOne
+        : this.el.nativeElement.style.color = colorPlayerTwo
+    };
   }
+
 
 }

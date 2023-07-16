@@ -1,0 +1,9 @@
+@import "./../../scss/color-styles";
+
+.board-container {
+   display: grid;
+   grid-template-columns: repeat(15, 1fr);
+   border-right: 4px solid $cell_default;
+   border-bottom: 4px solid $cell_default;
+   width: min-content;
+}

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Cell, side, stateCell } from '../types';
+import { game } from '../app.component';
 
 @Component({
   selector: 'app-cell',
@@ -10,7 +11,7 @@ export class CellComponent {
   @Input() cell: Cell
 
   clickLine(side: side) {
-    console.log(this.cell.indexCell, side)
+    game.clickLine(side, this.cell.indexCell, 'playerOne')
   }
 
 
