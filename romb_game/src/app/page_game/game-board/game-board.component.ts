@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Cell } from '../types';
-import { DoneBoard } from 'server_temp/done_board';
-import { game } from '../app.component';
+import { game } from 'src/app/app.component';
+
 
 @Component({
   selector: 'app-game-board',

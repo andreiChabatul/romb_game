@@ -1,8 +1,8 @@
-@import './../../scss/color-styles';
+@import './../../../scss/color-styles';
 
 .cell-container {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     position: relative;
     display: flex;
     align-items: center;
@@ -12,8 +12,8 @@
 .line {
     top: 0;
     left: 0;
-    width: 44px;
-    height: 5px;
+    width: 39px;
+    height: 4px;
     position: absolute;
     cursor: pointer;
     transition: .3s;
@@ -25,6 +25,6 @@
 }
 
 .line-container_vertical {
-    width: 5px;
-    height: 44px;
+    width: 4px;
+    height: 39px;
 }

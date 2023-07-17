@@ -1,0 +1,20 @@
+.main-page-container {
+
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.main-page-board {
+
+    grid-column-start: 2;
+}
+
+.page-border{
+    padding: 3%;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 15px;
+    border: 10px solid #2E0096;
+    background: #012362;
+}
