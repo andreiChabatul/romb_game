@@ -1,0 +1,13 @@
+<div class="main-page-container">
+    <p class="main-page_title">DOTS & BOXES</p>
+    <div>
+        <img class="main-img" src="./../../assets/krest.png" alt="krest">
+        <img class="main-img" src="./../../assets/krest.png" alt="krest">
+        <img class="main-img" src="./../../assets/zero.png" alt="zero">
+    </div>
+    <div class="main-page-buttons">
+        <app-button-standart *ngFor="let button of buttons" [text]=button [width]="'200px'"
+            [height]="'70px'"></app-button-standart>
+    </div>
+    <!-- <img class="decoration-main_one" src="./../../assets/decoration_main.png" alt="decoration"> -->
+</div>

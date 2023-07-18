@@ -1,11 +1,16 @@
 <div class="info-player-container">
-    <div class="info-player_gradient">
-        <div class="info-player_type">
-            <p class="text-O">✘ ⭕</p>
+    <div class="info-player">
+        <div class="info-player_gradient">
+            <div class="info-player_type">
+                <img class="info-player_img-type" *ngIf="type === 'playerOne'" src="./../../../assets/zero.png"
+                    alt="zeroImg">
+                <img class="info-player_img-type" *ngIf="type === 'playerTwo'" src="./../../../assets/krest.png"
+                    alt="krestImg">
+            </div>
+            <p class="info-player_text">Player 1</p>
+            <p class="info-player_text">Total: 656</p>
         </div>
     </div>
-
-
+    <p class="player-turn">Your turn</p>
+    <p class="player-turn">Opponent's turn</p>
 </div>
-
-<!-- ⭕ -->

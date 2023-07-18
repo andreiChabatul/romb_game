@@ -3,6 +3,9 @@
     background-size: cover;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    margin-top: 40px;
 }
 
 .main-page-board {
@@ -11,10 +14,6 @@
 }
 
 .page-border{
-    padding: 3%;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
-    border-radius: 15px;
-    border: 10px solid #2E0096;
-    background: #012362;
 }

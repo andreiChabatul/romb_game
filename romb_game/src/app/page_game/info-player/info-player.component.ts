@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { stateCell } from 'src/app/types';
 
 @Component({
   selector: 'app-info-player',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./info-player.component.scss']
 })
 export class InfoPlayerComponent {
+  @Input() type: stateCell;
 
 }

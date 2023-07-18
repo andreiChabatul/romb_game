@@ -1,15 +1,15 @@
 @import './../../../scss/color-styles';
+@import "./../../../scss/default-styles";
 
 .cell-container {
     height: 35px;
     width: 35px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-c_c;
 }
 
 .line {
+    border-radius: 10px;
     top: 0;
     left: 0;
     width: 39px;
@@ -27,4 +27,11 @@
 .line-container_vertical {
     width: 4px;
     height: 39px;
+}
+
+.occupied-player_img-type {
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;
+    margin-top: 4px;
 }

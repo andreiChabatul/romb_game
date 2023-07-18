@@ -24,10 +24,10 @@ export class ColorLineDirective implements OnChanges {
         color = colorPlayerTwo;
         break;
       case 'border':
-        color = '#00003A';
+        color = '#ECFAFB';
         break;
       default:
-        color = '#A0CEE5';
+        color = '#006AC9';
         zIndex = 0;
         event = 'auto';
         break;
