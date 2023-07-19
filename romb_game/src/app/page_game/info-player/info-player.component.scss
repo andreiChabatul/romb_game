@@ -2,16 +2,20 @@
 @import "./../../../scss/default-styles";
 
 .info-player-container {
-    width: 140px;
+    width: 130px;
 }
 
 .info-player {
-    height: 200px;
+    height: 190px;
     background: $light_blue;
     border-radius: 15px;
     border: 6px solid $blue;
     padding: 3px;
     margin-bottom: 10px;
+}
+
+.info-player_turn {
+    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }
 
 .info-player_gradient {
@@ -37,14 +41,14 @@
     color: $light_blue_text;
     font-family: 'Tektur', cursive;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
 }
 
 .player-turn {
     font-family: 'Tektur', cursive;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: $light_blue;
 }

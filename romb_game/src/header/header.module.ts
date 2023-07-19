@@ -8,10 +8,6 @@ import { SharedModule } from 'src/shared/shared.module';
 @NgModule({
     declarations: [
         HeaderComponent,
-        
-
-
-
     ],
     imports: [
         BrowserModule,

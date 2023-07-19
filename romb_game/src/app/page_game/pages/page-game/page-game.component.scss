@@ -1,8 +1,7 @@
 .main-page-container {
-
-    background-size: cover;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     align-items: center;
     justify-items: center;
     margin-top: 40px;
@@ -10,7 +9,7 @@
 
 .main-page-board {
 
-    grid-column-start: 2;
+    grid-area: 1/2/3/2;
 }
 
 .page-border{

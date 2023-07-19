@@ -1,8 +1,17 @@
-export type stateCell = 'none' | 'playerOne' | 'playerTwo' | 'border';
+export type stateCell = 'none' | 'border' | playerType;
 export type typeCell = 'vertical' | 'horisontal';
-export type occupied = 'X' | 'O' | '';
+export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour';
+export type side = 'left' | 'top';
 
-export type side = 'left' | 'top' ;
+export interface Player {
+    id: number;
+    name: string;
+    total: number;
+    isTurn: boolean;
+    type: playerType;
+    
+}
+
 
 
 export interface Cell {

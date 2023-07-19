@@ -1,9 +1,8 @@
 <div class="page-border">
     <div class="main-page-container">
-        <app-info-player [type]="'playerOne'"></app-info-player>
+        <app-info-player *ngFor="let player of tempPlayer" [player]="player"></app-info-player>
         <div class="main-page-board">
             <app-game-board></app-game-board>
         </div>
-        <app-info-player [type]="'playerTwo'"></app-info-player>
     </div>
 </div>

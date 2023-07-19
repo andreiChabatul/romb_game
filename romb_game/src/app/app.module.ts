@@ -13,10 +13,7 @@ import { SharedModule } from 'src/shared/shared.module';
   declarations: [
     AppComponent,
     MainPageComponent,
-
-
-
-    
+  
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,12 @@
 <div class="info-player-container">
-    <div class="info-player">
+    <div class="info-player" [ngClass]="{'info-player_turn':player.isTurn}">
         <div class="info-player_gradient">
             <div class="info-player_type">
-                <img class="info-player_img-type" *ngIf="type === 'playerOne'" src="./../../../assets/zero.png"
-                    alt="zeroImg">
-                <img class="info-player_img-type" *ngIf="type === 'playerTwo'" src="./../../../assets/krest.png"
-                    alt="krestImg">
+                <img class="info-player_img-type" src={{srcImg}} alt="typeImg">
             </div>
-            <p class="info-player_text">Player 1</p>
-            <p class="info-player_text">Total: 656</p>
+            <p class="info-player_text">{{player.name}}</p>
+            <p class="info-player_text">Total: {{player.total}}</p>
         </div>
     </div>
-    <p class="player-turn">Your turn</p>
-    <p class="player-turn">Opponent's turn</p>
+    <p *ngIf="player.isTurn" class="player-turn">{{player.name}} turn</p>
 </div>
