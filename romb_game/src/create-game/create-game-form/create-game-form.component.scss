@@ -44,3 +44,8 @@
     font-size: 22px;
     font-weight: 600;
 }
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input{
+    color: $blue;
+    font-family: 'Tektur', cursive;
+}

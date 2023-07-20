@@ -8,7 +8,12 @@ export const stateApp: State = {
         { id: 2, name: "Maks", total: 25, isTurn: false, type: 'playerTwo' },
         { id: 3, name: "Oleg", total: 12, isTurn: true, type: 'playerThree' },
         { id: 4, name: "Polina", total: 32, isTurn: false, type: 'playerFour' }
-    ]
+    ],
+    chat: [
+        { name: "Andrei", playerType: 'playerOne', message: 'privet' },
+        { name: "Vas", playerType: 'playerThree', message: 'privet' },
+        { name: "Olga   ", playerType: 'playerFour', message: 'privet' },
+        { name: "Dimon", playerType: 'playerTwo', message: 'privet' }]
 };
 
 export const initalState: AppStore = {

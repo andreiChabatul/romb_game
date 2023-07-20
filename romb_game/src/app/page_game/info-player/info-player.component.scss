@@ -7,10 +7,7 @@
 
 .info-player {
     height: 190px;
-    background: $light_blue;
-    border-radius: 15px;
-    border: 6px solid $blue;
-    padding: 3px;
+    @include fon-blue;
     margin-bottom: 10px;
 }
 
@@ -20,9 +17,7 @@
 
 .info-player_gradient {
     height: 100%;
-    border-radius: 8px;
-    padding: 8px;
-    background: linear-gradient(360deg, rgba(68, 150, 171, 1) 0%, rgba(156, 218, 238, 1) 100%)
+    @include fon-gradient;
 }
 
 .info-player_type {

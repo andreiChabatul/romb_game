@@ -1,0 +1,26 @@
+<div class="chat">
+    <span class="material-symbols-outlined" (click)="openChat()">
+        left_panel_close
+    </span>
+    <div class="chat-container" [ngClass]="{'chat-container_open':isOpen}">
+        <div class="chat-container-gradient">
+            <div class="chat-title-container">
+                <p class="chat-title">Chat room</p>
+                <span class="material-symbols-outlined chat-close" (click)="closeChat()">
+                    left_panel_open
+                </span>
+            </div>
+            <div class="chat-area">
+                <div>
+                    <span class="chat-text" *ngIf="(chat$ | async)?.length === 0; else elseBlock">Enter your
+                        message...</span>
+                    <ng-template #elseBlock><app-chat-message *ngFor="let message of chat$ | async"
+                            [message]="message"></app-chat-message>
+                    </ng-template>
+                </div>
+                <input *ngIf="isOpen" class="input-test" type="text">
+            </div>
+        </div>
+    </div>
+    
+</div>

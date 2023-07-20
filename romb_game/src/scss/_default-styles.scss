@@ -15,3 +15,28 @@
     align-items: start;
     justify-content: center;
 }
+
+@mixin flex-s_s {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+
+@mixin fon-blue {
+    background: $light_blue;
+    border-radius: 15px;
+    border: 6px solid $blue;
+    padding: 3px;
+}
+
+@mixin fon-gradient {
+    border-radius: 8px;
+    padding: 8px;
+    background: linear-gradient(360deg, rgba(68, 150, 171, 1) 0%, rgba(156, 218, 238, 1) 100%)
+}
+
+@mixin font_default {
+    font-family: 'Tektur', cursive;
+    color: $light_blue_text;
+}

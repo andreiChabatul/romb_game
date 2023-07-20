@@ -2,8 +2,8 @@
 @import "./../../../scss/default-styles";
 
 .cell-container {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     position: relative;
     @include flex-c_c;
 }
@@ -12,7 +12,7 @@
     border-radius: 10px;
     top: 0;
     left: 0;
-    width: 39px;
+    width: 34px;
     height: 4px;
     position: absolute;
     cursor: pointer;
@@ -26,12 +26,12 @@
 
 .line-container_vertical {
     width: 4px;
-    height: 39px;
+    height: 34px;
 }
 
 .occupied-player_img-type {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     margin-left: 4px;
     margin-top: 4px;
 }

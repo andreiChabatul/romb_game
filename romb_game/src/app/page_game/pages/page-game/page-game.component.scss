@@ -1,4 +1,6 @@
-.main-page-container {
+@import "./../../../../scss/default-styles";
+
+.game-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -7,12 +9,13 @@
     margin-top: 40px;
 }
 
-.main-page-board {
-
+.game-page-board {
     grid-area: 1/2/3/2;
 }
 
-.page-border{
-    width: 90%;
+.page-game-container {
+    width: 95%;
     margin: 0 auto;
+    @include flex-c_s;
+    gap: 2%;
 }

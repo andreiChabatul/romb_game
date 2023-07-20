@@ -20,30 +20,45 @@ $romb_game-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$romb_game-theme: mat.define-light-theme((
-  color: (
-    primary: $romb_game-primary,
-    accent: $romb_game-accent,
-    warn: $romb_game-warn,
-  )
-));
+$romb_game-theme: mat.define-light-theme((color: (primary: $romb_game-primary,
+        accent: $romb_game-accent,
+        warn: $romb_game-warn,
+      )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($romb_game-theme);
 
-div, p {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import "./scss/color-styles";
+@import "./scss/default-styles";
+
+div,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
 }
 
 body {
-    margin: 0 !important;
-    background: url(./assets/fon.png);
-    font-family: 'Tektur', cursive;
+  margin: 0 !important;
+  background: url(./assets/fon.png);
+  font-family: 'Tektur', cursive;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.chat-text {
+  @include font-default;
+  color: $light_blue;
+  font-size: 12px;
+}

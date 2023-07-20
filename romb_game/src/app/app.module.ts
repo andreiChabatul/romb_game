@@ -10,12 +10,10 @@ import { SharedModule } from 'src/shared/shared.module';
 import { appReducers } from 'src/store';
 import { PageCreateGame } from 'src/create-game/createGamePage.modules';
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
-  
+    MainPageComponent,  
   ],
   imports: [
     BrowserModule,

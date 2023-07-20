@@ -1,0 +1,66 @@
+@import "./../../../scss/default-styles";
+@import "./../../../scss/color-styles";
+
+.chat {
+    position: relative;
+}
+
+.chat-container {
+    opacity: 1;
+    @include fon-blue;
+    transform: scale(0.0001) translateY(-450px);
+    transition: .8s;
+    width: 1px;
+}
+
+.chat-container_open {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+    width: 230px;
+}
+
+.chat-container-gradient {
+    @include fon-gradient;
+    height: 100%;
+}
+
+.chat-title {
+    @include font_default;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.chat-area {
+    width: 100%;
+    min-height: 300px;
+    max-height: 80vh;
+    border-radius: 8px;
+    background: $dark_blue;
+    padding: 3%;
+    @include flex-s_s;
+    flex-direction: column;
+}
+
+.chat-close {
+    font-size: 28px;
+    color: $light_blue_text;
+    cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+        color: $orange_default;
+    }
+
+    &:active {
+        color: $color_green;
+    }
+
+}
+
+.chat-title-container {
+    @include flex-c_s;
+}
+
+.input-test {
+    transition: .4s;
+}

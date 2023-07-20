@@ -1,8 +1,9 @@
-<div class="page-border">
-    <div class="main-page-container">
+<div class="page-game-container">
+    <div class="game-container">
         <app-info-player *ngFor="let player of players$ | async" [player]="player"></app-info-player>
-        <div class="main-page-board">
+        <div class="game-page-board">
             <app-game-board></app-game-board>
         </div>
     </div>
+    <app-chat-game></app-chat-game>
 </div>
