@@ -1,7 +1,7 @@
 <div appColorCell [occupied]="cell.occupied" class="cell-container">
-    <img class="occupied-player_img-type" *ngIf="cell.occupied === 'playerOne'" src="./../../../assets/zero.png"
+    <img class="occupied-player_img-type" *ngIf="cell.occupied === 'playerOne'" src="./../../../assets/playerOne.png"
         alt="zeroImg">
-    <img class="occupied-player_img-type" *ngIf="cell.occupied === 'playerTwo'" src="./../../../assets/krest.png"
+    <img class="occupied-player_img-type" *ngIf="cell.occupied === 'playerTwo'" src="./../../../assets/playerTwo.png"
         alt="krestImg">
     <div appColorLine [state]="cell.top" class="line" (click)="clickLine('top')"></div>
     <div appColorLine [state]="cell.left" class="line line-container_vertical" (click)="clickLine('left')">

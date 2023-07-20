@@ -1,6 +1,6 @@
-export type stateCell = 'none' | 'border' | playerType;
+export type stateCell =  'border' | playerType;
 export type typeCell = 'vertical' | 'horisontal';
-export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour';
+export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour' | 'none';
 export type side = 'left' | 'top';
 
 export interface Player {
@@ -9,10 +9,8 @@ export interface Player {
     total: number;
     isTurn: boolean;
     type: playerType;
-    
+
 }
-
-
 
 export interface Cell {
     indexCell: number;
@@ -26,6 +24,14 @@ export interface CellClick {
     indexCell: number,
 }
 
+
+export interface State {
+    players: Player[];
+}
+
+export interface AppStore {
+    state: State;
+}
 
 
 
