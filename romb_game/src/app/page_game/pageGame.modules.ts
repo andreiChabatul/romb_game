@@ -7,6 +7,8 @@ import { InfoPlayerComponent } from './info-player/info-player.component';
 import { SharedModule } from 'src/shared/shared.module';
 import { ChatGameComponent } from './chat-game/chat-game.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
+import { ChatInputComponent } from './chat-input/chat-input.component';
+import { MaterialsModule } from 'src/materials/materials.module';
 
 @NgModule({
     declarations: [
@@ -15,11 +17,12 @@ import { ChatMessageComponent } from './chat-message/chat-message.component';
         CellComponent,
         InfoPlayerComponent,
         ChatGameComponent,
-        ChatMessageComponent
+        ChatMessageComponent,
+        ChatInputComponent
 
     ],
     imports: [
-        BrowserModule, SharedModule
+        BrowserModule, SharedModule, MaterialsModule
 
     ],
     exports: [PageGameComponent],

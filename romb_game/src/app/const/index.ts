@@ -1,2 +1,4 @@
-export const colorPlayerOne = '#E01A17';
-export const colorPlayerTwo = '#FFD50D';
+export const colorPlayerOne = '#F6E106';
+export const colorPlayerTwo = '#E20001';
+export const colorPlayerThree = '#42DD51';
+export const colorPlayerFour = '#0FCBF1';

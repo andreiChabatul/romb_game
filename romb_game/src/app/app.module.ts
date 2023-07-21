@@ -9,11 +9,12 @@ import { HeaderModule } from 'src/header/header.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { appReducers } from 'src/store';
 import { PageCreateGame } from 'src/create-game/createGamePage.modules';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,  
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +23,7 @@ import { PageCreateGame } from 'src/create-game/createGamePage.modules';
     PageCreateGame,
     HeaderModule,
     SharedModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot(appReducers),
   ],
   providers: [],
