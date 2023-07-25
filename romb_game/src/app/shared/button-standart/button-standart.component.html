@@ -1,9 +1,6 @@
-<div [ngStyle]="{'width':width, 'height':height}" class="container-button">
-    <button class="button-standart" (click)="handlingClick()">
-        <span> {{text}}</span>
+<div [ngStyle]="{'width':width, 'height':height}" class="container-button container-button_font">
+    <button class="button-standart button-font" (click)="handlingClick()">
+        <span> {{action}}</span>
     </button>
     <div class="animation-button"></div>
-    <!-- <span class="material-symbols-outlined">
-        settings
-    </span> -->
 </div>

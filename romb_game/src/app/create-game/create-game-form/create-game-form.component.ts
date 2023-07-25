@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ControllerActionsService } from 'src/app/services/controller-actions.service';
 import { SelectFormCreateGameOption } from 'src/app/types';
 
@@ -21,6 +22,7 @@ export class CreateGameFormComponent {
     { nameForm: 'visibility', namelabel: 'Visibility Room', optionSelect: ['Visible to everyone', 'Access by idRoom'] }
   ]
   createGame: FormGroup;
+  textButton = ACTIONS_BUTTON.CREATE_ROOM;
 
   constructor(private fb: FormBuilder, private controllerActionsService: ControllerActionsService) {
     this.createForm();

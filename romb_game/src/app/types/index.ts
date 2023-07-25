@@ -27,6 +27,7 @@ export interface CellClick {
 export interface State {
     players: Player[];
     chat: chatMessage[];
+    isLogin: boolean;
 }
 
 export interface AppStore {

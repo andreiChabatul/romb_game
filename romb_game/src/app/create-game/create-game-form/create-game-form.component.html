@@ -7,7 +7,8 @@
                     <mat-label>Nickname</mat-label>
                     <input type="text" matInput formControlName="nickname" placeholder="Please enter your nickname">
                 </mat-form-field>
-                <div class="error-form-container" *ngIf="_nickname?.invalid && (_nickname?.touched || _nickname?.dirty)">
+                <div class="error-form-container"
+                    *ngIf="_nickname?.invalid && (_nickname?.touched || _nickname?.dirty)">
                     <span class="error-text" *ngIf="_nickname?.errors?.required">Field From is required</span>
                 </div>
             </div>
@@ -15,6 +16,6 @@
                 [parentForm]="createGame"></app-select-create-game>
         </div>
 
-        <app-button-standart [height]="'60px'" [width]="'230px'" [text]="'Create Room'"></app-button-standart>
+        <app-button-standart [height]="'60px'" [width]="'230px'" [action]="textButton"></app-button-standart>
     </form>
 </div>

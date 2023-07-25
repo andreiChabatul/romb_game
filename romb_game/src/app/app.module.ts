@@ -14,8 +14,7 @@ import { PageCreateGame } from './create-game/createGamePage.modules';
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
-    
+    MainPageComponent,    
   ],
   imports: [
     BrowserModule,

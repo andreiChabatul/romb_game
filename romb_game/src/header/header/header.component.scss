@@ -1,5 +1,10 @@
 .header-container{
     height: 50px;
     width: 100%;
-    border: 2px solid white;
+    padding: 1%;
+}
+
+.header-buttons{
+    display: flex;
+    gap: 10px;
 }

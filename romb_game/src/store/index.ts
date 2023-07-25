@@ -9,6 +9,7 @@ export const stateApp: State = {
         { id: 3, name: "Oleg", total: 12, isTurn: true, type: 'playerThree' },
         { id: 4, name: "Polina", total: 32, isTurn: false, type: 'playerFour' }
     ],
+    isLogin: false,
     chat: [
         { name: "Andrei", playerType: 'playerOne', message: 'privet' },
         { name: "Vas", playerType: 'playerThree', message: 'privet' },
