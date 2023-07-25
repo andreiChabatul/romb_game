@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HeaderComponent } from './header/header.component';
-import { SharedModule } from 'src/shared/shared.module';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({

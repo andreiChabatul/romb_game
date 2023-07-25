@@ -1,5 +1,5 @@
-@import "./../../scss/color-styles";
-@import "./../../scss/default-styles";
+@import "./../../../scss/color-styles";
+@import "./../../../scss/default-styles";
 
 .form-create-game-container {
     width: 450px;
@@ -7,6 +7,15 @@
     border-radius: 20px;
     border: 8px solid $blue;
     padding: 6px;
+}
+
+.nickname-container {
+    position: relative;
+}
+
+.error-form-container {
+    position: absolute;
+    bottom: 0;
 }
 
 .form-gradient {
@@ -17,7 +26,6 @@
     height: 100%;
     border-radius: 10px;
     background: linear-gradient(360deg, rgba(68, 150, 171, 1) 0%, rgba(156, 218, 238, 1) 100%);
-
 }
 
 .form-create-title {
@@ -34,7 +42,7 @@
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     border-radius: 20px;
     border: 4px solid $blue;
-    background: url(./../../assets/fonInput.png);
+    background: url(./../../../assets/fonInput.png);
     background-size: cover;
 }
 
@@ -45,7 +53,11 @@
     font-weight: 600;
 }
 
-.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input{
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
     color: $blue;
     font-family: 'Tektur', cursive;
+}
+
+.mdc-line-ripple {
+    display: none;
 }

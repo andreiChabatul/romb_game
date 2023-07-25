@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
-import { stateCell } from '../../app/types';
-import { colorPlayerOne, colorPlayerTwo } from '../../app/const';
+import { stateCell } from 'src/app/types';
+
 
 @Directive({
   selector: '[appColorCell]'

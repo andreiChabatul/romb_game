@@ -1,11 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { SelectFormCreateGame } from 'src/app/types';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SelectFormCreateGameOption } from 'src/app/types';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-select-create-game',
@@ -13,20 +9,26 @@ interface Food {
   styleUrls: ['./select-create-game.component.scss']
 })
 export class SelectCreateGameComponent implements OnInit {
-  selectedValue: string;
-  selectedCar: string;
 
   @Input() parentForm: FormGroup;
-  @Input() optionForm: SelectFormCreateGame;
+  @Input() optionForm: SelectFormCreateGameOption;
   selectForm: FormGroup;
 
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
+  constructor(private fb: FormBuilder) {
+    this.createForm();
+  }
+
+  private createForm() {
+    this.selectForm = this.fb.group({
+      value: ['', [Validators.required]],
+    });
+  }
 
   ngOnInit(): void {
     this.parentForm.addControl(this.optionForm.nameForm, this.selectForm);
+  }
+
+  get _value() {
+    return this.selectForm.get('value');
   }
 }

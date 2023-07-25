@@ -40,11 +40,13 @@ export interface chatMessage {
 }
 
 
-export interface SelectFormCreateGame {
+export interface SelectFormCreateGameOption {
     nameForm: string;
     namelabel: string;
-    
-  }
+    optionSelect: string[];
+
+}
+
 
 
 
