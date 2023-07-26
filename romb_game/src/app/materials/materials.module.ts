@@ -3,22 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import {
-    FormControl,
-    FormGroupDirective,
-    FormsModule,
-    NgForm,
-    ReactiveFormsModule,
-    Validators,
-
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectMaterialComponent } from './component/select-material/select-material.component';
-
+import { InputMaterialComponent } from './component/input-material/input-material.component';
 
 @NgModule({
     declarations: [
-        SelectMaterialComponent
-
+        SelectMaterialComponent,
+        InputMaterialComponent
     ],
     imports: [
         BrowserModule,
@@ -28,11 +20,14 @@ import { SelectMaterialComponent } from './component/select-material/select-mate
         FormsModule,
         ReactiveFormsModule
     ],
-    exports: [MatInputModule,
+    exports: [
+        MatInputModule,
         MatFormFieldModule,
         SelectMaterialComponent,
         FormsModule,
-        ReactiveFormsModule],
+        ReactiveFormsModule,
+        InputMaterialComponent
+    ],
     providers: [],
     bootstrap: []
 })

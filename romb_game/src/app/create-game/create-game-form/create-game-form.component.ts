@@ -2,9 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ControllerActionsService } from 'src/app/services/controller-actions.service';
-import { SelectFormCreateGameOption } from 'src/app/types';
-
-
+import { InputTextFormOption, SelectFormOption } from 'src/app/types';
 
 @Component({
   selector: 'app-create-game-form',
@@ -15,7 +13,11 @@ import { SelectFormCreateGameOption } from 'src/app/types';
 
 export class CreateGameFormComponent {
 
-  selectsForm: SelectFormCreateGameOption[] = [
+  inputForm: InputTextFormOption[] = [
+    { nameForm: 'nickname', namelabel: 'Nickname', type: 'text' }
+  ]
+
+  selectsForm: SelectFormOption[] = [
     { nameForm: 'typeGame', namelabel: 'Type Game', optionSelect: ['Square', 'Rectangle', 'Rhombus', 'Random'] },
     { nameForm: 'players', namelabel: 'Number of Players', optionSelect: ['Two', 'Three', 'Four'] },
     { nameForm: 'size', namelabel: 'Field Size', optionSelect: ['5x5', '6x6', '7x7', '8x8', '9x9', '10x10', '11x11', '12x12'] },
@@ -29,13 +31,7 @@ export class CreateGameFormComponent {
   }
 
   private createForm(): void {
-    this.createGame = this.fb.group({
-      nickname: ['', Validators.required]
-    });
-  }
-
-  get _nickname() {
-    return this.createGame.get('nickname');
+    this.createGame = this.fb.group({});
   }
 
   onSubmit(): void {

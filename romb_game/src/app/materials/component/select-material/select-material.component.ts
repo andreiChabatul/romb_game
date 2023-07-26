@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SelectFormCreateGameOption } from 'src/app/types';
+import { SelectFormOption } from 'src/app/types';
 
 @Component({
   selector: 'app-select-material',
@@ -10,11 +10,10 @@ import { SelectFormCreateGameOption } from 'src/app/types';
 export class SelectMaterialComponent implements OnInit {
 
   @Input() parentForm: FormGroup;
-  @Input() optionForm: SelectFormCreateGameOption;
+  @Input() optionForm: SelectFormOption;
   selectForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    console.log(this.optionForm)
     this.createForm();
   }
 

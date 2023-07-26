@@ -125,7 +125,8 @@ body {
 }
 
 .container-modal_switch {
-  @include flex-c_s;
+  display: flex;
+  justify-content: space-between;
   flex-direction: column;
   gap: 15px;
 }
@@ -180,4 +181,18 @@ body {
 
 .mdc-line-ripple {
   display: none;
+}
+
+.error-form-container {
+  position: absolute;
+  bottom: 0;
+}
+
+.form-container_material {
+  position: relative;
+}
+
+
+.mat-mdc-form-field {
+  width: 100%;
 }

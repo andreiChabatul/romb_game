@@ -44,11 +44,16 @@ export interface chatMessage {
 }
 
 
-export interface SelectFormCreateGameOption {
+export interface SelectFormOption {
     nameForm: string;
     namelabel: string;
     optionSelect: string[];
+}
 
+export interface InputTextFormOption {
+    nameForm: string;
+    namelabel: string;
+    type: string;
 }
 
 

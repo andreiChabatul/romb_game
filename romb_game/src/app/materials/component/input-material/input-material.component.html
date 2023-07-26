@@ -1,11 +1,8 @@
-<form class="form-container_material" [formGroup]="selectForm">
+<form class="form-container_material" [formGroup]="inputForm">
     <mat-form-field>
         <mat-label>{{optionForm.namelabel}}</mat-label>
-        <mat-select formControlName="value">
-            <mat-option *ngFor="let option of optionForm.optionSelect" value={{option}}>
-                {{option}}
-            </mat-option>
-        </mat-select>
+        <input type={{optionForm.type}} matInput formControlName="value"
+            placeholder="Please enter your {{optionForm.nameForm}}">
     </mat-form-field>
     <div class="error-form-container" *ngIf="_value?.invalid && (_value?.touched || _value?.dirty)">
         <span class="error-text" *ngIf="_value?.errors?.required">Field From is required</span>

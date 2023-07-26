@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
+import { InputTextFormOption } from 'src/app/types';
 
 @Component({
   selector: 'app-modal-register',
@@ -10,6 +11,10 @@ import { ACTIONS_BUTTON } from 'src/app/const/enum';
 })
 export class ModalRegisterComponent {
 
+  inputForm: InputTextFormOption[] = [
+    { nameForm: 'nickname', namelabel: 'Nickname', type: 'text' },
+    { nameForm: 'password', namelabel: 'Password', type: 'password' }
+  ]
   registerForm: FormGroup;
   textButton = ACTIONS_BUTTON.REGISTER;
 
@@ -18,10 +23,7 @@ export class ModalRegisterComponent {
   }
 
   private createForm(): void {
-    this.registerForm = this.fb.group({
-      nickname: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    this.registerForm = this.fb.group({});
   }
 
   onSubmit() {
