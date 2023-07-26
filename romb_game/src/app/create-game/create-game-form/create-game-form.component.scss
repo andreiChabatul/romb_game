@@ -38,26 +38,3 @@
 .mat-mdc-form-field {
     width: 300px;
 }
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    border-radius: 20px;
-    border: 4px solid $blue;
-    background: url(./../../../assets/fonInput.png);
-    background-size: cover;
-}
-
-.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
-    color: $blue;
-    font-family: 'Tektur', cursive;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
-    color: $blue;
-    font-family: 'Tektur', cursive;
-}
-
-.mdc-line-ripple {
-    display: none;
-}

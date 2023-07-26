@@ -1,8 +1,13 @@
 import { State } from "src/app/types";
 import { stateApp } from "..";
-import { ActionUnion } from "../actions";
+import { ActionUnion, AppActionTypes } from "../actions";
 
 
 export const Reducers = (state = stateApp, action: ActionUnion): State => {
-    return state;
+    switch (action.type) {
+        case AppActionTypes.CloseModal:
+            return { ...state, modal: 'none' };
+        default:
+            return state;
+    }
 };

@@ -5,7 +5,9 @@ import { ColorCellDirective } from './directive/color-cell.directive';
 import { ColorLineDirective } from './directive/color-line.directive';
 import { ColorNameDirective } from './directive/color-name.directive';
 import { ButtonMaterialsComponent } from './button-materials/button-materials.component';
-
+import { ModalComponent } from './modal/modal.component';
+import { ModalRegisterComponent } from './modalRegister/modalRegister.component';
+import { MaterialsModule } from '../materials/materials.module';
 
 @NgModule({
     declarations: [
@@ -13,10 +15,12 @@ import { ButtonMaterialsComponent } from './button-materials/button-materials.co
         ButtonMaterialsComponent,
         ColorCellDirective,
         ColorLineDirective,
-        ColorNameDirective
+        ColorNameDirective,
+        ModalComponent,
+        ModalRegisterComponent
     ],
     imports: [
-        BrowserModule
+        BrowserModule, MaterialsModule
 
     ],
     exports: [
@@ -24,7 +28,8 @@ import { ButtonMaterialsComponent } from './button-materials/button-materials.co
         ColorCellDirective,
         ColorLineDirective,
         ColorNameDirective,
-        ButtonMaterialsComponent
+        ButtonMaterialsComponent,
+        ModalComponent,
     ],
     providers: [],
     bootstrap: []

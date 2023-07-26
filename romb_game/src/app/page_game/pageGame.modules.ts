@@ -18,12 +18,13 @@ import { SharedModule } from '../shared/shared.module';
         InfoPlayerComponent,
         ChatGameComponent,
         ChatMessageComponent,
-        ChatInputComponent
-
+        ChatInputComponent,
     ],
     imports: [
-        BrowserModule, SharedModule, MaterialsModule
-
+        BrowserModule,
+        SharedModule,
+        MaterialsModule,
+        
     ],
     exports: [PageGameComponent],
     providers: [],

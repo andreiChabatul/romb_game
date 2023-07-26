@@ -8,13 +8,14 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderModule } from 'src/header/header.module';
 import { appReducers } from 'src/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared.module';
 import { PageCreateGame } from './create-game/createGamePage.modules';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,    
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +24,7 @@ import { PageCreateGame } from './create-game/createGamePage.modules';
     PageCreateGame,
     HeaderModule,
     SharedModule,
+    CommonModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(appReducers),
   ],

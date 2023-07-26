@@ -6,29 +6,33 @@ import { MatSelectModule } from '@angular/material/select';
 import {
     FormControl,
     FormGroupDirective,
-    NgForm,
-    Validators,
     FormsModule,
+    NgForm,
     ReactiveFormsModule,
+    Validators,
+
 } from '@angular/forms';
+import { SelectMaterialComponent } from './component/select-material/select-material.component';
 
 
 @NgModule({
     declarations: [
+        SelectMaterialComponent
 
     ],
     imports: [
         BrowserModule,
         MatInputModule,
         MatFormFieldModule,
+        MatSelectModule,
         FormsModule,
-        ReactiveFormsModule,
-        MatSelectModule
-
-
-
+        ReactiveFormsModule
     ],
-    exports: [MatInputModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatSelectModule],
+    exports: [MatInputModule,
+        MatFormFieldModule,
+        SelectMaterialComponent,
+        FormsModule,
+        ReactiveFormsModule],
     providers: [],
     bootstrap: []
 })

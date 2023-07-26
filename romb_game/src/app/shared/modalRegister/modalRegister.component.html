@@ -1,0 +1,13 @@
+<form class="container-modal_switch" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <p class="title-modal">Register</p>
+    <mat-form-field>
+        <mat-label>Nickname</mat-label>
+        <input type="text" matInput formControlName="nickname" placeholder="Please enter your nickname">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="Please enter your password">
+    </mat-form-field>
+    <app-button-standart [height]="'60px'" [width]="'230px'" [action]="textButton"></app-button-standart>
+    <p class="footer-modal_text">Войти в профиль</p>
+</form>

@@ -12,10 +12,10 @@
                     <span class="error-text" *ngIf="_nickname?.errors?.required">Field From is required</span>
                 </div>
             </div>
-            <app-select-create-game *ngFor="let option of selectsForm" [optionForm]="option"
-                [parentForm]="createGame"></app-select-create-game>
+   
+            <app-select-material> *ngFor="let option of selectsForm" [optionForm]="option"
+                [parentForm]="createGame"></app-select-material>
         </div>
-
         <app-button-standart [height]="'60px'" [width]="'230px'" [action]="textButton"></app-button-standart>
     </form>
 </div>

@@ -2,6 +2,7 @@ export type stateCell = 'border' | playerType;
 export type typeCell = 'vertical' | 'horisontal';
 export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour' | 'none';
 export type side = 'left' | 'top';
+export type modal = 'none' | 'login' | 'register';
 
 export interface Player {
     id: number;
@@ -28,6 +29,8 @@ export interface State {
     players: Player[];
     chat: chatMessage[];
     isLogin: boolean;
+    modal: modal;
+
 }
 
 export interface AppStore {
