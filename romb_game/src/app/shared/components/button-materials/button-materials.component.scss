@@ -1,0 +1,26 @@
+@import "./../../../../scss/default-styles";
+@import "./../../../../scss/color-styles";
+
+.container-button_circle {
+    border-radius: 50%;
+}
+
+.button-desc {
+    @include font_default;
+    color: $default_white;
+    font-size: 0px;
+    transition: .3s;
+    opacity: 0;
+}
+
+.container-button_circle {
+    &:hover {
+        width: max-content !important;
+        border-radius: 20px;
+    }
+
+    &:hover .button-desc {
+        opacity: 1;
+        font-size: 12px;
+    }
+}

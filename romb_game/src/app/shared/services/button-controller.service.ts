@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ACTIONS_BUTTON } from '../const/enum';
+import { Store } from '@ngrx/store';
+import { ACTIONS_BUTTON } from 'src/app/const/enum';
+import { AppStore } from 'src/app/types';
+import { ChangeModal } from 'src/store/actions';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ButtonControllerService {
 
-  constructor() { }
+  constructor(private store: Store<AppStore>) { }
 
   actionButton(action: ACTIONS_BUTTON) {
     switch (action) {
@@ -30,6 +34,9 @@ export class ButtonControllerService {
         break;
       case ACTIONS_BUTTON.LOG_OUT:
         console.log('log_out')
+        break;
+      case ACTIONS_BUTTON.LOG_IN:
+        this.store.dispatch(new ChangeModal('login'));
         break;
 
       default:

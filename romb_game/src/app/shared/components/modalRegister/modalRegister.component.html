@@ -3,5 +3,5 @@
     <app-input-material *ngFor="let option of inputForm" [parentForm]="registerForm"
         [optionForm]="option"></app-input-material>
     <app-button-standart [height]="'60px'" [width]="'230px'" [action]="textButton"></app-button-standart>
-    <p class="footer-modal_text">Войти в профиль</p>
+    <p class="footer-modal_text" (click)="loginOpen()">Войти в профиль</p>
 </form>

@@ -6,7 +6,7 @@
             </span>
             <div [ngSwitch]="(modal$ | async)">
                 <app-modal-register *ngSwitchCase="'register'"></app-modal-register>
-                <p *ngSwitchCase="'login'">Логин</p>
+                <app-modal-login *ngSwitchCase="'login'"></app-modal-login>
             </div>
         </div>
     </div>

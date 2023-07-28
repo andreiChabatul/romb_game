@@ -90,6 +90,7 @@ body {
 
 
 .button-standart {
+  @include flex-c_c;
   background: url(./assets/buttonFon.png);
   background-size: cover;
   border: 2px solid $default_white;

@@ -12,10 +12,11 @@ import { PageCreateGame } from './create-game/createGamePage.modules';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { ButtonControllerService } from 'src/app/services/button-controller.service';
+import { ButtonControllerService } from '../../services/button-controller.service';
+
 
 @Component({
   selector: 'app-button-standart',

@@ -10,7 +10,7 @@ export const stateApp: State = {
         { id: 4, name: "Polina", total: 32, isTurn: false, type: 'playerFour' }
     ],
     isLogin: false,
-    modal: 'register',
+    modal: 'none',
     chat: [
         { name: "Andrei", playerType: 'playerOne', message: 'privet' },
         { name: "Vas", playerType: 'playerThree', message: 'privet' },

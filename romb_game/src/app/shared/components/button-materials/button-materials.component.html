@@ -1,0 +1,7 @@
+<div [ngStyle]="{'width':option.width, 'height':option.width}" class="container-button container-button_circle">
+    <button class="button-standart" (click)="handlingClick()">
+        <span class="material-symbols-outlined"> {{option.action}}</span>
+        <span class="button-desc">{{option.text}}</span>
+    </button>
+    <div class="animation-button"></div>
+</div>

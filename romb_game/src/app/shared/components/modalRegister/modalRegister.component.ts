@@ -1,7 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { InputTextFormOption } from 'src/app/types';
+import { AppStore, InputTextFormOption } from 'src/app/types';
+import { ChangeModal } from 'src/store/actions';
 
 @Component({
   selector: 'app-modal-register',
@@ -18,12 +20,16 @@ export class ModalRegisterComponent {
   registerForm: FormGroup;
   textButton = ACTIONS_BUTTON.REGISTER;
 
-  constructor(private fb: FormBuilder,) {
+  constructor(private fb: FormBuilder, private store: Store<AppStore>) {
     this.createForm();
   }
 
   private createForm(): void {
     this.registerForm = this.fb.group({});
+  }
+
+  loginOpen() {
+    this.store.dispatch(new ChangeModal('login'));
   }
 
   onSubmit() {

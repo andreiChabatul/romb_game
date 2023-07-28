@@ -1,5 +1,7 @@
 <header class="header-container">
+    <div class="header-logo">Logo</div>
     <div class="header-buttons">
-        <app-button-materials *ngFor="let button of buttons" [action]=button [width]="'45px'"></app-button-materials>
+        <app-button-materials *ngFor="let button of buttons" [option]="button">
+        </app-button-materials>
     </div>
 </header>

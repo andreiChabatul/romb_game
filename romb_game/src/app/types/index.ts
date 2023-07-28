@@ -1,3 +1,5 @@
+import { ACTIONS_BUTTON } from "../const/enum";
+
 export type stateCell = 'border' | playerType;
 export type typeCell = 'vertical' | 'horisontal';
 export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour' | 'none';
@@ -54,6 +56,12 @@ export interface InputTextFormOption {
     nameForm: string;
     namelabel: string;
     type: string;
+}
+
+export interface ButtonMaterialOption {
+    action: ACTIONS_BUTTON;
+    width: string;
+    text: string;
 }
 
 

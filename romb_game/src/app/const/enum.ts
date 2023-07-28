@@ -7,5 +7,6 @@ export enum ACTIONS_BUTTON {
     LOG_IN = 'login',
     HELP = 'quiz',
     INFO = 'info_i',
-    REGISTER = 'Create Player'
+    REGISTER = 'Create Player',
+    LOGIN = 'Log in profile'
 }

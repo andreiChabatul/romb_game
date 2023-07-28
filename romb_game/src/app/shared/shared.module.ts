@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ButtonStandartComponent } from './button-standart/button-standart.component';
+import { ButtonStandartComponent } from './components/button-standart/button-standart.component';
 import { ColorCellDirective } from './directive/color-cell.directive';
 import { ColorLineDirective } from './directive/color-line.directive';
 import { ColorNameDirective } from './directive/color-name.directive';
-import { ButtonMaterialsComponent } from './button-materials/button-materials.component';
-import { ModalComponent } from './modal/modal.component';
-import { ModalRegisterComponent } from './modalRegister/modalRegister.component';
+import { ButtonMaterialsComponent } from './components/button-materials/button-materials.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ModalRegisterComponent } from './components/modalRegister/modalRegister.component';
 import { MaterialsModule } from '../materials/materials.module';
+import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { MaterialsModule } from '../materials/materials.module';
         ColorLineDirective,
         ColorNameDirective,
         ModalComponent,
-        ModalRegisterComponent
+        ModalRegisterComponent,
+        ModalLoginComponent
     ],
     imports: [
         BrowserModule, MaterialsModule
