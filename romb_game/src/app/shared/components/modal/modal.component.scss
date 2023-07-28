@@ -9,6 +9,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 11111;
 }
 
 .modal-container {
@@ -46,4 +47,9 @@
     height: 100%;
     border-radius: 10px;
     background: linear-gradient(360deg, rgba(68, 150, 171, 1) 0%, rgba(156, 218, 238, 1) 100%);
+}
+
+.modal-error {
+    @include font_default;
+    color: $color_red;
 }

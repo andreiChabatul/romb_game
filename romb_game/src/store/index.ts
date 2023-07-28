@@ -11,6 +11,7 @@ export const stateApp: State = {
     ],
     isLogin: false,
     modal: 'none',
+    modalError: '',
     chat: [
         { name: "Andrei", playerType: 'playerOne', message: 'privet' },
         { name: "Vas", playerType: 'playerThree', message: 'privet' },

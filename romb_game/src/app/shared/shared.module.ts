@@ -6,9 +6,9 @@ import { ColorLineDirective } from './directive/color-line.directive';
 import { ColorNameDirective } from './directive/color-name.directive';
 import { ButtonMaterialsComponent } from './components/button-materials/button-materials.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { ModalRegisterComponent } from './components/modalRegister/modalRegister.component';
 import { MaterialsModule } from '../materials/materials.module';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
+import { ModalRegisterComponent } from './components/modal-register/modal-register.component';
 
 @NgModule({
     declarations: [

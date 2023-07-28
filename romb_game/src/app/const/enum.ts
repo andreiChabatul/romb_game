@@ -10,3 +10,7 @@ export enum ACTIONS_BUTTON {
     REGISTER = 'Create Player',
     LOGIN = 'Log in profile'
 }
+
+export enum ENDPOINT {
+    REG = 'auth/registration'
+}

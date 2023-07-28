@@ -1,27 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types';
 import { ChangeModal } from 'src/store/actions';
+import { selectIsLogin } from 'src/store/selectors';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ButtonControllerService {
+export class ButtonControllerService implements OnInit, OnDestroy {
+
+  susbscription$: Subscription
+  isLogin: boolean;
+  isLogin$ = this.store.select(selectIsLogin);
 
   constructor(private store: Store<AppStore>) { }
+
+  ngOnInit(): void {
+
+    this.susbscription$ = this.isLogin$.subscribe(value => this.isLogin = value);
+
+  }
 
   actionButton(action: ACTIONS_BUTTON) {
     switch (action) {
       case ACTIONS_BUTTON.CREATE_ROOM:
-        console.log('createRoom')
+
         break;
       case ACTIONS_BUTTON.NEW_GAME:
-        console.log('newGame')
+        if (this.isLogin) { }
+        else { this.store.dispatch(new ChangeModal('login')); }
         break;
       case ACTIONS_BUTTON.JOIN_GAME:
-        console.log('joinGame')
+        if (this.isLogin) { }
+        else { this.store.dispatch(new ChangeModal('login')); }
         break;
       case ACTIONS_BUTTON.SETTING:
         console.log('setting')
@@ -44,5 +58,9 @@ export class ButtonControllerService {
     }
 
 
+  }
+
+  ngOnDestroy(): void {
+    this.susbscription$.unsubscribe();
   }
 }

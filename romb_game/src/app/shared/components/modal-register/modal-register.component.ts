@@ -1,14 +1,15 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { AppStore, InputTextFormOption } from 'src/app/types';
 import { ChangeModal } from 'src/store/actions';
 
 @Component({
   selector: 'app-modal-register',
-  templateUrl: './modalRegister.component.html',
-  styleUrls: ['./modalRegister.component.scss'],
+  templateUrl: './modal-register.component.html',
+  styleUrls: ['./modal-register.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ModalRegisterComponent {
@@ -20,7 +21,7 @@ export class ModalRegisterComponent {
   registerForm: FormGroup;
   textButton = ACTIONS_BUTTON.REGISTER;
 
-  constructor(private fb: FormBuilder, private store: Store<AppStore>) {
+  constructor(private fb: FormBuilder, private store: Store<AppStore>, private authService: AuthService) {
     this.createForm();
   }
 
@@ -37,7 +38,10 @@ export class ModalRegisterComponent {
       this.registerForm.markAllAsTouched()
       return;
     }
-    console.log('htubcnhfwbz')
+    this.authService.register({
+      nickname: this.registerForm.value.nickname.value,
+      password: this.registerForm.value.password.value
+    })
   }
 
 }

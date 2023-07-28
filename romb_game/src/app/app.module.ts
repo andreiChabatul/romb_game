@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageCreateGame } from './create-game/createGamePage.modules';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
-
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import { SharedModule } from './shared/shared.module';
     CommonModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(appReducers),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -32,7 +32,7 @@ export interface State {
     chat: chatMessage[];
     isLogin: boolean;
     modal: modal;
-
+    modalError: string;
 }
 
 export interface AppStore {
@@ -64,6 +64,11 @@ export interface ButtonMaterialOption {
     text: string;
 }
 
+
+export interface Profile {
+    nickname: string;
+    password: string;
+}
 
 
 

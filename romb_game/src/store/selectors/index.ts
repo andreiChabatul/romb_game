@@ -7,3 +7,4 @@ export const selectAllPlayer = createSelector(select, (state: State) => state.pl
 export const selectMessageChat = createSelector(select, (state: State) => state.chat);
 export const selectIsLogin = createSelector(select, (state: State) => state.isLogin);
 export const selectModal = createSelector(select, (state: State) => state.modal);
+export const selectModalError = createSelector(select, (state: State) => state.modalError);

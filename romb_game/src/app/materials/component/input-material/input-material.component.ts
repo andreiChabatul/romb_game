@@ -12,6 +12,7 @@ export class InputMaterialComponent {
   @Input() parentForm: FormGroup;
   @Input() optionForm: InputTextFormOption;
   inputForm: FormGroup;
+  type: string;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -24,10 +25,15 @@ export class InputMaterialComponent {
   }
 
   ngOnInit(): void {
+    this.type = this.optionForm.type;
     this.parentForm.addControl(this.optionForm.nameForm, this.inputForm);
   }
 
   get _value() {
     return this.inputForm.get('value');
+  }
+
+  hidePasword() {
+    this.type === 'password' ? this.type = 'text' : this.type = 'password';
   }
 }

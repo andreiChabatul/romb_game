@@ -2,6 +2,7 @@
 @import "./../../scss/default-styles";
 
 .main-page_title {
+    @include font_default;
     color: $color_turquoise;
     font-size: 100px;
     font-weight: 600;

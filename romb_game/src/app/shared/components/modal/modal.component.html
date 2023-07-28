@@ -1,6 +1,7 @@
 <div *ngIf="(modal$ | async) !== 'none'" class="wrapper-modal" (click)="closeModal()">
     <div class="modal-container" (click)="$event.stopPropagation()">
         <div class="modal-gradient">
+            <p *ngIf="modalError$ | async" class="modal-error">{{modalError$ | async}}</p>
             <span class="material-symbols-outlined close-modal" (click)="closeModal()">
                 cancel
             </span>

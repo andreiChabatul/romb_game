@@ -5,6 +5,8 @@ export enum AppActionTypes {
     AddPlayers = '[PLAYERS ADD] AddPlayer',
     CloseModal = '[CLOSE MODAL] CloseModal',
     ChangeModal = '[CHANGE MODAL] ChangeModal',
+    AddModalError = '[ADD MODAL ERROR] AddModalError',
+    ClearModalError = '[CLEAR MODAL ERROR] ClearModalError',
 };
 
 export class AddPlayers implements Action {
@@ -21,5 +23,14 @@ export class ChangeModal implements Action {
     constructor(public payload: modal) { }
 }
 
+export class AddModalError implements Action {
+    readonly type = AppActionTypes.AddModalError;
+    constructor(public payload: string) { }
+}
 
-export type ActionUnion = AddPlayers | CloseModal | ChangeModal;
+export class ClearModalError implements Action {
+    readonly type = AppActionTypes.ClearModalError;
+}
+
+
+export type ActionUnion = AddPlayers | CloseModal | ChangeModal | AddModalError | ClearModalError;
