@@ -8,7 +8,11 @@ export enum ACTIONS_BUTTON {
     HELP = 'quiz',
     INFO = 'info_i',
     REGISTER = 'Create Player',
-    LOGIN = 'Log in profile'
+    LOGIN = 'Log in profile',
+    UPDATE_ROOM = 'sync',
+    SEARCH_ROOM = 'search',
+    ADD_ROOM = 'add',
+    SHADOW_ROOM = 'shadow_add'
 }
 
 export enum ENDPOINT {

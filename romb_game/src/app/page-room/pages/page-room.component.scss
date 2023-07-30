@@ -1,0 +1,35 @@
+@import "./../../../scss/default-styles";
+@import "./../../../scss/color-styles";
+
+.page-room-container {
+    width: 90%;
+    margin: 0 auto;
+ 
+}
+
+.page-room_title {
+    height: 50px;
+    margin-bottom: 20px;
+    @include flex-c_s;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+.page-room_rooms {
+    @include flex-c_s;
+    justify-content: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.page-room_title__text {
+    @include font_default;
+    color: $default_white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.page-room-buttons{
+    @include flex-c_s;
+    gap: 10px;
+}

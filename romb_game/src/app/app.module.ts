@@ -13,11 +13,13 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
+import { PageRoomModule } from './page-room/pageRoom.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { AuthService } from './auth/auth.service';
     CommonModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(appReducers),
-    HttpClientModule
+    HttpClientModule,
+    PageRoomModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
