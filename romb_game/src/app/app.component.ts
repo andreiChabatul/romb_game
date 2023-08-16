@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DoneBoard } from 'server_temp/done_board';
-import { WebSocketControllerService } from './services/web-socket-controller.service';
+import { WebSocketController } from './webSocket/webSocket.controller';
 
 export const game = new DoneBoard(15);
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent {
   title = 'romb_game';
 
 
-  constructor(private webSocketControllerService: WebSocketControllerService) { }
+  constructor(private webSocketController: WebSocketController) { }
 
 
 

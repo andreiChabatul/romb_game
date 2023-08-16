@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { ControllerActionsService } from 'src/app/services/controller-actions.service';
 import { InputTextFormOption, SelectFormOption } from 'src/app/types';
+import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({
   selector: 'app-create-game-form',
@@ -14,7 +14,7 @@ import { InputTextFormOption, SelectFormOption } from 'src/app/types';
 export class CreateGameFormComponent {
 
   inputForm: InputTextFormOption[] = [
-    { nameForm: 'nickname', namelabel: 'Nickname', type: 'text' }
+    { nameForm: 'roomName', namelabel: 'NameRoom', type: 'text' }
   ]
 
   selectsForm: SelectFormOption[] = [
@@ -26,7 +26,8 @@ export class CreateGameFormComponent {
   createGame: FormGroup;
   textButton = ACTIONS_BUTTON.CREATE_ROOM;
 
-  constructor(private fb: FormBuilder, private controllerActionsService: ControllerActionsService) {
+  constructor(private fb: FormBuilder,
+    private webSocketController: WebSocketController) {
     this.createForm();
   }
 
@@ -39,8 +40,14 @@ export class CreateGameFormComponent {
       this.createGame.markAllAsTouched()
       return;
     }
-    this.controllerActionsService.createGame()
-    console.log(this.createGame.value['typeGame'].value)
+    this.webSocketController.createGame({
+      roomName: this.createGame.value['roomName'].value,
+      players: this.createGame.value['players'].value,
+      typeGame: this.createGame.value['typeGame'].value,
+      size: this.createGame.value['size'].value,
+      visibility: this.createGame.value['visibility'].value
+    });
+
   }
 }
 

@@ -70,5 +70,17 @@ export interface Profile {
     password: string;
 }
 
+export interface PayloadCreateGame {
+    roomName: string
+    players: string
+    size: string
+    typeGame: string
+    visibility: string
+}
+
+export enum EACTION_WEBSOCKET {
+    CREATE_GAME = 'create game'
+}
+
 
 

@@ -3,15 +3,6 @@
         <p class="form-create-title">Create Game Room</p>
         <div>
             <div class="nickname-container">
-
-                <!-- <mat-form-field>
-                    <mat-label>Nickname</mat-label>
-                    <input type="text" matInput formControlName="nickname" placeholder="Please enter your nickname">
-                </mat-form-field>
-                <div class="error-form-container"
-                    *ngIf="_nickname?.invalid && (_nickname?.touched || _nickname?.dirty)">
-                    <span class="error-text" *ngIf="_nickname?.errors?.required">Field From is required</span>
-                </div> -->
             </div>
             <app-input-material *ngFor="let option of inputForm" [optionForm]="option"
                 [parentForm]="createGame"></app-input-material>
