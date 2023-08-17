@@ -2,7 +2,8 @@ import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { AppStore } from 'src/app/types';
+import { AppStore, EACTION_WEBSOCKET } from 'src/app/types';
+import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal } from 'src/store/actions';
 import { selectIsLogin } from 'src/store/selectors';
 
@@ -16,7 +17,7 @@ export class ButtonControllerService implements OnInit, OnDestroy {
   isLogin: boolean;
   isLogin$ = this.store.select(selectIsLogin);
 
-  constructor(private store: Store<AppStore>) { }
+  constructor(private store: Store<AppStore>, private webSocketController: WebSocketController) { }
 
   ngOnInit(): void {
 
@@ -52,7 +53,10 @@ export class ButtonControllerService implements OnInit, OnDestroy {
       case ACTIONS_BUTTON.LOG_IN:
         this.store.dispatch(new ChangeModal('login'));
         break;
-
+      case ACTIONS_BUTTON.UPDATE_ROOM:
+        console.log('update')
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.LIST_ROOM);
+        break;
       default:
         break;
     }

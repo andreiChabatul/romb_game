@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
+import { Room } from 'src/app/types';
 
 @Component({
   selector: 'app-room-item',
@@ -7,6 +8,8 @@ import { ACTIONS_BUTTON } from 'src/app/const/enum';
   styleUrls: ['./room-item.component.scss']
 })
 export class RoomItemComponent {
+
+  @Input() itemRoom: Room;
 
   textButton = ACTIONS_BUTTON.CREATE_ROOM;
 

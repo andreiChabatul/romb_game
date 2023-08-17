@@ -12,15 +12,17 @@ export class WebSocketController {
 
 
   createGame(payload: PayloadCreateGame) {
-    this.wsSocket.send(JSON.stringify({action: EACTION_WEBSOCKET.CREATE_GAME, payload }))
+    this.wsSocket.send(JSON.stringify({ action: EACTION_WEBSOCKET.CREATE_GAME, payload }))
   }
 
-  test(): void {
+  handleMessage(): void {
     this.wsSocket.on("message", (mess: string) => {
       console.log(mess);
     });
+  }
 
-    this.wsSocket.send('hello hello ')
+  sendMessage(action: EACTION_WEBSOCKET, payload?: string): void {
+    this.wsSocket.send(JSON.stringify({ action, payload }))
   }
 
 }

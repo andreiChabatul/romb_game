@@ -8,3 +8,4 @@ export const selectMessageChat = createSelector(select, (state: State) => state.
 export const selectIsLogin = createSelector(select, (state: State) => state.isLogin);
 export const selectModal = createSelector(select, (state: State) => state.modal);
 export const selectModalError = createSelector(select, (state: State) => state.modalError);
+export const selectRooms = createSelector(select, (state: State) => state.rooms);

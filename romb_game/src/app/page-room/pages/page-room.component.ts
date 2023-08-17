@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { ButtonMaterialOption } from 'src/app/types';
+import { AppStore, ButtonMaterialOption } from 'src/app/types';
+import { selectRooms } from 'src/store/selectors';
 
 @Component({
   selector: 'app-page-room',
@@ -8,6 +10,10 @@ import { ButtonMaterialOption } from 'src/app/types';
   styleUrls: ['./page-room.component.scss']
 })
 export class PageRoomComponent {
+
+  rooms$ = this.store.select(selectRooms);
+
+  constructor(private store: Store<AppStore>) { }
 
   buttons: ButtonMaterialOption[] = [
     { action: ACTIONS_BUTTON.UPDATE_ROOM, width: "45px", text: "Update" },

@@ -33,6 +33,7 @@ export interface State {
     isLogin: boolean;
     modal: modal;
     modalError: string;
+    rooms: Room[];
 }
 
 export interface AppStore {
@@ -78,8 +79,13 @@ export interface PayloadCreateGame {
     visibility: string
 }
 
+export interface Room extends PayloadCreateGame {
+    playerRoom: string;
+}
+
 export enum EACTION_WEBSOCKET {
-    CREATE_GAME = 'create game'
+    CREATE_GAME = 'create game',
+    LIST_ROOM = 'list room'
 }
 
 

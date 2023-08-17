@@ -1,23 +1,12 @@
 <div class="page-room-container">
     <div class="page-room_title">
-        <p class="page-room_title__text">Список комнат (12)</p>
+        <p class="page-room_title__text">Список комнат ({{(rooms$ | async)?.length}})</p>
         <div class="page-room-buttons">
             <app-button-materials *ngFor="let option of buttons" [option]="option"></app-button-materials>
         </div>
    <app-page-room-search></app-page-room-search>
     </div>
     <div class="page-room_rooms">
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
-        <app-room-item></app-room-item>
+        <app-room-item *ngFor="let room of (rooms$ | async)" [itemRoom]="room"></app-room-item>
     </div>
 </div>
