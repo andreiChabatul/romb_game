@@ -8,12 +8,10 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderModule } from 'src/header/header.module';
 import { appReducers } from 'src/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PageCreateGame } from './create-game/createGamePage.modules';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
-import { PageRoomModule } from './page-room/pageRoom.module';
 
 @NgModule({
   declarations: [
@@ -25,14 +23,12 @@ import { PageRoomModule } from './page-room/pageRoom.module';
     BrowserModule,
     AppRoutingModule,
     PageGame,
-    PageCreateGame,
     HeaderModule,
     SharedModule,
     CommonModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(appReducers),
     HttpClientModule,
-    PageRoomModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { ButtonStandartComponent } from './components/button-standart/button-standart.component';
 import { ColorCellDirective } from './directive/color-cell.directive';
 import { ColorLineDirective } from './directive/color-line.directive';
@@ -9,6 +8,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { MaterialsModule } from '../materials/materials.module';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 import { ModalRegisterComponent } from './components/modal-register/modal-register.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -22,7 +22,7 @@ import { ModalRegisterComponent } from './components/modal-register/modal-regist
         ModalLoginComponent
     ],
     imports: [
-        BrowserModule, MaterialsModule
+        CommonModule , MaterialsModule
 
     ],
     exports: [

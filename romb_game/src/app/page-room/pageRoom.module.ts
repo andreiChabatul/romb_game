@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { MaterialsModule } from 'src/app/materials/materials.module';
 import { SharedModule } from '../shared/shared.module';
 import { PageRoomComponent } from './pages/page-room.component';
 import { RoomItemComponent } from './components/room-item/room-item.component';
 import { PageRoomSearchComponent } from './components/page-room-search/page-room-search.component';
+import { CommonModule } from '@angular/common';
+import { PageRoomRoutingModule } from './page.room.routing.module';
 
 @NgModule({
     declarations: [
@@ -14,11 +15,11 @@ import { PageRoomSearchComponent } from './components/page-room-search/page-room
 
     ],
     imports: [
-        BrowserModule,
         SharedModule,
         MaterialsModule,
+        CommonModule
     ],
-    exports: [PageRoomComponent],
+    exports: [PageRoomRoutingModule],
     providers: [],
     bootstrap: []
 })
