@@ -1,4 +1,5 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
@@ -11,18 +12,16 @@ import { selectIsLogin } from 'src/store/selectors';
 @Injectable({
   providedIn: 'root'
 })
-export class ButtonControllerService implements OnInit, OnDestroy {
+export class ButtonControllerService implements OnDestroy {
 
   susbscription$: Subscription
   isLogin: boolean;
   isLogin$ = this.store.select(selectIsLogin);
 
-  constructor(private store: Store<AppStore>, private webSocketController: WebSocketController) { }
-
-  ngOnInit(): void {
-
+  constructor(private store: Store<AppStore>,
+    private webSocketController: WebSocketController,
+    private router: Router) {
     this.susbscription$ = this.isLogin$.subscribe(value => this.isLogin = value);
-
   }
 
   actionButton(action: ACTIONS_BUTTON) {
@@ -31,11 +30,11 @@ export class ButtonControllerService implements OnInit, OnDestroy {
 
         break;
       case ACTIONS_BUTTON.NEW_GAME:
-        if (this.isLogin) { }
+        if (this.isLogin) { this.router.navigate(['create-game']) }
         else { this.store.dispatch(new ChangeModal('login')); }
         break;
       case ACTIONS_BUTTON.JOIN_GAME:
-        if (this.isLogin) { }
+        if (this.isLogin) { this.router.navigate(['rooms']) }
         else { this.store.dispatch(new ChangeModal('login')); }
         break;
       case ACTIONS_BUTTON.SETTING:
@@ -54,8 +53,10 @@ export class ButtonControllerService implements OnInit, OnDestroy {
         this.store.dispatch(new ChangeModal('login'));
         break;
       case ACTIONS_BUTTON.UPDATE_ROOM:
-        console.log('update')
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.LIST_ROOM);
+        break;
+      case ACTIONS_BUTTON.ADD_ROOM:
+        this.router.navigate(['create-game']);
         break;
       default:
         break;

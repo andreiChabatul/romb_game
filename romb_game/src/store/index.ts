@@ -9,7 +9,7 @@ export const stateApp: State = {
         { id: 3, name: "Oleg", total: 12, isTurn: true, type: 'playerThree' },
         { id: 4, name: "Polina", total: 32, isTurn: false, type: 'playerFour' }
     ],
-    isLogin: false,
+    isLogin: true,
     rooms: [],
     modal: 'none',
     modalError: '',

@@ -18,6 +18,11 @@ const routes: Routes = [
       import('./page-room/pageRoom.module').then((m) => m.PageRoomModule),
   },
   {
+    path: 'game',
+    loadChildren: () =>
+      import('./page_game/pageGame.modules').then((m) => m.PageGameModule),
+  },
+  {
     path: '**',
     component: MainPageComponent,
   },

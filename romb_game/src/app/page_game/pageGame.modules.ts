@@ -9,6 +9,8 @@ import { ChatMessageComponent } from './chat-message/chat-message.component';
 import { ChatInputComponent } from './chat-input/chat-input.component';
 import { MaterialsModule } from 'src/app/materials/materials.module';
 import { SharedModule } from '../shared/shared.module';
+import { PageGameRoutingModule } from './page.game.routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -21,13 +23,12 @@ import { SharedModule } from '../shared/shared.module';
         ChatInputComponent,
     ],
     imports: [
-        BrowserModule,
         SharedModule,
         MaterialsModule,
-        
+        CommonModule
     ],
-    exports: [PageGameComponent],
+    exports: [PageGameRoutingModule],
     providers: [],
     bootstrap: []
 })
-export class PageGame { }
+export class PageGameModule { }

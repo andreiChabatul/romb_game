@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { InputTextFormOption, SelectFormOption } from 'src/app/types';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
@@ -27,7 +28,8 @@ export class CreateGameFormComponent {
   textButton = ACTIONS_BUTTON.CREATE_ROOM;
 
   constructor(private fb: FormBuilder,
-    private webSocketController: WebSocketController) {
+    private webSocketController: WebSocketController,
+    private router: Router) {
     this.createForm();
   }
 
@@ -47,7 +49,7 @@ export class CreateGameFormComponent {
       size: this.createGame.value['size'].value,
       visibility: this.createGame.value['visibility'].value
     });
-
+    this.router.navigate(['game']);
   }
 }
 

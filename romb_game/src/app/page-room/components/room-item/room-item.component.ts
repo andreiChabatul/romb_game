@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { Room } from 'src/app/types';
+import { RoomsSocket } from 'src/app/types';
 
 @Component({
   selector: 'app-room-item',
@@ -9,7 +9,7 @@ import { Room } from 'src/app/types';
 })
 export class RoomItemComponent {
 
-  @Input() itemRoom: Room;
+  @Input() itemRoom: RoomsSocket;
 
   textButton = ACTIONS_BUTTON.CREATE_ROOM;
 

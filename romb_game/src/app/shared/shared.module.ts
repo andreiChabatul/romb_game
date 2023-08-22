@@ -9,6 +9,7 @@ import { MaterialsModule } from '../materials/materials.module';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 import { ModalRegisterComponent } from './components/modal-register/modal-register.component';
 import { CommonModule } from '@angular/common';
+import { ButtonControllerService } from './services/button-controller.service';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,7 @@ import { CommonModule } from '@angular/common';
         ButtonMaterialsComponent,
         ModalComponent,
     ],
-    providers: [],
+    providers: [ButtonControllerService],
     bootstrap: []
 })
 export class SharedModule { }

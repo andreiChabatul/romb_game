@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Player, modal } from 'src/app/types';
+import { Player, RoomsSocket, modal } from 'src/app/types';
 
 export enum AppActionTypes {
     AddPlayers = '[PLAYERS ADD] AddPlayer',
@@ -7,6 +7,7 @@ export enum AppActionTypes {
     ChangeModal = '[CHANGE MODAL] ChangeModal',
     AddModalError = '[ADD MODAL ERROR] AddModalError',
     ClearModalError = '[CLEAR MODAL ERROR] ClearModalError',
+    UpdateRooms = '[UPDATE ROOMS] UpdateRooms',
 };
 
 export class AddPlayers implements Action {
@@ -32,5 +33,10 @@ export class ClearModalError implements Action {
     readonly type = AppActionTypes.ClearModalError;
 }
 
+export class UpdateRooms implements Action {
+    readonly type = AppActionTypes.UpdateRooms;
+    constructor(public payload: RoomsSocket[]) { }
+}
 
-export type ActionUnion = AddPlayers | CloseModal | ChangeModal | AddModalError | ClearModalError;
+
+export type ActionUnion = AddPlayers | CloseModal | ChangeModal | AddModalError | ClearModalError | UpdateRooms;

@@ -33,7 +33,7 @@ export interface State {
     isLogin: boolean;
     modal: modal;
     modalError: string;
-    rooms: Room[];
+    rooms: RoomsSocket[];
 }
 
 export interface AppStore {
@@ -88,5 +88,17 @@ export enum EACTION_WEBSOCKET {
     LIST_ROOM = 'list room'
 }
 
+export interface payloadSocket {
+    action: EACTION_WEBSOCKET,
+    payload: {}
+}
 
+
+export interface RoomsSocket {
+    id: number;
+    room: {
+        gameSetting: PayloadCreateGame
+    };
+    players: number;
+}
 

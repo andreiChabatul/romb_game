@@ -13,6 +13,9 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, modalError: action.payload };
         case AppActionTypes.ClearModalError:
             return { ...state, modalError: '' };
+        case AppActionTypes.UpdateRooms:
+            return { ...state, rooms: action.payload }
+
         default:
             return state;
     }
