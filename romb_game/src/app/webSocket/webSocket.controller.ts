@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { AppStore, EACTION_WEBSOCKET, PayloadCreateGame, RoomsSocket, payloadSocket } from '../types';
+import { AppStore, EACTION_WEBSOCKET, RoomsSocket, SendPayloadSocket, payloadSocket } from '../types';
 import { Store } from '@ngrx/store';
 import { UpdateRooms } from 'src/store/actions';
+import { selectIdUser } from 'src/store/selectors';
 
 
 @Injectable({
@@ -10,13 +11,16 @@ import { UpdateRooms } from 'src/store/actions';
 })
 export class WebSocketController {
 
-  wsSocket = io("http://localhost:3100/");
+  private wsSocket = io("http://localhost:3100/");
+  private idUser$ = this.store.select(selectIdUser);
+  private idUser: string;
 
   constructor(private store: Store<AppStore>) {
-    this.handleMessage()
+    this.idUser$.subscribe((id) => this.idUser = id);
+    this.handleMessage();
   }
 
-  handleMessage(): void {
+  private handleMessage(): void {
     this.wsSocket.on("message", (mess: string) => {
       const wsMessage = JSON.parse(mess) as payloadSocket;
       switch (wsMessage.action) {
@@ -31,13 +35,8 @@ export class WebSocketController {
     });
   }
 
-
-  sendMessage(action: EACTION_WEBSOCKET, payload?: string): void {
-    this.wsSocket.send(JSON.stringify({ action, payload }))
-  }
-
-  createGame(payload: PayloadCreateGame) {
-    this.wsSocket.send(JSON.stringify({ action: EACTION_WEBSOCKET.CREATE_GAME, payload }))
+  sendMessage(action: EACTION_WEBSOCKET, payload: SendPayloadSocket = {}): void {
+    this.wsSocket.send(JSON.stringify({ action, payload: { ...payload, idUser: this.idUser } }));
   }
 
 }

@@ -1,5 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppStore, EACTION_WEBSOCKET } from 'src/app/types';
+import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { selectIdRoom } from 'src/store/selectors';
 
 @Component({
   selector: 'app-chat-input',
@@ -11,7 +15,11 @@ export class ChatInputComponent {
 
   chatForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private webSocketController: WebSocketController,
+    private store: Store<AppStore>
+  ) {
     this.createForm();
   }
 
@@ -22,11 +30,20 @@ export class ChatInputComponent {
   }
 
   onSubmit() {
+    let idRoom: string = '';
     if (this.chatForm.invalid) {
       this.chatForm.markAllAsTouched();
       return;
     }
-    console.log(this.chatForm.get('message'));
+    this.store.select(selectIdRoom).subscribe((idRoom) => idRoom = idRoom)
+
+    this.webSocketController.sendMessage(
+      EACTION_WEBSOCKET.MESSAGE_CHAT,
+      {
+        idRoom,
+        message: this.chatForm.get('message')?.value
+      }
+    )
   }
 
   get _message() {

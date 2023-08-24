@@ -4,9 +4,10 @@
         <div class="page-room-buttons">
             <app-button-materials *ngFor="let option of buttons" [option]="option"></app-button-materials>
         </div>
-   <app-page-room-search></app-page-room-search>
+        <app-page-room-search></app-page-room-search>
     </div>
     <div class="page-room_rooms">
-        <app-room-item *ngFor="let room of (rooms$ | async)" [itemRoom]="room"></app-room-item>
+        <app-room-item *ngFor="let room of (rooms$ | async); let i = index" [itemRoom]="room"
+            [index]="i+1"></app-room-item>
     </div>
 </div>

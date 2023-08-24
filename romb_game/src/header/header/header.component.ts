@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { AppStore, ButtonMaterialOption } from 'src/app/types';
-import { selectIsLogin } from 'src/store/selectors';
+import { selectIsLogin, selectUserName } from 'src/store/selectors';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,9 @@ import { selectIsLogin } from 'src/store/selectors';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  subscription$: Subscription;
+  private subscriptionOne$: Subscription;
+  private subscriptionTwo$: Subscription;
+  private nickname: string;
 
   buttons: ButtonMaterialOption[] = [
     { action: ACTIONS_BUTTON.INFO, width: "45px", text: "Info" },
@@ -23,15 +25,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private readonly store: Store<AppStore>) { }
 
   ngOnInit(): void {
-    this.subscription$ = this.store.select(selectIsLogin).subscribe(
+
+    this.subscriptionTwo$ = this.store.select(selectUserName).subscribe((nickname) => this.nickname = nickname);
+    this.subscriptionOne$ = this.store.select(selectIsLogin).subscribe(
       (isLogin) => isLogin
-        ? this.buttons[3] = { action: ACTIONS_BUTTON.LOG_OUT, width: "45px", text: "Exit" }
+        ? this.buttons[3] = { action: ACTIONS_BUTTON.LOG_OUT, width: "45px", text: `Exit ${this.nickname}` }
         : this.buttons[3] = { action: ACTIONS_BUTTON.LOG_IN, width: "45px", text: "Войти" }
     )
   }
 
   ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+    this.subscriptionOne$.unsubscribe();
+    this.subscriptionTwo$.unsubscribe();
   }
 
 }

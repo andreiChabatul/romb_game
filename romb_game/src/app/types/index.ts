@@ -28,12 +28,20 @@ export interface CellClick {
 
 
 export interface State {
-    players: Player[];
-    chat: chatMessage[];
-    isLogin: boolean;
+
     modal: modal;
     modalError: string;
     rooms: RoomsSocket[];
+    user: {
+        isLogin: boolean;
+        nickname: string;
+        idUser: string;
+    };
+    gameRoom: {
+        idRoom: string;
+        players: Player[];
+        chat: chatMessage[];
+    }
 }
 
 export interface AppStore {
@@ -85,8 +93,21 @@ export interface Room extends PayloadCreateGame {
 
 export enum EACTION_WEBSOCKET {
     CREATE_GAME = 'create game',
-    LIST_ROOM = 'list room'
+    LIST_ROOM = 'list room',
+    JOIN_GAME = 'join game',
+    MESSAGE_CHAT = 'message chat'
 }
+
+export interface JoinGamePayload {
+    idRoom: string;
+}
+
+export interface MessageChatGamePayload {
+    idGame: string;
+    message: string;
+}
+
+export type SendPayloadSocket = {} | JoinGamePayload | PayloadCreateGame | MessageChatGamePayload;
 
 export interface payloadSocket {
     action: EACTION_WEBSOCKET,
@@ -102,3 +123,8 @@ export interface RoomsSocket {
     players: number;
 }
 
+export interface ResponseAuth {
+    accessToken: string;
+    nickname: string;
+    idUser: string;
+}

@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { InputTextFormOption, SelectFormOption } from 'src/app/types';
+import { EACTION_WEBSOCKET, InputTextFormOption, SelectFormOption } from 'src/app/types';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({
@@ -42,7 +42,7 @@ export class CreateGameFormComponent {
       this.createGame.markAllAsTouched()
       return;
     }
-    this.webSocketController.createGame({
+    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CREATE_GAME, {
       roomName: this.createGame.value['roomName'].value,
       players: this.createGame.value['players'].value,
       typeGame: this.createGame.value['typeGame'].value,
