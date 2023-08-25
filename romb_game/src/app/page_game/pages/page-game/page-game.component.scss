@@ -1,22 +1,30 @@
 @import "./../../../../scss/default-styles";
 
-.game-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    align-items: center;
-    justify-items: center;
-    margin-top: 40px;
-}
+// .game-container {
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     grid-template-rows: repeat(2, 1fr);
+//     align-items: center;
+//     justify-items: center;
+//     margin-top: 40px;
+// }
 
-.game-page-board {
-    grid-area: 1/2/3/2;
-}
+// .game-page-board {
+//     grid-area: 1/2/3/2;
+// }
 
-.page-game-container {
-    position: relative;
+// .page-game-container {
+//     position: relative;
+//     width: 95%;
+//     margin: 0 auto;
+//     @include flex-c_s;
+//     gap: 2%;
+// }
+
+
+.page-game-container{
+    max-width: 1400px;
     width: 95%;
-    margin: 0 auto;
-    @include flex-c_s;
-    gap: 2%;
+    height: 500px;
+    border: 2px solid red;
 }

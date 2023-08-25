@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
         ChatGameComponent,
         ChatMessageComponent,
         ChatInputComponent,
+        GameBoardComponent
     ],
     imports: [
         SharedModule,

@@ -18,7 +18,6 @@ import { WebSocketController } from './webSocket/webSocket.controller';
   declarations: [
     AppComponent,
     MainPageComponent,
-
   ],
   imports: [
     BrowserModule,
