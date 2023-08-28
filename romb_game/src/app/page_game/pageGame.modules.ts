@@ -11,6 +11,8 @@ import { MaterialsModule } from 'src/app/materials/materials.module';
 import { SharedModule } from '../shared/shared.module';
 import { PageGameRoutingModule } from './page.game.routing.module';
 import { CommonModule } from '@angular/common';
+import { GameCellComponent } from './game-cell/game-cell.component';
+import { GameCellCompanyComponent } from './game-cell-company/game-cell-company.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +23,9 @@ import { CommonModule } from '@angular/common';
         ChatGameComponent,
         ChatMessageComponent,
         ChatInputComponent,
-        GameBoardComponent
+        GameBoardComponent,
+        GameCellComponent,
+        GameCellCompanyComponent,
     ],
     imports: [
         SharedModule,

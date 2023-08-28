@@ -1,4 +1,4 @@
-<header class="header-container">
+<header *ngIf="isShow" class="header-container">
     <div class="header-logo">Logo</div>
     <div class="header-buttons">
         <app-button-materials *ngFor="let button of buttons" [option]="button">

@@ -128,3 +128,17 @@ export interface ResponseAuth {
     nickname: string;
     idUser: string;
 }
+
+export interface gameCell {
+    gridArea: string;
+    cellCompany?: GameCellCompanyInfo;
+}
+
+export interface GameCellCompanyInfo {
+    countryCompany: countryCompany;
+    nameCompany: nameCompany;
+    priceCompany: number;
+}
+
+export type countryCompany = 'germany' | 'italia';
+export type nameCompany = 'volkswagen' | 'ferrari' | 'posteItaliane';

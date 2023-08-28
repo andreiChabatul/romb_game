@@ -1,3 +1,15 @@
-.game-board-container {
+@import "./../../../scss/color-styles";
+@import "./../../../scss/default-styles";
 
+.game-board-container {
+    min-height: 340px;
+    min-width: 340px;
+    width: 48vw;
+    height: 48vw;
+    display: grid;
+    grid-template-columns: repeat(13, calc(48vw / 13));
+    grid-template-rows: repeat(13, calc(48vw / 13));
+    @include fon-blue;
+    padding: 0;
+    overflow: hidden;
 }

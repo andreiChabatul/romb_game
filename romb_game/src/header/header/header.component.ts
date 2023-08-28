@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private subscriptionOne$: Subscription;
   private subscriptionTwo$: Subscription;
   private nickname: string;
+  isShow = true;
 
   buttons: ButtonMaterialOption[] = [
     { action: ACTIONS_BUTTON.INFO, width: "45px", text: "Info" },
@@ -25,18 +26,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private readonly store: Store<AppStore>) { }
 
   ngOnInit(): void {
-
+    this.checkGamePage();
     this.subscriptionTwo$ = this.store.select(selectUserName).subscribe((nickname) => this.nickname = nickname);
     this.subscriptionOne$ = this.store.select(selectIsLogin).subscribe(
       (isLogin) => isLogin
         ? this.buttons[3] = { action: ACTIONS_BUTTON.LOG_OUT, width: "45px", text: `Exit ${this.nickname}` }
         : this.buttons[3] = { action: ACTIONS_BUTTON.LOG_IN, width: "45px", text: "Войти" }
     )
+
   }
 
   ngOnDestroy(): void {
     this.subscriptionOne$.unsubscribe();
     this.subscriptionTwo$.unsubscribe();
+  }
+
+
+  checkGamePage() {
+    const url = window.location.href.split('/').reverse()[0];
+    url === 'game' ? this.isShow = false : this.isShow = true;
   }
 
 }
