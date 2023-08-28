@@ -10,6 +10,7 @@
     grid-template-columns: repeat(13, calc(48vw / 13));
     grid-template-rows: repeat(13, calc(48vw / 13));
     @include fon-blue;
+    background: #D5D6D1;
     padding: 0;
     overflow: hidden;
 }

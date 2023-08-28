@@ -51,8 +51,22 @@ export class GameBoardComponent {
     },
     { gridArea: '12/8/14/9' },
     { gridArea: '12/7/14/8' },
-    { gridArea: '12/6/14/7' },
-    { gridArea: '12/5/14/6' },
+    {
+      gridArea: '12/6/14/7',
+      cellCompany: {
+        countryCompany: 'germany',
+        nameCompany: 'volkswagen',
+        priceCompany: 111
+      },
+    },
+    {
+      gridArea: '12/5/14/6',
+      cellCompany: {
+        countryCompany: 'germany',
+        nameCompany: 'volkswagen',
+        priceCompany: 111
+      },
+    },
     { gridArea: '12/4/14/5' },
     {
       gridArea: '12/3/14/4',
