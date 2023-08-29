@@ -132,13 +132,21 @@ export interface ResponseAuth {
 export interface gameCell {
     gridArea: string;
     cellCompany?: GameCellCompanyInfo;
+    cellSquare?: GameCellSquare;
 }
 
 export interface GameCellCompanyInfo {
-    countryCompany: countryCompany;
+    industryCompany: industryCompany;
     nameCompany: nameCompany;
     priceCompany: number;
 }
 
-export type countryCompany = 'germany' | 'italia';
+export interface GameCellSquare {
+    imageCell: typeSquareImage;
+    textCell: string;
+}
+
+
+export type industryCompany = 'oil' | 'wood';
 export type nameCompany = 'volkswagen' | 'ferrari' | 'posteItaliane';
+export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox';

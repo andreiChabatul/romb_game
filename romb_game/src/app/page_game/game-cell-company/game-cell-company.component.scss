@@ -10,12 +10,12 @@
 }
 
 .game-cell-company {
-    width: 2vw;
-    height: 2vw;
+    width: 2.2vw;
+    height: 2.2vw;
     border-radius: 50%;
     position: absolute;
-    left: calc(50% - 1vw);
-    top: calc(0px - 1vw);
+    left: calc(50% - 1.1vw);
+    top: calc(0px - 1.1vw);
     background-size: cover;
     z-index: 1;
 }
@@ -23,10 +23,11 @@
 .game-cell-company_owner {
     position: absolute;
     width: 100%;
-    height: 1vw;
+    height: 0.3vw;
     top: 0;
     background: rgba($cell_hover, .3);
     z-index: 0;
+    box-shadow: inset 0px 0px 81px 17px  green, 0px 0px 20px 4px green;
 }
 
 .game-cell-company_logo {
@@ -37,7 +38,7 @@
 
 .game-cell-company_price {
     @include font_default;
-    font-size: 0.7vw;
+    font-size: 1vw;
     font-weight: 500;
     white-space: nowrap;
 }

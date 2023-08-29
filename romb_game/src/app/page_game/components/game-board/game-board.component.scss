@@ -1,0 +1,15 @@
+@import "./../../../../scss/color-styles";
+@import "./../../../../scss/default-styles";
+
+.game-board-container {
+    min-height: 340px;
+    min-width: 340px;
+    width: 75vw;
+    height: 48vw;
+    display: grid;
+    grid-template-columns: repeat(13, calc(75vw / 15));
+    grid-template-rows: repeat(13, calc(47.5vw / 10));
+    @include fon-blue;
+    background: #AFE7CC;
+    padding: 0;
+}
