@@ -4,7 +4,7 @@
 .game-cell-square-container {
     @include flex-c_c;
     flex-direction: column;
-    height: 100%;
+    height: 100%;   
 }
 
 .game-cell-square_img {
@@ -17,5 +17,5 @@
     @include font_default;
     font-weight: 600;
     font-size: 1.1vw;
-    
+
 }

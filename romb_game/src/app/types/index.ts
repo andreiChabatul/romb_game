@@ -136,7 +136,7 @@ export interface gameCell {
 }
 
 export interface GameCellCompanyInfo {
-    industryCompany: industryCompany;
+    countryCompany: countryCompany;
     nameCompany: nameCompany;
     priceCompany: number;
 }
@@ -147,6 +147,9 @@ export interface GameCellSquare {
 }
 
 
-export type industryCompany = 'oil' | 'wood';
-export type nameCompany = 'volkswagen' | 'ferrari' | 'posteItaliane';
+export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia';
+export type nameCompany = 'volkswagen' | 'allianz' | 'continental'
+    | 'ferrari' | 'posteItaliane' | 'uniCredit'
+    | 'ukranafta'
+    | 'honda' | 'canon';
 export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox';

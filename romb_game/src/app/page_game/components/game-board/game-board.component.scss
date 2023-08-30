@@ -13,3 +13,8 @@
     background: #AFE7CC;
     padding: 0;
 }
+
+.game-board_inside-container {
+    border: 1px solid $blue;
+    grid-area: 3/3/9/14;
+}

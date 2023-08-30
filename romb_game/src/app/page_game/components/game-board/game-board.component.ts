@@ -18,9 +18,29 @@ export class GameBoardComponent {
         textCell: 'Sallary 200'
       }
     },
-    { gridArea: '1/3/3/4' },
-    { gridArea: '1/4/3/5' },
-    { gridArea: '1/5/3/6' },
+    {
+      gridArea: '1/3/3/4',
+      cellCompany: {
+        countryCompany: 'italia',
+        nameCompany: 'posteItaliane',
+        priceCompany: 120
+      }
+    },
+    {
+      gridArea: '1/4/3/5',
+      cellCompany: {
+        countryCompany: 'ukraine',
+        nameCompany: 'ukranafta',
+        priceCompany: 120
+      }
+    },
+    {
+      gridArea: '1/5/3/6',
+      cellSquare: {
+        imageCell: 'chance',
+        textCell: 'Chance'
+      }
+    },
     { gridArea: '1/6/3/7' },
     { gridArea: '1/7/3/8' },
     { gridArea: '1/8/3/9' },
@@ -52,24 +72,31 @@ export class GameBoardComponent {
     {
       gridArea: '9/13/11/14',
       cellCompany: {
-        industryCompany: 'wood',
+        countryCompany: 'italia',
         nameCompany: 'ferrari',
         priceCompany: 100
       },
     },
-    { gridArea: '9/12/11/13', },
+    {
+      gridArea: '9/12/11/13',
+      cellCompany: {
+        countryCompany: 'japan',
+        nameCompany: 'canon',
+        priceCompany: 120
+      }
+    },
     {
       gridArea: '9/11/11/12',
       cellCompany: {
-        industryCompany: 'wood',
-        nameCompany: 'posteItaliane',
+        countryCompany: 'italia',
+        nameCompany: 'uniCredit',
         priceCompany: 120
       },
     },
     {
       gridArea: '9/10/11/11',
       cellCompany: {
-        industryCompany: 'wood',
+        countryCompany: 'italia',
         nameCompany: 'posteItaliane',
         priceCompany: 120
       }
@@ -77,16 +104,29 @@ export class GameBoardComponent {
     {
       gridArea: '9/9/11/10',
       cellSquare: {
-        imageCell: 'mysteryBox',
+        imageCell: 'chance',
         textCell: 'Chance'
       }
     },
-    { gridArea: '9/8/11/9', },
-    { gridArea: '9/7/11/8', },
+    {
+      gridArea: '9/8/11/9',
+      cellCompany: {
+        countryCompany: 'ukraine',
+        nameCompany: 'ukranafta',
+        priceCompany: 120
+      }
+    },
+    {
+      gridArea: '9/7/11/8',
+      cellSquare: {
+        imageCell: 'mysteryBox',
+        textCell: 'Mystery'
+      }
+    },
     {
       gridArea: '9/6/11/7',
       cellCompany: {
-        industryCompany: 'oil',
+        countryCompany: 'germany',
         nameCompany: 'volkswagen',
         priceCompany: 111
       },
@@ -94,17 +134,24 @@ export class GameBoardComponent {
     {
       gridArea: '9/5/11/6',
       cellCompany: {
-        industryCompany: 'oil',
-        nameCompany: 'volkswagen',
+        countryCompany: 'germany',
+        nameCompany: 'allianz',
         priceCompany: 111
       },
     },
-    { gridArea: '9/4/11/5' },
+    {
+      gridArea: '9/4/11/5',
+      cellCompany: {
+        countryCompany: 'japan',
+        nameCompany: 'honda',
+        priceCompany: 120
+      }
+    },
     {
       gridArea: '9/3/11/4',
       cellCompany: {
-        industryCompany: 'oil',
-        nameCompany: 'volkswagen',
+        countryCompany: 'germany',
+        nameCompany: 'continental',
         priceCompany: 111
       },
     },
@@ -117,8 +164,21 @@ export class GameBoardComponent {
     },
     { gridArea: '9/1/8/3' },
     { gridArea: '8/1/7/3' },
-    { gridArea: '7/1/6/3' },
-    { gridArea: '6/1/5/3' },
+    {
+      gridArea: '7/1/6/3',
+      cellCompany: {
+        countryCompany: 'germany',
+        nameCompany: 'allianz',
+        priceCompany: 111
+      }
+    },
+    {
+      gridArea: '6/1/5/3',
+      cellSquare: {
+        imageCell: 'chance',
+        textCell: 'Chance'
+      }
+    },
     { gridArea: '5/1/4/3' },
     { gridArea: '3/1/3/3' }
 

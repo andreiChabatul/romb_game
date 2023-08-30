@@ -10,11 +10,13 @@ export class GameCellCompanyComponent implements OnInit {
 
   @Input() cellCompany: GameCellCompanyInfo;
   nameCompany: string;
-  industryCompany: string;
+  countryCompany: string;
+
+  tepArr = [1];
 
 
   ngOnInit(): void {
-    this.industryCompany = `./../../../assets/industry/${this.cellCompany.industryCompany}.png`;
+    this.countryCompany = `./../../../assets/industry/${this.cellCompany.countryCompany}.png`;
     this.nameCompany = `./../../../assets/logo/${this.cellCompany.nameCompany}.png`;
  
   }
