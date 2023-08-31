@@ -4,12 +4,16 @@
 .game-cell-square-container {
     @include flex-c_c;
     flex-direction: column;
-    height: 100%;   
+    height: 100%;
+}
+
+.game-cell-square-container__gorizontal {
+    flex-direction: row;
+    gap: 1vw;
 }
 
 .game-cell-square_img {
-    width: 6vw;
-    height: 6vw;
+    height: 70%;
     background-size: cover;
 }
 
@@ -17,5 +21,5 @@
     @include font_default;
     font-weight: 600;
     font-size: 1.1vw;
-
+    white-space: nowrap;
 }

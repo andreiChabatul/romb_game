@@ -4,10 +4,10 @@
 .game-board-container {
     min-height: 340px;
     min-width: 340px;
-    width: 75vw;
+    width: 80vw;
     height: 48vw;
     display: grid;
-    grid-template-columns: repeat(13, calc(75vw / 15));
+    grid-template-columns: repeat(13, calc(79.5vw / 15));
     grid-template-rows: repeat(13, calc(47.5vw / 10));
     @include fon-blue;
     background: #AFE7CC;
@@ -17,4 +17,5 @@
 .game-board_inside-container {
     border: 1px solid $blue;
     grid-area: 3/3/9/14;
+    @include flex_c_s;
 }

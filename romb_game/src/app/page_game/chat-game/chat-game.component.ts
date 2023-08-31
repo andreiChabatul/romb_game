@@ -12,20 +12,7 @@ import { selectMessageChat } from 'src/store/selectors';
 export class ChatGameComponent {
 
   chat$: Observable<chatMessage[]> = this.store.select(selectMessageChat);
-  isOpen: boolean;
 
-  constructor(private store: Store<AppStore>) {
-    this.isOpen = true;
-  }
-
-  closeChat() {
-    this.isOpen = false;
-  }
-
-  openChat(){
-    this.isOpen = true;
-  }
-
-
-
+  constructor(private store: Store<AppStore>) { }
 }
+

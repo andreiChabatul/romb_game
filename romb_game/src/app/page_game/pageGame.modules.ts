@@ -9,8 +9,8 @@ import { MaterialsModule } from 'src/app/materials/materials.module';
 import { SharedModule } from '../shared/shared.module';
 import { PageGameRoutingModule } from './page.game.routing.module';
 import { CommonModule } from '@angular/common';
-import { GameCellComponent } from './game-cell/game-cell.component';
-import { GameCellCompanyComponent } from './game-cell-company/game-cell-company.component';
+import { GameCellComponent } from './components/game-cell/game-cell.component';
+import { GameCellCompanyComponent } from './components/game-cell-company/game-cell-company.component';
 import { GameCellSquareComponent } from './components/game-cell-square/game-cell-square.component';
 
 

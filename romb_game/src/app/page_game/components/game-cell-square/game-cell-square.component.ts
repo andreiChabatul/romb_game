@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GameCellSquare } from 'src/app/types';
+import { GameCellSquare, cellDirections } from 'src/app/types';
 
 @Component({
   selector: 'app-game-cell-square',
@@ -9,6 +9,7 @@ import { GameCellSquare } from 'src/app/types';
 export class GameCellSquareComponent implements OnInit {
 
   @Input() cellSquare: GameCellSquare;
+  @Input() directions: cellDirections;
   imageCell: string;
 
   ngOnInit(): void {

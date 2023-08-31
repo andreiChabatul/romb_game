@@ -1,10 +1,11 @@
 @import "./../../../scss/default-styles";
 @import "./../../../scss/color-styles";
 
-
 .chat-container {
-    @include fon-blue;
-    width: 250px;
+    width: 19vw;
+    height: 25vw;
+    border-left: 4px solid $blue;
+    padding-left: 1vw;
 }
 
 .chat-area_message {
@@ -12,11 +13,6 @@
     margin-bottom: 10px;
 }
 
-
-.chat-container-gradient {
-    @include fon-gradient;
-    height: 100%;
-}
 
 .chat-title {
     @include font_default;
@@ -26,52 +22,10 @@
 
 .chat-area {
     width: 100%;
-    min-height: 350px;
-    max-height: 70vh;
-    border-radius: 8px;
-    background: $dark_blue;
-    padding: 3%;
+    height: 90%;
+    padding: 1%;
     @include flex-s_s;
     flex-direction: column;
-}
-
-.chat-open-button {
-    color: $light_blue;
-    font-size: 34px;
-    transition: .3s;
-    cursor: pointer;
-    position: absolute;
-    top: 25px;
-    right: 0;
-
-    &:hover {
-        color: $color_cell;
-        transform: scale(1.1);
-    }
-
-    &:active {
-        color: $orange_default;
-        transform: scale(0.9);
-    }
-
-}
-
-.chat-close {
-    font-size: 28px;
-    color: $light_blue_text;
-    cursor: pointer;
-    transition: .3s;
-
-    &:hover {
-        color: $color_cell;
-        transform: scale(1.1);
-    }
-
-    &:active {
-        color: $orange_default;
-        transform: scale(0.9);
-    }
-
 }
 
 .chat-title-container {

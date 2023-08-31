@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GameCellCompanyInfo } from 'src/app/types';
+import { GameCellCompanyInfo, cellDirections } from 'src/app/types';
 
 @Component({
   selector: 'app-game-cell-company',
@@ -9,10 +9,11 @@ import { GameCellCompanyInfo } from 'src/app/types';
 export class GameCellCompanyComponent implements OnInit {
 
   @Input() cellCompany: GameCellCompanyInfo;
+  @Input() directions: cellDirections;
   nameCompany: string;
   countryCompany: string;
 
-  tepArr = [1];
+  tepArr = [1,1,1,1,1];
 
 
   ngOnInit(): void {

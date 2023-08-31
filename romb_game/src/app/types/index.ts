@@ -129,8 +129,11 @@ export interface ResponseAuth {
     idUser: string;
 }
 
+
+
 export interface gameCell {
     gridArea: string;
+    cellDirections: cellDirections;
     cellCompany?: GameCellCompanyInfo;
     cellSquare?: GameCellSquare;
 }
@@ -147,9 +150,16 @@ export interface GameCellSquare {
 }
 
 
-export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia';
+export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia' | 'britania' | 'sweden' | 'canada' | 'kazah' | 'china' | 'usa';
 export type nameCompany = 'volkswagen' | 'allianz' | 'continental'
     | 'ferrari' | 'posteItaliane' | 'uniCredit'
-    | 'ukranafta'
-    | 'honda' | 'canon';
-export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox';
+    | 'ukranafta' | 'uia'
+    | 'honda' | 'canon' | 'fujitsu' | 'mitsubishi'
+    | 'ibm' | 'WD' | 'google'
+    | 'rbc' | 'telus'
+    | 'xiaomi' | 'aliexpress'
+    | 'kaz' | 'kazAzot' | 'ttc'
+    | 'volvo' | 'essity' | 'ericsson'
+    | 'hsbc' | 'rr' | 'bp';
+export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox' | 'tax';
+export type cellDirections = 'top' | 'bottom' | 'left' | 'right';

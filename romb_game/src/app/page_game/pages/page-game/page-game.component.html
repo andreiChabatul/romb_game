@@ -1,6 +1,6 @@
 <div class="page-game-container">
-        <!-- <app-info-player *ngFor="let player of players$ | async" [player]="player"></app-info-player> -->
-        <div class="game-page-board">
-            <app-game-board></app-game-board>
-        </div>
+    <app-game-board></app-game-board>
+    <div class="page-game-profile">
+        <app-info-player *ngFor="let player of players$ | async" [player]="player"></app-info-player>
+    </div>
 </div>

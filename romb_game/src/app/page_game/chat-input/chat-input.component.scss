@@ -1,19 +1,15 @@
 @import "./../../../scss/default-styles";
 @import "./../../../scss/color-styles";
 
-.chat-input-container {
-
-    background: url(./../../../assets/fonInput.png);
-    background-size: cover;
-    border-radius: 8px;
-}
 
 .input-container {
     @include flex-c_s;
+    width: 80%;
+    border: 3px solid $blue;
+    border-radius: 10px;
 }
 
 .chat-input-full-width {
-    width: 165px;
     height: 40px;
 }
 
@@ -42,6 +38,7 @@
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    border: none;
     background: none;
 }
 

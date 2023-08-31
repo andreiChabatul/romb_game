@@ -1,11 +1,6 @@
-<div class="chat">
-    <div class="chat-container" *ngIf="isOpen; else elseBlockChat">
-        <div class="chat-container-gradient">
+<div class="chat-container">
             <div class="chat-title-container">
-                <p class="chat-title">Chat room</p>
-                <span class="material-symbols-outlined chat-close" (click)="closeChat()">
-                    left_panel_open
-                </span>
+                <p class="chat-title">Chat game</p>
             </div>
             <div class="chat-area">
                 <div class="chat-area_message">
@@ -17,11 +12,4 @@
                 </div>
                 <app-chat-input></app-chat-input>
             </div>
-        </div>
-    </div>
-    <ng-template #elseBlockChat>
-        <span class="material-symbols-outlined chat-open-button" (click)="openChat()">
-            chat
-        </span>
-    </ng-template>
 </div>

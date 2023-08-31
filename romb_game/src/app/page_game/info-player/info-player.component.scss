@@ -2,12 +2,10 @@
 @import "./../../../scss/default-styles";
 
 .info-player-container {
-    width: 150px;
-    height: 60px;
+    width: 17vw;
 }
 
 .info-player {
-    height: 190px;
     @include fon-blue;
     margin-bottom: 10px;
 }
@@ -17,34 +15,37 @@
 }
 
 .info-player_gradient {
-    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10%;
     @include fon-gradient;
-}
-
-.info-player_type {
-    border-radius: 8px;
-    height: 60%;
-    background: $dark_blue;
-    margin-bottom: 20px;
-    @include flex-c_c;
+    padding: 1%;
 }
 
 .info-player_img-type {
-    width: 75%;
+    height: 3.5vw;
+}
+
+.info-player-summary {
+    grid-area: 2/1/2/3;
 }
 
 .info-player_text {
     color: $light_blue_text;
     font-family: 'Tektur', cursive;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.info-player_text_name {
+    font-size: 14px;
     font-weight: 600;
-    font-size: 18px;
-    text-align: center;
 }
 
 .player-turn {
-    font-family: 'Tektur', cursive;
-    font-weight: 600;
-    font-size: 18px;
-    text-align: center;
-    color: $light_blue;
+    width: 3.5vw;
+    height: 2.5vw;
+    border-radius: 10px;
+    background: darkcyan;
 }

@@ -1,0 +1,94 @@
+@import "./../../../../scss/color-styles";
+@import "./../../../../scss/default-styles";
+
+.game-cell-company_container {
+    position: relative;
+    @include flex-c_c;
+    gap: 0.1vw;
+    flex-direction: column;
+    height: 100%;
+}
+
+.game-cell-company_container__gorizontalLeft {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    padding-left: 3px;
+}
+
+.game-cell-company_container__gorizontalRight {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 3px;
+}
+
+.game-cell-company {
+    width: 2.5vw;
+    height: 1.7vw;
+    border-radius: 0.5vw;
+    position: absolute;
+    left: calc(50% - 1.25vw);
+    top: calc(0px - 0.8vw);
+}
+
+.game-cell-company_img__gorizontal {
+    top: calc(0px + 1.3vw);
+}
+
+.game-cell-company_logo {
+    width: 85%;
+    background-size: cover;
+}
+
+.game-cell-company_logo__gorizontal {
+    width: auto;
+    height: 85%;
+}
+
+.game-cell-company_price {
+    @include font_default;
+    font-size: 1.3vw;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.game-cell-company_stock {
+    display: flex;
+    gap: 2px;
+}
+
+.game-cell-company_stock__gorizontal {
+    flex-direction: column;
+}
+
+.game-cell-company_stock__img {
+    width: 0.7vw;
+}
+
+.game-cell-company_header {
+    position: absolute;
+    box-shadow: inset 0px 0px 81px 17px blue, 0px 0px 20px 4px blue;
+}
+
+.game-cell-company_header__bottom {
+    width: 100%;
+    height: 0.3vw;
+    top: 0;
+}
+
+.game-cell-company_header__top {
+    width: 100%;
+    height: 0.3vw;
+    bottom: 0;
+}
+
+.game-cell-company_header__left {
+    width: 0.3vw;
+    height: 100%;
+    right: 0;
+}
+
+.game-cell-company_header__right {
+    width: 0.3vw;
+    height: 100%;
+    left: 0;
+}

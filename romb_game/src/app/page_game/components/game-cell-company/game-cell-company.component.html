@@ -1,0 +1,28 @@
+<div class="game-cell-company_container" [ngClass]="{
+        'game-cell-company_container__gorizontalLeft': directions === 'left',
+        'game-cell-company_container__gorizontalRight': directions === 'right'}">
+
+    <div class="game-cell-company_header" [ngClass]="{
+        'game-cell-company_header__bottom': directions === 'bottom',
+        'game-cell-company_header__top': directions === 'top',
+        'game-cell-company_header__left': directions === 'left',
+        'game-cell-company_header__right': directions === 'right'
+    }">
+        <img [ngClass]="{
+        'game-cell-company_img__gorizontal': directions === 'left' || directions === 'right'
+        }" class="game-cell-company" src={{countryCompany}}>
+    </div>
+
+    <img class="game-cell-company_logo" src={{nameCompany}} [ngClass]="{
+        'game-cell-company_logo__gorizontal': directions === 'left' || directions === 'right'
+        }">
+
+    <p class="game-cell-company_price">${{cellCompany.priceCompany}}</p>
+    <div class="game-cell-company_stock" [ngClass]="{
+            'game-cell-company_stock__gorizontal': directions === 'left' || directions === 'right'
+            }">
+        <img class="game-cell-company_stock__img" *ngFor="let i of tepArr" src="./../../../assets/industry/stock.png"
+            alt="stock">
+
+    </div>
+</div>
