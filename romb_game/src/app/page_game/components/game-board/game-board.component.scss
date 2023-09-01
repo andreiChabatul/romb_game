@@ -17,5 +17,8 @@
 .game-board_inside-container {
     border: 1px solid $blue;
     grid-area: 3/3/9/14;
-    @include flex_c_s;
+    display: grid;
+    grid-template-columns: 1fr 19vw;
+    align-items: center;
+    justify-items: center;
 }

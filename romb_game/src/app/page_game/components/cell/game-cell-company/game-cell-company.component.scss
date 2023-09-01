@@ -1,5 +1,5 @@
-@import "./../../../../scss/color-styles";
-@import "./../../../../scss/default-styles";
+@import "./../../../../../scss/color-styles";
+@import "./../../../../../scss/default-styles";
 
 .game-cell-company_container {
     position: relative;
@@ -66,18 +66,17 @@
 
 .game-cell-company_header {
     position: absolute;
-    box-shadow: inset 0px 0px 81px 17px blue, 0px 0px 20px 4px blue;
 }
 
 .game-cell-company_header__bottom {
     width: 100%;
-    height: 0.3vw;
+    height: 0.4vw;
     top: 0;
 }
 
 .game-cell-company_header__top {
     width: 100%;
-    height: 0.3vw;
+    height: 0.4vw;
     bottom: 0;
 }
 

@@ -1,0 +1,45 @@
+@import "./../../../../../scss/color-styles";
+
+.dot {
+    position: absolute;
+    width: 0.9vw;
+    height: 0.9vw;
+    border-radius: 50%;
+    background-color: $light_blue;
+    box-shadow: inset 3px 2px $cell_hover;
+}
+
+.dot_center {
+    top: calc(50% - 0.45vw);
+    left: calc(50% - 0.45vw);
+}
+
+.dot_one {
+    top: 15%;
+    left: 15%;
+}
+
+.dot_two {
+    top: calc(50% - 0.45vw);
+    left: 15%;
+}
+
+.dot_three {
+    bottom: 15%;
+    left: 15%;
+}
+
+.dot_four {
+    top: 15%;
+    right: 15%;
+}
+
+.dot_five {
+    top: calc(50% - 0.45vw);
+    right: 15%;
+}
+
+.dot_six {
+    bottom: 15%;
+    right: 15%;
+}

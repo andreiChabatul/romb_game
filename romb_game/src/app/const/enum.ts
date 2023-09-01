@@ -12,7 +12,8 @@ export enum ACTIONS_BUTTON {
     UPDATE_ROOM = 'sync',
     SEARCH_ROOM = 'search',
     ADD_ROOM = 'add',
-    SHADOW_ROOM = 'shadow_add'
+    SHADOW_ROOM = 'shadow_add',
+    DICE_ROLL = 'Dice roll'
 }
 
 export enum ENDPOINT {

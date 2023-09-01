@@ -1,9 +1,7 @@
 import { ACTIONS_BUTTON } from "../const/enum";
 
 export type stateCell = 'border' | playerType;
-export type typeCell = 'vertical' | 'horisontal';
 export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour' | 'none';
-export type side = 'left' | 'top';
 export type modal = 'none' | 'login' | 'register';
 
 export interface Player {
@@ -13,19 +11,6 @@ export interface Player {
     isTurn: boolean;
     type: playerType;
 }
-
-export interface Cell {
-    indexCell: number;
-    left: stateCell;
-    top: stateCell;
-    occupied: stateCell;
-}
-
-export interface CellClick {
-    side: side,
-    indexCell: number,
-}
-
 
 export interface State {
 
@@ -54,7 +39,6 @@ export interface chatMessage {
     message: string;
 }
 
-
 export interface SelectFormOption {
     nameForm: string;
     namelabel: string;
@@ -72,7 +56,6 @@ export interface ButtonMaterialOption {
     width: string;
     text: string;
 }
-
 
 export interface Profile {
     nickname: string;
@@ -114,7 +97,6 @@ export interface payloadSocket {
     payload: {}
 }
 
-
 export interface RoomsSocket {
     id: number;
     room: {
@@ -129,10 +111,11 @@ export interface ResponseAuth {
     idUser: string;
 }
 
-
-
 export interface gameCell {
     gridArea: string;
+    isPledge?: boolean;
+    players: string[];
+    owned?: string;
     cellDirections: cellDirections;
     cellCompany?: GameCellCompanyInfo;
     cellSquare?: GameCellSquare;
@@ -142,6 +125,7 @@ export interface GameCellCompanyInfo {
     countryCompany: countryCompany;
     nameCompany: nameCompany;
     priceCompany: number;
+    shares?: stockTypeCell[];
 }
 
 export interface GameCellSquare {
@@ -151,7 +135,8 @@ export interface GameCellSquare {
 
 
 export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia' | 'britania' | 'sweden' | 'canada' | 'kazah' | 'china' | 'usa';
-export type nameCompany = 'volkswagen' | 'allianz' | 'continental'
+export type nameCompany =
+    'volkswagen' | 'allianz' | 'continental'
     | 'ferrari' | 'posteItaliane' | 'uniCredit'
     | 'ukranafta' | 'uia'
     | 'honda' | 'canon' | 'fujitsu' | 'mitsubishi'
@@ -163,3 +148,4 @@ export type nameCompany = 'volkswagen' | 'allianz' | 'continental'
     | 'hsbc' | 'rr' | 'bp';
 export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox' | 'tax';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
+export type stockTypeCell = 'stock' | 'stamp' | 'moneta';
