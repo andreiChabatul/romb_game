@@ -154,11 +154,15 @@ export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia' | 'brita
 export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox' | 'tax';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type stockTypeCell = 'stock' | 'stamp' | 'moneta';
+export type cellType = 'company' | 'empty';
 
 
-export interface InfoCellCompany {
-    name: nameCompany,
+export interface InfoCell {
+    typeCell: cellType,
+    nameCell: nameCompany,
     country: countryCompany,
+    imageCell: string;
+    description: string;
     initalCost: number;
     collateralValue: number;
     sharePrice: number;

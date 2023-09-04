@@ -1,1 +1,11 @@
-<p *ngIf="info">{{info.name}}</p>
+<div *ngIf="info">
+    <p>{{info.nameCell}}</p>
+    <img src={{info.imageCell}} alt="image info">
+
+    <div *ngIf="info.typeCell === 'empty'; else elseBlock">
+        <p>{{info.description}}</p>
+    </div>
+
+    <ng-template #elseBlock>Else template</ng-template>  
+
+</div>
