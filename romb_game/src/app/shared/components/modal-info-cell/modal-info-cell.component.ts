@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppStore, InfoCellCompany } from 'src/app/types';
+import { AppStore, InfoCell } from 'src/app/types';
 import { selectIndexCell } from 'src/store/selectors';
 import { HttpClient } from '@angular/common/http';
 import { Subscription, concatMap, map } from 'rxjs';
@@ -12,7 +12,7 @@ import { Subscription, concatMap, map } from 'rxjs';
 })
 export class ModalInfoCellComponent implements OnInit, OnDestroy {
 
-  info: InfoCellCompany;
+  info: InfoCell;
   subscription$: Subscription;
   private jsonPath = '/assets/data/dbInfoCell.json';
 
@@ -20,7 +20,7 @@ export class ModalInfoCellComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.subscription$ = this.httpClient.get<InfoCellCompany[]>(this.jsonPath).pipe(
+    this.subscription$ = this.httpClient.get<InfoCell[]>(this.jsonPath).pipe(
       concatMap((value) => this.store.select(selectIndexCell).pipe(
         map((index) =>
           (typeof (index) === 'number' && index >= 0) ? value[index] : value[0]
