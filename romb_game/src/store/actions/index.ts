@@ -8,7 +8,8 @@ export enum AppActionTypes {
     AddModalError = '[ADD MODAL ERROR] AddModalError',
     ClearModalError = '[CLEAR MODAL ERROR] ClearModalError',
     UpdateRooms = '[UPDATE ROOMS] UpdateRooms',
-    LoginUser = '[LOGIN USER] LoginUser'
+    LoginUser = '[LOGIN USER] LoginUser',
+    OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell'
 };
 
 export class AddPlayers implements Action {
@@ -44,5 +45,17 @@ export class LoginUser implements Action {
     constructor(public payload: Partial<ResponseAuth>) { }
 }
 
+export class OpenInfoCell implements Action {
+    readonly type = AppActionTypes.OpenInfoCell
+    constructor(public payload: number) { }
+}
 
-export type ActionUnion = AddPlayers | CloseModal | ChangeModal | AddModalError | ClearModalError | UpdateRooms | LoginUser;
+export type ActionUnion =
+    AddPlayers |
+    CloseModal |
+    ChangeModal |
+    AddModalError |
+    ClearModalError |
+    UpdateRooms |
+    LoginUser |
+    OpenInfoCell;

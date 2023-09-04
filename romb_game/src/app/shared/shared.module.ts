@@ -10,6 +10,7 @@ import { ModalLoginComponent } from './components/modal-login/modal-login.compon
 import { ModalRegisterComponent } from './components/modal-register/modal-register.component';
 import { CommonModule } from '@angular/common';
 import { ButtonControllerService } from './services/button-controller.service';
+import { ModalInfoCellComponent } from './components/modal-info-cell/modal-info-cell.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { ButtonControllerService } from './services/button-controller.service';
         ColorNameDirective,
         ModalComponent,
         ModalRegisterComponent,
-        ModalLoginComponent
+        ModalLoginComponent,
+        ModalInfoCellComponent
     ],
     imports: [
         CommonModule , MaterialsModule

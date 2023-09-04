@@ -9,6 +9,7 @@ export const selectIdRoom = createSelector(select, (state: State) => state.gameR
 export const selectIsLogin = createSelector(select, (state: State) => state.user.isLogin);
 export const selectIdUser = createSelector(select, (state: State) => state.user.idUser);
 export const selectUserName = createSelector(select, (state: State) => state.user.nickname);
-export const selectModal = createSelector(select, (state: State) => state.modal);
-export const selectModalError = createSelector(select, (state: State) => state.modalError);
+export const selectModal = createSelector(select, (state: State) => state.modal.type);
+export const selectModalError = createSelector(select, (state: State) => state.modal.modalError);
 export const selectRooms = createSelector(select, (state: State) => state.rooms);
+export const selectIndexCell = createSelector(select, (state: State) => state.modal.payload);

@@ -25,8 +25,10 @@ export const stateApp: State = {
         nickname: ''
     },
     rooms: [],
-    modal: 'none',
-    modalError: '',
+    modal: {
+        type: 'none',
+        modalError: ''
+    }
 };
 
 export const initalState: AppStore = {

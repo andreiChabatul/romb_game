@@ -2,7 +2,7 @@ import { ACTIONS_BUTTON } from "../const/enum";
 
 export type stateCell = 'border' | playerType;
 export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour' | 'none';
-export type modal = 'none' | 'login' | 'register';
+export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
 export interface Player {
     id: number;
@@ -14,8 +14,11 @@ export interface Player {
 
 export interface State {
 
-    modal: modal;
-    modalError: string;
+    modal: {
+        type: modal,
+        modalError: string;
+        payload?: number
+    };
     rooms: RoomsSocket[];
     user: {
         isLogin: boolean;
@@ -112,6 +115,7 @@ export interface ResponseAuth {
 }
 
 export interface gameCell {
+    indexCell: number;
     gridArea: string;
     isPledge?: boolean;
     players: string[];
@@ -134,7 +138,6 @@ export interface GameCellSquare {
 }
 
 
-export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia' | 'britania' | 'sweden' | 'canada' | 'kazah' | 'china' | 'usa';
 export type nameCompany =
     'volkswagen' | 'allianz' | 'continental'
     | 'ferrari' | 'posteItaliane' | 'uniCredit'
@@ -146,6 +149,31 @@ export type nameCompany =
     | 'kaz' | 'kazAzot' | 'ttc'
     | 'volvo' | 'essity' | 'ericsson'
     | 'hsbc' | 'rr' | 'bp';
+
+export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia' | 'britania' | 'sweden' | 'canada' | 'kazah' | 'china' | 'usa';
 export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox' | 'tax';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type stockTypeCell = 'stock' | 'stamp' | 'moneta';
+
+
+export interface InfoCellCompany {
+    name: nameCompany,
+    country: countryCompany,
+    initalCost: number;
+    collateralValue: number;
+    sharePrice: number;
+    companyProfit: NoShare | Share;
+
+}
+
+export interface NoShare {
+    type: stockTypeCell;
+    quallity: number[];
+}
+
+export interface Share {
+    type: stockTypeCell;
+    defaultPrice: number;
+    monopolyPrice: number;
+    quallity: number[];
+}
