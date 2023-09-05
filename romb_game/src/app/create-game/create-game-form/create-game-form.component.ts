@@ -19,10 +19,38 @@ export class CreateGameFormComponent {
   ]
 
   selectsForm: SelectFormOption[] = [
-    { nameForm: 'typeGame', namelabel: 'Type Game', optionSelect: ['Square', 'Rectangle', 'Rhombus', 'Random'] },
-    { nameForm: 'players', namelabel: 'Number of Players', optionSelect: ['Two', 'Three', 'Four'] },
-    { nameForm: 'size', namelabel: 'Field Size', optionSelect: ['5x5', '6x6', '7x7', '8x8', '9x9', '10x10', '11x11', '12x12'] },
-    { nameForm: 'visibility', namelabel: 'Visibility Room', optionSelect: ['Visible to everyone', 'Access by idRoom'] }
+    {
+      nameForm: 'players',
+      namelabel: 'Number of Players',
+      optionSelect: [
+        { option: 'Two', value: 2 },
+        { option: 'Three', value: 3 },
+        { option: 'Four', value: 4 },
+        { option: 'Five', value: 5 },
+        { option: 'Six', value: 6 },
+        { option: 'Seven', value: 7 },
+        { option: 'Eight', value: 8 }
+      ]
+    },
+    {
+      nameForm: 'runningTime',
+      namelabel: 'Running Time',
+      optionSelect: [
+        { option: '15s', value: 15 },
+        { option: '30s', value: 30 },
+        { option: '1min', value: 60 },
+        { option: '1min 30s', value: 90 },
+        { option: '2min', value: 120 }
+      ]
+    },
+    {
+      nameForm: 'visibility',
+      namelabel: 'Visibility Room',
+      optionSelect: [
+        { option: 'Visible to everyone', value: 1 },
+        { option: 'Access by idRoom', value: 0 }
+      ]
+    }
   ]
   createGame: FormGroup;
   textButton = ACTIONS_BUTTON.CREATE_ROOM;
@@ -45,8 +73,7 @@ export class CreateGameFormComponent {
     this.webSocketController.sendMessage(EACTION_WEBSOCKET.CREATE_GAME, {
       roomName: this.createGame.value['roomName'].value,
       players: this.createGame.value['players'].value,
-      typeGame: this.createGame.value['typeGame'].value,
-      size: this.createGame.value['size'].value,
+      runningGame: this.createGame.value['runningTime'].value,
       visibility: this.createGame.value['visibility'].value
     });
     this.router.navigate(['game']);

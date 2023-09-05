@@ -2,8 +2,8 @@
     <mat-form-field>
         <mat-label>{{optionForm.namelabel}}</mat-label>
         <mat-select formControlName="value">
-            <mat-option *ngFor="let option of optionForm.optionSelect" value={{option}}>
-                {{option}}
+            <mat-option *ngFor="let option of optionForm.optionSelect" value={{option.value}}>
+                {{option.option}}
             </mat-option>
         </mat-select>
     </mat-form-field>

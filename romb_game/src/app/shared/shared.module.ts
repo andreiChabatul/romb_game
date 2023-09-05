@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ButtonStandartComponent } from './components/button-standart/button-standart.component';
-import { ColorCellDirective } from './directive/color-cell.directive';
-import { ColorLineDirective } from './directive/color-line.directive';
-import { ColorNameDirective } from './directive/color-name.directive';
 import { ButtonMaterialsComponent } from './components/button-materials/button-materials.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { MaterialsModule } from '../materials/materials.module';
@@ -16,9 +13,6 @@ import { ModalInfoCellComponent } from './components/modal-info-cell/modal-info-
     declarations: [
         ButtonStandartComponent,
         ButtonMaterialsComponent,
-        ColorCellDirective,
-        ColorLineDirective,
-        ColorNameDirective,
         ModalComponent,
         ModalRegisterComponent,
         ModalLoginComponent,
@@ -30,9 +24,6 @@ import { ModalInfoCellComponent } from './components/modal-info-cell/modal-info-
     ],
     exports: [
         ButtonStandartComponent,
-        ColorCellDirective,
-        ColorLineDirective,
-        ColorNameDirective,
         ButtonMaterialsComponent,
         ModalComponent,
     ],

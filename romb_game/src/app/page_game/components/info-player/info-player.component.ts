@@ -6,12 +6,9 @@ import { Player } from 'src/app/types';
   templateUrl: './info-player.component.html',
   styleUrls: ['./info-player.component.scss']
 })
-export class InfoPlayerComponent implements OnInit {
+export class InfoPlayerComponent  {
   @Input() player: Player;
   srcImg: string;
 
-  ngOnInit(): void {
-    this.srcImg = `./../../../assets/${this.player.type}.png`;
-  }
 
 }

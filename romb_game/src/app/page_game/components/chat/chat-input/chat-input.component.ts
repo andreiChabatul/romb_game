@@ -30,7 +30,7 @@ export class ChatInputComponent {
   }
 
   onSubmit() {
-    let idRoom: string = '';
+
     if (this.chatForm.invalid) {
       this.chatForm.markAllAsTouched();
       return;
@@ -40,7 +40,6 @@ export class ChatInputComponent {
     this.webSocketController.sendMessage(
       EACTION_WEBSOCKET.MESSAGE_CHAT,
       {
-        idRoom,
         message: this.chatForm.get('message')?.value
       }
     )

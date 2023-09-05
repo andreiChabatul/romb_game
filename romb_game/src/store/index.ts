@@ -4,24 +4,16 @@ import { Reducers } from './reducers';
 
 export const stateApp: State = {
     gameRoom: {
-        idRoom: '123',
-        players: [
-            { id: 1, name: "Andrei", total: 625, isTurn: false, type: 'playerOne' },
-            { id: 2, name: "Maks", total: 25, isTurn: false, type: 'playerTwo' },
-            { id: 3, name: "Oleg", total: 12, isTurn: true, type: 'playerThree' },
-            { id: 4, name: "Polina", total: 32, isTurn: false, type: 'playerFour' },
-            { id: 1, name: "Andrei", total: 625, isTurn: false, type: 'playerOne' },
-            { id: 2, name: "Maks", total: 25, isTurn: false, type: 'playerTwo' },
-            { id: 3, name: "Oleg", total: 12, isTurn: false, type: 'playerThree' },
-            { id: 4, name: "Polina", total: 32, isTurn: false, type: 'playerFour' }
-        ],
+        idRoom: '3213',
+        board: [],
+        players: [],
         chat: [
-            { name: "Andrei", playerType: 'playerOne', message: 'privet' }
+            { name: "Andrei", numberPlayer: 1, message: 'privet' }
         ]
     },
     user: {
-        idUser: '',
-        isLogin: false,
+        idUser: '2',
+        isLogin: true,
         nickname: ''
     },
     rooms: [],

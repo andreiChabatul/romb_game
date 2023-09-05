@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
-import { Player, ResponseAuth, RoomsSocket, modal } from 'src/app/types';
+import { GameRoom, InfoRoom, ResponseAuth, modal } from 'src/app/types';
 
 export enum AppActionTypes {
-    AddPlayers = '[PLAYERS ADD] AddPlayer',
+    UpdateGameRoom = '[UPDATE GAME ROOM] UpdateGameRoom',
     CloseModal = '[CLOSE MODAL] CloseModal',
     ChangeModal = '[CHANGE MODAL] ChangeModal',
     AddModalError = '[ADD MODAL ERROR] AddModalError',
@@ -12,9 +12,9 @@ export enum AppActionTypes {
     OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell'
 };
 
-export class AddPlayers implements Action {
-    readonly type = AppActionTypes.AddPlayers;
-    constructor(public payload: Player[]) { }
+export class UpdateGameRoom implements Action {
+    readonly type = AppActionTypes.UpdateGameRoom;
+    constructor(public payload: GameRoom) { }
 }
 
 export class CloseModal implements Action {
@@ -37,7 +37,7 @@ export class ClearModalError implements Action {
 
 export class UpdateRooms implements Action {
     readonly type = AppActionTypes.UpdateRooms;
-    constructor(public payload: RoomsSocket[]) { }
+    constructor(public payload: InfoRoom[]) { }
 }
 
 export class LoginUser implements Action {
@@ -51,7 +51,7 @@ export class OpenInfoCell implements Action {
 }
 
 export type ActionUnion =
-    AddPlayers |
+    UpdateGameRoom |
     CloseModal |
     ChangeModal |
     AddModalError |

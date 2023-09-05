@@ -1,15 +1,15 @@
 import { ACTIONS_BUTTON } from "../const/enum";
 
-export type stateCell = 'border' | playerType;
-export type playerType = 'playerOne' | 'playerTwo' | 'playerThree' | 'playerFour' | 'none';
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
 export interface Player {
     id: number;
     name: string;
+    image: string;
     total: number;
+    capital: number;
     isTurn: boolean;
-    type: playerType;
+    numberPlayer: number;
 }
 
 export interface State {
@@ -19,33 +19,41 @@ export interface State {
         modalError: string;
         payload?: number
     };
-    rooms: RoomsSocket[];
+    rooms: InfoRoom[];
     user: {
         isLogin: boolean;
         nickname: string;
         idUser: string;
     };
-    gameRoom: {
-        idRoom: string;
-        players: Player[];
-        chat: chatMessage[];
-    }
+    gameRoom: GameRoom
+}
+
+export interface GameRoom {
+    idRoom: string;
+    players: Player[];
+    board: gameCell[];
+    chat: ChatMessage[];
 }
 
 export interface AppStore {
     state: State;
 }
 
-export interface chatMessage {
+export interface ChatMessage {
     name: string;
-    playerType: playerType;
+    numberPlayer: number;
     message: string;
 }
 
 export interface SelectFormOption {
     nameForm: string;
     namelabel: string;
-    optionSelect: string[];
+    optionSelect: OptionSelect[];
+}
+
+export interface OptionSelect {
+    value: number | string;
+    option: string;
 }
 
 export interface InputTextFormOption {
@@ -73,15 +81,12 @@ export interface PayloadCreateGame {
     visibility: string
 }
 
-export interface Room extends PayloadCreateGame {
-    playerRoom: string;
-}
-
 export enum EACTION_WEBSOCKET {
     CREATE_GAME = 'create game',
     LIST_ROOM = 'list room',
     JOIN_GAME = 'join game',
-    MESSAGE_CHAT = 'message chat'
+    MESSAGE_CHAT = 'message chat',
+    UPDATE_ROOM = 'update room'
 }
 
 export interface JoinGamePayload {
@@ -89,7 +94,6 @@ export interface JoinGamePayload {
 }
 
 export interface MessageChatGamePayload {
-    idGame: string;
     message: string;
 }
 
@@ -100,12 +104,12 @@ export interface payloadSocket {
     payload: {}
 }
 
-export interface RoomsSocket {
-    id: number;
-    room: {
-        gameSetting: PayloadCreateGame
-    };
-    players: number;
+export interface InfoRoom {
+    maxPLayers: number,
+    players: Player[],
+    idRoom: string,
+    isVisiblity: boolean,
+    roomName: string
 }
 
 export interface ResponseAuth {

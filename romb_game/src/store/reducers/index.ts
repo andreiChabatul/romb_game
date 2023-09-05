@@ -7,6 +7,9 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
     switch (action.type) {
         case AppActionTypes.CloseModal:
             return { ...state, modal: { ...state.modal, type: 'none' } };
+        case AppActionTypes.UpdateGameRoom:
+            console.log(action.payload)
+            return { ...state, gameRoom: action.payload }
         case AppActionTypes.ChangeModal:
             return { ...state, modal: { ...state.modal, modalError: '', type: action.payload } };
         case AppActionTypes.AddModalError:
