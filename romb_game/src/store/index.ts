@@ -4,7 +4,7 @@ import { Reducers } from './reducers';
 
 export const stateApp: State = {
     gameRoom: {
-        idRoom: '3213',
+        idRoom: '',
         board: [],
         players: [],
         chat: [

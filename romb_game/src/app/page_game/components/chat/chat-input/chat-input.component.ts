@@ -43,10 +43,7 @@ export class ChatInputComponent {
         message: this.chatForm.get('message')?.value
       }
     )
-  }
-
-  get _message() {
-    return this.chatForm.get('message');
-  }
+    this.chatForm.get('message')?.reset();
+  } 
 
 }

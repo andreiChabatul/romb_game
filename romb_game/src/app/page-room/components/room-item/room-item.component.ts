@@ -18,7 +18,7 @@ export class RoomItemComponent {
   constructor(private webSocketController: WebSocketController, private router: Router) { }
 
   joinRoom() {
-    this.webSocketController.sendMessage(EACTION_WEBSOCKET.JOIN_GAME, { idRoom: this.itemRoom.idRoom });
+    this.webSocketController.sendMessage(EACTION_WEBSOCKET.JOIN_GAME, { idRoomJoin: this.itemRoom.idRoom });
     this.router.navigate(['game']);
   }
 

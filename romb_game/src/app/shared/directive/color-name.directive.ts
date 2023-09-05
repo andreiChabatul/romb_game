@@ -1,33 +1,18 @@
-// import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
-// import { colorPlayerFour, colorPlayerOne, colorPlayerThree, colorPlayerTwo } from 'src/app/const';
-// import { playerType } from 'src/app/types';
+import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 
-// @Directive({
-//   selector: '[appColorName]'
-// })
-// export class ColorNameDirective implements OnChanges {
+@Directive({
+    selector: '[appColorPlayerText]'
+})
+export class ColorPlayerDirective implements OnChanges {
 
-//   @Input() playerType: playerType
+    @Input() numberPlayer: number;
+    colors = ['#F6E106', '#E20001', '#42DD51', '#0FCBF1']
 
-//   constructor(private el: ElementRef) { }
+    constructor(private el: ElementRef) { }
 
-//   ngOnChanges(): void {
-//     let color: string = 'white';
-
-//     switch (this.playerType) {
-//       case 'playerOne':
-//         color = colorPlayerOne;
-//         break;
-//       case 'playerTwo':
-//         color = colorPlayerTwo;
-//         break;
-//       case 'playerThree':
-//         color = colorPlayerThree;
-//         break;
-//       case 'playerFour':
-//         color = colorPlayerFour;
-//         break;
-//     }
-//     this.el.nativeElement.style.color = color;
-//   }
-// }
+    ngOnChanges(): void {
+         const color: string = 'blue';
+         console.log(this.numberPlayer)
+        this.el.nativeElement.style.color = this.colors[this.numberPlayer] || color;
+    }
+}
