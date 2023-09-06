@@ -1,5 +1,6 @@
 <div class="message-container">
-    <span appColorPlayerText [numberPlayer]="message.numberPlayer" class="chat-text chat-text_name">123{{message.name}}:
+    <span *ngIf="message.name" appColorPlayerText [numberPlayer]="message.numberPlayer"
+        class="chat-text chat-text_name">{{message.name}}:
     </span>
     <span class="chat-text">{{message.message}}</span>
 </div>

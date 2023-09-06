@@ -86,7 +86,8 @@ export enum EACTION_WEBSOCKET {
     LIST_ROOM = 'list room',
     JOIN_GAME = 'join game',
     MESSAGE_CHAT = 'message chat',
-    UPDATE_ROOM = 'update room'
+    UPDATE_ROOM = 'update room',
+    DICE_ROLL = 'dice roll'
 }
 
 export interface JoinGamePayload {
@@ -97,7 +98,11 @@ export interface MessageChatGamePayload {
     message: string;
 }
 
-export type SendPayloadSocket = {} | JoinGamePayload | PayloadCreateGame | MessageChatGamePayload;
+export interface DiceRoolGamePayload {
+    value: number;
+}
+
+export type SendPayloadSocket = {} | JoinGamePayload | PayloadCreateGame | MessageChatGamePayload | DiceRoolGamePayload;
 
 export interface payloadSocket {
     action: EACTION_WEBSOCKET,

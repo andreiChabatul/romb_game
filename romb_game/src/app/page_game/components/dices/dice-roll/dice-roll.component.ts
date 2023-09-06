@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
+import { EACTION_WEBSOCKET } from 'src/app/types';
+import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({
   selector: 'app-dice-roll',
@@ -13,11 +15,18 @@ export class DiceRollComponent {
   actionButton = ACTIONS_BUTTON.DICE_ROLL;
   result: number | string = '...';
 
+  constructor(private webSocketController: WebSocketController) { }
+
   roolDice() {
     this.result = '...'
     this.diceOne = this.randomrool(this.diceOne);
     this.diceTwo = this.randomrool(this.diceTwo);
-    setTimeout(() => this.result = this.diceOne + this.diceTwo, 1000);
+    setTimeout(() => {
+      this.result = this.diceOne + this.diceTwo;
+      this.webSocketController.sendMessage(EACTION_WEBSOCKET.DICE_ROLL, { value: this.result });
+    }, 1000
+    );
+
   }
 
   randomrool(dice: number): number {

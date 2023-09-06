@@ -7,13 +7,11 @@ export const stateApp: State = {
         idRoom: '',
         board: [],
         players: [],
-        chat: [
-            { name: "Andrei", numberPlayer: 1, message: 'privet' }
-        ]
+        chat: []
     },
     user: {
-        idUser: '2',
-        isLogin: true,
+        idUser: '',
+        isLogin: false,
         nickname: ''
     },
     rooms: [],
