@@ -9,6 +9,8 @@ import { CommonModule } from '@angular/common';
 import { ButtonControllerService } from './services/button-controller.service';
 import { ModalInfoCellComponent } from './components/modal-info-cell/modal-info-cell.component';
 import { ColorPlayerDirective } from './directive/color-name.directive';
+import { ColorShadowDirective } from './directive/color-shadow.directive';
+import { ColorBackgroundDirective } from './directive/color-back.directive';
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import { ColorPlayerDirective } from './directive/color-name.directive';
         ModalRegisterComponent,
         ModalLoginComponent,
         ModalInfoCellComponent,
-        ColorPlayerDirective
+        ColorPlayerDirective,
+        ColorShadowDirective,
+        ColorBackgroundDirective
     ],
     imports: [
         CommonModule , MaterialsModule
@@ -28,7 +32,9 @@ import { ColorPlayerDirective } from './directive/color-name.directive';
         ButtonStandartComponent,
         ButtonMaterialsComponent,
         ModalComponent,
-        ColorPlayerDirective
+        ColorPlayerDirective,
+        ColorShadowDirective,
+        ColorBackgroundDirective
     ],
     providers: [ButtonControllerService],
     bootstrap: []

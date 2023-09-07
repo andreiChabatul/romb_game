@@ -15,6 +15,7 @@ import { ChatInputComponent } from './components/chat/chat-input/chat-input.comp
 import { DiceRollComponent } from './components/dices/dice-roll/dice-roll.component';
 import { DiceComponent } from './components/dices/dice/dice.component';
 import { DiceSideComponent } from './components/dices/dice-side/dice-side.component';
+import { BuyCompanyComponent } from './components/companyAction/buy-company/buy-company.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DiceSideComponent } from './components/dices/dice-side/dice-side.compon
         GameCellSquareComponent,
         DiceRollComponent,
         DiceComponent,
-        DiceSideComponent
+        DiceSideComponent,
+        BuyCompanyComponent
     ],
     imports: [
         SharedModule,

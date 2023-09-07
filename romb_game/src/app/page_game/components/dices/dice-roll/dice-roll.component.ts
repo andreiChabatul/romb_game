@@ -31,7 +31,6 @@ export class DiceRollComponent {
 
   randomrool(dice: number): number {
     let result = Math.floor((Math.random() * 6) + 1);
-    console.log(result, 'result', dice)
     if (dice === result) {
       return this.randomrool(result);
     }

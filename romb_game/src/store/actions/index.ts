@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { GameRoom, InfoRoom, ResponseAuth, modal } from 'src/app/types';
+import { CompanyInfoBuy, GameRoom, InfoRoom, ResponseAuth, modal } from 'src/app/types';
 
 export enum AppActionTypes {
     UpdateGameRoom = '[UPDATE GAME ROOM] UpdateGameRoom',
@@ -9,8 +9,14 @@ export enum AppActionTypes {
     ClearModalError = '[CLEAR MODAL ERROR] ClearModalError',
     UpdateRooms = '[UPDATE ROOMS] UpdateRooms',
     LoginUser = '[LOGIN USER] LoginUser',
-    OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell'
+    OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell',
+    AuctionCompany = '[AUCTION COMPANY] AuctionCompany'
 };
+
+export class AuctionCompany implements Action {
+    readonly type = AppActionTypes.AuctionCompany;
+    constructor(public payload: CompanyInfoBuy) { }
+}
 
 export class UpdateGameRoom implements Action {
     readonly type = AppActionTypes.UpdateGameRoom;
@@ -58,4 +64,5 @@ export type ActionUnion =
     ClearModalError |
     UpdateRooms |
     LoginUser |
-    OpenInfoCell;
+    OpenInfoCell |
+    AuctionCompany;

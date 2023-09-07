@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { AppStore, EACTION_WEBSOCKET, GameRoom, InfoRoom, SendPayloadSocket, payloadSocket } from '../types';
+import { AppStore, CompanyInfoBuy, EACTION_WEBSOCKET, GameRoom, InfoRoom, SendPayloadSocket, payloadSocket } from '../types';
 import { Store } from '@ngrx/store';
-import { UpdateGameRoom, UpdateRooms } from 'src/store/actions';
+import { AuctionCompany, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 
 
@@ -37,6 +37,12 @@ export class WebSocketController {
           const updateRoom = wsMessage.payload as GameRoom;
           this.store.dispatch(new UpdateGameRoom(updateRoom))
           break;
+
+        case EACTION_WEBSOCKET.AUCTION_COMPANY: {
+          const auctionCompany = wsMessage.payload as CompanyInfoBuy;
+          this.store.dispatch(new AuctionCompany(auctionCompany));
+          break;
+        }
 
         default:
           break;

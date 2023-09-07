@@ -3,7 +3,7 @@ import { ACTIONS_BUTTON } from "../const/enum";
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
 export interface Player {
-    id: number;
+    id: string;
     name: string;
     image: string;
     total: number;
@@ -25,7 +25,27 @@ export interface State {
         nickname: string;
         idUser: string;
     };
-    gameRoom: GameRoom
+    gameRoom: GameRoom;
+    gameProcces: {
+        auctionCompany?: CompanyInfoBuy
+    }
+}
+
+export interface CompanyInfo {
+    countryCompany: countryCompany;
+    nameCompany: nameCompany;
+    priceCompany: number;
+}
+
+export interface GameCellCompanyInfo extends CompanyInfo {
+    shares?: stockTypeCell[];
+    isPledge: boolean;
+    owned?: number;
+}
+
+export interface CompanyInfoBuy extends CompanyInfo {
+    indexCompany: number;
+    auction: boolean;
 }
 
 export interface GameRoom {
@@ -87,7 +107,8 @@ export enum EACTION_WEBSOCKET {
     JOIN_GAME = 'join game',
     MESSAGE_CHAT = 'message chat',
     UPDATE_ROOM = 'update room',
-    DICE_ROLL = 'dice roll'
+    DICE_ROLL = 'dice roll',
+    AUCTION_COMPANY = 'auction company'
 }
 
 export interface JoinGamePayload {
@@ -126,26 +147,17 @@ export interface ResponseAuth {
 export interface gameCell {
     indexCell: number;
     gridArea: string;
-    isPledge?: boolean;
-    players: string[];
-    owned?: string;
+    players: number[];
     cellDirections: cellDirections;
     cellCompany?: GameCellCompanyInfo;
     cellSquare?: GameCellSquare;
 }
 
-export interface GameCellCompanyInfo {
-    countryCompany: countryCompany;
-    nameCompany: nameCompany;
-    priceCompany: number;
-    shares?: stockTypeCell[];
-}
 
 export interface GameCellSquare {
     imageCell: typeSquareImage;
     textCell: string;
 }
-
 
 export type nameCompany =
     'volkswagen' | 'allianz' | 'continental'

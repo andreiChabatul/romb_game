@@ -1,13 +1,18 @@
+
+<div class="game-cell_content" [ngClass]="{'game-cell-container__grayscale' : gameCell.cellCompany?.isPledge}">
+    <img *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-pledge_img"
+            src="./../../../../../assets/board/pledge.png" alt="pledgeImg">
+   
 <div class="game-cell-company_container" [ngClass]="{
         'game-cell-company_container__gorizontalLeft': gameCell.cellDirections === 'left',
         'game-cell-company_container__gorizontalRight': gameCell.cellDirections === 'right'}">
 
-    <div class="game-cell-company_header" [ngClass]="{
+    <div appColorShadow [numberPlayer]="gameCell.cellCompany?.owned" class="game-cell-company_header" [ngClass]="{
         'game-cell-company_header__bottom': gameCell.cellDirections === 'bottom',
         'game-cell-company_header__top': gameCell.cellDirections === 'top',
         'game-cell-company_header__left': gameCell.cellDirections === 'left',
         'game-cell-company_header__right': gameCell.cellDirections === 'right'
-    }" [style.box-shadow]="ownerShadow">
+    }">
         <img [ngClass]="{
         'game-cell-company_img__gorizontal': gameCell.cellDirections === 'left' || gameCell.cellDirections === 'right'
         }" class="game-cell-company" src={{countryCompany}}>
@@ -25,4 +30,6 @@
             alt="stock">
 
     </div>
+</div>
+
 </div>

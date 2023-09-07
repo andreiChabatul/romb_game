@@ -1,16 +1,12 @@
 <div class="game-cell-container" (click)="clickCellInfo()">
-        <div class="game-cell_content" [ngClass]="{'game-cell-container__grayscale' : gameCellInfo.isPledge}">
-                <img *ngIf="gameCellInfo.isPledge" class="game-cell-pledge_img"
-                        src="./../../../../../assets/board/pledge.png" alt="pledgeImg">
-                <app-game-cell-company *ngIf="gameCellInfo.cellCompany" [gameCell]="gameCellInfo">
-                </app-game-cell-company>
-                <app-game-cell-square *ngIf="gameCellInfo.cellSquare" [directions]="gameCellInfo.cellDirections"
-                        [cellSquare]=" gameCellInfo.cellSquare">
-                </app-game-cell-square>
-        </div>
+        <app-game-cell-company *ngIf="gameCellInfo.cellCompany" [gameCell]="gameCellInfo">
+        </app-game-cell-company>
+        <app-game-cell-square *ngIf="gameCellInfo.cellSquare" [directions]="gameCellInfo.cellDirections"
+                [cellSquare]=" gameCellInfo.cellSquare">
+        </app-game-cell-square>
         <div class="game-cell_players">
-                <p class="game-cell_players-font" *ngFor="let color of gameCellInfo.players"
-                        [style.backgroundColor]="'red'">
+                <p appColorBackground [numberPlayer]="player" class="game-cell_players-font"
+                        *ngFor="let player of gameCellInfo.players">
                 </p>
         </div>
 </div>

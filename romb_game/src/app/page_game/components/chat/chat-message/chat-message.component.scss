@@ -2,7 +2,15 @@
 @import "./../../../../../scss/default-styles";
 
 .chat-text_name {
-font-weight: 500;
-color: $light_blue_text;
+    font-weight: 600;
+    @include font_default;
+
+}
+
+
+.chat-text_separator {
+    font-size: 12px;
+    @include font_default;
+    text-align: center;
 
 }
