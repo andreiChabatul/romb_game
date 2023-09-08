@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { AppStore, Player } from 'src/app/types';
+import { Player } from 'src/app/types';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectAllPlayer } from 'src/store/selectors';
+import { AppStore } from 'src/app/types/state';
 
 @Component({
   selector: 'app-page-game',

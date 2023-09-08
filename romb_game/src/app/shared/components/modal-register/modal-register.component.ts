@@ -1,9 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { AppStore, InputTextFormOption } from 'src/app/types';
+import { InputTextFormOption } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { ChangeModal } from 'src/store/actions';
 
 @Component({
@@ -21,7 +22,11 @@ export class ModalRegisterComponent {
   registerForm: FormGroup;
   textButton = ACTIONS_BUTTON.REGISTER;
 
-  constructor(private fb: FormBuilder, private store: Store<AppStore>, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppStore>,
+    private authService: AuthService
+  ) {
     this.createForm();
   }
 

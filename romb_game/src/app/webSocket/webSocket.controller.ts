@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { AppStore, CompanyInfoBuy, GameRoom, InfoRoom, SendPayloadSocket, payloadSocket } from '../types';
+import { CompanyInfoBuy, GameRoom, InfoRoom } from '../types';
 import { Store } from '@ngrx/store';
 import { SellCompany, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
+import { AppStore } from '../types/state';
+import { SendPayloadSocket, payloadSocket } from '../types/webSocket';
 
 
 @Injectable({

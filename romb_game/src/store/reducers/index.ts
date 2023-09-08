@@ -1,4 +1,4 @@
-import { State } from "src/app/types";
+import { State } from "src/app/types/state";
 import { stateApp } from "..";
 import { ActionUnion, AppActionTypes } from "../actions";
 

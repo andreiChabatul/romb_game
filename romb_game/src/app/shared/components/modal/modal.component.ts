@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppStore } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { CloseModal } from 'src/store/actions';
 import { selectModal, selectModalError } from 'src/store/selectors';
 

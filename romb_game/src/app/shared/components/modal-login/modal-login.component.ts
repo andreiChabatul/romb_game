@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { AppStore, InputTextFormOption } from 'src/app/types';
+import { InputTextFormOption } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { ChangeModal } from 'src/store/actions';
 
 @Component({

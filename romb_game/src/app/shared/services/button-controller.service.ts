@@ -1,9 +1,9 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { AppStore } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal } from 'src/store/actions';
 import { selectIsLogin } from 'src/store/selectors';

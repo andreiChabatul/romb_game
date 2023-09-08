@@ -1,4 +1,4 @@
-import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from "../const/enum";
+import { ACTIONS_BUTTON } from "../const/enum";
 
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
@@ -10,26 +10,6 @@ export interface Player {
     capital: number;
     isTurn: boolean;
     numberPlayer: number;
-}
-
-export interface State {
-
-    modal: {
-        type: modal,
-        modalError: string;
-        payload?: number
-    };
-    rooms: InfoRoom[];
-    user: {
-        isLogin: boolean;
-        nickname: string;
-        idUser: string;
-    };
-    gameRoom: GameRoom;
-    gameProcces: {
-        sellCompany?: CompanyInfoBuy
-        auctionCompany?: CompanyInfoBuy
-    }
 }
 
 export interface CompanyInfo {
@@ -49,15 +29,16 @@ export interface CompanyInfoBuy extends CompanyInfo {
     rentCompany: number;
 }
 
+export interface CompanyInfoAuction extends CompanyInfoBuy {
+    actualPrice: number;
+    actualPlayer: number;
+}
+
 export interface GameRoom {
     idRoom: string;
     players: Player[];
     board: gameCell[];
     chat: ChatMessage[];
-}
-
-export interface AppStore {
-    state: State;
 }
 
 export interface ChatMessage {
@@ -92,42 +73,6 @@ export interface ButtonMaterialOption {
 export interface Profile {
     nickname: string;
     password: string;
-}
-
-export interface PayloadCreateGame {
-    roomName: string
-    players: string
-    size: string
-    typeGame: string
-    visibility: string
-}
-
-export interface JoinGamePayload {
-    idRoom: string;
-}
-
-export interface MessageChatGamePayload {
-    message: string;
-}
-
-export interface DiceRoolGamePayload {
-    value: number;
-}
-
-export interface BuyCompanyPayload {
-    indexCompany: number;
-}
-
-export type SendPayloadSocket = {}
-    | JoinGamePayload
-    | PayloadCreateGame
-    | MessageChatGamePayload
-    | DiceRoolGamePayload
-    | BuyCompanyPayload;
-
-export interface payloadSocket {
-    action: EACTION_WEBSOCKET,
-    payload: {}
 }
 
 export interface InfoRoom {

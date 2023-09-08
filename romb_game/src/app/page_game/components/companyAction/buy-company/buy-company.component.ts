@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { TIME_BUY_COMPANY } from 'src/app/const';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { AppStore } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { selectSellCompany } from 'src/store/selectors';
 

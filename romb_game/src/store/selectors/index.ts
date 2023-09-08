@@ -1,5 +1,6 @@
 import { createSelector } from "@ngrx/store";
-import { AppStore, State } from "src/app/types";
+import { AppStore, State } from "src/app/types/state";
+
 
 const select = (state: AppStore) => state.state;
 

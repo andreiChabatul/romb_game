@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppStore, ChatMessage } from 'src/app/types';
+import { ChatMessage } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { selectChat } from 'src/store/selectors';
 
 @Component({

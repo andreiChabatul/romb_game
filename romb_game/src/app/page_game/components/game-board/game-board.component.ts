@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription, map, mergeMap } from 'rxjs';
-import { AppStore } from 'src/app/types';
+import { Subscription, map, mergeMap } from 'rxjs';
+import { AppStore } from 'src/app/types/state';
 import { selectAllPlayer, selectBoard, selectIdUser, selectSellCompany } from 'src/store/selectors';
 
 @Component({

@@ -16,6 +16,7 @@ import { DiceRollComponent } from './components/dices/dice-roll/dice-roll.compon
 import { DiceComponent } from './components/dices/dice/dice.component';
 import { DiceSideComponent } from './components/dices/dice-side/dice-side.component';
 import { BuyCompanyComponent } from './components/companyAction/buy-company/buy-company.component';
+import { AuctionCompanyComponent } from './components/companyAction/auction-company/auction-company.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { BuyCompanyComponent } from './components/companyAction/buy-company/buy-
         DiceRollComponent,
         DiceComponent,
         DiceSideComponent,
-        BuyCompanyComponent
+        BuyCompanyComponent,
+        AuctionCompanyComponent
     ],
     imports: [
         SharedModule,

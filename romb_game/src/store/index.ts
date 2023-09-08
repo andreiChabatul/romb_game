@@ -1,4 +1,4 @@
-import { AppStore, State } from 'src/app/types';
+import { AppStore, State } from 'src/app/types/state';
 import { ActionReducerMap } from '@ngrx/store';
 import { Reducers } from './reducers';
 

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppStore, gameCell } from 'src/app/types';
+import { gameCell } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { OpenInfoCell } from 'src/store/actions';
 
 @Component({

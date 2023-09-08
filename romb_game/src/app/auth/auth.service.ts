@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AppStore, Profile, ResponseAuth } from '../types';
+import { Profile, ResponseAuth } from '../types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BASIC_URL } from '../const';
 import { ENDPOINT } from '../const/enum';
 import { Store } from '@ngrx/store';
 import { AddModalError, ClearModalError } from 'src/store/actions';
 import { LoginUser } from 'src/store/actions';
+import { AppStore } from '../types/state';
 
 @Injectable()
 export class AuthService {
