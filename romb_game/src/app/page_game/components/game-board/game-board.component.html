@@ -2,12 +2,10 @@
     <app-game-cell *ngFor="let cell of (board$ | async)" [style.grid-area]="cell.gridArea"
         [gameCellInfo]="cell"></app-game-cell>
     <div class="game-board_inside-container">
-        <div>
-            <app-buy-company></app-buy-company>
-            <div *ngIf="isTurn">
-                <p>Your turn</p>
-                <app-dice-roll></app-dice-roll>
-            </div>
+        <div class="game-board_inside__process">
+            <p class="game-board_inside__text" *ngIf="isTurn">Your turn</p>
+            <app-buy-company *ngIf="sellCompany$ | async"></app-buy-company>
+            <app-dice-roll *ngIf="!(sellCompany$ | async) && isTurn"></app-dice-roll>
         </div>
         <app-chat-game></app-chat-game>
     </div>

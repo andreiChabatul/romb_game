@@ -11,6 +11,7 @@ import { ModalInfoCellComponent } from './components/modal-info-cell/modal-info-
 import { ColorPlayerDirective } from './directive/color-name.directive';
 import { ColorShadowDirective } from './directive/color-shadow.directive';
 import { ColorBackgroundDirective } from './directive/color-back.directive';
+import { ImgAssetsPipe } from './pipe/img-assets.pipe';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { ColorBackgroundDirective } from './directive/color-back.directive';
         ModalInfoCellComponent,
         ColorPlayerDirective,
         ColorShadowDirective,
-        ColorBackgroundDirective
+        ColorBackgroundDirective,
+        ImgAssetsPipe
     ],
     imports: [
         CommonModule , MaterialsModule
@@ -34,7 +36,8 @@ import { ColorBackgroundDirective } from './directive/color-back.directive';
         ModalComponent,
         ColorPlayerDirective,
         ColorShadowDirective,
-        ColorBackgroundDirective
+        ColorBackgroundDirective,
+        ImgAssetsPipe
     ],
     providers: [ButtonControllerService],
     bootstrap: []

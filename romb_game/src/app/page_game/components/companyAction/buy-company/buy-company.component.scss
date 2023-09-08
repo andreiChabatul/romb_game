@@ -1,0 +1,48 @@
+@import "./../../../../../scss/color-styles";
+@import "./../../../../../scss/default-styles";
+
+
+.buy-company-wrapper {
+    min-width: 25vw;
+    position: relative;
+    padding: 1.5vw;
+    background: $light_blue;
+    border-radius: 1vw;
+}
+
+.buy-company-title {
+    @include font_default;
+    margin-bottom: 2vw;
+}
+
+.buy-company_country {
+    position: absolute;
+    width: 5vw;
+    height: 3vw;
+    top: -1.5vw;
+    left: calc(50% - 2.5vw);
+    border-radius: 0.5vw;
+}
+
+.buy-company_image {
+    width: 9vw;
+}
+
+.buy-company_info {
+    @include flex_c_s;
+    gap: 1vw;
+    margin-bottom: 1vw;
+}
+
+.buy-company_info__title {
+    @include font_default;
+    font-weight: 600;
+}
+
+.buy-company_info__desc {
+    font-weight: 400;
+}
+
+.buy-company_buttons {
+    @include flex_c_s;
+}

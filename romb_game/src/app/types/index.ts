@@ -1,4 +1,4 @@
-import { ACTIONS_BUTTON } from "../const/enum";
+import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from "../const/enum";
 
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
@@ -27,6 +27,7 @@ export interface State {
     };
     gameRoom: GameRoom;
     gameProcces: {
+        sellCompany?: CompanyInfoBuy
         auctionCompany?: CompanyInfoBuy
     }
 }
@@ -45,7 +46,7 @@ export interface GameCellCompanyInfo extends CompanyInfo {
 
 export interface CompanyInfoBuy extends CompanyInfo {
     indexCompany: number;
-    auction: boolean;
+    rentCompany: number;
 }
 
 export interface GameRoom {
@@ -101,16 +102,6 @@ export interface PayloadCreateGame {
     visibility: string
 }
 
-export enum EACTION_WEBSOCKET {
-    CREATE_GAME = 'create game',
-    LIST_ROOM = 'list room',
-    JOIN_GAME = 'join game',
-    MESSAGE_CHAT = 'message chat',
-    UPDATE_ROOM = 'update room',
-    DICE_ROLL = 'dice roll',
-    AUCTION_COMPANY = 'auction company'
-}
-
 export interface JoinGamePayload {
     idRoom: string;
 }
@@ -123,7 +114,16 @@ export interface DiceRoolGamePayload {
     value: number;
 }
 
-export type SendPayloadSocket = {} | JoinGamePayload | PayloadCreateGame | MessageChatGamePayload | DiceRoolGamePayload;
+export interface BuyCompanyPayload {
+    indexCompany: number;
+}
+
+export type SendPayloadSocket = {}
+    | JoinGamePayload
+    | PayloadCreateGame
+    | MessageChatGamePayload
+    | DiceRoolGamePayload
+    | BuyCompanyPayload;
 
 export interface payloadSocket {
     action: EACTION_WEBSOCKET,

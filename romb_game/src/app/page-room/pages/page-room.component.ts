@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { AppStore, ButtonMaterialOption, EACTION_WEBSOCKET } from 'src/app/types';
+import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { AppStore, ButtonMaterialOption } from 'src/app/types';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { selectRooms } from 'src/store/selectors';
 

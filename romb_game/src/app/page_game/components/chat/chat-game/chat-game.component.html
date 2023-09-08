@@ -1,15 +1,11 @@
 <div class="chat-container">
-            <div class="chat-title-container">
-                <p class="chat-title">Chat game</p>
-            </div>
-            <div class="chat-area">
-                <div class="chat-area_message">
-                    <span class="chat-text" *ngIf="(chat$ | async)?.length === 0; else elseBlock">Enter your
-                        message...</span>
-                    <ng-template #elseBlock><app-chat-message *ngFor="let message of chat$ | async"
-                            [message]="message"></app-chat-message>
-                    </ng-template>
-                </div>
-                <app-chat-input></app-chat-input>
-            </div>
+    <div class="chat-title-container">
+        <p class="chat-title">Chat game</p>
+    </div>
+    <div class="chat-area">
+        <div class="chat-area_message">
+            <app-chat-message *ngFor="let message of chat$ | async" [message]="message"></app-chat-message>
+        </div>
+        <app-chat-input></app-chat-input>
+    </div>
 </div>

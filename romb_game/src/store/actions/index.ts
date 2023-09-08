@@ -10,11 +10,12 @@ export enum AppActionTypes {
     UpdateRooms = '[UPDATE ROOMS] UpdateRooms',
     LoginUser = '[LOGIN USER] LoginUser',
     OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell',
-    AuctionCompany = '[AUCTION COMPANY] AuctionCompany'
+    AuctionCompany = '[AUCTION COMPANY] AuctionCompany',
+    SellCompany = '[SELL COMPANY] SellCompany'
 };
 
-export class AuctionCompany implements Action {
-    readonly type = AppActionTypes.AuctionCompany;
+export class SellCompany implements Action {
+    readonly type = AppActionTypes.SellCompany;
     constructor(public payload: CompanyInfoBuy) { }
 }
 
@@ -65,4 +66,4 @@ export type ActionUnion =
     UpdateRooms |
     LoginUser |
     OpenInfoCell |
-    AuctionCompany;
+    SellCompany;

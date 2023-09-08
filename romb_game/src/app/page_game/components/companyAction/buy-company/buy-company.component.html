@@ -1,4 +1,29 @@
 <div class="buy-company-container">
-    buy-company
-    <p>{{(auctionCompany$ | async)?.nameCompany}}</p>
+    <p class="buy-company-title">Buy company</p>
+    <div class="buy-company-wrapper">
+        <img class="buy-company_country" [src]="(sellCompany$ | async)?.countryCompany| imgAssets" alt="assets country">
+        <div class="buy-company_info">
+            <img class="buy-company_image" [src]="(sellCompany$ | async)?.nameCompany | imgAssets" alt="assets company">
+            <div>
+                <p class="buy-company_info__title">Name company:
+                    <span class="buy-company_info__desc">{{(sellCompany$ | async)?.nameCompany | titlecase}}</span>
+                </p>
+                <p class="buy-company_info__title">Purchase price:
+                    <span class="buy-company_info__desc">{{(sellCompany$ | async)?.priceCompany}}</span>
+                </p>
+                <p class="buy-company_info__title">Rent price:
+                    <span class="buy-company_info__desc">{{(sellCompany$ | async)?.rentCompany}}</span>
+                </p>
+                <p class="buy-company_info__title">Time left:
+                    <span class="buy-company_info__desc">{{timer}}s</span>
+                </p>
+            </div>
+        </div>
+        <div class="buy-company_buttons">
+            <app-button-standart (click)="companyBuy()" [action]="buyCompany" [width]="'10vw'"
+                [height]="'auto'"></app-button-standart>
+            <app-button-standart (click)="companyCancel()" [action]="refuseBuy" [width]="'10vw'"
+                [height]="'auto'"></app-button-standart>
+        </div>
+    </div>
 </div>

@@ -22,3 +22,11 @@
     align-items: center;
     justify-items: center;
 }
+
+
+.game-board_inside__text {
+    @include font_default;
+    margin-bottom: 2vw;
+    font-weight: 600;
+    font-size: 22px;
+}

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { EACTION_WEBSOCKET, InfoRoom } from 'src/app/types';
+import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { InfoRoom } from 'src/app/types';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({

@@ -23,8 +23,8 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.UpdateRooms:
             return { ...state, rooms: action.payload };
 
-        case AppActionTypes.AuctionCompany: {
-            return { ...state, gameProcces: { auctionCompany: action.payload } };
+        case AppActionTypes.SellCompany: {
+            return { ...state, gameProcces: { sellCompany: action.payload } };
         }
 
         case AppActionTypes.OpenInfoCell: {

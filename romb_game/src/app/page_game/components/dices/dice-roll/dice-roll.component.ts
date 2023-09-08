@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { EACTION_WEBSOCKET } from 'src/app/types';
+import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({

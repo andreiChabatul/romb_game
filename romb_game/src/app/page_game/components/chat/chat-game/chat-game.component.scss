@@ -9,8 +9,12 @@
 }
 
 .chat-area_message {
+    width: 95%;
     overflow-y: auto;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+
 }
 
 

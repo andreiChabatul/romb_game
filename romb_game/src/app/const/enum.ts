@@ -13,7 +13,22 @@ export enum ACTIONS_BUTTON {
     SEARCH_ROOM = 'search',
     ADD_ROOM = 'add',
     SHADOW_ROOM = 'shadow_add',
-    DICE_ROLL = 'Dice roll'
+    DICE_ROLL = 'Dice roll',
+    BUY_COMPANY = 'Buy',
+    REFUSE_BUY = 'Cancel',
+}
+
+export enum EACTION_WEBSOCKET {
+    CREATE_GAME = 'create game',
+    LIST_ROOM = 'list room',
+    JOIN_GAME = 'join game',
+    MESSAGE_CHAT = 'message chat',
+    UPDATE_ROOM = 'update room',
+    DICE_ROLL = 'dice roll',
+    SELL_COMPANY = 'sell company',
+    AUCTION_COMPANY = 'auction company',
+    BUY_COMPANY = 'buy company',
+    CANCEL_BUY = 'cancel buy',
 }
 
 export enum ENDPOINT {

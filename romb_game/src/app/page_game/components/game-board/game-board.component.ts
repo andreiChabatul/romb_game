@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, map, mergeMap } from 'rxjs';
 import { AppStore } from 'src/app/types';
-import { selectAllPlayer, selectBoard, selectIdUser } from 'src/store/selectors';
+import { selectAllPlayer, selectBoard, selectIdUser, selectSellCompany } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board',
@@ -14,6 +14,7 @@ export class GameBoardComponent implements OnInit, OnDestroy {
   board$ = this.store.select(selectBoard);
   players$ = this.store.select(selectAllPlayer);
   userId$ = this.store.select(selectIdUser);
+  sellCompany$ = this.store.select(selectSellCompany);
   isTurn: boolean;
   subscription$: Subscription;
 

@@ -15,3 +15,4 @@ export const selectModalError = createSelector(select, (state: State) => state.m
 export const selectRooms = createSelector(select, (state: State) => state.rooms);
 export const selectIndexCell = createSelector(select, (state: State) => state.modal.payload);
 export const selectAuctionCompany = createSelector(select, (state: State) => state.gameProcces.auctionCompany);
+export const selectSellCompany = createSelector(select, (state: State) => state.gameProcces.sellCompany);
