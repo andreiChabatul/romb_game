@@ -27,12 +27,10 @@ export interface GameCellCompanyInfo extends CompanyInfo {
 export interface CompanyInfoBuy extends CompanyInfo {
     indexCompany: number;
     rentCompany: number;
+    auctionPrice?:  number;
+    auctionWinner?: string;
 }
 
-export interface CompanyInfoAuction extends CompanyInfoBuy {
-    actualPrice: number;
-    actualPlayer: number;
-}
 
 export interface GameRoom {
     idRoom: string;

@@ -5,6 +5,7 @@ import { TIME_BUY_COMPANY } from 'src/app/const';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { ClearSellCompany } from 'src/store/actions';
 import { selectSellCompany } from 'src/store/selectors';
 
 @Component({
@@ -18,6 +19,7 @@ export class BuyCompanyComponent implements OnInit {
   subscription$: Subscription;
   buyCompany = ACTIONS_BUTTON.BUY_COMPANY;
   refuseBuy = ACTIONS_BUTTON.REFUSE_BUY;
+  auctionStep = ACTIONS_BUTTON.AUCTION_STEP;
   indexCompany: number = 0;
   timer: number;
 
@@ -27,17 +29,28 @@ export class BuyCompanyComponent implements OnInit {
   ngOnInit(): void {
     this.timer = TIME_BUY_COMPANY;
     this.subscription$ = this.sellCompany$.
-      subscribe((infoCompany) => infoCompany ? this.indexCompany = infoCompany.indexCompany : '');
+      subscribe((infoCompany) =>
+        infoCompany ? this.indexCompany = infoCompany.indexCompany : ''
+      );
     this.timerBuyCancel();
   }
 
 
   companyBuy(): void {
-    this.webSocket.sendMessage(EACTION_WEBSOCKET.BUY_COMPANY, { indexCompany: this.indexCompany })
+    this.companyAction(EACTION_WEBSOCKET.BUY_COMPANY);
   }
 
   companyCancel(): void {
-    this.webSocket.sendMessage(EACTION_WEBSOCKET.SELL_COMPANY, { indexCompany: this.indexCompany })
+    this.companyAction(EACTION_WEBSOCKET.CANCEL_BUY);
+  }
+
+  stepAuction(): void {
+    this.companyAction(EACTION_WEBSOCKET.AUCTION_STEP);
+  }
+
+  private companyAction(action: EACTION_WEBSOCKET) {
+    this.store.dispatch(new ClearSellCompany());
+    this.webSocket.sendMessage(action, { indexCompany: this.indexCompany })
   }
 
   private timerBuyCancel() {

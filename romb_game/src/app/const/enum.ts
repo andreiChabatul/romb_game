@@ -16,6 +16,7 @@ export enum ACTIONS_BUTTON {
     DICE_ROLL = 'Dice roll',
     BUY_COMPANY = 'Buy',
     REFUSE_BUY = 'Cancel',
+    AUCTION_STEP = 'Make bid',
 }
 
 export enum EACTION_WEBSOCKET {
@@ -26,9 +27,9 @@ export enum EACTION_WEBSOCKET {
     UPDATE_ROOM = 'update room',
     DICE_ROLL = 'dice roll',
     SELL_COMPANY = 'sell company',
-    AUCTION_COMPANY = 'auction company',
     BUY_COMPANY = 'buy company',
     CANCEL_BUY = 'cancel buy',
+    AUCTION_STEP = 'auction step',
 }
 
 export enum ENDPOINT {

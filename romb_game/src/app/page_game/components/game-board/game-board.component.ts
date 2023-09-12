@@ -26,6 +26,7 @@ export class GameBoardComponent implements OnInit, OnDestroy {
       mergeMap((players) => this.userId$.pipe(
         map((userId) => {
           const turnId = players.filter(player => player.isTurn)[0];
+          console.log(turnId)
           if (turnId) {
             userId === turnId.id ? this.isTurn = true : this.isTurn = false;
           }

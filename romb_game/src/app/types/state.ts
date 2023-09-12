@@ -1,4 +1,4 @@
-import { CompanyInfoAuction, CompanyInfoBuy, GameRoom, InfoRoom, modal } from ".";
+import { CompanyInfoBuy, GameRoom, InfoRoom, modal } from ".";
 
 export interface State {
 
@@ -16,7 +16,6 @@ export interface State {
     gameRoom: GameRoom;
     gameProcces: {
         sellCompany?: CompanyInfoBuy
-        auctionCompany?: CompanyInfoAuction
     }
 }
 

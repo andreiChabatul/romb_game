@@ -27,6 +27,10 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, gameProcces: { sellCompany: action.payload } };
         }
 
+        case AppActionTypes.ClearSellCompany: {
+            return { ...state, gameProcces: { sellCompany: undefined } }
+        }
+
         case AppActionTypes.OpenInfoCell: {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
 
