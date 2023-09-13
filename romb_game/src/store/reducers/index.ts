@@ -24,17 +24,24 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, rooms: action.payload };
 
         case AppActionTypes.SellCompany: {
-            return { ...state, gameProcces: { sellCompany: action.payload } };
+            return { ...state, sellCompany: action.payload };
         }
 
         case AppActionTypes.ClearSellCompany: {
-            return { ...state, gameProcces: { sellCompany: undefined } }
+            return { ...state, sellCompany: undefined }
         }
 
         case AppActionTypes.OpenInfoCell: {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
-
         }
+
+        case AppActionTypes.UpdateAuctionCompany: {
+            console.log('12')
+            return {
+                ...state, sellCompany: state.sellCompany ? { ...state.sellCompany, auctionPrice: undefined } : undefined
+            }
+        }
+
         case AppActionTypes.LoginUser:
             return {
                 ...state,

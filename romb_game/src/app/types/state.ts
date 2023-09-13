@@ -14,9 +14,7 @@ export interface State {
         idUser: string;
     };
     gameRoom: GameRoom;
-    gameProcces: {
-        sellCompany?: CompanyInfoBuy
-    }
+    sellCompany?: CompanyInfoBuy
 }
 
 export interface AppStore {

@@ -30,6 +30,7 @@ export enum EACTION_WEBSOCKET {
     BUY_COMPANY = 'buy company',
     CANCEL_BUY = 'cancel buy',
     AUCTION_STEP = 'auction step',
+    AUCTION_END = 'auction end'
 }
 
 export enum ENDPOINT {

@@ -1,0 +1,11 @@
+<div class="buy-company_buttons">
+    <div>
+        <p class="buy-company_info__title">Time left:
+            <span class="buy-company_info__desc">{{timer}}s</span>
+        </p>
+        <app-button-standart (click)="companyBuy()" [action]="buyCompany" [width]="'10vw'"
+            [height]="'auto'"></app-button-standart>
+    </div>
+    <app-button-standart (click)="companyCancel()" [action]="refuseBuy" [width]="'10vw'"
+        [height]="'auto'"></app-button-standart>
+</div>

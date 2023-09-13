@@ -27,8 +27,9 @@ export interface GameCellCompanyInfo extends CompanyInfo {
 export interface CompanyInfoBuy extends CompanyInfo {
     indexCompany: number;
     rentCompany: number;
-    auctionPrice?:  number;
+    auctionPrice?: number;
     auctionWinner?: string;
+    isAuction?: boolean;
 }
 
 

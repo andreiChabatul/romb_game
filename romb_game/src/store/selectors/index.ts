@@ -1,7 +1,6 @@
 import { createSelector } from "@ngrx/store";
 import { AppStore, State } from "src/app/types/state";
 
-
 const select = (state: AppStore) => state.state;
 
 export const selectAllPlayer = createSelector(select, (state: State) => state.gameRoom.players);
@@ -15,4 +14,4 @@ export const selectModal = createSelector(select, (state: State) => state.modal.
 export const selectModalError = createSelector(select, (state: State) => state.modal.modalError);
 export const selectRooms = createSelector(select, (state: State) => state.rooms);
 export const selectIndexCell = createSelector(select, (state: State) => state.modal.payload);
-export const selectSellCompany = createSelector(select, (state: State) => state.gameProcces.sellCompany);
+export const selectSellCompany = createSelector(select, (state: State) => state.sellCompany);

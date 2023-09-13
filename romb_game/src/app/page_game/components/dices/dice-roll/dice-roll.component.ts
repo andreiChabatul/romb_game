@@ -11,6 +11,7 @@ export class DiceRollComponent {
 
   diceOne = 0;
   diceTwo = 0;
+  isDouble: boolean;
   actionButton = ACTIONS_BUTTON.DICE_ROLL;
   result: number | string = '...';
 
@@ -20,9 +21,14 @@ export class DiceRollComponent {
     this.result = '...'
     this.diceOne = this.randomrool(this.diceOne);
     this.diceTwo = this.randomrool(this.diceTwo);
+    this.diceOne === this.diceTwo ? this.isDouble = true : this.isDouble = false;
+
     setTimeout(() => {
       this.result = this.diceOne + this.diceTwo;
-      this.webSocketController.sendMessage(EACTION_WEBSOCKET.DICE_ROLL, { value: this.result });
+      this.webSocketController.sendMessage(EACTION_WEBSOCKET.DICE_ROLL, {
+        value: this.result,
+        isDouble: this.isDouble
+      });
     }, 1000
     );
 

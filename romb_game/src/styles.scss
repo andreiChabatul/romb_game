@@ -195,3 +195,13 @@ body {
 .mat-mdc-form-field {
   width: 100%;
 }
+
+
+.buy-company_info__title {
+  @include font_default;
+  font-weight: 600;
+}
+
+.buy-company_info__desc {
+  font-weight: 400;
+}

@@ -18,6 +18,7 @@ export interface MessageChatGamePayload {
 
 export interface DiceRoolGamePayload {
     value: number;
+    isDouble: boolean;
 }
 
 export interface BuyCompanyPayload {

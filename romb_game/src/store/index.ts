@@ -18,8 +18,7 @@ export const stateApp: State = {
     modal: {
         type: 'none',
         modalError: ''
-    },
-    gameProcces: {}
+    }
 };
 
 export const initalState: AppStore = {

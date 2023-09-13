@@ -1,11 +1,10 @@
 @import "./../../../../../scss/color-styles";
 @import "./../../../../../scss/default-styles";
 
-
 .buy-company-wrapper {
-    min-width: 25vw;
+    width: 30vw;
     position: relative;
-    padding: 1.5vw;
+    padding: 1vw;
     background: $light_blue;
     border-radius: 1vw;
 }
@@ -34,21 +33,3 @@
     margin-bottom: 1vw;
 }
 
-.buy-company_info__title {
-    @include font_default;
-    font-weight: 600;
-}
-
-.buy-company_info__desc {
-    font-weight: 400;
-}
-
-.buy-company_buttons {
-    @include flex_c_s;
-    align-items: end;
-}
-
-
-.auction-company_buttons{
-    @include flex_c_s; 
-}
