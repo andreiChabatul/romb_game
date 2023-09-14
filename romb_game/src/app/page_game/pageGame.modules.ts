@@ -18,6 +18,7 @@ import { DiceSideComponent } from './components/dices/dice-side/dice-side.compon
 import { BuyCompanyComponent } from './components/companyAction/buy-company/buy-company.component';
 import { PrimaryBuyComponent } from './components/companyAction/primary-buy/primary-buy.component';
 import { AuctionBuyComponent } from './components/companyAction/auction-buy/auction-buy.component';
+import { PlayerBalanceComponent } from './components/player-balance/player-balance.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { AuctionBuyComponent } from './components/companyAction/auction-buy/auct
         DiceSideComponent,
         BuyCompanyComponent,
         PrimaryBuyComponent,
-        AuctionBuyComponent
+        AuctionBuyComponent,
+        PlayerBalanceComponent
     ],
     imports: [
         SharedModule,

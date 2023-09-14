@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Player } from 'src/app/types';
 
 @Component({
@@ -6,9 +6,8 @@ import { Player } from 'src/app/types';
   templateUrl: './info-player.component.html',
   styleUrls: ['./info-player.component.scss']
 })
-export class InfoPlayerComponent  {
+export class InfoPlayerComponent {
   @Input() player: Player;
   srcImg: string;
-
 
 }
