@@ -12,14 +12,14 @@ export class PlayerBalanceComponent implements OnChanges, OnInit {
 
 
 ngOnInit(): void {
-  console.log(this.balance, 'balance')
+  // console.log(this.balance, 'balance')
 }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes['balance']['currentValue'])
-    console.log(this.previous = Number(changes['currentValue']))
-    console.log(this.balance);
-    console.log(this.previous, 'previous')
+    // console.log(changes['balance']['currentValue'])
+    // console.log(this.previous = Number(changes['currentValue']))
+    // console.log(this.balance);
+    // console.log(this.previous, 'previous')
   }
 
 

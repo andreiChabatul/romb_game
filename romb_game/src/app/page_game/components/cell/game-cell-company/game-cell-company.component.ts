@@ -14,7 +14,7 @@ export class GameCellCompanyComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.gameCell.cellCompany?.shares)
-      this.imgStock = `./../../../assets/industry/${this.gameCell.cellCompany?.shares[0]}.png`;
+      this.imgStock = `./../../../assets/${this.gameCell.cellCompany?.shares[0]}.png`;
   }
 
 }
