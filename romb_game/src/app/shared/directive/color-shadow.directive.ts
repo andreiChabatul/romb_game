@@ -14,7 +14,6 @@ export class ColorShadowDirective implements OnChanges {
     constructor(private el: ElementRef) { }
 
     ngOnChanges(): void {
-        console.log(1)
         if (typeof (this.numberPlayer) !== 'undefined') {
             this.directtion === 'left' || this.directtion === 'right'
                 ? this.el.nativeElement.style.boxShadow = `34px 0px 52px -30px ${COLORS_PLAYER[this.numberPlayer]} inset`

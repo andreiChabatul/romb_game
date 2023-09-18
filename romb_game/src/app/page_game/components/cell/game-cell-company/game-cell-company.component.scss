@@ -4,42 +4,30 @@
 .game-cell-company_container {
     position: relative;
     @include flex-c_s;
+    justify-content: space-around;
     flex-direction: column;
     height: 100%;
+    padding: 5%;
 }
 
 .game-cell-company_container__gorizontalLeft {
     flex-direction: row-reverse;
-    justify-content: flex-end;
-    padding-left: 3%;
 }
 
 .game-cell-company_container__gorizontalRight {
     flex-direction: row;
-    justify-content: flex-end;
-    padding-right: 3%;
 }
 
 .game-cell-company_container__gorizontalTop {
     flex-direction: column-reverse;
-    padding-top: 5%;
-}
-
-.game-cell-company_container__gorizontalBottom {
-    padding-bottom: 9%;
 }
 
 .game-cell-company {
     width: 2.5vw;
     height: 1.7vw;
     border-radius: 0.5vw;
-    position: absolute;
-    left: calc(50% - 1.25vw);
-    top: calc(0px - 0.8vw);
-}
-
-.game-cell-company_img__gorizontal {
-    top: calc(0px + 1.3vw);
+    box-shadow: 0 0 10px $light_blue_text;
+    border: 1px solid black;
 }
 
 .company-info-container {
@@ -77,19 +65,8 @@
     width: 0.7vw;
 }
 
-.game-cell-company_header {
-    position: relative;
-}
 
-.game-cell-company_header__gorizontal {
-    width: 100%;
-    height: 0.2vw;
-}
 
-.game-cell-company_header__vertical {
-    width: 0.5vw;
-    height: 100%;
-}
 
 .game-cell_content {
     height: 100%;
@@ -127,4 +104,19 @@
     z-index: 111;
     left: calc(50% - 2vw);
     top: calc(50% - 2.5vw);
+}
+
+
+.game-cell-buy-stock {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba($light_blue_text, .3);
+    z-index: 11111;
+    cursor: pointer;
+    @include font_default;
+    color: $default_white;
+    font-size: .8vw;
+    text-align: center;
+    padding: 5%;
 }

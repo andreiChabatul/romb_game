@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,  } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { gameCell } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
@@ -9,9 +9,10 @@ import { OpenInfoCell } from 'src/store/actions';
   templateUrl: './game-cell.component.html',
   styleUrls: ['./game-cell.component.scss']
 })
-export class GameCellComponent {
+export class GameCellComponent  {
 
   @Input() gameCellInfo: gameCell;
+  @Input() numberPlayers: number;
 
   constructor(private store: Store<AppStore>) { }
 

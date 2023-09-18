@@ -8,7 +8,7 @@
     height: 48vw;
     display: grid;
     grid-template-columns: repeat(13, calc(79.5vw / 15));
-    grid-template-rows: repeat(13, calc(47.5vw / 10));
+    grid-template-rows: repeat(13, calc(47.3vw / 10));
     @include fon-blue;
     background: #AFE7CC;
     padding: 0;

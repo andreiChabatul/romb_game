@@ -1,6 +1,6 @@
 <div class="game-board-container">
     <app-game-cell *ngFor="let cell of (board$ | async)" [style.grid-area]="cell.gridArea"
-        [gameCellInfo]="cell"></app-game-cell>
+        [gameCellInfo]="cell" [numberPlayers]="numberPlayer"></app-game-cell>
     <div class="game-board_inside-container">
         <p class="game-board_inside__text" *ngIf="isTurn">Your turn</p>
         <div class="game-board_inside__process">

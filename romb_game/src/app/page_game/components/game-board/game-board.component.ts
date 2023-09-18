@@ -15,9 +15,9 @@ export class GameBoardComponent implements OnInit, OnDestroy {
   players$ = this.store.select(selectAllPlayer);
   userId$ = this.store.select(selectIdUser);
   sellCompany$ = this.store.select(selectSellCompany);
+  numberPlayer: number;
   isTurn: boolean;
   subscription$: Subscription;
-
 
   constructor(private store: Store<AppStore>) { }
 
@@ -26,21 +26,20 @@ export class GameBoardComponent implements OnInit, OnDestroy {
       mergeMap((players) => this.userId$.pipe(
         map((userId) => {
           const turnId = players.filter(player => player.isTurn)[0];
+          const numberPlayers = players.filter((player) => player.id === userId);
           if (turnId) {
             userId === turnId.id ? this.isTurn = true : this.isTurn = false;
           } else {
             this.isTurn = false;
           }
+          numberPlayers[0] ? this.numberPlayer = numberPlayers[0].numberPlayer : '';
         })
       )
       )).subscribe();
   }
-
 
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
 
 }
-
-

@@ -16,11 +16,14 @@ export interface CompanyInfo {
     countryCompany: countryCompany;
     nameCompany: nameCompany;
     priceCompany: number;
+    rentCompany: number;
+    priceStock?: number;
 }
 
 export interface GameCellCompanyInfo extends CompanyInfo {
     shares?: stockTypeCell[];
     isPledge: boolean;
+    isMonopoly?: boolean;
     owned?: number;
 }
 
