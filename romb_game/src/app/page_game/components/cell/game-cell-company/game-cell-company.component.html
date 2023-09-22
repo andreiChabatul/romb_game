@@ -6,8 +6,7 @@
         'owned-shadow_bottom': gameCell.cellDirections === 'bottom'}"></div>
     <img *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-pledge_img"
         src="./../../../../../assets/board/pledge.png" alt="pledgeImg">
-    <p *ngIf="gameCell.cellCompany?.isMonopoly && gameCell.cellCompany?.owned === numberPlayers"
-        class="game-cell-buy-stock" (click)="buyStock($event)">Купить акции за
+    <p *ngIf="isBuyStock" class="game-cell-buy-stock" (click)="buyStock($event)">Купить акции за
         ${{gameCell.cellCompany?.priceStock}}</p>
 
     <div class="game-cell-company_container" [ngClass]="{
@@ -23,14 +22,13 @@
             <p *ngIf="!(gameCell.cellCompany?.owned !== undefined)" class="game-cell-company_price">
                 ${{gameCell.cellCompany?.priceCompany}}</p>
             <p *ngIf="gameCell.cellCompany?.owned !== undefined" class="game-cell-company_price">
-                ${{gameCell.cellCompany?.rentCompany}}</p>
+                {{gameCell.cellCompany?.rentCompany | rentPipe: gameCell.cellCompany?.countryCompany}}</p>
         </div>
         <div class="game-cell-company_stock" [ngClass]="{
             'game-cell-company_stock__gorizontal': gameCell.cellDirections === 'left' || gameCell.cellDirections === 'right'
             }">
-            <img class="game-cell-company_stock__img" *ngFor="let i of gameCell.cellCompany?.shares" src={{imgStock}}
-                alt="stock">
-
+            <img class="game-cell-company_stock__img" *ngFor="let i of stockArray"
+                [src]="gameCell.cellCompany?.countryCompany | stockAssets" alt="stock image">
         </div>
     </div>
 

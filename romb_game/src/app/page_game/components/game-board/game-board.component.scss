@@ -10,27 +10,23 @@
     grid-template-columns: repeat(13, calc(79.5vw / 15));
     grid-template-rows: repeat(13, calc(47.3vw / 10));
     @include fon-blue;
-    background: #AFE7CC;
+    background: $light_blue;
     padding: 0;
 }
 
 .game-board_inside-container {
     border: 1px solid $blue;
     grid-area: 3/3/9/14;
-    display: grid;
-    grid-template-columns: 1fr 19vw;
-    align-items: center;
-    justify-items: center;
-    position: relative
+    @include flex-c_s;
+
 }
 
+.game-board-info-cell {
+    height: 100%;
+    width: 69%;
+}
 
-.game-board_inside__text {
-    @include font_default;
-    margin-bottom: 2vw;
-    font-weight: 600;
-    font-size: 22px;
-    position: absolute;
-    top: 0;
-    left: 0;
+.game-board-chat {
+    height: 100%;
+    width: 30%;
 }

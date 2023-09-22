@@ -12,6 +12,8 @@ import { ColorPlayerDirective } from './directive/color-name.directive';
 import { ColorShadowDirective } from './directive/color-shadow.directive';
 import { ColorBackgroundDirective } from './directive/color-back.directive';
 import { ImgAssetsPipe } from './pipe/img-assets.pipe';
+import { StockAssetsPipe } from './pipe/stock.assets.pipe';
+import { RentPipe } from './pipe/rent.pipe';
 
 @NgModule({
     declarations: [
@@ -24,10 +26,12 @@ import { ImgAssetsPipe } from './pipe/img-assets.pipe';
         ColorPlayerDirective,
         ColorShadowDirective,
         ColorBackgroundDirective,
-        ImgAssetsPipe
+        ImgAssetsPipe,
+        StockAssetsPipe,
+        RentPipe
     ],
     imports: [
-        CommonModule , MaterialsModule
+        CommonModule, MaterialsModule
 
     ],
     exports: [
@@ -37,7 +41,9 @@ import { ImgAssetsPipe } from './pipe/img-assets.pipe';
         ColorPlayerDirective,
         ColorShadowDirective,
         ColorBackgroundDirective,
-        ImgAssetsPipe
+        ImgAssetsPipe,
+        StockAssetsPipe,
+        RentPipe
     ],
     providers: [ButtonControllerService],
     bootstrap: []

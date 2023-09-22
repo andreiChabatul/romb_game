@@ -21,7 +21,7 @@ export interface CompanyInfo {
 }
 
 export interface GameCellCompanyInfo extends CompanyInfo {
-    shares?: stockTypeCell[];
+    shares: number;
     isPledge: boolean;
     isMonopoly?: boolean;
     owned?: number;
@@ -100,7 +100,6 @@ export interface gameCell {
     cellSquare?: GameCellSquare;
 }
 
-
 export interface GameCellSquare {
     imageCell: typeSquareImage;
     textCell: string;
@@ -119,10 +118,10 @@ export type nameCompany =
     | 'hsbc' | 'rr' | 'bp';
 
 export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia' | 'britania' | 'sweden' | 'canada' | 'kazah' | 'china' | 'usa';
-export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'chance' | 'mysteryBox' | 'tax';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
-export type stockTypeCell = 'stock' | 'stamp' | 'moneta';
+export type stockTypeCell = 'stock' | 'stamp' | 'bag';
 export type cellType = 'company' | 'empty';
+export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'profit' | 'loss' | 'tax' | 'ukraine';
 
 
 export interface InfoCell {

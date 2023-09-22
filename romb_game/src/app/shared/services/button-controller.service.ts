@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { ChangeModal } from 'src/store/actions';
+import { ChangeModal, DiceRool } from 'src/store/actions';
 import { selectIsLogin } from 'src/store/selectors';
 
 
@@ -57,6 +57,9 @@ export class ButtonControllerService implements OnDestroy {
         break;
       case ACTIONS_BUTTON.ADD_ROOM:
         this.router.navigate(['create-game']);
+        break;
+      case ACTIONS_BUTTON.DICE_ROLL:
+        this.store.dispatch(new DiceRool(true));
         break;
       default:
         break;

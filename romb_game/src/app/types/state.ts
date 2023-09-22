@@ -14,6 +14,13 @@ export interface State {
         idUser: string;
     };
     gameRoom: GameRoom;
+    gameCellState: {
+        isDiceRoll: boolean;
+        isBuyStock: boolean;
+        isSellStock: boolean;
+        isPledgeCompany: boolean;
+        isBuyOutCompany: boolean;
+    }
     sellCompany?: CompanyInfoBuy
 }
 

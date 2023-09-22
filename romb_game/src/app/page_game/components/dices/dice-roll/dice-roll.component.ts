@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
@@ -7,20 +7,31 @@ import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
   templateUrl: './dice-roll.component.html',
   styleUrls: ['./dice-roll.component.scss']
 })
-export class DiceRollComponent {
+export class DiceRollComponent implements OnInit {
 
   diceOne = 0;
   diceTwo = 0;
   isDouble: boolean;
   actionButton = ACTIONS_BUTTON.DICE_ROLL;
   result: number | string = '...';
+  @Input() cheatNumbers: number[];
 
   constructor(private webSocketController: WebSocketController) { }
 
+  ngOnInit(): void {
+    setTimeout(() => this.roolDice(), 0);
+  }
+
   roolDice() {
     this.result = '...'
-    this.diceOne = this.randomrool(this.diceOne);
-    this.diceTwo = this.randomrool(this.diceTwo);
+    if (this.cheatNumbers.length > 1) {
+      this.diceOne = this.cheatNumbers[0];
+      this.diceTwo = this.cheatNumbers[1];
+    } else {
+      this.diceOne = this.randomrool(this.diceOne);
+      this.diceTwo = this.randomrool(this.diceTwo);
+    }
+
     this.diceOne === this.diceTwo ? this.isDouble = true : this.isDouble = false;
 
     setTimeout(() => {

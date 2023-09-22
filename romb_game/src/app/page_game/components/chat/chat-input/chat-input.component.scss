@@ -1,12 +1,11 @@
 @import "./../../../../../scss/default-styles";
 @import "./../../../../../scss/color-styles";
 
-
 .input-container {
     @include flex-c_s;
-    width: 80%;
     border: 3px solid $blue;
     border-radius: 10px;
+    position: relative;
 }
 
 .chat-input-full-width {
@@ -15,7 +14,6 @@
 
 
 .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-floating-label {
-
     font-size: 14px;
     @include font_default;
 }
@@ -43,7 +41,9 @@
 }
 
 .chat-send-button {
-    font-size: 28px;
+    right: 0;
+    position: absolute;
+    font-size: 24px;
     color: $light_blue_text;
     cursor: pointer;
     transition: .4s;
@@ -60,9 +60,4 @@
         color: $orange_default;
         transform: scale(0.9);
     }
-}
-
-.error-container {
-    padding-left: 10px;
-    padding-top: 5px;
 }

@@ -13,10 +13,13 @@ export enum ACTIONS_BUTTON {
     SEARCH_ROOM = 'search',
     ADD_ROOM = 'add',
     SHADOW_ROOM = 'shadow_add',
-    DICE_ROLL = 'Dice roll',
     BUY_COMPANY = 'Buy',
     REFUSE_BUY = 'Cancel',
     AUCTION_STEP = 'Make bid',
+    DICE_ROLL = 'Dice roll',
+    OFFER_DEAL = 'Offer deal',
+    BUY_STOCK = 'Buy stock',
+    BUY_OUT_COMPANY = 'Buy out company'
 }
 
 export enum EACTION_WEBSOCKET {

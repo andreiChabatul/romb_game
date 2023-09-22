@@ -1,8 +1,9 @@
 <div class="message-container">
-    <span *ngIf="message.name" appColorPlayerText [numberPlayer]="message.numberPlayer"
-        class="chat-text chat-text_name">{{message.name}}:
-    </span>
-    <span class="chat-text">{{message.message}}
-        <p class="chat-text_separator">***</p>
-    </span>
+    <div [ngClass]="{'message-container_player': message.name}">
+        <span *ngIf="message.name" appColorPlayerText [numberPlayer]="message.numberPlayer"
+            class="chat-text chat-text_name">{{message.name}}:
+        </span>
+        <span class="chat-text">{{message.message}}</span>
+    </div>
+    <p class="chat-text_separator">***</p>
 </div>

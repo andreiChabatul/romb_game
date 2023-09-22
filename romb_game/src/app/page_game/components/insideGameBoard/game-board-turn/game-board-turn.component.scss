@@ -1,0 +1,29 @@
+@import "./../../../../../scss/color-styles";
+@import "./../../../../../scss/default-styles";
+
+.game-board_inside__text {
+    @include font_22px;
+    text-align: left;
+    width: 100%;
+}
+
+.turn-player-container {
+    height: 100%;
+    @include flex_c_s;
+    flex-direction: column;
+}
+
+.timer-container {
+    @include font_22px;
+    font-size: 24px;
+}
+
+.button-container-turn {
+    @include flex_c_s;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.dice-roll-container {
+    width: 35%;
+}

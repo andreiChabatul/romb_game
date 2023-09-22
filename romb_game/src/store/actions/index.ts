@@ -14,11 +14,17 @@ export enum AppActionTypes {
     SellCompany = '[SELL COMPANY] SellCompany',
     ClearSellCompany = '[CLEAR SELL COMPANY] ClearSellCompany',
     UpdateAuctionCompany = '[UPDATE AUCTION COMPANY] UpdateAuctionCompany',
+    DiceRool = '[DICE ROLL] DiceRool',
 };
 
 export class SellCompany implements Action {
     readonly type = AppActionTypes.SellCompany;
     constructor(public payload: CompanyInfoBuy) { }
+}
+
+export class DiceRool implements Action {
+    readonly type = AppActionTypes.DiceRool;
+    constructor(public payload: boolean) { }
 }
 
 export class UpdateAuctionCompany implements Action {
@@ -78,4 +84,5 @@ export type ActionUnion =
     OpenInfoCell |
     ClearSellCompany |
     SellCompany |
-    UpdateAuctionCompany;
+    UpdateAuctionCompany |
+    DiceRool;

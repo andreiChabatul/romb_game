@@ -18,7 +18,8 @@ import { DiceSideComponent } from './components/dices/dice-side/dice-side.compon
 import { BuyCompanyComponent } from './components/companyAction/buy-company/buy-company.component';
 import { PrimaryBuyComponent } from './components/companyAction/primary-buy/primary-buy.component';
 import { AuctionBuyComponent } from './components/companyAction/auction-buy/auction-buy.component';
-import { PlayerBalanceComponent } from './components/player-balance/player-balance.component';
+import { InfoCellTurnComponent } from './components/insideGameBoard/info-cell-turn/info-cell-turn.component';
+import { GameBoardTurnComponent } from './components/insideGameBoard/game-board-turn/game-board-turn.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { PlayerBalanceComponent } from './components/player-balance/player-balan
         BuyCompanyComponent,
         PrimaryBuyComponent,
         AuctionBuyComponent,
-        PlayerBalanceComponent
+        InfoCellTurnComponent,
+        GameBoardTurnComponent
     ],
     imports: [
         SharedModule,

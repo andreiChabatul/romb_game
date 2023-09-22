@@ -9,6 +9,13 @@ export const stateApp: State = {
         players: [],
         chat: []
     },
+    gameCellState: {
+        isDiceRoll: false,
+        isBuyOutCompany: false,
+        isBuyStock: false,
+        isSellStock: false,
+        isPledgeCompany: false,
+    },
     user: {
         idUser: '',
         isLogin: false,

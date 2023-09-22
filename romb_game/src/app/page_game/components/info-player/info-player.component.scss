@@ -20,7 +20,6 @@
     align-items: center;
     justify-content: flex-start;
     gap: 10%;
-    @include fon-gradient;
     padding: 1%;
 }
 
@@ -55,11 +54,4 @@
 .info-player_text_name {
     font-size: 14px;
     font-weight: 600;
-}
-
-.player-turn {
-    width: 3.5vw;
-    height: 2.5vw;
-    border-radius: 10px;
-    background: darkcyan;
 }

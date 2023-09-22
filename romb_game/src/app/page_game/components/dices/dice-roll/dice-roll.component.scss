@@ -1,9 +1,12 @@
 @import "./../../../../../scss/default-styles";
 @import "./../../../../../scss/color-styles";
 
+.dice-roll-container {
+    width: 100%;
+}
+
 .dice-rool-wrapper {
     @include flex-c_s;
-    padding: 0 15%;
     margin-bottom: 10%;
 }
 
@@ -11,5 +14,4 @@
     @include font_default;
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 15%;
 }

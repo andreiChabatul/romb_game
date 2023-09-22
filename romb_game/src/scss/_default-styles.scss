@@ -40,3 +40,9 @@
     font-family: 'Tektur', cursive;
     color: $light_blue_text;
 }
+
+@mixin font_22px {
+    @include font_default;
+    font-weight: 600;
+    font-size: 22px;
+}

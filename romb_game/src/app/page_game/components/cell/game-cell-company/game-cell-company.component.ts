@@ -12,22 +12,29 @@ export class GameCellCompanyComponent implements OnInit {
 
   @Input() gameCell: gameCell;
   @Input() numberPlayers: number;
-  imgStock: string;
-
-
+  stockArray: null[];
+  isBuyStock: boolean;
   constructor(private webSocketController: WebSocketController) { }
 
   ngOnInit(): void {
-
-    if (this.gameCell.cellCompany?.shares)
-      this.imgStock = `./../../../assets/${this.gameCell.cellCompany?.shares[0]}.png`;
-      console.log(this.numberPlayers)
+    this.isBuyStock = false;
+    this.stockArray = new Array(this.gameCell.cellCompany?.shares);
+    this.checkBuyStock();
   }
 
   buyStock(event: MouseEvent) {
     this.webSocketController.sendMessage(EACTION_WEBSOCKET.BUY_STOCK, { indexCompany: this.gameCell.indexCell });
     event.stopPropagation();
+  }
 
+
+  private checkBuyStock(): void {
+    if (Number(this.gameCell.cellCompany?.shares) < 5
+      && this.gameCell.cellCompany?.owned === this.numberPlayers
+      && this.gameCell.cellCompany?.isMonopoly
+      && this.gameCell.cellCompany?.priceStock) {
+      this.isBuyStock = true;
+    }
   }
 
 }

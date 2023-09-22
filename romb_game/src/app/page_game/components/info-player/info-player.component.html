@@ -5,12 +5,9 @@
             <div appColorBackground [numberPlayer]="player.numberPlayer" class="info-player-circle"></div>
             <div>
                 <p class="info-player_text info-player_text_name">{{player.name}}</p>
-                <p class="info-player_text">
-                    Total: <app-player-balance [balance]="player.total"></app-player-balance>
-                </p>
+                <p class="info-player_text"> Total: {{player.total}} </p>
                 <p class="info-player_text">Capital: {{player.numberPlayer}}</p>
             </div>
-            <div *ngIf="player.isTurn" class="player-turn"></div>
         </div>
     </div>
 </div>
