@@ -28,7 +28,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.DiceRool: {
-            return { ...state, gameCellState: { ...state.gameCellState, isDiceRoll: action.payload } };
+            return { ...state, insideBoardState: { isDiceRoll: action.payload, isButtons: false } };
         }
 
         case AppActionTypes.ClearSellCompany: {

@@ -9,8 +9,11 @@ export const stateApp: State = {
         players: [],
         chat: []
     },
-    gameCellState: {
+    insideBoardState: {
         isDiceRoll: false,
+        isButtons: true,
+    },
+    gameCellState: {
         isBuyOutCompany: false,
         isBuyStock: false,
         isSellStock: false,

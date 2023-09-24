@@ -1,11 +1,23 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { DiceRool } from 'src/store/actions';
 
 @Component({
   selector: 'app-dice-roll',
   templateUrl: './dice-roll.component.html',
-  styleUrls: ['./dice-roll.component.scss']
+  styleUrls: ['./dice-roll.component.scss'],
+  animations: [
+    trigger('animationTriggerName', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate('0.4s', style({ opacity: 1 })),
+      ])
+    ])
+  ]
 })
 export class DiceRollComponent implements OnInit {
 
@@ -16,7 +28,7 @@ export class DiceRollComponent implements OnInit {
   result: number | string = '...';
   @Input() cheatNumbers: number[];
 
-  constructor(private webSocketController: WebSocketController) { }
+  constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
   ngOnInit(): void {
     setTimeout(() => this.roolDice(), 0);
@@ -42,6 +54,8 @@ export class DiceRollComponent implements OnInit {
       });
     }, 1000
     );
+
+    setTimeout(() => this.store.dispatch(new DiceRool(false)), 2000);
 
   }
 

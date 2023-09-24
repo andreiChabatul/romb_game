@@ -1,28 +1,37 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
-import { selectCellGameState } from 'src/store/selectors';
+import { selectCellGameState, selectInsideBoardState } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board-turn',
   templateUrl: './game-board-turn.component.html',
-  styleUrls: ['./game-board-turn.component.scss']
+  styleUrls: ['./game-board-turn.component.scss'],
+  animations: [
+    trigger('animationTriggerName', [
+      transition('void => *', [
+        style({
+          opacity: 0,
+          transform: 'scale(0)',
+        }),
+        animate('0.3s', style({
+          opacity: 1,
+          transform: 'scale(1)'
+        })),
+      ])
+    ])
+  ]
 })
 export class GameBoardTurnComponent implements OnInit {
 
   minute: number;
   seconds: number;
   fontColor: string;
-  cellGameState$ = this.store.select(selectCellGameState);
+  insideBoardState$ = this.store.select(selectInsideBoardState);
   cheatNumbers: number[];
 
-  buttons = [
-    { action: ACTIONS_BUTTON.DICE_ROLL, width: '19vw', height: '7vh', show: true },
-    { action: ACTIONS_BUTTON.OFFER_DEAL, width: '19vw', height: '7vh', show: true },
-    { action: ACTIONS_BUTTON.BUY_STOCK, width: '19vw', height: '7vh', show: false },
-    { action: ACTIONS_BUTTON.BUY_OUT_COMPANY, width: '19vw', height: '7vh', show: true },
-  ]
+
 
   constructor(private store: Store<AppStore>) { }
 

@@ -15,11 +15,14 @@ export interface State {
     };
     gameRoom: GameRoom;
     gameCellState: {
-        isDiceRoll: boolean;
         isBuyStock: boolean;
         isSellStock: boolean;
         isPledgeCompany: boolean;
         isBuyOutCompany: boolean;
+    },
+    insideBoardState: {
+        isDiceRoll: boolean,
+        isButtons: boolean,
     }
     sellCompany?: CompanyInfoBuy
 }

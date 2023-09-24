@@ -1,0 +1,6 @@
+<div class="button-container-turn">
+    <div *ngFor="let button of buttons">
+        <app-button-standart *ngIf="button.show" [width]="button.width" [height]="button.height"
+            [action]="button.action"></app-button-standart>
+    </div>
+</div>

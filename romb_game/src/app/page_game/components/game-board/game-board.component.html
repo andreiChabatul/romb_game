@@ -2,7 +2,7 @@
     <app-game-cell *ngFor="let cell of (board$ | async)" [style.grid-area]="cell.gridArea" [gameCellInfo]="cell"
         [numberPlayers]="numberPlayer"></app-game-cell>
     <div class="game-board_inside-container">
-        <app-info-cell-turn class="game-board-info-cell"></app-info-cell-turn>
+        <app-inside-board-player class="game-board-inside-player"></app-inside-board-player>
         <app-chat-game class="game-board-chat"></app-chat-game>
     </div>
 </div>

@@ -16,3 +16,4 @@ export const selectRooms = createSelector(select, (state: State) => state.rooms)
 export const selectIndexCell = createSelector(select, (state: State) => state.modal.payload);
 export const selectSellCompany = createSelector(select, (state: State) => state.sellCompany);
 export const selectCellGameState = createSelector(select, (state: State) => state.gameCellState);
+export const selectInsideBoardState = createSelector(select, (state: State) => state.insideBoardState);

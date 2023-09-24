@@ -20,6 +20,9 @@ import { PrimaryBuyComponent } from './components/companyAction/primary-buy/prim
 import { AuctionBuyComponent } from './components/companyAction/auction-buy/auction-buy.component';
 import { InfoCellTurnComponent } from './components/insideGameBoard/info-cell-turn/info-cell-turn.component';
 import { GameBoardTurnComponent } from './components/insideGameBoard/game-board-turn/game-board-turn.component';
+import { StartTurnButtonsComponent } from './components/insideGameBoard/start-turn-buttons/start-turn-buttons.component';
+import { InsideBoardPlayerComponent } from './components/insideGameBoard/inside-board-player/inside-board-player.component';
+
 
 @NgModule({
     declarations: [
@@ -40,7 +43,9 @@ import { GameBoardTurnComponent } from './components/insideGameBoard/game-board-
         PrimaryBuyComponent,
         AuctionBuyComponent,
         InfoCellTurnComponent,
-        GameBoardTurnComponent
+        GameBoardTurnComponent,
+        StartTurnButtonsComponent,
+        InsideBoardPlayerComponent
     ],
     imports: [
         SharedModule,
