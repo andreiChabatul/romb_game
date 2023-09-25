@@ -1,1 +1,17 @@
-<p [@fadeAnimation]="{value: 'style', params: { start: 0, end: 1, timing: 500 } }">Inside cell info</p>
+<mat-spinner *ngIf="!(infoCellTurn$ | async); else elseBlock" class="spinner-info-cell"></mat-spinner>
+<ng-template #elseBlock>
+    <div class="info-cell-container">
+        <img class="info-cell-img" [src]="(infoCellTurn$ |async)?.nameCell | imgAssets" alt="img info">
+        <div class="info-desc-container">
+            <div>
+                <p class="info-cell-text info-cell-title">{{(infoCellTurn$ |async)?.titleCell }}</p>
+                <p class="info-cell-text">{{(infoCellTurn$ |async)?.description}}$</p>
+                <p class="info-cell-text">У вас достаточно средств</p>
+            </div>
+            <div class="info-cell-buttons">
+                <app-button-standart *ngFor="let button of this.buttonsResult" [width]="button.width"
+                    [height]="button.height" [action]="button.action"></app-button-standart>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CompanyInfoBuy, GameRoom, InfoRoom, ResponseAuth, modal } from 'src/app/types';
+import { CompanyInfoBuy, GameRoom, InfoRoom, ResponseAuth, infoCellTurn, modal } from 'src/app/types';
 
 export enum AppActionTypes {
     UpdateGameRoom = '[UPDATE GAME ROOM] UpdateGameRoom',
@@ -15,6 +15,8 @@ export enum AppActionTypes {
     ClearSellCompany = '[CLEAR SELL COMPANY] ClearSellCompany',
     UpdateAuctionCompany = '[UPDATE AUCTION COMPANY] UpdateAuctionCompany',
     DiceRool = '[DICE ROLL] DiceRool',
+    ControlStock = '[CONTROL STOCK] ControlStock',
+    InfoCellTurn = '[INFO CELL TURN] InfoCellTurn',
 };
 
 export class SellCompany implements Action {
@@ -22,8 +24,18 @@ export class SellCompany implements Action {
     constructor(public payload: CompanyInfoBuy) { }
 }
 
+export class InfoCellTurnAdd implements Action {
+    readonly type = AppActionTypes.InfoCellTurn;
+    constructor(public payload: infoCellTurn) { }
+}
+
 export class DiceRool implements Action {
     readonly type = AppActionTypes.DiceRool;
+    constructor(public payload: boolean) { }
+}
+
+export class ControlStock implements Action {
+    readonly type = AppActionTypes.ControlStock;
     constructor(public payload: boolean) { }
 }
 
@@ -85,4 +97,6 @@ export type ActionUnion =
     ClearSellCompany |
     SellCompany |
     UpdateAuctionCompany |
-    DiceRool;
+    DiceRool |
+    ControlStock |
+    InfoCellTurnAdd;

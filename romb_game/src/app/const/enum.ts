@@ -14,12 +14,15 @@ export enum ACTIONS_BUTTON {
     ADD_ROOM = 'add',
     SHADOW_ROOM = 'shadow_add',
     BUY_COMPANY = 'Buy',
-    REFUSE_BUY = 'Cancel',
     AUCTION_STEP = 'Make bid',
     DICE_ROLL = 'Dice roll',
     OFFER_DEAL = 'Offer deal',
     BUY_STOCK = 'Buy stock',
-    BUY_OUT_COMPANY = 'Buy out company'
+    BUY_OUT_COMPANY = 'Buy out company',
+    PAY = 'Pay',
+    SELL_STOCK = 'Sell stock',
+    MORTGAGE = 'Mortgage',
+    START_AUCTION = 'Start auction'
 }
 
 export enum EACTION_WEBSOCKET {
@@ -31,10 +34,11 @@ export enum EACTION_WEBSOCKET {
     DICE_ROLL = 'dice roll',
     SELL_COMPANY = 'sell company',
     BUY_COMPANY = 'buy company',
-    CANCEL_BUY = 'cancel buy',
+    START_AUCTION = 'Start auction',
     AUCTION_STEP = 'auction step',
     AUCTION_END = 'auction end',
-    BUY_STOCK = 'buy stock'
+    BUY_STOCK = 'buy stock',
+    INFO_CELL_TURN = 'info cell turn'
 }
 
 export enum ENDPOINT {

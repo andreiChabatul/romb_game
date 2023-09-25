@@ -148,3 +148,20 @@ export interface Share {
     monopolyPrice: number;
     quallity: number[];
 }
+
+export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none';
+
+export type infoCellTurn = {
+    nameCell: nameCompany | typeSquareImage;
+    titleCell: string;
+    description: string;
+    indexCompany: number;
+    buttons: infoCellButtons;
+}
+
+export type ButtonStandart = {
+    action: ACTIONS_BUTTON;
+    width: string;
+    height: string;
+    show: boolean;
+}

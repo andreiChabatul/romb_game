@@ -16,7 +16,6 @@ import { DiceRollComponent } from './components/dices/dice-roll/dice-roll.compon
 import { DiceComponent } from './components/dices/dice/dice.component';
 import { DiceSideComponent } from './components/dices/dice-side/dice-side.component';
 import { BuyCompanyComponent } from './components/companyAction/buy-company/buy-company.component';
-import { PrimaryBuyComponent } from './components/companyAction/primary-buy/primary-buy.component';
 import { AuctionBuyComponent } from './components/companyAction/auction-buy/auction-buy.component';
 import { InfoCellTurnComponent } from './components/insideGameBoard/info-cell-turn/info-cell-turn.component';
 import { GameBoardTurnComponent } from './components/insideGameBoard/game-board-turn/game-board-turn.component';
@@ -40,7 +39,6 @@ import { InsideBoardPlayerComponent } from './components/insideGameBoard/inside-
         DiceComponent,
         DiceSideComponent,
         BuyCompanyComponent,
-        PrimaryBuyComponent,
         AuctionBuyComponent,
         InfoCellTurnComponent,
         GameBoardTurnComponent,

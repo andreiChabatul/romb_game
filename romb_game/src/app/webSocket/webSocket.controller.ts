@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { CompanyInfoBuy, GameRoom, InfoRoom } from '../types';
+import { CompanyInfoBuy, GameRoom, InfoRoom, infoCellTurn } from '../types';
 import { Store } from '@ngrx/store';
-import { SellCompany, UpdateAuctionCompany, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
+import { InfoCellTurnAdd, SellCompany, UpdateAuctionCompany, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
@@ -44,6 +44,12 @@ export class WebSocketController {
         case EACTION_WEBSOCKET.SELL_COMPANY: {
           const auctionCompany = wsMessage.payload as CompanyInfoBuy;
           this.store.dispatch(new SellCompany(auctionCompany));
+          break;
+        }
+
+        case EACTION_WEBSOCKET.INFO_CELL_TURN: {
+          const InfoCellTurn = wsMessage.payload as infoCellTurn;
+          this.store.dispatch(new InfoCellTurnAdd(InfoCellTurn));
           break;
         }
 

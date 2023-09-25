@@ -13,8 +13,12 @@ import { DiceRool } from 'src/store/actions';
   animations: [
     trigger('animationTriggerName', [
       transition('void => *', [
-        style({ opacity: 0 }),
-        animate('0.4s', style({ opacity: 1 })),
+        style({
+          opacity: 0,
+        }),
+        animate('0.4s', style({
+          opacity: 1,
+        })),
       ])
     ])
   ]

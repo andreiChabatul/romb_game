@@ -1,4 +1,4 @@
-import { CompanyInfoBuy, GameRoom, InfoRoom, modal } from ".";
+import { CompanyInfoBuy, GameRoom, InfoRoom, infoCellTurn, modal } from ".";
 
 export interface State {
 
@@ -23,7 +23,8 @@ export interface State {
     insideBoardState: {
         isDiceRoll: boolean,
         isButtons: boolean,
-    }
+    },
+    infoCellTurn?: infoCellTurn,
     sellCompany?: CompanyInfoBuy
 }
 

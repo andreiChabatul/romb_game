@@ -19,6 +19,5 @@
         <app-auction-buy *ngIf="(sellCompany$ | async)?.auctionPrice"
             [auctionWinner]="(sellCompany$ | async)?.auctionWinner"
             [auctionPrice]="(sellCompany$ | async)?.auctionPrice" [indexCompany]="indexCompany"></app-auction-buy>
-        <app-primary-buy *ngIf="!((sellCompany$ | async)?.isAuction)" [indexCompany]="indexCompany"></app-primary-buy>
     </div>
 </div>

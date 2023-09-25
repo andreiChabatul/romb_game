@@ -1,1 +1,44 @@
+@import "./../../../../../scss/default-styles";
+@import "./../../../../../scss/color-styles";
 
+.spinner-info-cell {
+    position: absolute;
+    bottom: calc(50% - 4vw);
+    left: calc(50% - 4vw);
+    width: 8vw !important;
+    height: 8vw !important;
+}
+
+.info-cell-container {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    row-gap: 2vw;
+}
+
+.info-cell-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.info-cell-img {
+    width: 8vw;
+    justify-self: center;
+}
+
+.info-cell-text {
+    @include font_default;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 1vw;
+}
+
+.info-cell-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.info-desc-container {
+    display: flex;
+    gap: 2vw;
+}

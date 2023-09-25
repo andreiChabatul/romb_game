@@ -1,7 +1,7 @@
 <div class="turn-player-container">
     <p class="game-board_inside__text">Your turn</p>
     <div @animationTriggerName>
-    <app-info-cell-turn *ngIf="!(insideBoardState$ | async)?.isButtons && !(insideBoardState$ | async)?.isDiceRoll">
+    <app-info-cell-turn class="info-cell" *ngIf="!(insideBoardState$ | async)?.isButtons && !(insideBoardState$ | async)?.isDiceRoll">
     </app-info-cell-turn>
     <app-start-turn-buttons *ngIf="(insideBoardState$ | async)?.isButtons"></app-start-turn-buttons>
     <app-dice-roll class="dice-roll-container" *ngIf="(insideBoardState$ | async)?.isDiceRoll"
