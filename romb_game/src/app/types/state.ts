@@ -1,4 +1,4 @@
-import { CompanyInfoBuy, GameRoom, InfoRoom, infoCellTurn, modal } from ".";
+import { GameRoom, InfoRoom, infoCellTurn, modal } from ".";
 
 export interface State {
 
@@ -25,7 +25,6 @@ export interface State {
         isButtons: boolean,
     },
     infoCellTurn?: infoCellTurn,
-    sellCompany?: CompanyInfoBuy
 }
 
 export interface AppStore {

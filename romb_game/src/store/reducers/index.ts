@@ -9,7 +9,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, modal: { ...state.modal, type: 'none' } };
 
         case AppActionTypes.UpdateGameRoom:
-            return { ...state, gameRoom: action.payload };
+            return { ...state, gameRoom: { ...action.payload, chat: state.gameRoom.chat } };
 
         case AppActionTypes.ChangeModal:
             return { ...state, modal: { ...state.modal, modalError: '', type: action.payload } };
@@ -23,10 +23,6 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.UpdateRooms:
             return { ...state, rooms: action.payload };
 
-        case AppActionTypes.SellCompany: {
-            return { ...state, sellCompany: action.payload };
-        }
-
         case AppActionTypes.DiceRool: {
             return { ...state, insideBoardState: { isDiceRoll: action.payload, isButtons: false } };
         }
@@ -39,19 +35,12 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, gameCellState: { ...state.gameCellState, isBuyStock: action.payload } };
         }
 
-        case AppActionTypes.ClearSellCompany: {
-            return { ...state, sellCompany: undefined }
-        }
-
         case AppActionTypes.OpenInfoCell: {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
         }
 
-        case AppActionTypes.UpdateAuctionCompany: {
-            console.log('12')
-            return {
-                ...state, sellCompany: state.sellCompany ? { ...state.sellCompany, auctionPrice: undefined } : undefined
-            }
+        case AppActionTypes.UpdateChatRoom: {
+            return { ...state, gameRoom: { ...state.gameRoom, chat: action.payload } };
         }
 
         case AppActionTypes.LoginUser:

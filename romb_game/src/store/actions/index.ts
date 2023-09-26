@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CompanyInfoBuy, GameRoom, InfoRoom, ResponseAuth, infoCellTurn, modal } from 'src/app/types';
+import { ChatMessage, GameRoom, InfoRoom, ResponseAuth, UpdateRoom, infoCellTurn, modal } from 'src/app/types';
 
 export enum AppActionTypes {
     UpdateGameRoom = '[UPDATE GAME ROOM] UpdateGameRoom',
@@ -11,18 +11,13 @@ export enum AppActionTypes {
     LoginUser = '[LOGIN USER] LoginUser',
     OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell',
     AuctionCompany = '[AUCTION COMPANY] AuctionCompany',
-    SellCompany = '[SELL COMPANY] SellCompany',
     ClearSellCompany = '[CLEAR SELL COMPANY] ClearSellCompany',
     UpdateAuctionCompany = '[UPDATE AUCTION COMPANY] UpdateAuctionCompany',
     DiceRool = '[DICE ROLL] DiceRool',
     ControlStock = '[CONTROL STOCK] ControlStock',
     InfoCellTurn = '[INFO CELL TURN] InfoCellTurn',
+    UpdateChatRoom = '[UPDATE CHAT ROOM] UpdateChatRoom',
 };
-
-export class SellCompany implements Action {
-    readonly type = AppActionTypes.SellCompany;
-    constructor(public payload: CompanyInfoBuy) { }
-}
 
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
@@ -39,17 +34,14 @@ export class ControlStock implements Action {
     constructor(public payload: boolean) { }
 }
 
-export class UpdateAuctionCompany implements Action {
-    readonly type = AppActionTypes.UpdateAuctionCompany;
-}
-
-export class ClearSellCompany implements Action {
-    readonly type = AppActionTypes.ClearSellCompany;
-}
-
 export class UpdateGameRoom implements Action {
     readonly type = AppActionTypes.UpdateGameRoom;
-    constructor(public payload: GameRoom) { }
+    constructor(public payload: UpdateRoom) { }
+}
+
+export class UpdateChatRoom implements Action {
+    readonly type = AppActionTypes.UpdateChatRoom;
+    constructor(public payload: ChatMessage[]) { }
 }
 
 export class CloseModal implements Action {
@@ -94,9 +86,7 @@ export type ActionUnion =
     UpdateRooms |
     LoginUser |
     OpenInfoCell |
-    ClearSellCompany |
-    SellCompany |
-    UpdateAuctionCompany |
     DiceRool |
     ControlStock |
-    InfoCellTurnAdd;
+    InfoCellTurnAdd |
+    UpdateChatRoom;

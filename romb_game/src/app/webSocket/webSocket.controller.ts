@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { CompanyInfoBuy, GameRoom, InfoRoom, infoCellTurn } from '../types';
+import { ChatRoom, GameRoom, InfoRoom, UpdateRoom, infoCellTurn } from '../types';
 import { Store } from '@ngrx/store';
-import { InfoCellTurnAdd, SellCompany, UpdateAuctionCompany, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
+import { InfoCellTurnAdd, UpdateChatRoom, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
@@ -37,15 +37,14 @@ export class WebSocketController {
           break;
 
         case EACTION_WEBSOCKET.UPDATE_ROOM:
-          const updateRoom = wsMessage.payload as GameRoom;
-          this.store.dispatch(new UpdateGameRoom(updateRoom))
+          const updateRoom = wsMessage.payload as UpdateRoom;
+          this.store.dispatch(new UpdateGameRoom(updateRoom));
           break;
 
-        case EACTION_WEBSOCKET.SELL_COMPANY: {
-          const auctionCompany = wsMessage.payload as CompanyInfoBuy;
-          this.store.dispatch(new SellCompany(auctionCompany));
+        case EACTION_WEBSOCKET.UPDATE_CHAT:
+          const updateChat = wsMessage.payload as ChatRoom;
+          this.store.dispatch(new UpdateChatRoom(updateChat.chat));
           break;
-        }
 
         case EACTION_WEBSOCKET.INFO_CELL_TURN: {
           const InfoCellTurn = wsMessage.payload as infoCellTurn;

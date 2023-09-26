@@ -27,21 +27,18 @@ export interface GameCellCompanyInfo extends CompanyInfo {
     owned?: number;
 }
 
-export interface CompanyInfoBuy extends CompanyInfo {
-    indexCompany: number;
-    rentCompany: number;
-    auctionPrice?: number;
-    auctionWinner?: string;
-    isAuction?: boolean;
+export interface GameRoom extends UpdateRoom {
+    chat: ChatMessage[];
 }
 
-
-export interface GameRoom {
+export interface UpdateRoom {
     idRoom: string;
     players: Player[];
     board: gameCell[];
-    chat: ChatMessage[];
 }
+
+export type ChatRoom = { chat: ChatMessage[] };
+
 
 export interface ChatMessage {
     name: string;

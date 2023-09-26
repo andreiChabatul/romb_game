@@ -14,7 +14,6 @@ export enum ACTIONS_BUTTON {
     ADD_ROOM = 'add',
     SHADOW_ROOM = 'shadow_add',
     BUY_COMPANY = 'Buy',
-    AUCTION_STEP = 'Make bid',
     DICE_ROLL = 'Dice roll',
     OFFER_DEAL = 'Offer deal',
     BUY_STOCK = 'Buy stock',
@@ -22,7 +21,9 @@ export enum ACTIONS_BUTTON {
     PAY = 'Pay',
     SELL_STOCK = 'Sell stock',
     MORTGAGE = 'Mortgage',
-    START_AUCTION = 'Start auction'
+    START_AUCTION = 'Start auction',
+    AUCTION_STEP = 'Make bid',
+    AUCTION_LEAVE = 'Leave'
 }
 
 export enum EACTION_WEBSOCKET {
@@ -31,12 +32,12 @@ export enum EACTION_WEBSOCKET {
     JOIN_GAME = 'join game',
     MESSAGE_CHAT = 'message chat',
     UPDATE_ROOM = 'update room',
+    UPDATE_CHAT = 'update chat',
     DICE_ROLL = 'dice roll',
-    SELL_COMPANY = 'sell company',
     BUY_COMPANY = 'buy company',
-    START_AUCTION = 'Start auction',
+    START_AUCTION = 'start auction',
     AUCTION_STEP = 'auction step',
-    AUCTION_END = 'auction end',
+    AUCTION_LEAVE = 'auction leave',
     BUY_STOCK = 'buy stock',
     INFO_CELL_TURN = 'info cell turn'
 }
