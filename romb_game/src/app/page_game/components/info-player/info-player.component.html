@@ -1,5 +1,5 @@
 <div class="info-player-container">
-    <div class="info-player" [ngClass]="{'info-player_turn':player.isTurn}">
+    <div class="info-player" [ngClass]="{'info-player_turn': isTurn}">
         <div class="info-player_gradient">
             <img class="info-player_img-type" src="./../../../assets/board/defaultAvatar.png" alt="typeImg">
             <div appColorBackground [numberPlayer]="player.numberPlayer" class="info-player-circle"></div>

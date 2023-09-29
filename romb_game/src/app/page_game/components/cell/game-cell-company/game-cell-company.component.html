@@ -19,9 +19,9 @@
             <img class="game-cell-company_logo" [src]="gameCell.cellCompany?.nameCompany | imgAssets" [ngClass]="{
         'game-cell-company_logo__gorizontal': gameCell.cellDirections === 'left' || gameCell.cellDirections === 'right'
         }" alt='name assets'>
-            <p *ngIf="!(gameCell.cellCompany?.owned !== undefined)" class="game-cell-company_price">
+            <p *ngIf="!(gameCell.cellCompany?.owned !== null)" class="game-cell-company_price">
                 ${{gameCell.cellCompany?.priceCompany}}</p>
-            <p *ngIf="gameCell.cellCompany?.owned !== undefined" class="game-cell-company_price">
+            <p *ngIf="gameCell.cellCompany?.owned !== null" class="game-cell-company_price">
                 {{gameCell.cellCompany?.rentCompany | rentPipe: gameCell.cellCompany?.countryCompany}}</p>
         </div>
         <div class="game-cell-company_stock" [ngClass]="{

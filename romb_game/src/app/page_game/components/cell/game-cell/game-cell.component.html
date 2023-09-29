@@ -1,6 +1,5 @@
 <div class="game-cell-container" (click)="clickCellInfo()">
-        <app-game-cell-company *ngIf="gameCellInfo.cellCompany" [gameCell]="gameCellInfo"
-                [numberPlayers]="numberPlayers">
+        <app-game-cell-company *ngIf="gameCellInfo.cellCompany" [gameCell]="gameCellInfo">
         </app-game-cell-company>
         <app-game-cell-square *ngIf="gameCellInfo.cellSquare" [directions]="gameCellInfo.cellDirections"
                 [cellSquare]=" gameCellInfo.cellSquare">

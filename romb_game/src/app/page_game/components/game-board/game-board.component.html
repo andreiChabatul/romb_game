@@ -1,12 +1,8 @@
 <div class="game-board-container">
-    <app-game-cell *ngFor="let cell of (board$ | async)" [style.grid-area]="cell.gridArea" [gameCellInfo]="cell"
-        [numberPlayers]="numberPlayer"></app-game-cell>
+    <app-game-cell *ngFor="let cell of (board$ | async)" [style.grid-area]="cell.gridArea"
+        [gameCellInfo]="cell"></app-game-cell>
     <div class="game-board_inside-container">
-        <app-game-board-turn class="game-board-inside-player" ></app-game-board-turn>
-        <!-- 
-            <!-- <app-info-cell-turn class="info-cell" *ngIf="infoCellTurn$ | async"></app-info-cell-turn> -->
-        <!-- <ng-template #elseBlock><app-player-info-inside></app-player-info-inside>
-            </ng-template>  -->
+        <app-game-board-turn class="game-board-inside-player"></app-game-board-turn>
         <app-chat-game class="game-board-chat"></app-chat-game>
     </div>
 </div>

@@ -8,7 +8,6 @@ export interface Player {
     image: string;
     total: number;
     capital: number;
-    isTurn: boolean;
     numberPlayer: number;
 }
 
@@ -33,9 +32,13 @@ export interface GameRoom extends UpdateRoom {
 
 export interface UpdateRoom {
     idRoom: string;
-    players: Player[];
+    players: updatePlayer;
     board: gameCell[];
     turnId: string;
+}
+
+export type updatePlayer = {
+    [key: string]: Player
 }
 
 export type ChatRoom = { chat: ChatMessage[] };
@@ -120,33 +123,6 @@ export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type stockTypeCell = 'stock' | 'stamp' | 'bag';
 export type cellType = 'company' | 'empty';
 export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'profit' | 'loss' | 'tax' | 'ukraine';
-
-
-export interface InfoCell {
-    typeCell: cellType,
-    nameCell: nameCompany,
-    country: countryCompany,
-    imageCell: string;
-    description: string;
-    initalCost: number;
-    collateralValue: number;
-    sharePrice: number;
-    companyProfit: NoShare | Share;
-
-}
-
-export interface NoShare {
-    type: stockTypeCell;
-    quallity: number[];
-}
-
-export interface Share {
-    type: stockTypeCell;
-    defaultPrice: number;
-    monopolyPrice: number;
-    quallity: number[];
-}
-
 export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none';
 
 export type infoCellTurn = {

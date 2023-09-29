@@ -12,8 +12,7 @@ import { OpenInfoCell } from 'src/store/actions';
 export class GameCellComponent  {
 
   @Input() gameCellInfo: gameCell;
-  @Input() numberPlayers: number;
-
+  
   constructor(private store: Store<AppStore>) { }
 
   clickCellInfo() {

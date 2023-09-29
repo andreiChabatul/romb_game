@@ -6,7 +6,7 @@ export const stateApp: State = {
     gameRoom: {
         idRoom: '',
         board: [],
-        players: [],
+        players: {},
         chat: [],
         turnId: ''
     },
