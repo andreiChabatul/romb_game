@@ -1,11 +1,11 @@
 <div class="turn-player-container">
-    <p class="game-board_inside__text">Your turn</p>
+    <p *ngIf="isTurn" class="game-board_inside__text">Your turn</p>
     <div @animationTriggerName>
-    <app-info-cell-turn class="info-cell" *ngIf="!(insideBoardState$ | async)?.isButtons && !(insideBoardState$ | async)?.isDiceRoll">
-    </app-info-cell-turn>
-    <app-start-turn-buttons *ngIf="(insideBoardState$ | async)?.isButtons"></app-start-turn-buttons>
-    <app-dice-roll class="dice-roll-container" *ngIf="(insideBoardState$ | async)?.isDiceRoll"
-        [cheatNumbers]="cheatNumbers"></app-dice-roll>
+        <app-info-cell-turn class="info-cell"
+            *ngIf="(infoCellTurn$ | async) && !(insideBoardState$ | async)?.isDiceRoll"> </app-info-cell-turn>
+        <app-start-turn-buttons *ngIf="(insideBoardState$ | async)?.isButtons && isTurn"></app-start-turn-buttons>
+        <app-dice-roll (resetDice)="resetCheat()" class="dice-roll-container"
+            *ngIf="(insideBoardState$ | async)?.isDiceRoll" [cheatNumbers]="cheatNumbers"></app-dice-roll>
     </div>
     <div class="timer-container" [ngStyle]="{'color':fontColor}">0{{minute}}:{{seconds}}</div>
 </div>

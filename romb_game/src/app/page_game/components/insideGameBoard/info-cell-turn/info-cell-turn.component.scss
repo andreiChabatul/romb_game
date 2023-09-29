@@ -28,17 +28,17 @@
 
 .info-cell-text {
     @include font_default;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     margin-bottom: 1vw;
 }
 
 .info-cell-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
 .info-desc-container {
     display: flex;
-    gap: 2vw;
+    gap: 1vw;
 }

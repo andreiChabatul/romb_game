@@ -6,6 +6,7 @@ const select = (state: AppStore) => state.state;
 export const selectAllPlayer = createSelector(select, (state: State) => state.gameRoom.players);
 export const selectBoard = createSelector(select, (state: State) => state.gameRoom.board);
 export const selectChat = createSelector(select, (state: State) => state.gameRoom.chat);
+export const selectPlayerTurnId = createSelector(select, (state: State) => state.gameRoom.turnId);
 export const selectIdRoom = createSelector(select, (state: State) => state.gameRoom.idRoom);
 export const selectIsLogin = createSelector(select, (state: State) => state.user.isLogin);
 export const selectIdUser = createSelector(select, (state: State) => state.user.idUser);

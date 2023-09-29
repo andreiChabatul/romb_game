@@ -35,6 +35,7 @@ export interface UpdateRoom {
     idRoom: string;
     players: Player[];
     board: gameCell[];
+    turnId: string;
 }
 
 export type ChatRoom = { chat: ChatMessage[] };
@@ -152,8 +153,10 @@ export type infoCellTurn = {
     nameCell: nameCompany | typeSquareImage;
     titleCell: string;
     description: string;
-    indexCompany: number;
+    indexCompany?: number;
+    descriptionTwo?: string;
     buttons: infoCellButtons;
+    dept?: number;
 }
 
 export type ButtonStandart = {

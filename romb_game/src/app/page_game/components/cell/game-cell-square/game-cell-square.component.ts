@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GameCellSquare, cellDirections } from 'src/app/types';
 
 @Component({
@@ -6,14 +6,9 @@ import { GameCellSquare, cellDirections } from 'src/app/types';
   templateUrl: './game-cell-square.component.html',
   styleUrls: ['./game-cell-square.component.scss']
 })
-export class GameCellSquareComponent implements OnInit {
+export class GameCellSquareComponent {
 
   @Input() cellSquare: GameCellSquare;
   @Input() directions: cellDirections;
-  imageCell: string;
-
-  ngOnInit(): void {
-    this.imageCell = `./../../../assets/board/${this.cellSquare.imageCell}.png`;
-  }
 
 }

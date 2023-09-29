@@ -39,6 +39,10 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
         }
 
+        case AppActionTypes.EndTurn: {
+            return { ...state, infoCellTurn: undefined, insideBoardState: { ...state.insideBoardState, isButtons: true } }
+        }
+
         case AppActionTypes.UpdateChatRoom: {
             return { ...state, gameRoom: { ...state.gameRoom, chat: action.payload } };
         }

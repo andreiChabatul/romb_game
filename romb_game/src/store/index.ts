@@ -7,7 +7,8 @@ export const stateApp: State = {
         idRoom: '',
         board: [],
         players: [],
-        chat: []
+        chat: [],
+        turnId: ''
     },
     insideBoardState: {
         isDiceRoll: false,

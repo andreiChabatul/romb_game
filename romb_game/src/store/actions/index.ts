@@ -17,11 +17,16 @@ export enum AppActionTypes {
     ControlStock = '[CONTROL STOCK] ControlStock',
     InfoCellTurn = '[INFO CELL TURN] InfoCellTurn',
     UpdateChatRoom = '[UPDATE CHAT ROOM] UpdateChatRoom',
+    EndTurn = '[END TURN] EndTurn',
 };
 
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
     constructor(public payload: infoCellTurn) { }
+}
+
+export class EndTurn implements Action {
+    readonly type = AppActionTypes.EndTurn;
 }
 
 export class DiceRool implements Action {
@@ -89,4 +94,5 @@ export type ActionUnion =
     DiceRool |
     ControlStock |
     InfoCellTurnAdd |
-    UpdateChatRoom;
+    UpdateChatRoom |
+    EndTurn;

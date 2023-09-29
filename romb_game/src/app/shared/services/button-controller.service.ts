@@ -17,6 +17,7 @@ export class ButtonControllerService implements OnDestroy {
   susbscription$: Subscription
   isLogin: boolean;
   indexCompany: number;
+  deptValue: number;
   isLogin$ = this.store.select(selectIsLogin);
   infoCellTurn$ = this.store.select(selectInfoCellTurn);
 
@@ -27,7 +28,8 @@ export class ButtonControllerService implements OnDestroy {
       mergeMap((login) => this.infoCellTurn$.pipe(
         map(info => {
           this.isLogin = login;
-          this.indexCompany = Number(info?.indexCompany)
+          this.indexCompany = Number(info?.indexCompany);
+          this.deptValue = Number(info?.dept);
         }
         )
       ))).subscribe()
@@ -86,19 +88,25 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.BUY_COMPANY:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.BUY_COMPANY, { indexCompany: this.indexCompany })
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.BUY_COMPANY, { indexCompany: this.indexCompany });
         break;
 
       case ACTIONS_BUTTON.START_AUCTION:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.START_AUCTION, { indexCompany: this.indexCompany })
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.START_AUCTION, { indexCompany: this.indexCompany });
         break;
 
       case ACTIONS_BUTTON.AUCTION_STEP:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION_STEP, {})
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION_STEP, {});
         break;
 
       case ACTIONS_BUTTON.AUCTION_LEAVE:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION_LEAVE, {})
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION_LEAVE, {});
+        break;
+
+      case ACTIONS_BUTTON.PAY:
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.PAY_DEBT, {
+          debtValue: this.deptValue
+        });
         break;
 
       default:

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { ChatRoom, GameRoom, InfoRoom, UpdateRoom, infoCellTurn } from '../types';
 import { Store } from '@ngrx/store';
-import { InfoCellTurnAdd, UpdateChatRoom, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
+import { EndTurn, InfoCellTurnAdd, UpdateChatRoom, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
@@ -49,6 +49,11 @@ export class WebSocketController {
         case EACTION_WEBSOCKET.INFO_CELL_TURN: {
           const InfoCellTurn = wsMessage.payload as infoCellTurn;
           this.store.dispatch(new InfoCellTurnAdd(InfoCellTurn));
+          break;
+        }
+
+        case EACTION_WEBSOCKET.END_TURN: {
+          this.store.dispatch(new EndTurn());
           break;
         }
 

@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
@@ -31,6 +31,7 @@ export class DiceRollComponent implements OnInit {
   actionButton = ACTIONS_BUTTON.DICE_ROLL;
   result: number | string = '...';
   @Input() cheatNumbers: number[];
+  @Output() resetDice = new EventEmitter();
 
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
@@ -41,13 +42,12 @@ export class DiceRollComponent implements OnInit {
   roolDice() {
     this.result = '...'
     if (this.cheatNumbers.length > 1) {
-      this.diceOne = this.cheatNumbers[0];
-      this.diceTwo = this.cheatNumbers[1];
+      [this.diceOne, this.diceTwo] = this.cheatNumbers;
     } else {
       this.diceOne = this.randomrool(this.diceOne);
       this.diceTwo = this.randomrool(this.diceTwo);
     }
-
+    this.resetDice.emit();
     this.diceOne === this.diceTwo ? this.isDouble = true : this.isDouble = false;
 
     setTimeout(() => {

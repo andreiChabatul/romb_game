@@ -18,8 +18,7 @@ import { DiceSideComponent } from './components/dices/dice-side/dice-side.compon
 import { InfoCellTurnComponent } from './components/insideGameBoard/info-cell-turn/info-cell-turn.component';
 import { GameBoardTurnComponent } from './components/insideGameBoard/game-board-turn/game-board-turn.component';
 import { StartTurnButtonsComponent } from './components/insideGameBoard/start-turn-buttons/start-turn-buttons.component';
-import { InsideBoardPlayerComponent } from './components/insideGameBoard/inside-board-player/inside-board-player.component';
-
+import { PlayerInfoInsideComponent } from './components/insideGameBoard/player-info-inside/player-info-inside.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +38,7 @@ import { InsideBoardPlayerComponent } from './components/insideGameBoard/inside-
         InfoCellTurnComponent,
         GameBoardTurnComponent,
         StartTurnButtonsComponent,
-        InsideBoardPlayerComponent
+        PlayerInfoInsideComponent,
     ],
     imports: [
         SharedModule,

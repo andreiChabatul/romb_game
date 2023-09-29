@@ -1,8 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { mergeMap, map } from 'rxjs';
 import { AppStore } from 'src/app/types/state';
-import { selectCellGameState, selectInsideBoardState } from 'src/store/selectors';
+import { selectCellGameState, selectIdUser, selectInfoCellTurn, selectInsideBoardState, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board-turn',
@@ -29,14 +30,24 @@ export class GameBoardTurnComponent implements OnInit {
   seconds: number;
   fontColor: string;
   insideBoardState$ = this.store.select(selectInsideBoardState);
+  playerTurnId$ = this.store.select(selectPlayerTurnId);
+  userId$ = this.store.select(selectIdUser);
+  infoCellTurn$ = this.store.select(selectInfoCellTurn);
+  isTurn: boolean;
   cheatNumbers: number[];
-
-
 
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
     this.cheatNumbers = [];
+
+    this.userId$.pipe(
+      mergeMap(userId => this.playerTurnId$.pipe(
+        map((turnId) => userId === turnId ? this.isTurn = true : this.isTurn = false)
+      ))
+    ).subscribe();
+
+
     this.timer();
   }
 
@@ -67,8 +78,12 @@ export class GameBoardTurnComponent implements OnInit {
   keyEvent(event: KeyboardEvent): void {
     const value = Number(event.key);
     if (0 < value && value < 7) {
-      this.cheatNumbers.push(value)
+      this.cheatNumbers = [value, ...this.cheatNumbers];
     };
+  }
+
+  resetCheat(): void {
+    this.cheatNumbers = [];
   }
 
 }

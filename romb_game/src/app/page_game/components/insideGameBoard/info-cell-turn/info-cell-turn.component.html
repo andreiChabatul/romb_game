@@ -6,7 +6,9 @@
             <div>
                 <p class="info-cell-text info-cell-title">{{(infoCellTurn$ |async)?.titleCell }}</p>
                 <p class="info-cell-text">{{(infoCellTurn$ |async)?.description}}</p>
-                <p class="info-cell-text">У вас достаточно средств</p>
+                <p *ngIf="(infoCellTurn$ |async)?.descriptionTwo" class="info-cell-text">
+                    {{(infoCellTurn$ |async)?.descriptionTwo}}
+                </p>
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [width]="button.width"

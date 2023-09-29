@@ -1,6 +1,6 @@
 <div class="game-cell-square-container" [ngClass]="{
     'game-cell-square-container__gorizontal': directions === 'left' || directions === 'right'
     }">
-    <img class="game-cell-square_img" src={{imageCell}} alt="jail">
+    <img class="game-cell-square_img" [src]="cellSquare.imageCell | imgAssets" alt="jail">
     <p class="game-cell-square_text">{{cellSquare.textCell}}</p>
 </div>
