@@ -1,15 +1,13 @@
 import { State } from "src/app/types/state";
 import { stateApp } from "..";
 import { ActionUnion, AppActionTypes } from "../actions";
+import { defaultCells } from "src/app/const/defaultBoard";
 
 
 export const Reducers = (state = stateApp, action: ActionUnion): State => {
     switch (action.type) {
         case AppActionTypes.CloseModal:
             return { ...state, modal: { ...state.modal, type: 'none' } };
-
-        case AppActionTypes.UpdateGameRoom:
-            return { ...state, gameRoom: { ...action.payload, chat: state.gameRoom.chat } };
 
         case AppActionTypes.ChangeModal:
             return { ...state, modal: { ...state.modal, modalError: '', type: action.payload } };
@@ -29,6 +27,25 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
 
         case AppActionTypes.InfoCellTurn: {
             return { ...state, infoCellTurn: action.payload };
+        }
+
+        case AppActionTypes.StartGame: {
+            return { ...state, gameRoom: { ...state.gameRoom, board: defaultCells, idRoom: action.payload } };
+        }
+
+        case AppActionTypes.InitPlayer: {
+            const players = { ...state.gameRoom.players };
+            players[action.payload.id] = action.payload;
+            return { ...state, gameRoom: { ...state.gameRoom, players: { ...players } } };
+        }
+
+        case AppActionTypes.UpdateCell: {
+            const newBoard = [...state.gameRoom.board];
+            newBoard[action.payload.indexCell] = { ...newBoard[action.payload.indexCell], ...action.payload };
+
+            return {
+                ...state, gameRoom: { ...state.gameRoom, board: newBoard }
+            };
         }
 
         case AppActionTypes.ControlStock: {

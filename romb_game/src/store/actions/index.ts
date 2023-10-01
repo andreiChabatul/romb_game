@@ -1,8 +1,7 @@
 import { Action } from '@ngrx/store';
-import { ChatMessage, GameRoom, InfoRoom, ResponseAuth, UpdateRoom, infoCellTurn, modal } from 'src/app/types';
+import { ChatMessage, GameRoom, InfoRoom, Player, ResponseAuth, gameCell, infoCellTurn, modal, updatePlayer } from 'src/app/types';
 
 export enum AppActionTypes {
-    UpdateGameRoom = '[UPDATE GAME ROOM] UpdateGameRoom',
     CloseModal = '[CLOSE MODAL] CloseModal',
     ChangeModal = '[CHANGE MODAL] ChangeModal',
     AddModalError = '[ADD MODAL ERROR] AddModalError',
@@ -18,11 +17,35 @@ export enum AppActionTypes {
     InfoCellTurn = '[INFO CELL TURN] InfoCellTurn',
     UpdateChatRoom = '[UPDATE CHAT ROOM] UpdateChatRoom',
     EndTurn = '[END TURN] EndTurn',
+    UpdateCell = '[UPDATE CELL] UpdateCell',
+    UpdatePlayer = '[UPDATE Player] UpdatePlayer',
+    StartGame = '[START GAME] StartGame',
+    InitPlayer = '[INIT Player] InitPlayer',
 };
 
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
     constructor(public payload: infoCellTurn) { }
+}
+
+export class UpdatePlayer implements Action {
+    readonly type = AppActionTypes.UpdatePlayer;
+    constructor(public payload: updatePlayer) { }
+}
+
+export class InitPlayer implements Action {
+    readonly type = AppActionTypes.InitPlayer;
+    constructor(public payload: Player) { }
+}
+
+export class UpdateCell implements Action {
+    readonly type = AppActionTypes.UpdateCell;
+    constructor(public payload: gameCell) { }
+}
+
+export class StartGame implements Action {
+    readonly type = AppActionTypes.StartGame;
+    constructor(public payload: string) { }
 }
 
 export class EndTurn implements Action {
@@ -37,11 +60,6 @@ export class DiceRool implements Action {
 export class ControlStock implements Action {
     readonly type = AppActionTypes.ControlStock;
     constructor(public payload: boolean) { }
-}
-
-export class UpdateGameRoom implements Action {
-    readonly type = AppActionTypes.UpdateGameRoom;
-    constructor(public payload: UpdateRoom) { }
 }
 
 export class UpdateChatRoom implements Action {
@@ -83,7 +101,6 @@ export class OpenInfoCell implements Action {
 }
 
 export type ActionUnion =
-    UpdateGameRoom |
     CloseModal |
     ChangeModal |
     AddModalError |
@@ -95,4 +112,8 @@ export type ActionUnion =
     ControlStock |
     InfoCellTurnAdd |
     UpdateChatRoom |
+    UpdateCell |
+    StartGame |
+    UpdatePlayer |
+    InitPlayer |
     EndTurn;

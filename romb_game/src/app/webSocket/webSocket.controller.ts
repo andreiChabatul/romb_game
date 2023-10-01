@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { ChatRoom, GameRoom, InfoRoom, UpdateRoom, infoCellTurn } from '../types';
+import { ChatRoom, InfoRoom, Player, gameCell, infoCellTurn, startGame } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoCellTurnAdd, UpdateChatRoom, UpdateGameRoom, UpdateRooms } from 'src/store/actions';
+import { EndTurn, InfoCellTurnAdd, InitPlayer, StartGame, UpdateCell, UpdateChatRoom, UpdatePlayer, UpdateRooms } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
@@ -36,11 +36,6 @@ export class WebSocketController {
           this.store.dispatch(new UpdateRooms(rooms));
           break;
 
-        case EACTION_WEBSOCKET.UPDATE_ROOM:
-          const updateRoom = wsMessage.payload as UpdateRoom;
-          this.store.dispatch(new UpdateGameRoom(updateRoom));
-          break;
-
         case EACTION_WEBSOCKET.UPDATE_CHAT:
           const updateChat = wsMessage.payload as ChatRoom;
           this.store.dispatch(new UpdateChatRoom(updateChat.chat));
@@ -54,6 +49,24 @@ export class WebSocketController {
 
         case EACTION_WEBSOCKET.END_TURN: {
           this.store.dispatch(new EndTurn());
+          break;
+        }
+
+        case EACTION_WEBSOCKET.UPDATE_CELL: {
+          const infoCell = wsMessage.payload as gameCell;
+          this.store.dispatch(new UpdateCell(infoCell));
+          break;
+        }
+
+        case EACTION_WEBSOCKET.START_GAME: {
+          const startGame = wsMessage.payload as startGame;
+          this.store.dispatch(new StartGame(startGame.idRoom));
+          break;
+        }
+
+        case EACTION_WEBSOCKET.INIT_PLAYER: {
+          const player = wsMessage.payload as Player;
+          this.store.dispatch(new InitPlayer(player));
           break;
         }
 

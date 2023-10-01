@@ -19,7 +19,8 @@ export class PageGameComponent implements OnInit {
 
   ngOnInit(): void {
     this.players$.subscribe(
-      (value) => this.players = Object.values(value))
+      (value) => this.players = Object.values(value));
+
   }
 
 }

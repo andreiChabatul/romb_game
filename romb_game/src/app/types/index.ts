@@ -2,13 +2,17 @@ import { ACTIONS_BUTTON } from "../const/enum";
 
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
-export interface Player {
+export interface Player extends updatePlayer {
     id: string;
     name: string;
     image: string;
+    numberPlayer: number;
+}
+
+export interface updatePlayer {
     total: number;
     capital: number;
-    numberPlayer: number;
+    cellPosition: number;
 }
 
 export interface CompanyInfo {
@@ -26,18 +30,29 @@ export interface GameCellCompanyInfo extends CompanyInfo {
     owned?: number;
 }
 
-export interface GameRoom extends UpdateRoom {
-    chat: ChatMessage[];
-}
 
-export interface UpdateRoom {
+export interface GameRoom {
+    chat: ChatMessage[];
     idRoom: string;
-    players: updatePlayer;
+    players: gamePlayer;
     board: gameCell[];
     turnId: string;
 }
 
-export type updatePlayer = {
+export type gameCell = {
+    gridArea: string,
+    cellDirections: cellDirections,
+    indexCell: number;
+    players?: number[];
+    cellCompany?: GameCellCompanyInfo;
+    cellSquare?: GameCellSquare;
+}
+
+export type startGame = {
+    idRoom: string;
+}
+
+export type gamePlayer = {
     [key: string]: Player
 }
 
@@ -92,13 +107,9 @@ export interface ResponseAuth {
     idUser: string;
 }
 
-export interface gameCell {
-    indexCell: number;
-    gridArea: string;
-    players: number[];
-    cellDirections: cellDirections;
-    cellCompany?: GameCellCompanyInfo;
-    cellSquare?: GameCellSquare;
+export type location = {
+    gridArea: string,
+    cellDirections: cellDirections,
 }
 
 export interface GameCellSquare {

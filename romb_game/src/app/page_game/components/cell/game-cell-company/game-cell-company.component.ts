@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { gameCell } from 'src/app/types';
+import { cellDirections, gameCell } from 'src/app/types';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({
@@ -14,11 +14,14 @@ export class GameCellCompanyComponent implements OnInit {
   @Input() numberPlayers: number;
   stockArray: null[];
   isBuyStock: boolean;
+  cellDirections: cellDirections;
+
   constructor(private webSocketController: WebSocketController) { }
 
   ngOnInit(): void {
     this.isBuyStock = false;
     this.stockArray = new Array(this.gameCell.cellCompany?.shares);
+    this.cellDirections = this.gameCell.cellDirections;
     this.checkBuyStock();
   }
 

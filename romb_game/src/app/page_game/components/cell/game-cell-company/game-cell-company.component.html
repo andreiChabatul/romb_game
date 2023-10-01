@@ -1,23 +1,23 @@
 <div class="game-cell_content" [ngClass]="{'game-cell-container__grayscale' : gameCell.cellCompany?.isPledge}">
-    <div appColorShadow [numberPlayer]="gameCell.cellCompany?.owned" [directtion]="gameCell.cellDirections"
-        class="owned-shadow" [ngClass]="{
-        'owned-shadow_left': gameCell.cellDirections === 'left',
-        'owned-shadow_right': gameCell.cellDirections === 'right',
-        'owned-shadow_bottom': gameCell.cellDirections === 'bottom'}"></div>
+    <div appColorShadow [numberPlayer]="gameCell.cellCompany?.owned" [directtion]="cellDirections" class="owned-shadow"
+        [ngClass]="{
+        'owned-shadow_left':cellDirections === 'left',
+        'owned-shadow_right': cellDirections === 'right',
+        'owned-shadow_bottom': cellDirections === 'bottom'}"></div>
     <img *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-pledge_img"
         src="./../../../../../assets/board/pledge.png" alt="pledgeImg">
     <p *ngIf="isBuyStock" class="game-cell-buy-stock" (click)="buyStock($event)">Купить акции за
         ${{gameCell.cellCompany?.priceStock}}</p>
 
     <div class="game-cell-company_container" [ngClass]="{
-        'game-cell-company_container__gorizontalLeft': gameCell.cellDirections === 'left',
-        'game-cell-company_container__gorizontalRight': gameCell.cellDirections === 'right',
-        'game-cell-company_container__gorizontalTop': gameCell.cellDirections === 'top'}">
+        'game-cell-company_container__gorizontalLeft': cellDirections === 'left',
+        'game-cell-company_container__gorizontalRight': cellDirections === 'right',
+        'game-cell-company_container__gorizontalTop': cellDirections === 'top'}">
 
         <img class="game-cell-company" [src]="gameCell.cellCompany?.countryCompany | imgAssets" alt='country assets'>
         <div class="company-info-container">
             <img class="game-cell-company_logo" [src]="gameCell.cellCompany?.nameCompany | imgAssets" [ngClass]="{
-        'game-cell-company_logo__gorizontal': gameCell.cellDirections === 'left' || gameCell.cellDirections === 'right'
+        'game-cell-company_logo__gorizontal': cellDirections === 'left' || cellDirections === 'right'
         }" alt='name assets'>
             <p *ngIf="!(gameCell.cellCompany?.owned !== null)" class="game-cell-company_price">
                 ${{gameCell.cellCompany?.priceCompany}}</p>
@@ -25,7 +25,7 @@
                 {{gameCell.cellCompany?.rentCompany | rentPipe: gameCell.cellCompany?.countryCompany}}</p>
         </div>
         <div class="game-cell-company_stock" [ngClass]="{
-            'game-cell-company_stock__gorizontal': gameCell.cellDirections === 'left' || gameCell.cellDirections === 'right'
+            'game-cell-company_stock__gorizontal': cellDirections === 'left' || cellDirections === 'right'
             }">
             <img class="game-cell-company_stock__img" *ngFor="let i of stockArray"
                 [src]="gameCell.cellCompany?.countryCompany | stockAssets" alt="stock image">

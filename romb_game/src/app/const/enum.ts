@@ -41,7 +41,11 @@ export enum EACTION_WEBSOCKET {
     BUY_STOCK = 'buy stock',
     INFO_CELL_TURN = 'info cell turn',
     END_TURN = 'end turn',
-    PAY_DEBT = 'pay debt'
+    PAY_DEBT = 'pay debt',
+    UPDATE_CELL = 'update cell',
+    START_GAME = 'start game',
+    UPDATE_PLAYER = 'update player',
+    INIT_PLAYER = 'init player',
 }
 
 export enum ENDPOINT {
