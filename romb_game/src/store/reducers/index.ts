@@ -25,6 +25,23 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, insideBoardState: { isDiceRoll: action.payload, isButtons: false } };
         }
 
+        case AppActionTypes.UpdateTurn: {
+            return { ...state, gameRoom: { ...state.gameRoom, turnId: action.payload } };
+        }
+
+        case AppActionTypes.UpdateInfoPlayer: {
+            return {
+                ...state,
+                gameRoom: {
+                    ...state.gameRoom,
+                    players: {
+                        ...state.gameRoom.players,
+                        [action.payload.id]: { ...state.gameRoom.players[action.payload.id], ...action.payload }
+                    }
+                }
+            }
+        }
+
         case AppActionTypes.InfoCellTurn: {
             return { ...state, infoCellTurn: action.payload };
         }

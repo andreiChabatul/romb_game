@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ChatMessage, GameRoom, InfoRoom, Player, ResponseAuth, gameCell, infoCellTurn, modal, updatePlayer } from 'src/app/types';
+import { ChatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal } from 'src/app/types';
 
 export enum AppActionTypes {
     CloseModal = '[CLOSE MODAL] CloseModal',
@@ -18,9 +18,10 @@ export enum AppActionTypes {
     UpdateChatRoom = '[UPDATE CHAT ROOM] UpdateChatRoom',
     EndTurn = '[END TURN] EndTurn',
     UpdateCell = '[UPDATE CELL] UpdateCell',
-    UpdatePlayer = '[UPDATE Player] UpdatePlayer',
+    UpdateInfoPlayer = '[UPDATE Player] UpdateInfoPlayer',
     StartGame = '[START GAME] StartGame',
     InitPlayer = '[INIT Player] InitPlayer',
+    UpdateTurn = '[UPDATE TURN] UpdateTurn',
 };
 
 export class InfoCellTurnAdd implements Action {
@@ -28,9 +29,14 @@ export class InfoCellTurnAdd implements Action {
     constructor(public payload: infoCellTurn) { }
 }
 
-export class UpdatePlayer implements Action {
-    readonly type = AppActionTypes.UpdatePlayer;
-    constructor(public payload: updatePlayer) { }
+export class UpdateTurn implements Action {
+    readonly type = AppActionTypes.UpdateTurn;
+    constructor(public payload: string) { }
+}
+
+export class UpdateInfoPlayer implements Action {
+    readonly type = AppActionTypes.UpdateInfoPlayer;
+    constructor(public payload: UpdatePlayer) { }
 }
 
 export class InitPlayer implements Action {
@@ -114,6 +120,7 @@ export type ActionUnion =
     UpdateChatRoom |
     UpdateCell |
     StartGame |
-    UpdatePlayer |
+    UpdateInfoPlayer |
     InitPlayer |
+    UpdateTurn |
     EndTurn;

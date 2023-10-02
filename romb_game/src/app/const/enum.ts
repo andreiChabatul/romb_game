@@ -23,7 +23,8 @@ export enum ACTIONS_BUTTON {
     MORTGAGE = 'Mortgage',
     START_AUCTION = 'Start auction',
     AUCTION_STEP = 'Make bid',
-    AUCTION_LEAVE = 'Leave'
+    AUCTION_LEAVE = 'Leave',
+    
 }
 
 export enum EACTION_WEBSOCKET {
@@ -31,7 +32,6 @@ export enum EACTION_WEBSOCKET {
     LIST_ROOM = 'list room',
     JOIN_GAME = 'join game',
     MESSAGE_CHAT = 'message chat',
-    UPDATE_ROOM = 'update room',
     UPDATE_CHAT = 'update chat',
     DICE_ROLL = 'dice roll',
     BUY_COMPANY = 'buy company',
@@ -46,6 +46,7 @@ export enum EACTION_WEBSOCKET {
     START_GAME = 'start game',
     UPDATE_PLAYER = 'update player',
     INIT_PLAYER = 'init player',
+    UPDATE_TURN = 'update turn',
 }
 
 export enum ENDPOINT {

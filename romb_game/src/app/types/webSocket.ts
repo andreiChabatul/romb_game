@@ -25,6 +25,10 @@ export interface BuyCompanyPayload {
     indexCompany: number;
 }
 
+export type turnPayload = {
+    turnId: string;
+}
+
 export type SendPayloadSocket = {}
     | JoinGamePayload
     | PayloadCreateGame

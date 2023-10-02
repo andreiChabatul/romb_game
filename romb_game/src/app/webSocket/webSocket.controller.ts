@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { ChatRoom, InfoRoom, Player, gameCell, infoCellTurn, startGame } from '../types';
+import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, startGame } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoCellTurnAdd, InitPlayer, StartGame, UpdateCell, UpdateChatRoom, UpdatePlayer, UpdateRooms } from 'src/store/actions';
+import { EndTurn, InfoCellTurnAdd, InitPlayer, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
-import { SendPayloadSocket, payloadSocket } from '../types/webSocket';
+import { SendPayloadSocket, payloadSocket, turnPayload } from '../types/webSocket';
 
 
 @Injectable({
@@ -67,6 +67,18 @@ export class WebSocketController {
         case EACTION_WEBSOCKET.INIT_PLAYER: {
           const player = wsMessage.payload as Player;
           this.store.dispatch(new InitPlayer(player));
+          break;
+        }
+
+        case EACTION_WEBSOCKET.UPDATE_TURN: {
+          const payloadTurn = wsMessage.payload as turnPayload;
+          this.store.dispatch(new UpdateTurn(payloadTurn.turnId));
+          break;
+        }
+
+        case EACTION_WEBSOCKET.UPDATE_PLAYER: {
+          const updatePlayerPayload = wsMessage.payload as UpdatePlayer;
+          this.store.dispatch(new UpdateInfoPlayer(updatePlayerPayload));
           break;
         }
 

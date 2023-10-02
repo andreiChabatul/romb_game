@@ -2,14 +2,15 @@ import { ACTIONS_BUTTON } from "../const/enum";
 
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
-export interface Player extends updatePlayer {
-    id: string;
+export interface Player extends UpdatePlayer {
+    
     name: string;
     image: string;
     numberPlayer: number;
 }
 
-export interface updatePlayer {
+export interface UpdatePlayer {
+    id: string;
     total: number;
     capital: number;
     cellPosition: number;
@@ -43,7 +44,6 @@ export type gameCell = {
     gridArea: string,
     cellDirections: cellDirections,
     indexCell: number;
-    players?: number[];
     cellCompany?: GameCellCompanyInfo;
     cellSquare?: GameCellSquare;
 }
