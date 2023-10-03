@@ -8,9 +8,7 @@ import { ModalRegisterComponent } from './components/modal-register/modal-regist
 import { CommonModule } from '@angular/common';
 import { ButtonControllerService } from './services/button-controller.service';
 import { ModalInfoCellComponent } from './components/modal-info-cell/modal-info-cell.component';
-import { ColorPlayerDirective } from './directive/color-name.directive';
 import { ColorShadowDirective } from './directive/color-shadow.directive';
-import { ColorBackgroundDirective } from './directive/color-back.directive';
 import { ImgAssetsPipe } from './pipe/img-assets.pipe';
 import { StockAssetsPipe } from './pipe/stock.assets.pipe';
 import { RentPipe } from './pipe/rent.pipe';
@@ -23,9 +21,7 @@ import { RentPipe } from './pipe/rent.pipe';
         ModalRegisterComponent,
         ModalLoginComponent,
         ModalInfoCellComponent,
-        ColorPlayerDirective,
         ColorShadowDirective,
-        ColorBackgroundDirective,
         ImgAssetsPipe,
         StockAssetsPipe,
         RentPipe
@@ -38,9 +34,7 @@ import { RentPipe } from './pipe/rent.pipe';
         ButtonStandartComponent,
         ButtonMaterialsComponent,
         ModalComponent,
-        ColorPlayerDirective,
         ColorShadowDirective,
-        ColorBackgroundDirective,
         ImgAssetsPipe,
         StockAssetsPipe,
         RentPipe

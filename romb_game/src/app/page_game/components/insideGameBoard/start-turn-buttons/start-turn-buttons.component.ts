@@ -11,8 +11,15 @@ export class StartTurnButtonsComponent {
   buttons = [
     { action: ACTIONS_BUTTON.DICE_ROLL, width: '19vw', height: '7vh', show: true },
     { action: ACTIONS_BUTTON.OFFER_DEAL, width: '19vw', height: '7vh', show: true },
-    { action: ACTIONS_BUTTON.BUY_STOCK, width: '19vw', height: '7vh', show: false },
+    { action: ACTIONS_BUTTON.BUY_STOCK, width: '19vw', height: '7vh', show: this.checkBuyStock() },
     { action: ACTIONS_BUTTON.BUY_OUT_COMPANY, width: '19vw', height: '7vh', show: true },
   ]
+
+
+  checkBuyStock(): boolean {
+
+
+    return true;
+  }
 
 }

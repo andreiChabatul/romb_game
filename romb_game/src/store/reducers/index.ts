@@ -1,7 +1,6 @@
 import { State } from "src/app/types/state";
 import { stateApp } from "..";
 import { ActionUnion, AppActionTypes } from "../actions";
-import { defaultCells } from "src/app/const/defaultBoard";
 
 
 export const Reducers = (state = stateApp, action: ActionUnion): State => {
@@ -23,6 +22,10 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
 
         case AppActionTypes.DiceRool: {
             return { ...state, insideBoardState: { isDiceRoll: action.payload, isButtons: false } };
+        }
+
+        case AppActionTypes.InitBoard: {
+            return { ...state, gameRoom: { ...state.gameRoom, board: action.payload } };
         }
 
         case AppActionTypes.UpdateTurn: {
@@ -47,7 +50,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.StartGame: {
-            return { ...state, gameRoom: { ...state.gameRoom, board: defaultCells, idRoom: action.payload } };
+            return { ...state, gameRoom: { ...state.gameRoom, board: [], idRoom: action.payload } };
         }
 
         case AppActionTypes.InitPlayer: {

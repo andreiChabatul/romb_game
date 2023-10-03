@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, startGame } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoCellTurnAdd, InitPlayer, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
-import { SendPayloadSocket, payloadSocket, turnPayload } from '../types/webSocket';
+import { SendPayloadSocket, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
 
 
 @Injectable({
@@ -80,6 +80,12 @@ export class WebSocketController {
           const updatePlayerPayload = wsMessage.payload as UpdatePlayer;
           this.store.dispatch(new UpdateInfoPlayer(updatePlayerPayload));
           break;
+        }
+
+        case EACTION_WEBSOCKET.INIT_BOARD: {
+          const boardPayload = wsMessage.payload as initBoardPayload;
+          this.store.dispatch(new InitBoard(boardPayload.board));
+          return;
         }
 
         default:

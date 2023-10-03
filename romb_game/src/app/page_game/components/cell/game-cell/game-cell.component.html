@@ -1,12 +1,11 @@
 <div class="game-cell-container" (click)="clickCellInfo()">
         <app-game-cell-company *ngIf="gameCellInfo.cellCompany" [gameCell]="gameCellInfo">
         </app-game-cell-company>
-        <app-game-cell-square *ngIf="gameCellInfo.cellSquare" [directions]="gameCellInfo.cellDirections"
+        <app-game-cell-square *ngIf="gameCellInfo.cellSquare" [directions]="gameCellInfo.location.cellDirections"
                 [cellSquare]=" gameCellInfo.cellSquare">
         </app-game-cell-square>
         <div class="game-cell_players">
-                <p appColorBackground [numberPlayer]="player" class="game-cell_players-font"
-                        *ngFor="let player of playersPosition">
+                <p [style.background]="color" class="game-cell_players-font" *ngFor="let color of playersPosition">
                 </p>
         </div>
 </div>

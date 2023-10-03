@@ -14,7 +14,7 @@ export class GameCellComponent implements OnInit {
 
   @Input() gameCellInfo: gameCell;
   players$ = this.store.select(selectAllPlayer);
-  playersPosition: number[];
+  playersPosition: string[];
 
   constructor(private store: Store<AppStore>) { }
 
@@ -23,7 +23,7 @@ export class GameCellComponent implements OnInit {
       this.playersPosition = [];
       Object.values(players).forEach((player) => {
         player.cellPosition === this.gameCellInfo.indexCell
-          ? this.playersPosition.push(player.numberPlayer) : '';
+          ? this.playersPosition.push(player.color) : '';
       })
     }
     )

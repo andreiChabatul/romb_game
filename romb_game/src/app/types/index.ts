@@ -3,10 +3,9 @@ import { ACTIONS_BUTTON } from "../const/enum";
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
 export interface Player extends UpdatePlayer {
-    
+    color: string;
     name: string;
     image: string;
-    numberPlayer: number;
 }
 
 export interface UpdatePlayer {
@@ -28,9 +27,8 @@ export interface GameCellCompanyInfo extends CompanyInfo {
     shares: number;
     isPledge: boolean;
     isMonopoly?: boolean;
-    owned?: number;
+    owned?: string;
 }
-
 
 export interface GameRoom {
     chat: ChatMessage[];
@@ -41,12 +39,12 @@ export interface GameRoom {
 }
 
 export type gameCell = {
-    gridArea: string,
-    cellDirections: cellDirections,
+    location: location;
     indexCell: number;
     cellCompany?: GameCellCompanyInfo;
     cellSquare?: GameCellSquare;
 }
+
 
 export type startGame = {
     idRoom: string;
@@ -61,7 +59,7 @@ export type ChatRoom = { chat: ChatMessage[] };
 
 export interface ChatMessage {
     name: string;
-    numberPlayer: number;
+    color: string;
     message: string;
 }
 
@@ -144,6 +142,7 @@ export type infoCellTurn = {
     descriptionTwo?: string;
     buttons: infoCellButtons;
     dept?: number;
+    receiverId?: string;
 }
 
 export type ButtonStandart = {

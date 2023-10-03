@@ -18,6 +18,7 @@ export class ButtonControllerService implements OnDestroy {
   isLogin: boolean;
   indexCompany: number;
   deptValue: number;
+  receiverId: string | undefined;
   isLogin$ = this.store.select(selectIsLogin);
   infoCellTurn$ = this.store.select(selectInfoCellTurn);
 
@@ -30,6 +31,7 @@ export class ButtonControllerService implements OnDestroy {
           this.isLogin = login;
           this.indexCompany = Number(info?.indexCompany);
           this.deptValue = Number(info?.dept);
+          this.receiverId = info?.receiverId;
         }
         )
       ))).subscribe()
@@ -105,7 +107,8 @@ export class ButtonControllerService implements OnDestroy {
 
       case ACTIONS_BUTTON.PAY:
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.PAY_DEBT, {
-          debtValue: this.deptValue
+          debtValue: this.deptValue,
+          receiverId: this.receiverId
         });
         break;
 

@@ -11,7 +11,6 @@ import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 export class GameCellCompanyComponent implements OnInit {
 
   @Input() gameCell: gameCell;
-  @Input() numberPlayers: number;
   stockArray: null[];
   isBuyStock: boolean;
   cellDirections: cellDirections;
@@ -21,7 +20,7 @@ export class GameCellCompanyComponent implements OnInit {
   ngOnInit(): void {
     this.isBuyStock = false;
     this.stockArray = new Array(this.gameCell.cellCompany?.shares);
-    this.cellDirections = this.gameCell.cellDirections;
+    this.cellDirections = this.gameCell.location.cellDirections;
     this.checkBuyStock();
   }
 
@@ -30,10 +29,8 @@ export class GameCellCompanyComponent implements OnInit {
     event.stopPropagation();
   }
 
-
   private checkBuyStock(): void {
-    if (Number(this.gameCell.cellCompany?.shares) < 5
-      && this.gameCell.cellCompany?.owned === this.numberPlayers
+    if (Number(this.gameCell.cellCompany?.shares) < 5 
       && this.gameCell.cellCompany?.isMonopoly
       && this.gameCell.cellCompany?.priceStock) {
       this.isBuyStock = true;

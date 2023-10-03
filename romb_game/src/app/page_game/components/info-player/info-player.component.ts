@@ -32,6 +32,4 @@ export class InfoPlayerComponent implements OnInit, OnDestroy {
     this.subscription$.unsubscribe();
   }
 
-
-
 }

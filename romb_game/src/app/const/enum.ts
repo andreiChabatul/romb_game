@@ -47,6 +47,7 @@ export enum EACTION_WEBSOCKET {
     UPDATE_PLAYER = 'update player',
     INIT_PLAYER = 'init player',
     UPDATE_TURN = 'update turn',
+    INIT_BOARD = 'init board'
 }
 
 export enum ENDPOINT {

@@ -21,12 +21,18 @@ export enum AppActionTypes {
     UpdateInfoPlayer = '[UPDATE Player] UpdateInfoPlayer',
     StartGame = '[START GAME] StartGame',
     InitPlayer = '[INIT Player] InitPlayer',
+    InitBoard = '[INIT BOARD] InitBoard',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
 };
 
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
     constructor(public payload: infoCellTurn) { }
+}
+
+export class InitBoard implements Action {
+    readonly type = AppActionTypes.InitBoard;
+    constructor(public payload: gameCell[]) { }
 }
 
 export class UpdateTurn implements Action {
@@ -123,4 +129,5 @@ export type ActionUnion =
     UpdateInfoPlayer |
     InitPlayer |
     UpdateTurn |
+    InitBoard |
     EndTurn;

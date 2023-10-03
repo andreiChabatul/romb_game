@@ -1,5 +1,5 @@
 <div class="game-cell_content" [ngClass]="{'game-cell-container__grayscale' : gameCell.cellCompany?.isPledge}">
-    <div appColorShadow [numberPlayer]="gameCell.cellCompany?.owned" [directtion]="cellDirections" class="owned-shadow"
+    <div appColorShadow [playerId]="gameCell.cellCompany?.owned" [directtion]="cellDirections" class="owned-shadow"
         [ngClass]="{
         'owned-shadow_left':cellDirections === 'left',
         'owned-shadow_right': cellDirections === 'right',

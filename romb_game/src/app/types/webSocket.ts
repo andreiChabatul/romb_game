@@ -1,3 +1,4 @@
+import { gameCell } from "."
 import { EACTION_WEBSOCKET } from "../const/enum"
 
 export interface PayloadCreateGame {
@@ -27,6 +28,10 @@ export interface BuyCompanyPayload {
 
 export type turnPayload = {
     turnId: string;
+}
+
+export type initBoardPayload = {
+    board: gameCell[]
 }
 
 export type SendPayloadSocket = {}
