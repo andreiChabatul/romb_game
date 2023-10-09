@@ -10,16 +10,7 @@ export const stateApp: State = {
         chat: [],
         turnId: ''
     },
-    insideBoardState: {
-        isDiceRoll: false,
-        isButtons: true,
-    },
-    gameCellState: {
-        isBuyOutCompany: false,
-        isBuyStock: false,
-        isSellStock: false,
-        isPledgeCompany: false,
-    },
+    insideBoardState: 'playerInfo',
     user: {
         idUser: '',
         isLogin: false,

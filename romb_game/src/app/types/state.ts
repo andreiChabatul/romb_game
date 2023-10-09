@@ -14,19 +14,13 @@ export interface State {
         idUser: string;
     };
     gameRoom: GameRoom;
-    gameCellState: {
-        isBuyStock: boolean;
-        isSellStock: boolean;
-        isPledgeCompany: boolean;
-        isBuyOutCompany: boolean;
-    },
-    insideBoardState: {
-        isDiceRoll: boolean,
-        isButtons: boolean,
-    },
+    insideBoardState: insideBoardState,
     infoCellTurn?: infoCellTurn,
 }
 
 export interface AppStore {
     state: State;
 }
+
+export type insideBoardState = controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn';
+export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';

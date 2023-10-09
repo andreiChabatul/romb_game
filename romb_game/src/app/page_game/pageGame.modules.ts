@@ -19,6 +19,7 @@ import { InfoCellTurnComponent } from './components/insideGameBoard/info-cell-tu
 import { GameBoardTurnComponent } from './components/insideGameBoard/game-board-turn/game-board-turn.component';
 import { StartTurnButtonsComponent } from './components/insideGameBoard/start-turn-buttons/start-turn-buttons.component';
 import { PlayerInfoInsideComponent } from './components/insideGameBoard/player-info-inside/player-info-inside.component';
+import { ControlCompanyComponent } from './components/insideGameBoard/control-company/control-company.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { PlayerInfoInsideComponent } from './components/insideGameBoard/player-i
         GameBoardTurnComponent,
         StartTurnButtonsComponent,
         PlayerInfoInsideComponent,
+        ControlCompanyComponent
     ],
     imports: [
         SharedModule,

@@ -5,9 +5,8 @@ import { Subscription, map, mergeMap } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { ChangeModal, ControlStock, DiceRool } from 'src/store/actions';
+import { ChangeModal, ControlInsideBoard } from 'src/store/actions';
 import { selectInfoCellTurn, selectIsLogin } from 'src/store/selectors';
-
 
 @Injectable({
   providedIn: 'root'
@@ -81,12 +80,8 @@ export class ButtonControllerService implements OnDestroy {
         this.router.navigate(['create-game']);
         break;
 
-      case ACTIONS_BUTTON.DICE_ROLL:
-        this.store.dispatch(new DiceRool(true));
-        break;
-
       case ACTIONS_BUTTON.BUY_STOCK:
-        this.store.dispatch(new ControlStock(true));
+        this.store.dispatch(new ControlInsideBoard('buyStock'));
         break;
 
       case ACTIONS_BUTTON.BUY_COMPANY:

@@ -24,7 +24,7 @@ export enum ACTIONS_BUTTON {
     START_AUCTION = 'Start auction',
     AUCTION_STEP = 'Make bid',
     AUCTION_LEAVE = 'Leave',
-    
+    END_CONTROL = 'Finish'
 }
 
 export enum EACTION_WEBSOCKET {

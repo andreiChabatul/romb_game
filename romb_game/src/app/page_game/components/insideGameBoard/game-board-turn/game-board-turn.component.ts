@@ -1,9 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { mergeMap, map } from 'rxjs';
-import { AppStore } from 'src/app/types/state';
-import { selectCellGameState, selectIdUser, selectInfoCellTurn, selectInsideBoardState, selectPlayerTurnId } from 'src/store/selectors';
+import { mergeMap, map, Observable } from 'rxjs';
+import { AppStore, insideBoardState } from 'src/app/types/state';
+import { selectIdUser, selectInfoCellTurn, selectInsideBoardState, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board-turn',
@@ -33,23 +33,16 @@ export class GameBoardTurnComponent implements OnInit {
   playerTurnId$ = this.store.select(selectPlayerTurnId);
   userId$ = this.store.select(selectIdUser);
   infoCellTurn$ = this.store.select(selectInfoCellTurn);
-  isTurn: boolean;
   cheatNumbers: number[];
 
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
     this.cheatNumbers = [];
-
-    this.userId$.pipe(
-      mergeMap(userId => this.playerTurnId$.pipe(
-        map((turnId) => userId === turnId ? this.isTurn = true : this.isTurn = false)
-      ))
-    ).subscribe();
-
-
     this.timer();
   }
+
+
 
   timer(): void {
     this.minute = 1;

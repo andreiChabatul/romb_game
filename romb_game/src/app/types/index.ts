@@ -1,4 +1,5 @@
 import { ACTIONS_BUTTON } from "../const/enum";
+import { controlCompanyState } from "./state";
 
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 
@@ -43,6 +44,17 @@ export type gameCell = {
     indexCell: number;
     cellCompany?: GameCellCompanyInfo;
     cellSquare?: GameCellSquare;
+}
+
+export type updateCellCompany = {
+    indexCell: number,
+    cellCompany: {
+        shares: number;
+        isPledge: boolean;
+        isMonopoly?: boolean;
+        owned?: string;
+        rentCompany: number;
+    }
 }
 
 
@@ -110,6 +122,10 @@ export type location = {
     cellDirections: cellDirections,
 }
 
+export type textControl = {
+    [key in controlCompanyState]: string
+}
+
 export interface GameCellSquare {
     imageCell: typeSquareImage;
     textCell: string;
@@ -149,5 +165,5 @@ export type ButtonStandart = {
     action: ACTIONS_BUTTON;
     width: string;
     height: string;
-    show: boolean;
+    show?: boolean;
 }

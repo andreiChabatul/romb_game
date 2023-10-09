@@ -6,7 +6,7 @@
         'owned-shadow_bottom': cellDirections === 'bottom'}"></div>
     <img *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-pledge_img"
         src="./../../../../../assets/board/pledge.png" alt="pledgeImg">
-    <p *ngIf="isBuyStock" class="game-cell-buy-stock" (click)="buyStock($event)">Купить акции за
+    <p *ngIf="checkBuyStock() | async" class="game-cell-buy-stock" (click)="buyStock($event)">Купить акции за
         ${{gameCell.cellCompany?.priceStock}}</p>
 
     <div class="game-cell-company_container" [ngClass]="{

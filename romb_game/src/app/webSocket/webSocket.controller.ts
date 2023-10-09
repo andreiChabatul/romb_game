@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, startGame } from '../types';
+import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, startGame, updateCellCompany } from '../types';
 import { Store } from '@ngrx/store';
 import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
@@ -53,7 +53,7 @@ export class WebSocketController {
         }
 
         case EACTION_WEBSOCKET.UPDATE_CELL: {
-          const infoCell = wsMessage.payload as gameCell;
+          const infoCell = wsMessage.payload as updateCellCompany;
           this.store.dispatch(new UpdateCell(infoCell));
           break;
         }

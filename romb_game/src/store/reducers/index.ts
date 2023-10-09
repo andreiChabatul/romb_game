@@ -20,10 +20,6 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.UpdateRooms:
             return { ...state, rooms: action.payload };
 
-        case AppActionTypes.DiceRool: {
-            return { ...state, insideBoardState: { isDiceRoll: action.payload, isButtons: false } };
-        }
-
         case AppActionTypes.InitBoard: {
             return { ...state, gameRoom: { ...state.gameRoom, board: action.payload } };
         }
@@ -61,23 +57,27 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
 
         case AppActionTypes.UpdateCell: {
             const newBoard = [...state.gameRoom.board];
-            newBoard[action.payload.indexCell] = { ...newBoard[action.payload.indexCell], ...action.payload };
+            let cell = newBoard[action.payload.indexCell];
+            if (cell.cellCompany) {
+                cell = { ...cell, cellCompany: { ...cell.cellCompany, ...action.payload.cellCompany } };
+                newBoard[action.payload.indexCell] = cell;
+            };
 
             return {
                 ...state, gameRoom: { ...state.gameRoom, board: newBoard }
             };
         }
 
-        case AppActionTypes.ControlStock: {
-            return { ...state, gameCellState: { ...state.gameCellState, isBuyStock: action.payload } };
-        }
+        case AppActionTypes.ControlInsideBoard: {
+            return { ...state, insideBoardState: action.payload }
+        };
 
         case AppActionTypes.OpenInfoCell: {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
         }
 
         case AppActionTypes.EndTurn: {
-            return { ...state, infoCellTurn: undefined, insideBoardState: { ...state.insideBoardState, isButtons: true } }
+            return { ...state, infoCellTurn: undefined, insideBoardState: 'playerInfo' };
         }
 
         case AppActionTypes.UpdateChatRoom: {

@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
-import { ChatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal } from 'src/app/types';
+import { ChatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany } from 'src/app/types';
+import { insideBoardState } from 'src/app/types/state';
 
 export enum AppActionTypes {
     CloseModal = '[CLOSE MODAL] CloseModal',
@@ -12,8 +13,7 @@ export enum AppActionTypes {
     AuctionCompany = '[AUCTION COMPANY] AuctionCompany',
     ClearSellCompany = '[CLEAR SELL COMPANY] ClearSellCompany',
     UpdateAuctionCompany = '[UPDATE AUCTION COMPANY] UpdateAuctionCompany',
-    DiceRool = '[DICE ROLL] DiceRool',
-    ControlStock = '[CONTROL STOCK] ControlStock',
+    ControlInsideBoard = '[CONTROL INSIDE BOARD] ControlInsideBoard',
     InfoCellTurn = '[INFO CELL TURN] InfoCellTurn',
     UpdateChatRoom = '[UPDATE CHAT ROOM] UpdateChatRoom',
     EndTurn = '[END TURN] EndTurn',
@@ -52,7 +52,7 @@ export class InitPlayer implements Action {
 
 export class UpdateCell implements Action {
     readonly type = AppActionTypes.UpdateCell;
-    constructor(public payload: gameCell) { }
+    constructor(public payload: updateCellCompany) { }
 }
 
 export class StartGame implements Action {
@@ -64,14 +64,9 @@ export class EndTurn implements Action {
     readonly type = AppActionTypes.EndTurn;
 }
 
-export class DiceRool implements Action {
-    readonly type = AppActionTypes.DiceRool;
-    constructor(public payload: boolean) { }
-}
-
-export class ControlStock implements Action {
-    readonly type = AppActionTypes.ControlStock;
-    constructor(public payload: boolean) { }
+export class ControlInsideBoard implements Action {
+    readonly type = AppActionTypes.ControlInsideBoard;
+    constructor(public payload: insideBoardState) { }
 }
 
 export class UpdateChatRoom implements Action {
@@ -120,8 +115,7 @@ export type ActionUnion =
     UpdateRooms |
     LoginUser |
     OpenInfoCell |
-    DiceRool |
-    ControlStock |
+    ControlInsideBoard |
     InfoCellTurnAdd |
     UpdateChatRoom |
     UpdateCell |

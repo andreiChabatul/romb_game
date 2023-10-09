@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart, infoCellButtons } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
-import { selectCellGameState, selectInfoCellTurn } from 'src/store/selectors';
+import { selectInfoCellTurn } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.PAY, width: '12vw', height: '6vh', show: false },

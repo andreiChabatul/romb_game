@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { DiceRool } from 'src/store/actions';
 
 @Component({
   selector: 'app-dice-roll',
@@ -59,7 +58,7 @@ export class DiceRollComponent implements OnInit {
     }, 1000
     );
 
-    setTimeout(() => this.store.dispatch(new DiceRool(false)), 2000);
+    // setTimeout(() => this.store.dispatch(new DiceRool(false)), 2000);
 
   }
 

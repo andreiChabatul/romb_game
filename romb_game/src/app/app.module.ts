@@ -17,8 +17,7 @@ import { WebSocketController } from './webSocket/webSocket.controller';
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
-  ],
+    MainPageComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
