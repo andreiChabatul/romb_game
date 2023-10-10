@@ -38,7 +38,6 @@ export enum EACTION_WEBSOCKET {
     START_AUCTION = 'start auction',
     AUCTION_STEP = 'auction step',
     AUCTION_LEAVE = 'auction leave',
-    BUY_STOCK = 'buy stock',
     INFO_CELL_TURN = 'info cell turn',
     END_TURN = 'end turn',
     PAY_DEBT = 'pay debt',
@@ -47,7 +46,8 @@ export enum EACTION_WEBSOCKET {
     UPDATE_PLAYER = 'update player',
     INIT_PLAYER = 'init player',
     UPDATE_TURN = 'update turn',
-    INIT_BOARD = 'init board'
+    INIT_BOARD = 'init board',
+    CONTROL_COMPANY = 'control company',
 }
 
 export enum ENDPOINT {

@@ -42,7 +42,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.InfoCellTurn: {
-            return { ...state, infoCellTurn: action.payload };
+            return { ...state, infoCellTurn: action.payload, insideBoardState: 'infoCellTurn' };
         }
 
         case AppActionTypes.StartGame: {

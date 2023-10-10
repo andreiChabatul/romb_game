@@ -13,6 +13,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { WebSocketController } from './webSocket/webSocket.controller';
+import { EffectsModule } from '@ngrx/effects';
+import { TurnEffects } from 'src/store/effects/turn.effects';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { WebSocketController } from './webSocket/webSocket.controller';
     SharedModule,
     CommonModule,
     BrowserAnimationsModule,
+    EffectsModule.forRoot([TurnEffects]),
     StoreModule.forRoot(appReducers),
     HttpClientModule,
   ],

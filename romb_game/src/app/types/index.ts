@@ -20,6 +20,8 @@ export interface CompanyInfo {
     countryCompany: countryCompany;
     nameCompany: nameCompany;
     priceCompany: number;
+    collateralCompany: number;
+    buyBackCompany: number;
     rentCompany: number;
     priceStock?: number;
 }

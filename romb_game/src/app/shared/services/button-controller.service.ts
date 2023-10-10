@@ -6,7 +6,7 @@ import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal, ControlInsideBoard } from 'src/store/actions';
-import { selectInfoCellTurn, selectIsLogin } from 'src/store/selectors';
+import { selectInfoCellTurn, selectInsideBoardState, selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +84,10 @@ export class ButtonControllerService implements OnDestroy {
         this.store.dispatch(new ControlInsideBoard('buyStock'));
         break;
 
+      case ACTIONS_BUTTON.SELL_STOCK:
+        this.store.dispatch(new ControlInsideBoard('sellStock'));
+        break;
+
       case ACTIONS_BUTTON.BUY_COMPANY:
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.BUY_COMPANY, { indexCompany: this.indexCompany });
         break;
@@ -98,6 +102,27 @@ export class ButtonControllerService implements OnDestroy {
 
       case ACTIONS_BUTTON.AUCTION_LEAVE:
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION_LEAVE, {});
+        break;
+
+      case ACTIONS_BUTTON.DICE_ROLL:
+        this.store.dispatch(new ControlInsideBoard('diceRoll'));
+        break;
+
+      case ACTIONS_BUTTON.MORTGAGE:
+        this.store.dispatch(new ControlInsideBoard('pledgeCompany'));
+        break;
+
+      case ACTIONS_BUTTON.BUY_OUT_COMPANY:
+        this.store.dispatch(new ControlInsideBoard('buyOutCompany'));
+        break;
+
+      case ACTIONS_BUTTON.END_CONTROL:
+        const result = this.store.select(selectInfoCellTurn).subscribe((infoCellTurn) =>
+          infoCellTurn
+            ? this.store.dispatch(new ControlInsideBoard('infoCellTurn'))
+            : this.store.dispatch(new ControlInsideBoard('startButtons'))
+        );
+        result.unsubscribe();
         break;
 
       case ACTIONS_BUTTON.PAY:

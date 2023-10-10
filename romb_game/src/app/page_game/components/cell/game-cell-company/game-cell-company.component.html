@@ -1,14 +1,23 @@
-<div class="game-cell_content" [ngClass]="{'game-cell-container__grayscale' : gameCell.cellCompany?.isPledge}">
+<div class="game-cell_content">
     <div appColorShadow [playerId]="gameCell.cellCompany?.owned" [directtion]="cellDirections" class="owned-shadow"
         [ngClass]="{
         'owned-shadow_left':cellDirections === 'left',
         'owned-shadow_right': cellDirections === 'right',
         'owned-shadow_bottom': cellDirections === 'bottom'}"></div>
-    <img *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-pledge_img"
-        src="./../../../../../assets/board/pledge.png" alt="pledgeImg">
-    <p *ngIf="checkBuyStock() | async" class="game-cell-buy-stock" (click)="buyStock($event)">Купить акции за
-        ${{gameCell.cellCompany?.priceStock}}</p>
-
+    <div *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-container__grayscale">
+        <img *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-pledge_img" src="./assets/pledge.png"
+            alt="pledgeImg">
+    </div>
+    <!-- control company block start-->
+    <p *ngIf="checkBuyStock() | async" class="game-cell-control" (click)="controlCompany($event,'buyStock')">
+        Купить акции за ${{gameCell.cellCompany?.priceStock}}</p>
+    <p *ngIf="checkMortage() | async" class="game-cell-control" (click)="controlCompany($event,'pledgeCompany')">
+        Заложить компанию за ${{gameCell.cellCompany?.collateralCompany}}</p>
+    <p *ngIf="checkBuyOut() | async" class="game-cell-control" (click)="controlCompany($event, 'buyOutCompany')">
+        Выкупить компанию за ${{gameCell.cellCompany?.buyBackCompany}}</p>
+    <p *ngIf="checkSellStock() | async" class="game-cell-control" (click)="controlCompany($event, 'sellStock')">
+        Продать акции за ${{gameCell.cellCompany?.priceStock}}</p>
+    <!-- control company block end-->
     <div class="game-cell-company_container" [ngClass]="{
         'game-cell-company_container__gorizontalLeft': cellDirections === 'left',
         'game-cell-company_container__gorizontalRight': cellDirections === 'right',
@@ -31,5 +40,4 @@
                 [src]="gameCell.cellCompany?.countryCompany | stockAssets" alt="stock image">
         </div>
     </div>
-
 </div>

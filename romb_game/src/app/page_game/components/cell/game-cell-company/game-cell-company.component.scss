@@ -92,29 +92,32 @@
 }
 
 .game-cell-container__grayscale {
-    opacity: .9;
-    filter: grayscale(100%);
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 111;
+    position: absolute;
     background: rgba(0, 0, 0, .3);
+    @include flex_c_c;
 }
 
 .game-cell-pledge_img {
+    opacity: .8;
     width: 4vw;
-    position: absolute;
-    z-index: 111;
-    left: calc(50% - 2vw);
-    top: calc(50% - 2.5vw);
 }
 
-.game-cell-buy-stock {
+.game-cell-control {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: rgba($light_blue_text, .3);
+    background: rgba($light_blue_text, .6);
     z-index: 11111;
     cursor: pointer;
     @include font_default;
     color: $default_white;
     font-size: .8vw;
     text-align: center;
-    padding: 5%;
+    display: flex;
+    align-items: center;
 }
