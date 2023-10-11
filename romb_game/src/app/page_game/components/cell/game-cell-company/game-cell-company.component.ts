@@ -76,6 +76,8 @@ export class GameCellCompanyComponent implements OnInit {
         map((userId) =>
           Boolean(action === 'sellStock' &&
             userId === this.gameCell.cellCompany?.owned &&
+            this.gameCell.cellCompany.countryCompany !== 'japan' &&
+            this.gameCell.cellCompany.countryCompany !== 'ukraine' &&
             this.gameCell.cellCompany?.shares > 0))
       )))
     )

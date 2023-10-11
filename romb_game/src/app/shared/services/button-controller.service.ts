@@ -89,19 +89,35 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.BUY_COMPANY:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.BUY_COMPANY, { indexCompany: this.indexCompany });
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY,
+          {
+            indexCompany: this.indexCompany,
+            action: 'buyCompany'
+          });
         break;
 
       case ACTIONS_BUTTON.START_AUCTION:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.START_AUCTION, { indexCompany: this.indexCompany });
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY,
+          {
+            indexCompany: this.indexCompany,
+            action: 'startAuction'
+          });
         break;
 
       case ACTIONS_BUTTON.AUCTION_STEP:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION_STEP, {});
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY,
+          {
+            indexCompany: this.indexCompany,
+            action: 'stepAuction'
+          });
         break;
 
       case ACTIONS_BUTTON.AUCTION_LEAVE:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION_LEAVE, {});
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY,
+          {
+            indexCompany: this.indexCompany,
+            action: 'leaveAuction'
+          });
         break;
 
       case ACTIONS_BUTTON.DICE_ROLL:
