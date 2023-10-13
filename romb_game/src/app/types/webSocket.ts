@@ -32,6 +32,11 @@ export type turnPayload = {
     turnId: string;
 }
 
+export type attemptPayload = {
+    attemp: number;
+}
+
+
 export type initBoardPayload = {
     board: gameCell[]
 }

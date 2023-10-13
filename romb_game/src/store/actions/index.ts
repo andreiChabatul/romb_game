@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { ChatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany } from 'src/app/types';
 import { insideBoardState } from 'src/app/types/state';
+import { turnPayload } from 'src/app/types/webSocket';
 
 export enum AppActionTypes {
     CloseModal = '[CLOSE MODAL] CloseModal',
@@ -10,9 +11,6 @@ export enum AppActionTypes {
     UpdateRooms = '[UPDATE ROOMS] UpdateRooms',
     LoginUser = '[LOGIN USER] LoginUser',
     OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell',
-    AuctionCompany = '[AUCTION COMPANY] AuctionCompany',
-    ClearSellCompany = '[CLEAR SELL COMPANY] ClearSellCompany',
-    UpdateAuctionCompany = '[UPDATE AUCTION COMPANY] UpdateAuctionCompany',
     ControlInsideBoard = '[CONTROL INSIDE BOARD] ControlInsideBoard',
     InfoCellTurn = '[INFO CELL TURN] InfoCellTurn',
     UpdateChatRoom = '[UPDATE CHAT ROOM] UpdateChatRoom',
@@ -23,11 +21,17 @@ export enum AppActionTypes {
     InitPlayer = '[INIT Player] InitPlayer',
     InitBoard = '[INIT BOARD] InitBoard',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
+    PrisonAttempt = '[PRISON ATTEMPT] PrisonAttempt',
 };
 
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
     constructor(public payload: infoCellTurn) { }
+}
+
+export class PrisonAttempt implements Action {
+    readonly type = AppActionTypes.PrisonAttempt;
+    constructor(public payload: number) { }
 }
 
 export class InitBoard implements Action {
@@ -37,7 +41,7 @@ export class InitBoard implements Action {
 
 export class UpdateTurn implements Action {
     readonly type = AppActionTypes.UpdateTurn;
-    constructor(public payload: string) { }
+    constructor(public payload: turnPayload) { }
 }
 
 export class UpdateInfoPlayer implements Action {
@@ -124,4 +128,5 @@ export type ActionUnion =
     InitPlayer |
     UpdateTurn |
     InitBoard |
+    PrisonAttempt |
     EndTurn;

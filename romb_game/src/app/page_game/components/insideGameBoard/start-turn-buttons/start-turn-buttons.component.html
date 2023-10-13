@@ -1,6 +1,9 @@
-<div class="button-container-turn">
-    <div *ngFor="let button of buttons">
-        <app-button-standart *ngIf="button.show" [width]="button.width" [height]="button.height"
-            [action]="button.action"></app-button-standart>
+<app-prison-player *ngIf="(player$ | async)?.prison; else elseBlock"></app-prison-player>
+<ng-template #elseBlock>
+    <div class="button-container-turn">
+        <div *ngFor="let button of buttons">
+            <app-button-standart *ngIf="button.show" [width]="button.width" [height]="button.height"
+                [action]="button.action"></app-button-standart>
+        </div>
     </div>
-</div>
+</ng-template>

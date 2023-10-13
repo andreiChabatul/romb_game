@@ -6,7 +6,7 @@ import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal, ControlInsideBoard } from 'src/store/actions';
-import { selectInfoCellTurn, selectInsideBoardState, selectIsLogin } from 'src/store/selectors';
+import { selectInfoCellTurn, selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
   providedIn: 'root'

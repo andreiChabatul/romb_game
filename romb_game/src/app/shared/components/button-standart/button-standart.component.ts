@@ -13,6 +13,7 @@ export class ButtonStandartComponent {
   @Input() action: ACTIONS_BUTTON;
   @Input() height: string;
   @Input() width: string;
+  fontSize: string = '10px';
 
   constructor(private readonly buttonControllerService: ButtonControllerService) { }
 

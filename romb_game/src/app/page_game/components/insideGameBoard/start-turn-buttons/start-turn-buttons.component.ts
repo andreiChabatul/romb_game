@@ -4,7 +4,7 @@ import { mergeMap, map, Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
-import { selectBoard, selectIdUser } from 'src/store/selectors';
+import { selectGamePLayer, selectGameRoom, selectIdUser } from 'src/store/selectors';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class StartTurnButtonsComponent implements OnDestroy {
   isBuyStock: boolean = false;
   isBuyCompany: boolean = false;;
   userId$ = this.store.select(selectIdUser);
-  board$ = this.store.select(selectBoard);
+  selectGameRoom$ = this.store.select(selectGameRoom);
+  player$ = this.store.select(selectGamePLayer);
   subscription$: Subscription;
 
   buttons: ButtonStandart[] = [
@@ -32,9 +33,9 @@ export class StartTurnButtonsComponent implements OnDestroy {
   checkButtonState(): boolean[] {
     const result: boolean[] = [false, false];
     this.subscription$ = this.userId$.pipe(
-      mergeMap((userId => this.board$.pipe(
-        map((board) => {
-          board.forEach((cell) => {
+      mergeMap((userId => this.selectGameRoom$.pipe(
+        map((gameRoom) => {
+          gameRoom.board.forEach((cell) => {
             if (cell.cellCompany?.owned === userId) {
               cell.cellCompany?.isMonopoly ? result[0] = true : '';
               cell.cellCompany?.isPledge ? result[1] = true : '';

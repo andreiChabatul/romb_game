@@ -25,7 +25,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.UpdateTurn: {
-            return { ...state, gameRoom: { ...state.gameRoom, turnId: action.payload } };
+            return { ...state, gameRoom: { ...state.gameRoom, turnId: action.payload.turnId } };
         }
 
         case AppActionTypes.UpdateInfoPlayer: {
@@ -47,6 +47,10 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
 
         case AppActionTypes.StartGame: {
             return { ...state, gameRoom: { ...state.gameRoom, board: [], idRoom: action.payload } };
+        }
+
+        case AppActionTypes.PrisonAttempt: {
+            return { ...state, gameRoom: { ...state.gameRoom, prisonAttempt: action.payload } };
         }
 
         case AppActionTypes.InitPlayer: {

@@ -19,7 +19,8 @@ import { TurnEffects } from 'src/store/effects/turn.effects';
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,  ],
+    MainPageComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'src/app/types/state';
-import { selectBoard } from 'src/store/selectors';
+import { selectGameRoom } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board',
@@ -10,7 +10,7 @@ import { selectBoard } from 'src/store/selectors';
 })
 export class GameBoardComponent {
 
-  board$ = this.store.select(selectBoard);
+  selectGameRoom$ = this.store.select(selectGameRoom);
   
   constructor(private store: Store<AppStore>) { }
 

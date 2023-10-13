@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, startGame, updateCellCompany } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, PrisonAttempt, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
-import { SendPayloadSocket, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
+import { SendPayloadSocket, attemptPayload, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
 
 
 @Injectable({
@@ -72,7 +72,7 @@ export class WebSocketController {
 
         case EACTION_WEBSOCKET.UPDATE_TURN: {
           const payloadTurn = wsMessage.payload as turnPayload;
-          this.store.dispatch(new UpdateTurn(payloadTurn.turnId));
+          this.store.dispatch(new UpdateTurn(payloadTurn));
           break;
         }
 
@@ -85,6 +85,12 @@ export class WebSocketController {
         case EACTION_WEBSOCKET.INIT_BOARD: {
           const boardPayload = wsMessage.payload as initBoardPayload;
           this.store.dispatch(new InitBoard(boardPayload.board));
+          return;
+        }
+
+        case EACTION_WEBSOCKET.PRISON: {
+          const attemptPayload = wsMessage.payload as attemptPayload;
+          this.store.dispatch(new PrisonAttempt(attemptPayload.attemp));
           return;
         }
 

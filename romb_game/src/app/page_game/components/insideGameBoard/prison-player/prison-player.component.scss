@@ -1,0 +1,24 @@
+@import "./../../../../../scss/default-styles";
+@import "./../../../../../scss/color-styles";
+
+.prison-info-container {
+    @include flex-c_s;
+    padding: 0 5%;
+    margin: 2vw 0;
+}
+
+.prison-buttons-container {
+    @include flex-c_s;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prison-title-text {
+    @include font-default;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.prison-title-text_second {
+    font-size: 14px;
+}

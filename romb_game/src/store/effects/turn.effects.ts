@@ -5,6 +5,7 @@ import { map, switchMap } from 'rxjs';
 import { Store } from "@ngrx/store";
 import { AppStore } from 'src/app/types/state';
 import { selectIdUser } from "../selectors";
+import { turnPayload } from "src/app/types/webSocket";
 
 @Injectable()
 export class TurnEffects {
@@ -12,11 +13,12 @@ export class TurnEffects {
         () => this.actionUnion$.pipe(
             ofType(AppActionTypes.UpdateTurn),
             switchMap((action) => this.userId$.pipe(
-                map((userId) =>
-                    (userId === action['payload'])
+                map((userId) => {
+                    const payload = action['payload'] as turnPayload;
+                    return (userId === payload.turnId)
                         ? new ControlInsideBoard('startButtons')
-                        : new ControlInsideBoard('playerInfo')
-                )
+                        : new ControlInsideBoard('playerInfo');
+                })
             ))
         )
     );

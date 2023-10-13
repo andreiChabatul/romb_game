@@ -4,7 +4,8 @@ import { AppStore, State } from "src/app/types/state";
 const select = (state: AppStore) => state.state;
 
 export const selectAllPlayer = createSelector(select, (state: State) => state.gameRoom.players);
-export const selectBoard = createSelector(select, (state: State) => state.gameRoom.board);
+export const selectGamePLayer = createSelector(select, (state: State) => state.gameRoom.players[state.user.idUser]);
+export const selectGameRoom = createSelector(select, (state: State) => state.gameRoom);
 export const selectChat = createSelector(select, (state: State) => state.gameRoom.chat);
 export const selectPlayerTurnId = createSelector(select, (state: State) => state.gameRoom.turnId);
 export const selectIdRoom = createSelector(select, (state: State) => state.gameRoom.idRoom);

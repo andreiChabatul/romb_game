@@ -14,6 +14,7 @@ export interface UpdatePlayer {
     total: number;
     capital: number;
     cellPosition: number;
+    prison?: boolean;
 }
 
 export interface CompanyInfo {
@@ -39,6 +40,7 @@ export interface GameRoom {
     players: gamePlayer;
     board: gameCell[];
     turnId: string;
+    prisonAttempt?: number;
 }
 
 export type gameCell = {

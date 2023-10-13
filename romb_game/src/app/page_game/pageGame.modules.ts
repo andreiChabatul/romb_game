@@ -20,6 +20,7 @@ import { GameBoardTurnComponent } from './components/insideGameBoard/game-board-
 import { StartTurnButtonsComponent } from './components/insideGameBoard/start-turn-buttons/start-turn-buttons.component';
 import { PlayerInfoInsideComponent } from './components/insideGameBoard/player-info-inside/player-info-inside.component';
 import { ControlCompanyComponent } from './components/insideGameBoard/control-company/control-company.component';
+import { PrisonPlayerComponent } from './components/insideGameBoard/prison-player/prison-player.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,9 @@ import { ControlCompanyComponent } from './components/insideGameBoard/control-co
         GameBoardTurnComponent,
         StartTurnButtonsComponent,
         PlayerInfoInsideComponent,
-        ControlCompanyComponent
+        ControlCompanyComponent,
+        PrisonPlayerComponent
+        
     ],
     imports: [
         SharedModule,

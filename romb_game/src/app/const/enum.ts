@@ -44,6 +44,7 @@ export enum EACTION_WEBSOCKET {
     PAY_DEBT = 'pay debt',
     START_GAME = 'start game',
     CONTROL_COMPANY = 'control company',
+    PRISON = 'prison'
 }
 
 export enum ENDPOINT {
