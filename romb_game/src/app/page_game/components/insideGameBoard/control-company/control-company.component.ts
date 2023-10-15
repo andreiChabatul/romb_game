@@ -19,7 +19,7 @@ export class ControlCompanyComponent implements OnInit {
     sellStock: 'Выберите на игровом поле акции, которые хотите продать.',
     pledgeCompany: 'Выберите на игровом поле компании, которые хотите заложить.'
   }
-  buttonFinish: ButtonStandart = { action: ACTIONS_BUTTON.END_CONTROL, width: '15vw', height: '6vh' };
+  buttonFinish: ButtonStandart = { action: ACTIONS_BUTTON.END_CONTROL, width: '15vw', height: '6vh', show: true };
   insideBoardState$ = this.store.select(selectInsideBoardState);
   textControl$: Observable<string>;
 

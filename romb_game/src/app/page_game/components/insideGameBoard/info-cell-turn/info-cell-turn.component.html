@@ -11,8 +11,7 @@
                 </p>
             </div>
             <div class="info-cell-buttons">
-                <app-button-standart *ngFor="let button of this.buttonsResult" [width]="button.width"
-                    [height]="button.height" [action]="button.action"></app-button-standart>
+                <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"></app-button-standart>
             </div>
         </div>
     </div>

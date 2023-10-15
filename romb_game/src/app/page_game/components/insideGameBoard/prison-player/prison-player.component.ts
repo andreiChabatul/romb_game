@@ -15,10 +15,10 @@ export class PrisonPlayerComponent {
   selectGameRoom$ = this.store.select(selectGameRoom);
 
   buttons: ButtonStandart[] = [
-    { action: ACTIONS_BUTTON.DICE_ROLL, width: '15vw', height: '5vh', show: this.checkButtons() },
-    { action: ACTIONS_BUTTON.PAY, width: '15vw', height: '5vh', show: true },
-    { action: ACTIONS_BUTTON.SELL_STOCK, width: '15vw', height: '5vh', show: true },
-    { action: ACTIONS_BUTTON.MORTGAGE, width: '15vw', height: '5vh', show: true }
+    { action: ACTIONS_BUTTON.DICE_ROLL, width: '11vw', height: '6vh', show: this.checkButtons() },
+    { action: ACTIONS_BUTTON.PAY, width: '11vw', height: '6vh', show: true },
+    { action: ACTIONS_BUTTON.SELL_STOCK, width: '11vw', height: '6vh', show: true },
+    { action: ACTIONS_BUTTON.MORTGAGE, width: '11vw', height: '6vh', show: true }
   ]
 
   constructor(private store: Store<AppStore>) { }

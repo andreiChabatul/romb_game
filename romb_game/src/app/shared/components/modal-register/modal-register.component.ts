@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { InputTextFormOption } from 'src/app/types';
+import { ButtonStandart, InputTextFormOption } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { ChangeModal } from 'src/store/actions';
 
@@ -20,7 +20,7 @@ export class ModalRegisterComponent {
     { nameForm: 'password', namelabel: 'Password', type: 'password' }
   ]
   registerForm: FormGroup;
-  textButton = ACTIONS_BUTTON.REGISTER;
+  textButton: ButtonStandart = { action: ACTIONS_BUTTON.REGISTER, height: '60px', width: '230px', show: true };
 
   constructor(
     private fb: FormBuilder,

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { InputTextFormOption } from 'src/app/types';
+import { ButtonStandart, InputTextFormOption } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { ChangeModal } from 'src/store/actions';
 
@@ -17,7 +17,7 @@ export class ModalLoginComponent {
     { nameForm: 'password', namelabel: 'Password', type: 'password' }
   ]
   loginForm: FormGroup;
-  textButton = ACTIONS_BUTTON.LOGIN;
+  textButton: ButtonStandart = { action: ACTIONS_BUTTON.LOGIN, height: '60px', width: '230px', show: true };
 
   constructor(private fb: FormBuilder, private store: Store<AppStore>) {
     this.createForm();

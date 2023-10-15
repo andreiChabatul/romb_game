@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { InputTextFormOption, SelectFormOption } from 'src/app/types';
+import { ButtonStandart, InputTextFormOption, SelectFormOption } from 'src/app/types';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({
@@ -53,7 +53,7 @@ export class CreateGameFormComponent {
     }
   ]
   createGame: FormGroup;
-  textButton = ACTIONS_BUTTON.CREATE_ROOM;
+  textButton: ButtonStandart = { action: ACTIONS_BUTTON.CREATE_ROOM, height: '60px', width: '230px', show: true };
 
   constructor(private fb: FormBuilder,
     private webSocketController: WebSocketController,

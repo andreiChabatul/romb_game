@@ -22,10 +22,10 @@ export class StartTurnButtonsComponent implements OnDestroy {
   subscription$: Subscription;
 
   buttons: ButtonStandart[] = [
-    { action: ACTIONS_BUTTON.DICE_ROLL, width: '19vw', height: '7vh', show: true },
-    { action: ACTIONS_BUTTON.OFFER_DEAL, width: '19vw', height: '7vh', show: true },
-    { action: ACTIONS_BUTTON.BUY_STOCK, width: '19vw', height: '7vh', show: this.checkButtonState()[0] },
-    { action: ACTIONS_BUTTON.BUY_OUT_COMPANY, width: '19vw', height: '7vh', show: this.checkButtonState()[1] },
+    { action: ACTIONS_BUTTON.DICE_ROLL, width: '18vw', height: '7vh', show: true },
+    { action: ACTIONS_BUTTON.OFFER_DEAL, width: '18vw', height: '7vh', show: true },
+    { action: ACTIONS_BUTTON.BUY_STOCK, width: '18vw', height: '7vh', show: this.checkButtonState()[0] },
+    { action: ACTIONS_BUTTON.BUY_OUT_COMPANY, width: '18vw', height: '7vh', show: this.checkButtonState()[1] },
   ]
 
   constructor(private store: Store<AppStore>) { }

@@ -169,5 +169,5 @@ export type ButtonStandart = {
     action: ACTIONS_BUTTON;
     width: string;
     height: string;
-    show?: boolean;
+    show: boolean;
 }

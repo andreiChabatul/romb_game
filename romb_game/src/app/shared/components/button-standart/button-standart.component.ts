@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonControllerService } from '../../services/button-controller.service';
-
+import { ButtonStandart } from 'src/app/types';
 
 @Component({
   selector: 'app-button-standart',
@@ -10,15 +9,12 @@ import { ButtonControllerService } from '../../services/button-controller.servic
 })
 export class ButtonStandartComponent {
 
-  @Input() action: ACTIONS_BUTTON;
-  @Input() height: string;
-  @Input() width: string;
-  fontSize: string = '10px';
+  @Input() button: ButtonStandart;
 
   constructor(private readonly buttonControllerService: ButtonControllerService) { }
 
   handlingClick() {
-    this.buttonControllerService.actionButton(this.action);
+    this.buttonControllerService.actionButton(this.button.action);
   }
 
 }

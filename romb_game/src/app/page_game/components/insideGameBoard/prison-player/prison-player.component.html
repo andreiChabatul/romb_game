@@ -3,10 +3,7 @@
 <div class="prison-info-container">
     <img src="assets/inJail.png" alt="inJail">
     <div class="prison-buttons-container">
-        <div *ngFor="let button of buttons">
-            <app-button-standart *ngIf="button.show" [width]="button.width" [height]="button.height"
-                [action]="button.action"></app-button-standart>
-        </div>
+        <app-button-standart *ngFor="let button of buttons" [button]="button"></app-button-standart>
     </div>
 </div>
 <p *ngIf="checkButtons()" class="prison-title-text prison-title-text_second">У вас осталось попыток: {{(selectGameRoom$

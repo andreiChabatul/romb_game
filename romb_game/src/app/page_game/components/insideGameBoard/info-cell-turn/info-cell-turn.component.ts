@@ -7,13 +7,13 @@ import { AppStore } from 'src/app/types/state';
 import { selectInfoCellTurn } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
-  { action: ACTIONS_BUTTON.PAY, width: '12vw', height: '6vh', show: false },
-  { action: ACTIONS_BUTTON.SELL_STOCK, width: '12vw', height: '6vh', show: false },
-  { action: ACTIONS_BUTTON.MORTGAGE, width: '12vw', height: '6vh', show: false },
-  { action: ACTIONS_BUTTON.BUY_COMPANY, width: '12vw', height: '6vh', show: false },
-  { action: ACTIONS_BUTTON.START_AUCTION, width: '12vw', height: '6vh', show: false },
-  { action: ACTIONS_BUTTON.AUCTION_STEP, width: '12vw', height: '6vh', show: false },
-  { action: ACTIONS_BUTTON.AUCTION_LEAVE, width: '12vw', height: '6vh', show: false }
+  { action: ACTIONS_BUTTON.PAY, width: '12vw', height: '6vh', show: true },
+  { action: ACTIONS_BUTTON.SELL_STOCK, width: '12vw', height: '6vh', show: true },
+  { action: ACTIONS_BUTTON.MORTGAGE, width: '12vw', height: '6vh', show: true },
+  { action: ACTIONS_BUTTON.BUY_COMPANY, width: '12vw', height: '6vh', show: true },
+  { action: ACTIONS_BUTTON.START_AUCTION, width: '12vw', height: '6vh', show: true },
+  { action: ACTIONS_BUTTON.AUCTION_STEP, width: '12vw', height: '6vh', show: true },
+  { action: ACTIONS_BUTTON.AUCTION_LEAVE, width: '12vw', height: '6vh', show: true }
 ]
 
 @Component({
