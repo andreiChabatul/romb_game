@@ -12,6 +12,8 @@ import { ColorShadowDirective } from './directive/color-shadow.directive';
 import { ImgAssetsPipe } from './pipe/img-assets.pipe';
 import { StockAssetsPipe } from './pipe/stock.assets.pipe';
 import { RentPipe } from './pipe/rent.pipe';
+import { TranslocoRootModule } from '../transloco-root.module';
+import { ChangeMessagePipe } from './pipe/change.message.pipe';
 
 @NgModule({
     declarations: [
@@ -24,10 +26,11 @@ import { RentPipe } from './pipe/rent.pipe';
         ColorShadowDirective,
         ImgAssetsPipe,
         StockAssetsPipe,
-        RentPipe
+        RentPipe,
+        ChangeMessagePipe
     ],
     imports: [
-        CommonModule, MaterialsModule
+        CommonModule, MaterialsModule, TranslocoRootModule
 
     ],
     exports: [
@@ -37,7 +40,9 @@ import { RentPipe } from './pipe/rent.pipe';
         ColorShadowDirective,
         ImgAssetsPipe,
         StockAssetsPipe,
-        RentPipe
+        RentPipe,
+        TranslocoRootModule,
+        ChangeMessagePipe
     ],
     providers: [ButtonControllerService],
     bootstrap: []

@@ -1,0 +1,7 @@
+{
+    "firstTurn": "Право первого хода выпадает $PLAYER$.",
+    "turn": "Ходит игрок $PLAYER$.",
+    "doubleTurn": "Ходит игрок $PLAYER$. Повторный ход после дубля.",
+    "intoCell": "$PLAYER$ выбрасывает $VALUEROLL$ и попадает на ячейку $CELLNAME$",
+    "loss": "Убыток"
+}

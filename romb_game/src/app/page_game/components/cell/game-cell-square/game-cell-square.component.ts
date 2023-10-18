@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { GameCellSquare, cellDirections } from 'src/app/types';
+import { gameCell } from 'src/app/types';
 
 @Component({
   selector: 'app-game-cell-square',
@@ -8,7 +8,6 @@ import { GameCellSquare, cellDirections } from 'src/app/types';
 })
 export class GameCellSquareComponent {
 
-  @Input() cellSquare: GameCellSquare;
-  @Input() directions: cellDirections;
+  @Input() gameCell: gameCell;
 
 }

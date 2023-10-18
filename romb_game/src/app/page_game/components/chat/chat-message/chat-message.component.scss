@@ -1,14 +1,19 @@
 @import "./../../../../../scss/color-styles";
 @import "./../../../../../scss/default-styles";
 
+.chat-text {
+    @include font-default;
+    font-size: 0.8vw;
+    font-weight: 500;
+  }
+
 .chat-text_name {
     font-weight: 600;
-    @include font_default;
 }
 
-.message-container_player {
-    background: #CCD8E0;
-    border-radius: 5%;
+.message-container {
+    background: #c5d1da;
+    border-radius: 10px;
     padding: 1% 3%;
 }
 

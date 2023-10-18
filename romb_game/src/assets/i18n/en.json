@@ -1,0 +1,7 @@
+{
+    "firstTurn": "The first move goes to $PLAYER$.",
+    "turn": "Player $PLAYER$ moves.",
+    "doubleTurn": "Ходит игрок $PLAYER$. Повторный ход после дубля.",
+    "intoCell": "$PLAYER$ throws $VALUEROLL$ and hits cell $CELLNAME$",
+    "loss": "Loss"
+}

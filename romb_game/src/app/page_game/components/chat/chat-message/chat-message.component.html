@@ -1,8 +1,8 @@
-<div class="message-container">
-    <div [ngClass]="{'message-container_player': message.name}">
-        <span *ngIf="message.name" [style.color]="message.color" class="chat-text chat-text_name">{{message.name}}:
-        </span>
+<p *ngIf="message.action" class="chat-text">{{(message.action | transloco | changeMessage: message) | async}}</p>
+<div *ngIf="message.senderName" class="message-container">
+    <p class="chat-text chat-text_name" [style.color]="message.senderColor">{{message.senderName}}:
         <span class="chat-text">{{message.message}}</span>
-    </div>
-    <p class="chat-text_separator">***</p>
+    </p>
+
 </div>
+<p class="chat-text_separator">***</p>

@@ -25,7 +25,7 @@
 
         <img class="game-cell-company" [src]="gameCell.cellCompany?.countryCompany | imgAssets" alt='country assets'>
         <div class="company-info-container">
-            <img class="game-cell-company_logo" [src]="gameCell.cellCompany?.nameCompany | imgAssets" [ngClass]="{
+            <img class="game-cell-company_logo" [src]="gameCell.nameCell | imgAssets" [ngClass]="{
         'game-cell-company_logo__gorizontal': cellDirections === 'left' || cellDirections === 'right'
         }" alt='name assets'>
             <p *ngIf="!(gameCell.cellCompany?.owned !== null)" class="game-cell-company_price">

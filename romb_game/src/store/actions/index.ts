@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ChatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany } from 'src/app/types';
+import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany } from 'src/app/types';
 import { insideBoardState } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
@@ -75,7 +75,7 @@ export class ControlInsideBoard implements Action {
 
 export class UpdateChatRoom implements Action {
     readonly type = AppActionTypes.UpdateChatRoom;
-    constructor(public payload: ChatMessage[]) { }
+    constructor(public payload: chatMessage[]) { }
 }
 
 export class CloseModal implements Action {

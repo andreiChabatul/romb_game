@@ -18,8 +18,7 @@ export interface UpdatePlayer {
 }
 
 export interface CompanyInfo {
-    countryCompany: countryCompany;
-    nameCompany: nameCompany;
+    countryCompany: string;
     priceCompany: number;
     collateralCompany: number;
     buyBackCompany: number;
@@ -35,7 +34,7 @@ export interface GameCellCompanyInfo extends CompanyInfo {
 }
 
 export interface GameRoom {
-    chat: ChatMessage[];
+    chat: chatMessage[];
     idRoom: string;
     players: gamePlayer;
     board: gameCell[];
@@ -46,8 +45,8 @@ export interface GameRoom {
 export type gameCell = {
     location: location;
     indexCell: number;
+    nameCell: string;
     cellCompany?: GameCellCompanyInfo;
-    cellSquare?: GameCellSquare;
 }
 
 export type updateCellCompany = {
@@ -61,7 +60,6 @@ export type updateCellCompany = {
     }
 }
 
-
 export type startGame = {
     idRoom: string;
 }
@@ -70,13 +68,16 @@ export type gamePlayer = {
     [key: string]: Player
 }
 
-export type ChatRoom = { chat: ChatMessage[] };
+export type ChatRoom = { chat: chatMessage[] };
 
-
-export interface ChatMessage {
-    name: string;
-    color: string;
-    message: string;
+export type chatMessage = {
+    message?: string;
+    senderName?: string;
+    senderColor?: string;
+    playerId?: string;
+    cellId?: number;
+    valueroll?: number;
+    action?: string
 }
 
 export interface SelectFormOption {
@@ -128,34 +129,13 @@ export type location = {
 
 export type textControl = {
     [key in controlCompanyState]: string
-}
+} //then delete, after translate
 
-export interface GameCellSquare {
-    imageCell: typeSquareImage;
-    textCell: string;
-}
-
-export type nameCompany =
-    'volkswagen' | 'allianz' | 'continental'
-    | 'ferrari' | 'posteItaliane' | 'uniCredit'
-    | 'ukranafta' | 'uia'
-    | 'honda' | 'canon' | 'fujitsu' | 'mitsubishi'
-    | 'ibm' | 'WD' | 'google'
-    | 'rbc' | 'telus'
-    | 'xiaomi' | 'aliexpress'
-    | 'kaz' | 'kazAzot' | 'ttc'
-    | 'volvo' | 'essity' | 'ericsson'
-    | 'hsbc' | 'rr' | 'bp';
-
-export type countryCompany = 'germany' | 'ukraine' | 'japan' | 'italia' | 'britania' | 'sweden' | 'canada' | 'kazah' | 'china' | 'usa';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
-export type stockTypeCell = 'stock' | 'stamp' | 'bag';
-export type cellType = 'company' | 'empty';
-export type typeSquareImage = 'inJail' | 'parking' | 'security' | 'start' | 'profit' | 'loss' | 'tax' | 'ukraine';
 export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none';
 
 export type infoCellTurn = {
-    nameCell: nameCompany | typeSquareImage;
+    nameCell: string;
     titleCell: string;
     description: string;
     indexCompany?: number;

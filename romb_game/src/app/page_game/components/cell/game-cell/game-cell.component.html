@@ -1,9 +1,9 @@
 <div class="game-cell-container" (click)="clickCellInfo()">
-        <app-game-cell-company *ngIf="gameCellInfo.cellCompany" [gameCell]="gameCellInfo">
+        <app-game-cell-company *ngIf="gameCellInfo.cellCompany; else elseBlock" [gameCell]="gameCellInfo">
         </app-game-cell-company>
-        <app-game-cell-square *ngIf="gameCellInfo.cellSquare" [directions]="gameCellInfo.location.cellDirections"
-                [cellSquare]=" gameCellInfo.cellSquare">
-        </app-game-cell-square>
+        <ng-template #elseBlock>
+                <app-game-cell-square [gameCell]="gameCellInfo"> </app-game-cell-square>
+        </ng-template>
         <div class="game-cell_players">
                 <p [style.background]="color" class="game-cell_players-font" *ngFor="let color of playersPosition">
                 </p>
