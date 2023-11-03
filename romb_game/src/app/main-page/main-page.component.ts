@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ACTIONS_BUTTON } from '../const/enum';
-import { ButtonStandart } from '../types';
+import { ButtonStandart } from '../types/components';
 
 @Component({
   selector: 'app-main-page',

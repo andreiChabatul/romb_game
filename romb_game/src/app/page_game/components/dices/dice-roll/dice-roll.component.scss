@@ -1,12 +1,12 @@
 @import "./../../../../../scss/default-styles";
 @import "./../../../../../scss/color-styles";
 
-.dice-roll-container {
-    width: 100%;
-}
+// .dice-roll-container {
+//     width: 100%;
+// }
 
 .dice-rool-wrapper {
-    @include flex-c_s;
+    @include flex-c_c;
     margin-bottom: 10%;
     gap: 2vw;
 }

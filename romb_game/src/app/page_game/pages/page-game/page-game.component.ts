@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Player } from 'src/app/types';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { selectAllPlayer } from 'src/store/selectors';
+import { selectAllPlayerArr } from 'src/store/selectors';
 import { AppStore } from 'src/app/types/state';
 
 @Component({
@@ -10,17 +8,10 @@ import { AppStore } from 'src/app/types/state';
   templateUrl: './page-game.component.html',
   styleUrls: ['./page-game.component.scss']
 })
-export class PageGameComponent implements OnInit {
+export class PageGameComponent {
 
-  players$ = this.store.select(selectAllPlayer);
-  players: Player[] = [];
+  players$ = this.store.select(selectAllPlayerArr);
 
   constructor(private store: Store<AppStore>) { }
-
-  ngOnInit(): void {
-    this.players$.subscribe(
-      (value) => this.players = Object.values(value));
-
-  }
 
 }

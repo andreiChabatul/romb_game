@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { SelectFormOption } from 'src/app/types';
+import { SelectFormOption } from 'src/app/types/components';
 
 @Component({
   selector: 'app-select-material',

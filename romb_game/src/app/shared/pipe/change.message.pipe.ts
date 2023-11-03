@@ -20,7 +20,6 @@ export class ChangeMessagePipe implements PipeTransform {
         return this.players$.pipe(
             mergeMap((players) => this.gameRoom$.pipe(
                 map((gameRoom) => {
-                    console.log(chatMessage)
                     let resultString = value;
 
                     resultString = (chatMessage.playerId && players[chatMessage.playerId])
@@ -28,7 +27,11 @@ export class ChangeMessagePipe implements PipeTransform {
                         : resultString;
 
                     resultString = (chatMessage.cellId !== undefined && gameRoom.board[chatMessage.cellId])
-                        ? resultString.replaceAll('$CELLNAME$', gameRoom.board[chatMessage.cellId].nameCell.toUpperCase())
+                        ? resultString
+                            .replaceAll('$CELLNAME$', gameRoom.board[chatMessage.cellId].nameCell.toUpperCase())
+                            .replaceAll('$PRICE$', String(gameRoom.board[chatMessage.cellId].cellCompany?.priceCompany))
+                            .replaceAll('$RENT$', String(gameRoom.board[chatMessage.cellId].cellCompany?.rentCompany))
+                            .replaceAll('$PLAYER_OWNED$', String(players[String(gameRoom.board[chatMessage.cellId].cellCompany?.owned)]?.name))
                         : resultString;
 
                     resultString = chatMessage.valueroll

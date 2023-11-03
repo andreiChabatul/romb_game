@@ -10,34 +10,12 @@
     margin-bottom: 10px;
 }
 
-.info-player_turn {
-    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
-}
-
 .info-player_gradient {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 10%;
     padding: 1%;
-}
-
-.info-player-circle {
-    top: 0.35vw;
-    left: 0.35vw;
-    width: 0.9vw;
-    height: 0.9vw;
-    border-radius: 50%;
-    position: absolute;
-    box-shadow: inset 1px 1px 3px #00000080,
-        inset 1px 1px 3px #00000080, inset 1px 1px 3px #00000080,
-        inset 1px 1px 5px #00000080;
-}
-
-
-.info-player_img-type {
-    height: 3.5vw;
 }
 
 .info-player-summary {
@@ -54,4 +32,8 @@
 .info-player_text_name {
     font-size: 14px;
     font-weight: 600;
+}
+
+.info-player_turn {
+    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }

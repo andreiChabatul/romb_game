@@ -1,14 +1,23 @@
 <mat-spinner *ngIf="!(infoCellTurn$ | async); else elseBlock" class="spinner-info-cell"></mat-spinner>
 <ng-template #elseBlock>
     <div class="info-cell-container">
-        <img class="info-cell-img" [src]="(infoCellTurn$ |async)?.nameCell | imgAssets" alt="img info">
+        <img class="info-cell-img" [src]="cell.nameCell| imgAssets" alt="img info">
+        <p class="info-cell-text info-cell-title">
+            {{('infoCellTurnTitle' | transloco)}}
+            {{cell.nameCell | uppercase}} </p>
         <div class="info-desc-container">
-            <div>
-                <p class="info-cell-text info-cell-title">{{(infoCellTurn$ |async)?.titleCell }}</p>
-                <p class="info-cell-text">{{(infoCellTurn$ |async)?.description}}</p>
-                <p *ngIf="(infoCellTurn$ |async)?.descriptionTwo" class="info-cell-text">
-                    {{(infoCellTurn$ |async)?.descriptionTwo}}
-                </p>
+            <div [ngSwitch]="cell.type">
+                <ng-template ngSwitchCase="lossProfit">
+                    <app-loss-profit-description [cell]="cell"></app-loss-profit-description>
+                </ng-template>
+                <ng-template ngSwitchCase="company">
+                    <p class="company-info-text">
+                        {{((infoCellTurn$ |async)?.description | transloco | changeMessage: {cellId: cell.indexCell}) |
+                        async}}</p>
+                </ng-template>
+                <ng-template ngSwitchDefault>
+                    <p class="info-cell-text">{{(cell.nameCell + 'Desc') | transloco}}</p>
+                </ng-template>
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"></app-button-standart>

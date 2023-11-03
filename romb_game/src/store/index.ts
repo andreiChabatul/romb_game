@@ -8,9 +8,12 @@ export const stateApp: State = {
         board: [],
         players: {},
         chat: [],
-        turnId: ''
+        turnId: '',
+        offerDealInfo: {}
     },
-    insideBoardState: 'playerInfo',
+    insideBoard: {
+        state: 'playerInfo',
+    },
     user: {
         idUser: '',
         isLogin: false,

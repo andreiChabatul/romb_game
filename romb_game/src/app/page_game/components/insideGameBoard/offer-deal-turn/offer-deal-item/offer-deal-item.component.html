@@ -1,0 +1,20 @@
+<div class="offer-deal-item-container">
+    <p>{{(getPlayer() | async)?.name}}</p>
+    <p class="offer-deal-item-text">
+        {{(offersPerson === 'offerPerson'? 'offerPersonCompany' : 'receivePersonCompany') | transloco}}</p>
+    <ul class="offer-company-container">
+        <li [ngClass]="{'offer-company-li__select': (searchIndexCompany(cell.indexCell) > -1)}"
+            (click)="selectCompany(cell.indexCell)" class="offer-company-li"
+            *ngFor="let cell of getCompanyPlayer() | async">
+            <img class="offer-company-li_img" [src]="cell.nameCell | imgAssets" alt='name assets'>
+        </li>
+    </ul>
+    <p class="offer-deal-item-text">
+        {{(offersPerson === 'offerPerson'? 'offerPersonMoney' : 'receivePersonMoney') | transloco}}
+        <span class="offer-deal-item-text_value">{{offerInfo.valueMoney}}$</span>
+    </p>
+    <mat-slider min="0" [max]="(getPlayer() | async)?.total" step="1000" showTickMarks discrete
+        [displayWith]="formatLabel">
+        <input matSliderThumb>
+    </mat-slider>
+</div>

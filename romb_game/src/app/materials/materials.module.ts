@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectMaterialComponent } from './component/select-material/select-material.component';
 import { InputMaterialComponent } from './component/input-material/input-material.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSliderModule} from '@angular/material/slider';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
         MatSelectModule,
         FormsModule,
         ReactiveFormsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSliderModule
     ],
     exports: [
         MatInputModule,
@@ -29,7 +31,8 @@ import { CommonModule } from '@angular/common';
         FormsModule,
         ReactiveFormsModule,
         InputMaterialComponent,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSliderModule
     ],
     providers: [],
     bootstrap: []

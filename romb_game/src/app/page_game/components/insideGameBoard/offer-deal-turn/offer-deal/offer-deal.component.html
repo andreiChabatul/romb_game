@@ -1,0 +1,28 @@
+<div class="offer-deal-container">
+    <div class="info-player-offer-container" *ngIf="isSelectPlayer; else elseBlock">
+        <p>Выберите игрока, которому хотите предложить сделку</p>
+        <div class="info-player-offer-container_item" *ngFor="let player of players$ | async">
+            <div (click)="selectPlayer(player.id)" [style.background]="player.color"
+                class="info-player_img-container info-player_img-offer">
+                <img class="info-player_img-type" src="assets/defaultAvatar.png" alt="typeImg">
+            </div>
+            <p class="info-player-name">{{player.name}}</p>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <div class="offer-deal-item-container">
+            <app-offer-deal-item [offersPerson]="'offerPerson'" [idUser]="turnId$ | async"></app-offer-deal-item>
+            <div class="line-offer-deal-item-container"></div>
+            <app-offer-deal-item [offersPerson]="'receivePerson'" [idUser]="userIdReceiver"></app-offer-deal-item>
+        </div>
+        <div class="balanse-offer-container">
+            <p class="balanse-offer-title">Баланс сделки</p>
+            <input min="0" max="2" step="0.000001" class="balanse-line" type="range" [value]="calcBalanse() | async">
+            <p>{{textBalanse() | async}}</p>
+        </div>
+    </ng-template>
+    <div>
+        <app-button-standart [ngClass]="{'deal-send-button__disable': button.action === 'sendDealButton'}"
+            *ngFor="let button of buttonOffer" [button]="button"></app-button-standart>
+    </div>
+</div>

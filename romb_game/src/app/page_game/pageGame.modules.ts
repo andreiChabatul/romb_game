@@ -21,6 +21,9 @@ import { StartTurnButtonsComponent } from './components/insideGameBoard/start-tu
 import { PlayerInfoInsideComponent } from './components/insideGameBoard/player-info-inside/player-info-inside.component';
 import { ControlCompanyComponent } from './components/insideGameBoard/control-company/control-company.component';
 import { PrisonPlayerComponent } from './components/insideGameBoard/prison-player/prison-player.component';
+import { LossProfitDescriptionComponent } from './components/insideGameBoard/loss-profit-description/loss-profit-description.component';
+import { OfferDealComponent } from './components/insideGameBoard/offer-deal-turn/offer-deal/offer-deal.component';
+import { OfferDealItemComponent } from './components/insideGameBoard/offer-deal-turn/offer-deal-item/offer-deal-item.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +45,10 @@ import { PrisonPlayerComponent } from './components/insideGameBoard/prison-playe
         StartTurnButtonsComponent,
         PlayerInfoInsideComponent,
         ControlCompanyComponent,
-        PrisonPlayerComponent
+        PrisonPlayerComponent,
+        LossProfitDescriptionComponent,
+        OfferDealComponent,
+        OfferDealItemComponent
         
     ],
     imports: [

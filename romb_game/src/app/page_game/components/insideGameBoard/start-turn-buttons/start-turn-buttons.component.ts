@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { mergeMap, map, Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { ButtonStandart } from 'src/app/types';
+import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
 import { selectGamePLayer, selectGameRoom, selectIdUser } from 'src/store/selectors';
 

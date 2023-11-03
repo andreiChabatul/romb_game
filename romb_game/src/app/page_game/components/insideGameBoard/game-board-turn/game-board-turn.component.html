@@ -1,13 +1,14 @@
 <div class="turn-player-container">
     <p *ngIf="(playerTurnId$ | async) === (userId$ | async)" class="game-board_inside__text">Your turn</p>
-    <div @animationTriggerName [ngSwitch]="(insideBoardState$ | async)">
+    <div @animationTriggerName class="info-cell-turn" [ngSwitch]="(insideBoardState$ | async)">
         <ng-template ngSwitchCase="playerInfo"><app-player-info-inside></app-player-info-inside></ng-template>
         <ng-template ngSwitchCase="startButtons"> <app-start-turn-buttons></app-start-turn-buttons></ng-template>
         <ng-template ngSwitchCase="diceRoll"> <app-dice-roll (resetDice)="resetCheat()" class="dice-roll-container"
                 [cheatNumbers]="cheatNumbers"></app-dice-roll></ng-template>
-        <ng-template ngSwitchCase="infoCellTurn"><app-info-cell-turn class="info-cell">
+        <ng-template ngSwitchCase="infoCellTurn" class="info-cell-turn"><app-info-cell-turn>
             </app-info-cell-turn></ng-template>
         <ng-template ngSwitchCase="prison"><app-prison-player></app-prison-player></ng-template>
+        <ng-template ngSwitchCase="offerDeal"><app-offer-deal></app-offer-deal></ng-template>
         <ng-template ngSwitchDefault><app-control-company></app-control-company></ng-template>
     </div>
     <div class="timer-container" [ngStyle]="{'color':fontColor}">0{{minute}}:{{seconds}}</div>

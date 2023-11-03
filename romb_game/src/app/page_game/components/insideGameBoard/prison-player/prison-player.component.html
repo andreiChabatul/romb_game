@@ -6,6 +6,6 @@
         <app-button-standart *ngFor="let button of buttons" [button]="button"></app-button-standart>
     </div>
 </div>
-<p *ngIf="checkButtons()" class="prison-title-text prison-title-text_second">У вас осталось попыток: {{(selectGameRoom$
+<p *ngIf="checkButtons()" class="prison-title-text prison-title-text_second">У вас осталось попыток: {{(insideBoard$
     | async)?.prisonAttempt}}
 </p>

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany } from 'src/app/types';
+import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany, offersPerson, offerInfo } from 'src/app/types';
 import { insideBoardState } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
@@ -22,11 +22,23 @@ export enum AppActionTypes {
     InitBoard = '[INIT BOARD] InitBoard',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
     PrisonAttempt = '[PRISON ATTEMPT] PrisonAttempt',
+    SetValueSellProfit = '[SET VALUE SELL PROFIT] SetValueSellProfit',
+    SetOfferDeal = '[SET OFFER DEAL] SetOfferDeal',
 };
 
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
     constructor(public payload: infoCellTurn) { }
+}
+
+export class SetOfferDeal implements Action {
+    readonly type = AppActionTypes.SetOfferDeal;
+    constructor(public payload: { offersPerson: offersPerson, offerInfo: offerInfo }) { }
+}
+
+export class SetValueSellProfit implements Action {
+    readonly type = AppActionTypes.SetValueSellProfit;
+    constructor(public payload: number) { }
 }
 
 export class PrisonAttempt implements Action {
@@ -75,7 +87,7 @@ export class ControlInsideBoard implements Action {
 
 export class UpdateChatRoom implements Action {
     readonly type = AppActionTypes.UpdateChatRoom;
-    constructor(public payload: chatMessage[]) { }
+    constructor(public payload: chatMessage) { }
 }
 
 export class CloseModal implements Action {
@@ -129,4 +141,6 @@ export type ActionUnion =
     UpdateTurn |
     InitBoard |
     PrisonAttempt |
+    SetValueSellProfit |
+    SetOfferDeal |
     EndTurn;

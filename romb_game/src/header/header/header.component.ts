@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { ButtonMaterialOption } from 'src/app/types';
+import { ButtonMaterialOption } from 'src/app/types/components';
+
 import { AppStore } from 'src/app/types/state';
 import { selectIsLogin, selectUserName } from 'src/store/selectors';
 

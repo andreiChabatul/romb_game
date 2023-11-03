@@ -14,13 +14,18 @@ export interface State {
         idUser: string;
     };
     gameRoom: GameRoom;
-    insideBoardState: insideBoardState,
-    infoCellTurn?: infoCellTurn,
+    insideBoard: {
+        state: insideBoardState,
+        infoCellTurn?: infoCellTurn,
+        valueSellProfit?: number;
+        offer?: {};
+        prisonAttempt?: number;
+    }
 }
 
 export interface AppStore {
     state: State;
 }
 
-export type insideBoardState = controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'prison';
+export type insideBoardState = controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'prison' | 'offerDeal';
 export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';

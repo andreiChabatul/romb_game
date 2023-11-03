@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InputTextFormOption } from 'src/app/types';
+import { InputTextFormOption } from 'src/app/types/components';
 
 @Component({
   selector: 'app-input-material',

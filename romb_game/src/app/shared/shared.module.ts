@@ -27,7 +27,7 @@ import { ChangeMessagePipe } from './pipe/change.message.pipe';
         ImgAssetsPipe,
         StockAssetsPipe,
         RentPipe,
-        ChangeMessagePipe
+        ChangeMessagePipe,
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule

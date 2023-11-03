@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { ButtonStandart } from 'src/app/types';
+import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGameRoom } from 'src/store/selectors';
+import { selectInsideBoard } from 'src/store/selectors';
 
 @Component({
   selector: 'app-prison-player',
@@ -12,11 +12,11 @@ import { selectGameRoom } from 'src/store/selectors';
 })
 export class PrisonPlayerComponent {
 
-  selectGameRoom$ = this.store.select(selectGameRoom);
+  insideBoard$ = this.store.select(selectInsideBoard);
 
   buttons: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.DICE_ROLL, width: '11vw', height: '6vh', show: this.checkButtons() },
-    { action: ACTIONS_BUTTON.PAY, width: '11vw', height: '6vh', show: true },
+    { action: ACTIONS_BUTTON.PAY_PRISON, width: '11vw', height: '6vh', show: true },
     { action: ACTIONS_BUTTON.SELL_STOCK, width: '11vw', height: '6vh', show: true },
     { action: ACTIONS_BUTTON.MORTGAGE, width: '11vw', height: '6vh', show: true }
   ]
@@ -25,11 +25,9 @@ export class PrisonPlayerComponent {
 
   checkButtons(): boolean {
     let result = false;
-    if (this.selectGameRoom$) {
-      this.selectGameRoom$.subscribe((
-        (gameRoom) => (gameRoom.prisonAttempt && gameRoom.prisonAttempt > 0) ? result = true : result = false
+      this.insideBoard$.subscribe((
+        (insideBoard) => (insideBoard.prisonAttempt && insideBoard.prisonAttempt > 0) ? result = true : result = false
       ))
-    }
     return result;
   }
 

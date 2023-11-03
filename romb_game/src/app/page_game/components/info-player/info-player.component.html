@@ -1,11 +1,12 @@
 <div class="info-player-container">
-    <div class="info-player" [ngClass]="{'info-player_turn': isTurn}">
+    <div class="info-player" [ngClass]="{'info-player_turn': (playerTurnId$ | async) === player.id}">
         <div class="info-player_gradient">
-            <img class="info-player_img-type" src="./../../../assets/board/defaultAvatar.png" alt="typeImg">
-            <div [style.background]="player.color" class="info-player-circle"></div>
+            <div [style.background]="player.color" class="info-player_img-container">
+                <img class="info-player_img-type" src="assets/defaultAvatar.png" alt="typeImg">
+            </div>
             <div>
                 <p class="info-player_text info-player_text_name">{{player.name}}</p>
-                <p class="info-player_text"> Total: {{player.total}} </p>
+                <p class="info-player_text">Total: {{player.total}} </p>
                 <p class="info-player_text">Capital: {{player.capital}}</p>
             </div>
         </div>

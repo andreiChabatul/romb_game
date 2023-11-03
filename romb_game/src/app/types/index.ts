@@ -1,7 +1,18 @@
-import { ACTIONS_BUTTON } from "../const/enum";
-import { controlCompanyState } from "./state";
-
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
+export type companyType = 'company' | 'lossProfit' | 'empty';
+export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
+export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none' | 'payRent';
+export type offersPerson = 'offerPerson' | 'receivePerson';
+export type offerInfo = {
+    indexCompany: number[];
+    valueMoney: number;
+    idPerson: string;
+}
+
+export type offerDealInfo = {
+    offerPerson?: offerInfo,
+    receivePerson?: offerInfo,
+}
 
 export interface Player extends UpdatePlayer {
     color: string;
@@ -39,10 +50,11 @@ export interface GameRoom {
     players: gamePlayer;
     board: gameCell[];
     turnId: string;
-    prisonAttempt?: number;
+    offerDealInfo: offerDealInfo;
 }
 
 export type gameCell = {
+    type: companyType;
     location: location;
     indexCell: number;
     nameCell: string;
@@ -68,7 +80,7 @@ export type gamePlayer = {
     [key: string]: Player
 }
 
-export type ChatRoom = { chat: chatMessage[] };
+export type ChatRoom = { chat: chatMessage };
 
 export type chatMessage = {
     message?: string;
@@ -78,29 +90,6 @@ export type chatMessage = {
     cellId?: number;
     valueroll?: number;
     action?: string
-}
-
-export interface SelectFormOption {
-    nameForm: string;
-    namelabel: string;
-    optionSelect: OptionSelect[];
-}
-
-export interface OptionSelect {
-    value: number | string;
-    option: string;
-}
-
-export interface InputTextFormOption {
-    nameForm: string;
-    namelabel: string;
-    type: string;
-}
-
-export interface ButtonMaterialOption {
-    action: ACTIONS_BUTTON;
-    width: string;
-    text: string;
 }
 
 export interface Profile {
@@ -127,27 +116,9 @@ export type location = {
     cellDirections: cellDirections,
 }
 
-export type textControl = {
-    [key in controlCompanyState]: string
-} //then delete, after translate
-
-export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
-export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none';
-
 export type infoCellTurn = {
-    nameCell: string;
-    titleCell: string;
-    description: string;
-    indexCompany?: number;
-    descriptionTwo?: string;
+    indexCompany: number;
     buttons: infoCellButtons;
-    dept?: number;
-    receiverId?: string;
+    description?: string;
 }
 
-export type ButtonStandart = {
-    action: ACTIONS_BUTTON;
-    width: string;
-    height: string;
-    show: boolean;
-}

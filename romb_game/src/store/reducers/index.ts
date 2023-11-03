@@ -42,15 +42,41 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.InfoCellTurn: {
-            return { ...state, infoCellTurn: action.payload, insideBoardState: 'infoCellTurn' };
+            return {
+                ...state,
+                insideBoard: {
+                    infoCellTurn: action.payload,
+                    state: 'infoCellTurn'
+                }
+            };
         }
 
         case AppActionTypes.StartGame: {
             return { ...state, gameRoom: { ...state.gameRoom, board: [], idRoom: action.payload } };
         }
 
+        case AppActionTypes.SetOfferDeal: {
+            return action.payload.offersPerson === 'offerPerson'
+                ? {
+                    ...state, gameRoom: {
+                        ...state.gameRoom, offerDealInfo: {
+                            ...state.gameRoom.offerDealInfo,
+                            offerPerson: action.payload.offerInfo
+                        }
+                    }
+                }
+                : {
+                    ...state, gameRoom: {
+                        ...state.gameRoom, offerDealInfo: {
+                            ...state.gameRoom.offerDealInfo,
+                            receivePerson: action.payload.offerInfo
+                        }
+                    }
+                }
+        }
+
         case AppActionTypes.PrisonAttempt: {
-            return { ...state, gameRoom: { ...state.gameRoom, prisonAttempt: action.payload } };
+            return { ...state, insideBoard: { ...state.insideBoard, prisonAttempt: action.payload } };
         }
 
         case AppActionTypes.InitPlayer: {
@@ -73,19 +99,44 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.ControlInsideBoard: {
-            return { ...state, insideBoardState: action.payload }
-        };
+            console.log(action.payload)
+            return {
+                ...state,
+                gameRoom: { ...state.gameRoom, offerDealInfo: {} },
+                insideBoard: {
+                    state: action.payload
+                }
+            };
+        }
 
         case AppActionTypes.OpenInfoCell: {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
         }
 
+        case AppActionTypes.SetValueSellProfit: {
+            return {
+                ...state,
+                insideBoard: {
+                    ...state.insideBoard,
+                    valueSellProfit: action.payload
+                }
+
+
+            }
+        };
+
         case AppActionTypes.EndTurn: {
-            return { ...state, infoCellTurn: undefined, insideBoardState: 'playerInfo' };
+            return {
+                ...state,
+                insideBoard: {
+                    infoCellTurn: undefined,
+                    state: 'playerInfo'
+                }
+            };
         }
 
         case AppActionTypes.UpdateChatRoom: {
-            return { ...state, gameRoom: { ...state.gameRoom, chat: action.payload } };
+            return { ...state, gameRoom: { ...state.gameRoom, chat: [...state.gameRoom.chat, action.payload] } };
         }
 
         case AppActionTypes.LoginUser:

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ButtonControllerService } from '../../services/button-controller.service';
-import { ButtonMaterialOption } from 'src/app/types';
+import { ButtonMaterialOption } from 'src/app/types/components';
+
 
 @Component({
   selector: 'app-button-materials',

@@ -1,0 +1,78 @@
+@import "./../../../../../../scss/color-styles";
+@import "./../../../../../../scss/default-styles";
+
+.offer-deal-container {
+    padding: 0 1%;
+}
+
+.info-player-offer-container {
+    width: 100%;
+    @include flex_c_c;
+    gap: 1vw;
+}
+
+.info-player-name {
+    @include font-default;
+    font-size: 1vw;
+    margin-top: 1vh;
+    text-align: center;
+}
+
+.info-player_img-offer {
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: inset 1px 1px 3px #00000080,
+            inset 1px 1px 3px #00000080, inset 1px 1px 1px #00000080,
+            inset 1px 1px px #00000080;
+    }
+}
+
+.offer-deal-item-container {
+    display: grid;
+    grid-template-columns: 48% 1% 48%;
+    gap: 1%;
+    justify-content: space-between;
+}
+
+.line-offer-deal-item-container {
+    height: 100%;
+    width: 3px;
+    background: $blue;
+}
+
+.info-player-offer-container_item {
+    @include flex_c_c;
+    flex-direction: column;
+}
+
+.balanse-line {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 95%;
+    height: 1vh;
+    background: linear-gradient(60deg, rgba(145, 12, 3, 1) 0%, rgba(226, 206, 17, 1) 35%, rgba(43, 224, 22, 1) 45%, rgba(94, 219, 21, 1) 55%, rgba(226, 206, 17, 1) 65%, rgba(145, 12, 3, 1) 100%);
+    border-radius: 1vh;
+    pointer-events: none;
+
+    &::-webkit-slider-thumb {
+        background: rgba($default_white, .3);
+        border-radius: 0.25vw;
+        border: 1px solid $cell_hover;
+        width: 1vw;
+        height: 2.2vw;
+        -webkit-appearance: none;
+        -webkit-box-shadow: 0px 5px 52px 20px rgba(34, 60, 80, 0.2) inset;
+        -moz-box-shadow: 0px 5px 52px 20px rgba(34, 60, 80, 0.2) inset;
+        box-shadow: 0px 5px 52px 20px rgba(34, 60, 80, 0.2) inset;
+    }
+}
+
+.deal-send-button__disable {
+    pointer-events: none;
+    filter: grayscale(.5);
+    opacity: .8;
+}

@@ -4,6 +4,7 @@ import { AppStore, State } from "src/app/types/state";
 const select = (state: AppStore) => state.state;
 
 export const selectAllPlayer = createSelector(select, (state: State) => state.gameRoom.players);
+export const selectAllPlayerArr = createSelector(select, (state: State) => Object.values(state.gameRoom.players));
 export const selectGamePLayer = createSelector(select, (state: State) => state.gameRoom.players[state.user.idUser]);
 export const selectGameRoom = createSelector(select, (state: State) => state.gameRoom);
 export const selectChat = createSelector(select, (state: State) => state.gameRoom.chat);
@@ -16,5 +17,6 @@ export const selectModal = createSelector(select, (state: State) => state.modal.
 export const selectModalError = createSelector(select, (state: State) => state.modal.modalError);
 export const selectRooms = createSelector(select, (state: State) => state.rooms);
 export const selectIndexCell = createSelector(select, (state: State) => state.modal.payload);
-export const selectInsideBoardState = createSelector(select, (state: State) => state.insideBoardState);
-export const selectInfoCellTurn = createSelector(select, (state: State) => state.infoCellTurn);
+export const selectInsideBoardState = createSelector(select, (state: State) => state.insideBoard.state);
+export const selectInfoCellTurn = createSelector(select, (state: State) => state.insideBoard.infoCellTurn);
+export const selectInsideBoard = createSelector(select, (state: State) => state.insideBoard);

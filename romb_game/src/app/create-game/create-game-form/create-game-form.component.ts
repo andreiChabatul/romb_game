@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { ButtonStandart, InputTextFormOption, SelectFormOption } from 'src/app/types';
+import { ButtonStandart, InputTextFormOption, SelectFormOption } from 'src/app/types/components';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({

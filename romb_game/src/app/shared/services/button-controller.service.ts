@@ -1,12 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription, map, mergeMap } from 'rxjs';
+import { Subscription, map, mergeMap, take } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal, ControlInsideBoard } from 'src/store/actions';
-import { selectInfoCellTurn, selectIsLogin } from 'src/store/selectors';
+import { selectInsideBoard, selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -17,20 +17,18 @@ export class ButtonControllerService implements OnDestroy {
   isLogin: boolean;
   indexCompany: number;
   deptValue: number;
-  receiverId: string | undefined;
   isLogin$ = this.store.select(selectIsLogin);
-  infoCellTurn$ = this.store.select(selectInfoCellTurn);
+  insideBoard$ = this.store.select(selectInsideBoard);
 
   constructor(private store: Store<AppStore>,
     private webSocketController: WebSocketController,
     private router: Router) {
     this.susbscription$ = this.isLogin$.pipe(
-      mergeMap((login) => this.infoCellTurn$.pipe(
-        map(info => {
+      mergeMap((login) => this.insideBoard$.pipe(
+        map(insideBoard => {
           this.isLogin = login;
-          this.indexCompany = Number(info?.indexCompany);
-          this.deptValue = Number(info?.dept);
-          this.receiverId = info?.receiverId;
+          this.indexCompany = Number(insideBoard.infoCellTurn?.indexCompany);
+          this.deptValue = Number(insideBoard.valueSellProfit);
         }
         )
       ))).subscribe()
@@ -133,20 +131,41 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.END_CONTROL:
-        const result = this.store.select(selectInfoCellTurn).subscribe((infoCellTurn) =>
-          infoCellTurn
-            ? this.store.dispatch(new ControlInsideBoard('infoCellTurn'))
-            : this.store.dispatch(new ControlInsideBoard('startButtons'))
-        );
-        result.unsubscribe();
+
+        this.insideBoard$
+          .pipe(take(1))
+          .subscribe((insideBoard) =>
+            insideBoard.infoCellTurn
+              ? this.store.dispatch(new ControlInsideBoard('infoCellTurn'))
+              : this.store.dispatch(new ControlInsideBoard('startButtons'))
+          ).unsubscribe();
         break;
 
       case ACTIONS_BUTTON.PAY:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.PAY_DEBT, {
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CALC_VALUE_LS, {
           debtValue: this.deptValue,
-          receiverId: this.receiverId
+          action: 'pay',
         });
         break;
+
+      case ACTIONS_BUTTON.PAY_RENT:
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CALC_VALUE_LS, {
+          action: 'payRent',
+          indexCompany: this.indexCompany
+        });
+        break;
+
+      case ACTIONS_BUTTON.PAY_PRISON: {
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CALC_VALUE_LS, {
+          action: 'payPrison'
+        });
+        break;
+      }
+
+      case ACTIONS_BUTTON.OFFER_DEAL: {
+        this.store.dispatch(new ControlInsideBoard('offerDeal'));
+        break;
+      }
 
       default:
         break;
