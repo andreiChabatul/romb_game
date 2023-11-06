@@ -19,4 +19,5 @@ export const selectRooms = createSelector(select, (state: State) => state.rooms)
 export const selectIndexCell = createSelector(select, (state: State) => state.modal.payload);
 export const selectInsideBoardState = createSelector(select, (state: State) => state.insideBoard.state);
 export const selectInfoCellTurn = createSelector(select, (state: State) => state.insideBoard.infoCellTurn);
+export const selectOfferDealInfo = createSelector(select, (state: State) => state.gameRoom.offerDealInfo);
 export const selectInsideBoard = createSelector(select, (state: State) => state.insideBoard);

@@ -1,8 +1,8 @@
-import { gameCell } from "."
+import { gameCell, } from "."
 import { EACTION_WEBSOCKET } from "../const/enum"
 import { controlCompanyState } from "./state"
 
-export interface PayloadCreateGame {
+export type PayloadCreateGame = {
     roomName: string
     players: string
     size: string
@@ -10,23 +10,24 @@ export interface PayloadCreateGame {
     visibility: string
 }
 
-export interface JoinGamePayload {
+export type JoinGamePayload = {
     idRoom: string;
 }
 
-export interface MessageChatGamePayload {
+export type MessageChatGamePayload = {
     message: string;
 }
 
-export interface DiceRoolGamePayload {
+export type DiceRoolGamePayload = {
     value: number;
     isDouble: boolean;
 }
 
-export interface ControlCompanyPayload {
+export type ControlCompanyPayload = {
     indexCompany: number;
     action: controlCompany
 }
+
 
 export type turnPayload = {
     turnId: string;
@@ -35,7 +36,6 @@ export type turnPayload = {
 export type attemptPayload = {
     attemp: number;
 }
-
 
 export type initBoardPayload = {
     board: gameCell[]

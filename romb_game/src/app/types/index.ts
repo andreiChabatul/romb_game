@@ -50,7 +50,7 @@ export interface GameRoom {
     players: gamePlayer;
     board: gameCell[];
     turnId: string;
-    offerDealInfo: offerDealInfo;
+    offerDealInfo?: offerDealInfo;
 }
 
 export type gameCell = {

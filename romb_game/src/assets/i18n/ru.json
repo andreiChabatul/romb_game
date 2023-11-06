@@ -79,6 +79,24 @@
     "offerPersonCompany": "Предложить компании:",
     "receivePersonCompany": "Запросить компании:",
     "offerPersonMoney": "Предложить деньги:",
-    "receivePersonMoney": "Запросить деньги:"
+    "receivePersonMoney": "Запросить деньги:",
+    "nanResult": "Предложите условия сделки",
+    "noBalanseDeal": "Предложение не может быть отправлено. Сделка не сбалансирована.",
+    "balanseDeal" : "Предложение можно отправить.",
+    "sendDealButton": "Выслать предложение",
+    "balanseTitle" : "Баланс сделки",
+    "choisePlayerTitle": "Выберите игрока, которому хотите предложить сделку:",
+    "player": "Игрок",
+    "getOffer": "Отдаст:",
+    "getMoney": "Денег: ",
+    "getCompany": "Компании: ",
+    "termsDeal": "Условия сделки",
+    "acceptDealButton": "Принять",
+    "refuseDealButton": "Отказаться",
+    "awaitSolution": "Ожидайте решения другого игрока.",
+    "refuseDealInfo": "Сделка не состоялась. $PLAYER$ не принял условия сделки.",
+    "acceptDealInfo": "Сделка состоялась. $PLAYER$ принял условия сделки."
+
+
 
 }

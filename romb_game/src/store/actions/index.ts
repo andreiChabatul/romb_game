@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany, offersPerson, offerInfo } from 'src/app/types';
+import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayer, gameCell, infoCellTurn, modal, updateCellCompany, offersPerson, offerInfo, offerDealInfo } from 'src/app/types';
 import { insideBoardState } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
@@ -24,11 +24,17 @@ export enum AppActionTypes {
     PrisonAttempt = '[PRISON ATTEMPT] PrisonAttempt',
     SetValueSellProfit = '[SET VALUE SELL PROFIT] SetValueSellProfit',
     SetOfferDeal = '[SET OFFER DEAL] SetOfferDeal',
+    SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
 };
 
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
     constructor(public payload: infoCellTurn) { }
+}
+
+export class SetOfferDealInfo implements Action {
+    readonly type = AppActionTypes.SetOfferDealInfo;
+    constructor(public payload: offerDealInfo) { }
 }
 
 export class SetOfferDeal implements Action {
@@ -143,4 +149,5 @@ export type ActionUnion =
     PrisonAttempt |
     SetValueSellProfit |
     SetOfferDeal |
+    SetOfferDealInfo |
     EndTurn;

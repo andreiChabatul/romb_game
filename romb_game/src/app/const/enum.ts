@@ -27,7 +27,9 @@ export enum ACTIONS_BUTTON {
     AUCTION_STEP = 'Make bid',
     AUCTION_LEAVE = 'Leave',
     END_CONTROL = 'Finish',
-    SEND_DEAL = 'sendDealButton'
+    SEND_DEAL = 'sendDealButton',
+    ACCEPT_DEAL = 'acceptDealButton',
+    REFUSE_DEAL = 'refuseDealButton'
 }
 
 export enum EACTION_WEBSOCKET {
@@ -47,7 +49,8 @@ export enum EACTION_WEBSOCKET {
     CALC_VALUE_LS = 'calc value ls',
     START_GAME = 'start game',
     CONTROL_COMPANY = 'control company',
-    PRISON = 'prison'
+    PRISON = 'prison',
+    CONTROL_DEAL = 'control deal'
 }
 
 export enum ENDPOINT {

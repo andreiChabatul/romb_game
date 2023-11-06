@@ -13,7 +13,6 @@ import { selectGameRoom } from 'src/store/selectors';
 })
 export class OfferDealItemComponent implements OnInit {
 
-
   @Input() idUser: string | null;
   @Input() offersPerson: offersPerson;
   gameRoom$ = this.store.select(selectGameRoom);
@@ -31,19 +30,24 @@ export class OfferDealItemComponent implements OnInit {
     }
   }
 
-  getPlayer(): Observable<Player> {
-    return this.gameRoom$.pipe(
-      map((gameRoom) => gameRoom.players[String(this.idUser)])
-    )
+  searchIndexCompany(idCompany: number): number {
+    return this.offerInfo.indexCompany.indexOf(idCompany);
   }
 
-  getCompanyPlayer(): Observable<gameCell[]> {
-    return this.gameRoom$.pipe(
-      map((gameRoom) => gameRoom.board.filter((cell) => cell.cellCompany?.owned === this.idUser))
-    )
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      this.valueMoney = value;
+      return '$' + Math.round(value);
+    }
+    return `${value}`;
   }
 
-  selectCompany(idCompany: number): void {
+  set valueMoney(valueMoney: number) {
+    this.offerInfo = { ...this.offerInfo, valueMoney };
+    this.sendStore();
+  }
+
+  set company(idCompany: number) {
     const resultArr = [...this.offerInfo.indexCompany]
     const indexSelect = this.searchIndexCompany(idCompany);
     (indexSelect === -1)
@@ -53,21 +57,16 @@ export class OfferDealItemComponent implements OnInit {
     this.sendStore();
   }
 
-  searchIndexCompany(idCompany: number): number {
-    return this.offerInfo.indexCompany.indexOf(idCompany);
+  get player(): Observable<Player> {
+    return this.gameRoom$.pipe(
+      map((gameRoom) => gameRoom.players[String(this.idUser)])
+    )
   }
 
-  formatLabel(value: number): string {
-    if (value >= 1000) {
-      this.selectMoney(value);
-      return '$' + Math.round(value);
-    }
-    return `${value}`;
-  }
-
-  selectMoney(valueMoney: number): void {
-    this.offerInfo = { ...this.offerInfo, valueMoney };
-    this.sendStore();
+  get companyPlayer(): Observable<gameCell[]> {
+    return this.gameRoom$.pipe(
+      map((gameRoom) => gameRoom.board.filter((cell) => cell.cellCompany?.owned === this.idUser))
+    )
   }
 
   sendStore(): void {

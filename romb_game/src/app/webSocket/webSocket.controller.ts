@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, startGame, updateCellCompany } from '../types';
+import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, offerDealInfo, startGame, updateCellCompany } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, PrisonAttempt, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, PrisonAttempt, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
@@ -85,13 +85,19 @@ export class WebSocketController {
         case EACTION_WEBSOCKET.INIT_BOARD: {
           const boardPayload = wsMessage.payload as initBoardPayload;
           this.store.dispatch(new InitBoard(boardPayload.board));
-          return;
+          break;
         }
 
         case EACTION_WEBSOCKET.PRISON: {
           const attemptPayload = wsMessage.payload as attemptPayload;
           this.store.dispatch(new PrisonAttempt(attemptPayload.attemp));
-          return;
+          break;
+        }
+
+        case EACTION_WEBSOCKET.CONTROL_DEAL: {
+          const offerDealInfo = wsMessage.payload as offerDealInfo;
+          this.store.dispatch(new SetOfferDealInfo(offerDealInfo));
+          break;
         }
 
         default:

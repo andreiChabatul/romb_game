@@ -79,9 +79,21 @@
     "offerPersonCompany": "Offer to the company:",
     "receivePersonCompany": "Request companies:",
     "offerPersonMoney": "Offer money:",
-    "receivePersonMoney": "Request money:"
-    
-
-
-
+    "receivePersonMoney": "Request money:",
+    "nanResult": "Offer the terms of the deal",
+    "noBalanseDeal": "The offer cannot be submitted. The deal is not balanced.",
+    "balanseDeal" : "An offer can be sent.",
+    "sendDealButton": "Send offer",
+    "balanseTitle" : "Balanse deal",
+    "choisePlayerTitle": "Select the player you want to offer a trade to:",
+    "player": "Player",
+    "getOffer": "will give:",
+    "getCompany": "Company: ",
+    "getMoney": "Money: ",
+    "termsDeal": "Terms of the deal" ,
+    "acceptDealButton": "Accept",
+    "refuseDealButton": "Refuse",
+    "awaitSolution": "Wait for the other player's decision.",
+    "refuseDealInfo": "The deal fell through. $PLAYER$ did not accept the terms of the deal.",
+    "acceptDealInfo": "The deal was completed. $PLAYER$ accepted the terms of the deal."
 }

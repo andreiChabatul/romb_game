@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription, map, mergeMap, take } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { offerDealInfo } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal, ControlInsideBoard } from 'src/store/actions';
-import { selectInsideBoard, selectIsLogin } from 'src/store/selectors';
+import { selectGameRoom, selectInsideBoard, selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -17,21 +18,25 @@ export class ButtonControllerService implements OnDestroy {
   isLogin: boolean;
   indexCompany: number;
   deptValue: number;
+  offerDealInfo: offerDealInfo;
   isLogin$ = this.store.select(selectIsLogin);
   insideBoard$ = this.store.select(selectInsideBoard);
+  gameRoom$ = this.store.select(selectGameRoom);
 
   constructor(private store: Store<AppStore>,
     private webSocketController: WebSocketController,
     private router: Router) {
     this.susbscription$ = this.isLogin$.pipe(
       mergeMap((login) => this.insideBoard$.pipe(
-        map(insideBoard => {
-          this.isLogin = login;
-          this.indexCompany = Number(insideBoard.infoCellTurn?.indexCompany);
-          this.deptValue = Number(insideBoard.valueSellProfit);
-        }
-        )
-      ))).subscribe()
+        mergeMap((insideBoard) => this.gameRoom$.pipe(
+          map(gameRoom => {
+            this.isLogin = login;
+            this.indexCompany = Number(insideBoard.infoCellTurn?.indexCompany);
+            this.deptValue = Number(insideBoard.valueSellProfit);
+            this.offerDealInfo = gameRoom.offerDealInfo ? gameRoom.offerDealInfo : {};
+          }
+          )
+        ))))).subscribe()
   }
 
   actionButton(action: ACTIONS_BUTTON) {
@@ -131,14 +136,13 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.END_CONTROL:
-
         this.insideBoard$
           .pipe(take(1))
           .subscribe((insideBoard) =>
             insideBoard.infoCellTurn
               ? this.store.dispatch(new ControlInsideBoard('infoCellTurn'))
               : this.store.dispatch(new ControlInsideBoard('startButtons'))
-          ).unsubscribe();
+          );
         break;
 
       case ACTIONS_BUTTON.PAY:
@@ -164,6 +168,28 @@ export class ButtonControllerService implements OnDestroy {
 
       case ACTIONS_BUTTON.OFFER_DEAL: {
         this.store.dispatch(new ControlInsideBoard('offerDeal'));
+        break;
+      }
+
+      case ACTIONS_BUTTON.SEND_DEAL: {
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, {
+          action: 'offer',
+          offerDealInfo: this.offerDealInfo
+        });
+        break;
+      }
+
+      case ACTIONS_BUTTON.ACCEPT_DEAL: {
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, {
+          action: 'accept'
+        });
+        break;
+      }
+
+      case ACTIONS_BUTTON.REFUSE_DEAL: {
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, {
+          action: 'refuse'
+        });
         break;
       }
 

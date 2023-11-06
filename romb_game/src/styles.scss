@@ -223,3 +223,16 @@ body {
     inset 1px 1px 3px #00000080, inset 1px 1px 5px #00000080,
     inset 1px 1px 3px #00000080;
 }
+
+.offer-company-li {
+  @include flex-c_c;
+  list-style: none;
+  width: 2vw;
+  height: 2vw;
+  border-radius: 50%;
+  background: rgba($cell_hover, .3);
+}
+
+.offer-company-li_img {
+  width: 90%;
+}

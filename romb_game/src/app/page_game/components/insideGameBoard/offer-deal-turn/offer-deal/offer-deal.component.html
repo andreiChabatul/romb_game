@@ -1,28 +1,35 @@
-<div class="offer-deal-container">
-    <div class="info-player-offer-container" *ngIf="isSelectPlayer; else elseBlock">
-        <p>Выберите игрока, которому хотите предложить сделку</p>
-        <div class="info-player-offer-container_item" *ngFor="let player of players$ | async">
-            <div (click)="selectPlayer(player.id)" [style.background]="player.color"
-                class="info-player_img-container info-player_img-offer">
-                <img class="info-player_img-type" src="assets/defaultAvatar.png" alt="typeImg">
-            </div>
-            <p class="info-player-name">{{player.name}}</p>
-        </div>
-    </div>
-    <ng-template #elseBlock>
+<div class="offer-deal-container" *ngIf="_isAwaitSoluton; else awaitSolution">
+    <div *ngIf="_isSelectPlayer; else elseBlock">
         <div class="offer-deal-item-container">
             <app-offer-deal-item [offersPerson]="'offerPerson'" [idUser]="turnId$ | async"></app-offer-deal-item>
             <div class="line-offer-deal-item-container"></div>
             <app-offer-deal-item [offersPerson]="'receivePerson'" [idUser]="userIdReceiver"></app-offer-deal-item>
         </div>
         <div class="balanse-offer-container">
-            <p class="balanse-offer-title">Баланс сделки</p>
+            <p class="balanse-offer-title">{{'balanseTitle' | transloco }}</p>
             <input min="0" max="2" step="0.000001" class="balanse-line" type="range" [value]="calcBalanse() | async">
-            <p>{{textBalanse() | async}}</p>
+            <p class="balanse-offer-text">{{(textBalanse() | async | transloco)}}</p>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <div class="info-player-offer-container">
+            <p class="balanse-offer-title">{{'choisePlayerTitle' | transloco}}</p>
+            <div class="info-player-offer-container_item" *ngFor="let player of players$ | async">
+                <div *ngIf="player.id !== (turnId$ | async)" (click)="selectPlayer(player.id)">
+                    <div [style.background]="player.color" class="info-player_img-container info-player_img-offer">
+                        <img class="info-player_img-type" src="assets/defaultAvatar.png" alt="typeImg">
+                    </div>
+                    <p class="info-player-name" [ngStyle]="{'color': player.color }">{{player.name}}</p>
+                </div>
+            </div>
         </div>
     </ng-template>
-    <div>
-        <app-button-standart [ngClass]="{'deal-send-button__disable': button.action === 'sendDealButton'}"
+    <div class="offer-deal-buttons">
+        <app-button-standart (click)="clickButton()"
+            [ngClass]="{'deal-send-button__disable': (button.action === 'sendDealButton' && (textBalanse() | async) === 'noBalanseDeal')}"
             *ngFor="let button of buttonOffer" [button]="button"></app-button-standart>
     </div>
 </div>
+<ng-template #awaitSolution>
+    <p class="balanse-offer-title">{{'awaitSolution' | transloco}}</p>
+</ng-template>

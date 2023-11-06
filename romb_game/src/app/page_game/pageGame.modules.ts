@@ -24,6 +24,8 @@ import { PrisonPlayerComponent } from './components/insideGameBoard/prison-playe
 import { LossProfitDescriptionComponent } from './components/insideGameBoard/loss-profit-description/loss-profit-description.component';
 import { OfferDealComponent } from './components/insideGameBoard/offer-deal-turn/offer-deal/offer-deal.component';
 import { OfferDealItemComponent } from './components/insideGameBoard/offer-deal-turn/offer-deal-item/offer-deal-item.component';
+import { ReceiveDealComponent } from './components/insideGameBoard/offer-deal-turn/receive-deal/receive-deal.component';
+import { ReceiveDealItemComponent } from './components/insideGameBoard/offer-deal-turn/receive-deal-item/receive-deal-item.component';
 
 @NgModule({
     declarations: [
@@ -48,8 +50,9 @@ import { OfferDealItemComponent } from './components/insideGameBoard/offer-deal-
         PrisonPlayerComponent,
         LossProfitDescriptionComponent,
         OfferDealComponent,
-        OfferDealItemComponent
-        
+        OfferDealItemComponent,
+        ReceiveDealComponent,
+        ReceiveDealItemComponent
     ],
     imports: [
         SharedModule,

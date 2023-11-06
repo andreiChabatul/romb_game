@@ -99,14 +99,29 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.ControlInsideBoard: {
-            console.log(action.payload)
             return {
                 ...state,
-                gameRoom: { ...state.gameRoom, offerDealInfo: {} },
+                gameRoom: {
+                    ...state.gameRoom,
+                    offerDealInfo: undefined
+                },
                 insideBoard: {
                     state: action.payload
                 }
             };
+        }
+
+        case AppActionTypes.SetOfferDealInfo: {
+            return {
+                ...state,
+                gameRoom: {
+                    ...state.gameRoom,
+                    offerDealInfo: action.payload
+                },
+                insideBoard: {
+                    state: 'receiveDeal'
+                }
+            }
         }
 
         case AppActionTypes.OpenInfoCell: {
@@ -120,8 +135,6 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                     ...state.insideBoard,
                     valueSellProfit: action.payload
                 }
-
-
             }
         };
 

@@ -9,6 +9,7 @@
             </app-info-cell-turn></ng-template>
         <ng-template ngSwitchCase="prison"><app-prison-player></app-prison-player></ng-template>
         <ng-template ngSwitchCase="offerDeal"><app-offer-deal></app-offer-deal></ng-template>
+        <ng-template ngSwitchCase="receiveDeal"><app-receive-deal></app-receive-deal></ng-template>
         <ng-template ngSwitchDefault><app-control-company></app-control-company></ng-template>
     </div>
     <div class="timer-container" [ngStyle]="{'color':fontColor}">0{{minute}}:{{seconds}}</div>

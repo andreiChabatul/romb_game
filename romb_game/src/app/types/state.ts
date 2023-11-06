@@ -27,5 +27,6 @@ export interface AppStore {
     state: State;
 }
 
-export type insideBoardState = controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'prison' | 'offerDeal';
+export type insideBoardState =
+    controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'prison' | 'offerDeal' | 'receiveDeal';
 export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';

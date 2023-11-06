@@ -14,15 +14,11 @@
     display: flex;
     gap: 1vw;
     flex-wrap: wrap;
+    min-height: 2vw;
 }
 
-.offer-company-li {
-    @include flex-c_c;
-    list-style: none;
-    width: 2.5vw;
-    height: 2.5vw;
-    border-radius: 50%;
-    background: rgba($cell_hover, .3);
+
+.offer-company-li__click {
     cursor: pointer;
     transition: all .3s;
 
@@ -30,10 +26,6 @@
         transform: scale(1.05);
         background: $cell_hover;
     }
-}
-
-.offer-company-li_img {
-    width: 90%;
 }
 
 .offer-company-li__select {
@@ -47,11 +39,18 @@ mat-slider {
 
 .offer-deal-item-text {
     @include font-default;
-    font-size: 1.1vw;
+    font-size: 1vw;
     font-weight: 600;
     white-space: nowrap;
 }
 
 .offer-deal-item-text_value {
     font-weight: 400;
+}
+
+.offer-deal-item-name {
+    @include font-default;
+    font-size: 1.2vw;
+    font-weight: 600;
+    text-align: center;
 }
