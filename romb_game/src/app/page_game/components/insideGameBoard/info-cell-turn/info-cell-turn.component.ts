@@ -17,7 +17,6 @@ const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.START_AUCTION, width: '13vw', height: '6vh', show: true },
   { action: ACTIONS_BUTTON.AUCTION_STEP, width: '13vw', height: '6vh', show: true },
   { action: ACTIONS_BUTTON.AUCTION_LEAVE, width: '13vw', height: '6vh', show: true },
-
 ]
 
 @Component({
@@ -44,7 +43,7 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
-
+   
     this.subscription$ = this.infoCellTurn$.pipe(
       mergeMap((infoCell) => this.gameRoom$.pipe(
         map((gameBoard) => {

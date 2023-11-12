@@ -14,13 +14,13 @@ export type offerDealInfo = {
     receivePerson?: offerInfo,
 }
 
-export interface Player extends UpdatePlayer {
+export interface Player extends UpdatePlayerPayload {
     color: string;
     name: string;
     image: string;
 }
 
-export interface UpdatePlayer {
+export interface UpdatePlayerPayload {
     id: string;
     total: number;
     capital: number;
@@ -80,7 +80,7 @@ export type gamePlayer = {
     [key: string]: Player
 }
 
-export type ChatRoom = { chat: chatMessage };
+export type chatRoomPayload = { chat: chatMessage };
 
 export type chatMessage = {
     message?: string;

@@ -7,11 +7,12 @@
     width: 80vw;
     height: 48vw;
     display: grid;
-    grid-template-columns: repeat(13, calc(79.5vw / 15));
-    grid-template-rows: repeat(13, calc(47.3vw / 10));
+    grid-template-columns: repeat(15, calc(79.5vw / 15));
+    grid-template-rows: repeat(10, calc(47.5vw / 10));
     @include fon-blue;
     background: $light_blue;
     padding: 0;
+    position: relative;
 }
 
 .game-board_inside-container {
@@ -30,4 +31,10 @@
 .game-board-chat {
     height: 100%;
     width: 30%;
+}
+
+.game-piece-container {
+    position: absolute;
+
+
 }

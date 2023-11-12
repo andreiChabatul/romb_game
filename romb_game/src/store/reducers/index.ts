@@ -35,6 +35,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                     ...state.gameRoom,
                     players: {
                         ...state.gameRoom.players,
+                        
                         [action.payload.id]: { ...state.gameRoom.players[action.payload.id], ...action.payload }
                     }
                 }

@@ -1,7 +1,8 @@
 <div class="game-board-container">
-
-    <app-game-cell *ngFor="let cell of (selectGameRoom$ | async)?.board" [style.grid-area]="cell.location.gridArea"
-        [gameCellInfo]="cell"></app-game-cell>
+    <app-game-cell *ngFor="let cell of (gameRoom$ | async)?.board;trackBy:trackByFunction"
+        [style.grid-area]="cell.location.gridArea" [gameCellInfo]="cell"></app-game-cell>
+    <app-piece-player *ngFor="let player of allPlayerArr$ | async; index as i;trackBy:trackByPlayer" [player]="player"
+        [index]="i"></app-piece-player>
     <div class="game-board_inside-container">
         <app-game-board-turn class="game-board-inside-player"></app-game-board-turn>
         <app-chat-game class="game-board-chat"></app-chat-game>

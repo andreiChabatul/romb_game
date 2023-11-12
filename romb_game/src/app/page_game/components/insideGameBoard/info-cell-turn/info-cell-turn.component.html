@@ -1,4 +1,4 @@
-<mat-spinner *ngIf="!(infoCellTurn$ | async); else elseBlock" class="spinner-info-cell"></mat-spinner>
+<mat-spinner *ngIf="!cell; else elseBlock" class="spinner-info-cell"></mat-spinner>
 <ng-template #elseBlock>
     <div class="info-cell-container">
         <img class="info-cell-img" [src]="cell.nameCell| imgAssets" alt="img info">

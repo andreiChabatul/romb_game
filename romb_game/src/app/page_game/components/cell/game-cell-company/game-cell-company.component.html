@@ -36,7 +36,7 @@
         <div class="game-cell-company_stock" [ngClass]="{
             'game-cell-company_stock__gorizontal': cellDirections === 'left' || cellDirections === 'right'
             }">
-            <img class="game-cell-company_stock__img" *ngFor="let i of stockArray"
+            <img class="game-cell-company_stock__img" *ngFor="let i of [].constructor(gameCell.cellCompany?.shares)"
                 [src]="gameCell.cellCompany?.countryCompany | stockAssets" alt="stock image">
         </div>
     </div>

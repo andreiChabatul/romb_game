@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { ChatRoom, InfoRoom, Player, UpdatePlayer, gameCell, infoCellTurn, offerDealInfo, startGame, updateCellCompany } from '../types';
+import { InfoRoom, Player, UpdatePlayerPayload, chatRoomPayload, infoCellTurn, offerDealInfo, startGame, updateCellCompany } from '../types';
 import { Store } from '@ngrx/store';
 import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, PrisonAttempt, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
 import { SendPayloadSocket, attemptPayload, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
+import { take } from 'rxjs';
 
 
 @Injectable({
@@ -29,17 +30,14 @@ export class WebSocketController {
   private handleMessage(): void {
     this.wsSocket.on("message", (mess: string) => {
       const wsMessage = JSON.parse(mess) as payloadSocket;
+
       switch (wsMessage.action) {
 
-        case EACTION_WEBSOCKET.LIST_ROOM:
+        case EACTION_WEBSOCKET.LIST_ROOM: {
           const rooms = wsMessage.payload as InfoRoom[];
           this.store.dispatch(new UpdateRooms(rooms));
           break;
-
-        case EACTION_WEBSOCKET.UPDATE_CHAT:
-          const updateChat = wsMessage.payload as ChatRoom;
-          this.store.dispatch(new UpdateChatRoom(updateChat.chat));
-          break;
+        }
 
         case EACTION_WEBSOCKET.INFO_CELL_TURN: {
           const InfoCellTurn = wsMessage.payload as infoCellTurn;
@@ -49,12 +47,6 @@ export class WebSocketController {
 
         case EACTION_WEBSOCKET.END_TURN: {
           this.store.dispatch(new EndTurn());
-          break;
-        }
-
-        case EACTION_WEBSOCKET.UPDATE_CELL: {
-          const infoCell = wsMessage.payload as updateCellCompany;
-          this.store.dispatch(new UpdateCell(infoCell));
           break;
         }
 
@@ -70,14 +62,26 @@ export class WebSocketController {
           break;
         }
 
+        case EACTION_WEBSOCKET.UPDATE_CELL: {
+          const infoCell = wsMessage.payload as updateCellCompany;
+          this.store.dispatch(new UpdateCell(infoCell));
+          break;
+        }
+
+        case EACTION_WEBSOCKET.UPDATE_CHAT: {
+          const chatRoomPayload = wsMessage.payload as chatRoomPayload;
+          this.store.dispatch(new UpdateChatRoom(chatRoomPayload.chat));
+          break;
+        }
+
         case EACTION_WEBSOCKET.UPDATE_TURN: {
-          const payloadTurn = wsMessage.payload as turnPayload;
-          this.store.dispatch(new UpdateTurn(payloadTurn));
+          const turnPayload = wsMessage.payload as turnPayload;
+          this.store.dispatch(new UpdateTurn(turnPayload));
           break;
         }
 
         case EACTION_WEBSOCKET.UPDATE_PLAYER: {
-          const updatePlayerPayload = wsMessage.payload as UpdatePlayer;
+          const updatePlayerPayload = wsMessage.payload as UpdatePlayerPayload;
           this.store.dispatch(new UpdateInfoPlayer(updatePlayerPayload));
           break;
         }
@@ -106,7 +110,7 @@ export class WebSocketController {
     });
   }
 
-  sendMessage(action: EACTION_WEBSOCKET, payload: SendPayloadSocket = {}): void {
+  sendMessage(action: EACTION_WEBSOCKET, payload?: SendPayloadSocket): void {
     this.wsSocket.send(JSON.stringify(
       {
         action,

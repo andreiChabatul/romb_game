@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Player, gameCell } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
-import { selectGameRoom } from 'src/store/selectors';
+import { selectAllPlayerArr, selectGameRoom } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board',
@@ -10,8 +11,16 @@ import { selectGameRoom } from 'src/store/selectors';
 })
 export class GameBoardComponent {
 
-  selectGameRoom$ = this.store.select(selectGameRoom);
+  gameRoom$ = this.store.select(selectGameRoom);
+  allPlayerArr$ = this.store.select(selectAllPlayerArr)
   
   constructor(private store: Store<AppStore>) { }
 
+  trackByFunction(index: number, item: gameCell) {
+    return item ? item.indexCell : undefined;
+  }
+
+  trackByPlayer(index: number, item: Player) {
+    return item ? item.id : undefined;
+  }
 }

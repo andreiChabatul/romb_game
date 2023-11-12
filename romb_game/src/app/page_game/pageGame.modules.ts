@@ -26,6 +26,8 @@ import { OfferDealComponent } from './components/insideGameBoard/offer-deal-turn
 import { OfferDealItemComponent } from './components/insideGameBoard/offer-deal-turn/offer-deal-item/offer-deal-item.component';
 import { ReceiveDealComponent } from './components/insideGameBoard/offer-deal-turn/receive-deal/receive-deal.component';
 import { ReceiveDealItemComponent } from './components/insideGameBoard/offer-deal-turn/receive-deal-item/receive-deal-item.component';
+import { InfoPlayerBalanseComponent } from './components/info-player/info-player-balanse/info-player-balanse.component';
+import { PiecePlayerComponent } from './components/game-board/piece-player/piece-player.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +54,9 @@ import { ReceiveDealItemComponent } from './components/insideGameBoard/offer-dea
         OfferDealComponent,
         OfferDealItemComponent,
         ReceiveDealComponent,
-        ReceiveDealItemComponent
+        ReceiveDealItemComponent,
+        InfoPlayerBalanseComponent,
+        PiecePlayerComponent
     ],
     imports: [
         SharedModule,

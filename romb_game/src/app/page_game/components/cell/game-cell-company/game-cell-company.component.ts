@@ -15,7 +15,6 @@ import { selectIdUser, selectInsideBoardState } from 'src/store/selectors';
 export class GameCellCompanyComponent implements OnInit {
 
   @Input() gameCell: gameCell;
-  stockArray: null[];
   cellDirections: cellDirections;
   userId$ = this.store.select(selectIdUser);
   insideBoardState$ = this.store.select(selectInsideBoardState);
@@ -23,9 +22,8 @@ export class GameCellCompanyComponent implements OnInit {
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
   ngOnInit(): void {
-    this.stockArray = new Array(this.gameCell.cellCompany?.shares);
     this.cellDirections = this.gameCell.location.cellDirections;
-  }
+  } 
 
   controlCompany(event: MouseEvent, action: controlCompanyState) {
     this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY, {
@@ -41,7 +39,7 @@ export class GameCellCompanyComponent implements OnInit {
         map((userId) =>
           Boolean(action === 'buyStock' &&
             userId === this.gameCell.cellCompany?.owned &&
-            this.stockArray.length < 5 &&
+            this.gameCell.cellCompany.shares < 5 &&
             this.gameCell.cellCompany?.isMonopoly &&
             this.gameCell.cellCompany?.priceStock))
       )))
