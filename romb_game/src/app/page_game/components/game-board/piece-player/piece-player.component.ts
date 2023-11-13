@@ -1,5 +1,5 @@
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AnimationEvent, animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { MAX_INDEX_CELL_BOARD } from 'src/app/const';
 import { Player } from 'src/app/types';
 
@@ -19,18 +19,31 @@ const gridArea: string[] = ['2/1/2/1', '3/2/3/2', '2/1/2/1', '1/1/1/1', '1/2/1/2
     trigger('moveX', [
       state('X',
         style({
-          transform: 'translateX({{coorX}}vw',
+          left: '{{coorX}}vw',
         }), { params: { coorX: coorInitX } }),
-      transition('* => *', animate('500ms linear')),
+      transition('* => X', animate('0.3s ease-in-out')),
     ]),
     trigger('moveY', [
       state('Y',
         style({
-          transform: 'translateY({{coorY}}vw)',
+          top: '{{coorY}}vw',
         }), { params: { coorY: coorInitY } }),
+      transition('* => Y', animate('0.3s ease-in-out')),
+    ]),
+    trigger('rotate', [
+      state('deg0',
+        style({
+          transform: 'rotate(0)',
+        })),
+      state('deg90',
+        style({
+          transform: 'rotate(90deg)',
+        })),
       transition('* => *', animate('500ms linear')),
-    ])
-  ]
+    ],
+    )
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class PiecePlayerComponent implements OnInit, OnChanges {
@@ -40,22 +53,23 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   changePosition: number;
   coorX: number;
   coorY: number;
-  rotate: number;
   gridArea: string;
-  moveX: 'X' | 'Y' | '';
+  moveX: 'X' | '';
+  moveY: 'Y' | '';
+  _rotate: 'deg0' | 'deg90';
 
   ngOnInit(): void {
-    this.moveX = 'X';
+    this._rotate = 'deg0';
+    this.moveX = '';
+    this.moveY = '';
     this.coorX = coorInitX;
     this.coorY = coorInitY;
-    this.rotate = 0;
     this.gridArea = gridArea[this.index]
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-this.moveX = '';
+
     if (!this.player.prison) {
-      const firstStep = this.firstStep().bind(this);
       let prevPosition: number = 0;
 
       for (let propName in changes) {
@@ -65,106 +79,100 @@ this.moveX = '';
 
       this.changePosition = this.player.cellPosition - prevPosition;
       this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
-
-      for (let index = 0; index < this.changePosition; index++) {
-        firstStep();
-      }
+      this.changePosition > 0 ? this.step() : '';
     }
   }
 
-  get stateName() {
-    return this.moveX;
+  animEndX(): void {
+    this.moveX = '';
+    (this.coorX === coorEndX && this.coorY === coorInitY) ||
+      (this.coorX === coorInitX && this.coorY === coorEndY)
+      ? this._rotate = 'deg90'
+      : '';
+      console.log('end x 1')
   }
 
+  animEndY() {
+    this.moveY = '';
+    (this.coorY === coorEndY && this.coorX === coorEndX) ||
+      (this.coorX === coorInitX && this.coorY === coorInitY)
+      ? this._rotate = 'deg0'
+      : '';
+      console.log('2')
+  }
 
-  firstStep(): () => void {
+  animEndRotate(event: AnimationEvent) {
+    this.step();
+    console.log('3')
+  }
+
+  step(): void {
     if (this.coorX < coorEndX && this.coorY === coorInitY) {
-      return this.moveRight;
+      this.moveRight();
     }
     else if (this.coorX === coorEndX && this.coorY < coorEndY) {
-      return this.moveDown;
+      this.moveDown();
     }
     else if (this.coorX > coorInitX && this.coorY === coorEndY) {
-      return this.moveLeft;
+      this.moveLeft();
     }
     else if (this.coorX === coorInitX && this.coorY > coorInitY) {
-      return this.moveTop;
+      this.moveTop();
     };
-    return () => { };
   }
 
-  moveRight(time: number = 0): void {
-    (this.coorX === coorInitX) ? this.coorX += stepX / 2 : '';
-    const newCoorX = this.coorX + stepX;
-    if ((newCoorX + coorInitX) < coorEndX) {
-      this.coorX = newCoorX;
-    } else {
-      this.coorX = coorEndX;
-      this.rotate = 90;
-      if (this.changePosition > 0) {
-        this.moveDown();
-      }
+  moveRight(): void {
+    while (this.changePosition > 0 && this.coorX !== coorEndX) {
+      this.changePosition -= 1;
+      (this.coorX === coorInitX) ? this.coorX += stepX / 2 : '';
+      const newCoorX = this.coorX + stepX;
+      ((newCoorX + coorInitX) < coorEndX)
+        ? this.coorX = newCoorX
+        : this.coorX = coorEndX;
     }
     this.moveX = 'X';
   }
 
-  moveLeft(time: number = 0): void {
-    (this.coorX === coorEndX) ? this.coorX -= stepX / 2 : '';
-    const newCoorX = this.coorX - stepX;
-    if ((newCoorX - (stepX / 2)) > coorInitX) {
-      this.coorX = newCoorX;
-    } else {
-      this.coorX = coorInitX;
-      this.rotate = 90;
-      if (this.changePosition > 0) {
-        this.moveTop();
-      }
-      else if (this.player.cellPosition === 31) {
-        setTimeout(() =>
-          this.movePrison(), 500);
-      }
+  moveLeft(): void {
+    while (this.changePosition > 0 && this.coorX !== coorInitX) {
+      this.changePosition -= 1;
+      (this.coorX === coorEndX) ? this.coorX -= stepX / 2 : '';
+      const newCoorX = this.coorX - stepX;
+      ((newCoorX - (stepX / 2)) > coorInitX)
+        ? this.coorX = newCoorX
+        : this.coorX = coorInitX;
     }
-
-
+    this.moveX = 'X';
   }
 
-  moveDown(time: number = 0): void {
-
-    (this.coorY === coorInitY) ? this.coorY += stepY / 2 : '';
-    const newCoorY = this.coorY + stepY;
-    if (newCoorY + (stepY / 2) < coorEndY) {
-      this.coorY = newCoorY;
-    } else {
-      this.coorY = coorEndY;
-      this.rotate = 0;
-      if (this.changePosition > 0) {
-        this.moveLeft();
-      }
+  moveDown(): void {
+    while (this.changePosition > 0 && this.coorY !== coorEndY) {
+      this.changePosition -= 1;
+      (this.coorY === coorInitY) ? this.coorY += stepY / 2 : '';
+      const newCoorY = this.coorY + stepY;
+      ((newCoorY + (stepY / 2)) < coorEndY)
+        ? this.coorY = newCoorY
+        : this.coorY = coorEndY;
     }
-    this.moveX = 'Y';
+    this.moveY = 'Y';
   }
 
-  moveTop(time: number = 0): void {
-
-
-    (this.coorY === coorEndY) ? this.coorY -= stepY / 2 : '';
-    const newCoorY = this.coorY - stepY;
-    if (newCoorY - (stepY / 2) > coorInitY) {
-      this.coorY = newCoorY;
-    } else {
-      this.coorY = coorInitY;
-      this.rotate = 0;
-      if (this.changePosition > 0) {
-        this.moveRight();
-      }
+  moveTop(): void {
+    while (this.changePosition > 0 && this.coorY !== coorInitY) {
+      this.changePosition -= 1;
+      (this.coorY === coorEndY) ? this.coorY -= stepY / 2 : '';
+      const newCoorY = this.coorY - stepY;
+      (newCoorY - (stepY / 2) > coorInitY)
+        ? this.coorY = newCoorY
+        : this.coorY = coorInitY;
     }
-
+    this.moveY = 'Y';
   }
 
-  movePrison(): void {
-    this.coorX = coorEndX;
-    setTimeout(() => {
-      this.coorY = coorInitY;
-    }, 500);
-  }
+  // movePrison(): void {
+  //   this.coorX = coorEndX;
+  //   setTimeout(() => {
+  //     this.coorY = coorInitY;
+  //   }, 500);
+  // }
 }
