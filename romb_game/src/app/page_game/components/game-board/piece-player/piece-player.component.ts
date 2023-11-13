@@ -1,15 +1,8 @@
-import { AnimationEvent, animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { MAX_INDEX_CELL_BOARD } from 'src/app/const';
 import { Player } from 'src/app/types';
-
-const coorInitX = 2.6;
-const coorInitY = 0;
-const coorEndX = 71.4;
-const coorEndY = 37.6;
-const stepX = 5.3;
-const stepY = 4.75;
-const gridArea: string[] = ['2/1/2/1', '3/2/3/2', '2/1/2/1', '1/1/1/1', '1/2/1/2', '3/1/3/1', '4/1/4/1', '4/2/4/2'];
+import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from './const';
 
 @Component({
   selector: 'app-piece-player',
@@ -21,14 +14,22 @@ const gridArea: string[] = ['2/1/2/1', '3/2/3/2', '2/1/2/1', '1/1/1/1', '1/2/1/2
         style({
           left: '{{coorX}}vw',
         }), { params: { coorX: coorInitX } }),
-      transition('* => X', animate('0.3s ease-in-out')),
+      transition('* <=> X', animate('0.4s ease')),
     ]),
     trigger('moveY', [
       state('Y',
         style({
           top: '{{coorY}}vw',
         }), { params: { coorY: coorInitY } }),
-      transition('* => Y', animate('0.3s ease-in-out')),
+      transition('* <=> Y', animate('0.4s ease')),
+    ]),
+    trigger('moveX', [
+      state('prison',
+        style({
+          top: coorEndX + 'vw',
+          left: coorInitY + 'vw'
+        })),
+      transition('* <=> prison', animate('0.4s ease')),
     ]),
     trigger('rotate', [
       state('deg0',
@@ -39,7 +40,7 @@ const gridArea: string[] = ['2/1/2/1', '3/2/3/2', '2/1/2/1', '1/1/1/1', '1/2/1/2
         style({
           transform: 'rotate(90deg)',
         })),
-      transition('* => *', animate('500ms linear')),
+      transition('* <=> *', animate('0.4s ease')),
     ],
     )
   ],
@@ -54,7 +55,7 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   coorX: number;
   coorY: number;
   gridArea: string;
-  moveX: 'X' | '';
+  moveX: 'X' | '' | 'prison';
   moveY: 'Y' | '';
   _rotate: 'deg0' | 'deg90';
 
@@ -81,6 +82,10 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
       this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
       this.changePosition > 0 ? this.step() : '';
     }
+
+    if (this.player.cellPosition === 12 && this.player.prison) {
+      this.moveX = 'prison'
+    }
   }
 
   animEndX(): void {
@@ -89,7 +94,6 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
       (this.coorX === coorInitX && this.coorY === coorEndY)
       ? this._rotate = 'deg90'
       : '';
-      console.log('end x 1')
   }
 
   animEndY() {
@@ -98,12 +102,6 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
       (this.coorX === coorInitX && this.coorY === coorInitY)
       ? this._rotate = 'deg0'
       : '';
-      console.log('2')
-  }
-
-  animEndRotate(event: AnimationEvent) {
-    this.step();
-    console.log('3')
   }
 
   step(): void {
@@ -169,10 +167,8 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
     this.moveY = 'Y';
   }
 
-  // movePrison(): void {
-  //   this.coorX = coorEndX;
-  //   setTimeout(() => {
-  //     this.coorY = coorInitY;
-  //   }, 500);
-  // }
+  movePrison(): void {
+    this.coorX = coorEndX;
+    // this.coorY = coorInitY;
+  }
 }

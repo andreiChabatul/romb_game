@@ -1,9 +1,7 @@
 <div class="piece-player-container"
     [@moveX]="{value: moveX, params: { coorX: coorX}}" (@moveX.done)="animEndX()"
     [@moveY]="{value: moveY, params: { coorY: coorY}}" (@moveY.done)="animEndY()"
-    [@rotate]="{value: _rotate }" (@rotate.done)="animEndRotate($event)">
+    [@rotate]="{value: _rotate }" (@rotate.done)="step()">
     <div [style.grid-area]="gridArea" class="piece-player-item" [ngStyle]="{'background':player.color}"></div>
 
 </div>
-
-<!-- [style.left]="coorX + 'vw'" [style.transform]="'translateY(' + coorY + 'vw) rotate(' + rotate + 'deg)'" -->

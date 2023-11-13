@@ -14,20 +14,21 @@ export class InfoPlayerBalanseComponent implements OnChanges {
 
   ngOnChanges(): void {
     const difference = this.currValue - this.prevValue;
-
     this.value = this.prevValue;
-    const timer = setInterval(() => {
-      this.setColor(difference);
-      const newValue = this.value + Math.floor(difference / 100);
-      if (difference > 0 && newValue > this.currValue ||
-        difference < 0 && newValue < this.currValue) {
-        this.color = '#002260';
-        this.value = this.currValue;
-        clearInterval(timer);
-      } else {
-        this.value = newValue;
-      }
-    }, 1);
+    if (Math.abs(difference) > 0) {
+      const timer = setInterval(() => {
+        this.setColor(difference);
+        const newValue = this.value + Math.floor(difference / 50);
+        if (difference > 0 && newValue > this.currValue ||
+          difference < 0 && newValue < this.currValue) {
+          this.color = '#002260';
+          this.value = this.currValue;
+          clearInterval(timer);
+        } else {
+          this.value = newValue;
+        }
+      }, 0);
+    }
   }
 
   setColor(difference: number): void {
