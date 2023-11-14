@@ -1,7 +1,7 @@
 <div class="piece-player-container"
     [@moveX]="{value: moveX, params: { coorX: coorX}}" (@moveX.done)="animEndX()"
     [@moveY]="{value: moveY, params: { coorY: coorY}}" (@moveY.done)="animEndY()"
-    [@rotate]="{value: _rotate }" (@rotate.done)="step()">
+    [@rotate]="{value: _rotate }" (@rotate.done)="animRotateEnd()">
     <div [style.grid-area]="gridArea" class="piece-player-item" [ngStyle]="{'background':player.color}"></div>
-
 </div>
+<div [@moneyCircle]="_animText" (@moneyCircle.done)="animEndText()" class="text-finish-circle">+$200000</div>

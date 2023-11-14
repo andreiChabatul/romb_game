@@ -14,22 +14,14 @@ import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from
         style({
           left: '{{coorX}}vw',
         }), { params: { coorX: coorInitX } }),
-      transition('* <=> X', animate('0.4s ease')),
+      transition('* <=> X', animate('0.3s linear')),
     ]),
     trigger('moveY', [
       state('Y',
         style({
           top: '{{coorY}}vw',
         }), { params: { coorY: coorInitY } }),
-      transition('* <=> Y', animate('0.4s ease')),
-    ]),
-    trigger('moveX', [
-      state('prison',
-        style({
-          top: coorEndX + 'vw',
-          left: coorInitY + 'vw'
-        })),
-      transition('* <=> prison', animate('0.4s ease')),
+      transition('* <=> Y', animate('0.3s linear')),
     ]),
     trigger('rotate', [
       state('deg0',
@@ -40,7 +32,21 @@ import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from
         style({
           transform: 'rotate(90deg)',
         })),
-      transition('* <=> *', animate('0.4s ease')),
+      transition('* <=> *', animate('0.3s linear')),
+    ],
+    ),
+    trigger('moneyCircle', [
+      state('on',
+        style({
+          opacity: 1,
+          transform: 'scale(1) rotate(360deg)'
+        })),
+      state('off',
+        style({
+          opacity: 0,
+          transform: 'scale(0) rotate(0)'
+        })),
+      transition('off <=> on', animate('1s 0.2s ease-in')),
     ],
     )
   ],
@@ -55,9 +61,11 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   coorX: number;
   coorY: number;
   gridArea: string;
-  moveX: 'X' | '' | 'prison';
+  moveX: 'X' | '';
   moveY: 'Y' | '';
   _rotate: 'deg0' | 'deg90';
+  _animText: 'on' | 'off';
+  isCircle: boolean;
 
   ngOnInit(): void {
     this._rotate = 'deg0';
@@ -65,11 +73,12 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
     this.moveY = '';
     this.coorX = coorInitX;
     this.coorY = coorInitY;
-    this.gridArea = gridArea[this.index]
+    this.gridArea = gridArea[this.index];
+    this.isCircle = false;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-
+    this.isCircle = true;
     if (!this.player.prison) {
       let prevPosition: number = 0;
 
@@ -77,14 +86,13 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
         const chng = changes[propName];
         prevPosition = chng.previousValue ? chng.previousValue.cellPosition : 0;
       }
-
       this.changePosition = this.player.cellPosition - prevPosition;
       this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
       this.changePosition > 0 ? this.step() : '';
     }
-
     if (this.player.cellPosition === 12 && this.player.prison) {
-      this.moveX = 'prison'
+      this.changePosition = 19;
+      this.moveRight();
     }
   }
 
@@ -94,9 +102,10 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
       (this.coorX === coorInitX && this.coorY === coorEndY)
       ? this._rotate = 'deg90'
       : '';
+    this.player.prison ? this.moveTop() : '';
   }
 
-  animEndY() {
+  animEndY(): void {
     this.moveY = '';
     (this.coorY === coorEndY && this.coorX === coorEndX) ||
       (this.coorX === coorInitX && this.coorY === coorInitY)
@@ -104,19 +113,31 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
       : '';
   }
 
+  animEndText(): void {
+    console.log(this._animText)
+    this._animText = 'off';
+  }
+
+  animRotateEnd(): void {
+    this._animText = (this.coorX === coorInitX && this.coorY === coorInitY && this.isCircle) ? 'on' : 'off';
+    this.step();
+  }
+
   step(): void {
-    if (this.coorX < coorEndX && this.coorY === coorInitY) {
-      this.moveRight();
+    if (!this.player.prison) {
+      if (this.coorX < coorEndX && this.coorY === coorInitY) {
+        this.moveRight();
+      }
+      else if (this.coorX === coorEndX && this.coorY < coorEndY) {
+        this.moveDown();
+      }
+      else if (this.coorX > coorInitX && this.coorY === coorEndY) {
+        this.moveLeft();
+      }
+      else if (this.coorX === coorInitX && this.coorY > coorInitY) {
+        this.moveTop();
+      };
     }
-    else if (this.coorX === coorEndX && this.coorY < coorEndY) {
-      this.moveDown();
-    }
-    else if (this.coorX > coorInitX && this.coorY === coorEndY) {
-      this.moveLeft();
-    }
-    else if (this.coorX === coorInitX && this.coorY > coorInitY) {
-      this.moveTop();
-    };
   }
 
   moveRight(): void {
@@ -167,8 +188,4 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
     this.moveY = 'Y';
   }
 
-  movePrison(): void {
-    this.coorX = coorEndX;
-    // this.coorY = coorInitY;
-  }
 }

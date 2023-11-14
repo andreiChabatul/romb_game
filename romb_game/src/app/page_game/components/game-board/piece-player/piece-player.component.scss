@@ -1,3 +1,7 @@
+@import "./../../../../../scss/color-styles";
+@import "./../../../../../scss/default-styles";
+
+
 .piece-player-container {
     width: calc(79.5vw / 15);
     height: calc(47.5vw / 5);
@@ -8,10 +12,7 @@
     padding: 1%;
     top: 0;
     left: 0;
-    background: rgba($color: red, $alpha: 0.5);
 }
-
-
 
 .piece-player-item {
     width: 1.5vw;
@@ -20,4 +21,14 @@
     box-shadow: inset 2px 2px 5px #00000080,
         inset 2px 2px 5px #00000080, inset 2px 2px 5px #00000080,
         inset 2px 2px 10px #00000080;
+}
+
+.text-finish-circle {
+    position: absolute;
+    @include font-default;
+    font-size: 1.5vw;
+    color: $color_red;
+    top: 4vw;
+    left: 1vw;
+    font-weight: 600;
 }
