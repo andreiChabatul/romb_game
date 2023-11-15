@@ -17,9 +17,9 @@ export class OfferDealComponent {
   gameRoom$ = this.store.select(selectGameRoom);
   players$ = this.store.select(selectAllPlayerArr);
   turnId$ = this.store.select(selectPlayerTurnId);
-  _isSelectPlayer: boolean;
   _isAwaitSoluton: boolean;
-  userIdReceiver: string;
+  _userIdReceiver: string = '';
+
   buttonOffer: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.SEND_DEAL, width: '12vw', height: '5vh', show: false },
     { action: ACTIONS_BUTTON.END_CONTROL, width: '12vw', height: '5vh', show: true }];
@@ -30,9 +30,8 @@ export class OfferDealComponent {
 
   selectPlayer(userId: string): void {
     this.calcBalanse();
-    this.userIdReceiver = userId;
-    this._isSelectPlayer = true;
-    this.buttonOffer[0].show = this._isSelectPlayer;
+    this._userIdReceiver = userId;
+    this.buttonOffer[0] = { ...this.buttonOffer[0], show: this._userIdReceiver }
   }
 
   calcBalanse(): Observable<number> {

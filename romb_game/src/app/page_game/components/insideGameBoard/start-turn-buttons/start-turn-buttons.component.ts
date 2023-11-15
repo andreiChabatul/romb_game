@@ -30,6 +30,7 @@ export class StartTurnButtonsComponent implements OnInit {
     this.userId$.pipe(
       take(1),
       mergeMap((userId => this.gameRoom$.pipe(
+        
         map((gameRoom) => {
           gameRoom.board.forEach((cell) => {
             if (cell.cellCompany?.owned === userId) {

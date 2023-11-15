@@ -1,9 +1,9 @@
 <div class="offer-deal-container" *ngIf="_isAwaitSoluton; else awaitSolution">
-    <div *ngIf="_isSelectPlayer; else elseBlock">
+    <div *ngIf="_userIdReceiver; else elseBlock">
         <div class="offer-deal-item-container">
             <app-offer-deal-item [offersPerson]="'offerPerson'" [idUser]="turnId$ | async"></app-offer-deal-item>
             <div class="line-offer-deal-item-container"></div>
-            <app-offer-deal-item [offersPerson]="'receivePerson'" [idUser]="userIdReceiver"></app-offer-deal-item>
+            <app-offer-deal-item [offersPerson]="'receivePerson'" [idUser]="_userIdReceiver"></app-offer-deal-item>
         </div>
         <div class="balanse-offer-container">
             <p class="balanse-offer-title">{{'balanseTitle' | transloco }}</p>

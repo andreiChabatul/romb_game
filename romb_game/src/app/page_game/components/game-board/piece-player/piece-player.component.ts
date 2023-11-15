@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MAX_INDEX_CELL_BOARD } from 'src/app/const';
 import { Player } from 'src/app/types';
 import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from './const';
@@ -49,8 +49,7 @@ import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from
       transition('off <=> on', animate('1s 0.2s ease-in')),
     ],
     )
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  ]
 
 })
 export class PiecePlayerComponent implements OnInit, OnChanges {

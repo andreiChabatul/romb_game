@@ -3,7 +3,7 @@ import { ACTIONS_BUTTON } from "src/app/const/enum";
 
 export interface ButtonStandart extends Button {
     height: string;
-    show: boolean | Observable<boolean>;
+    show: string | boolean | Observable<boolean>;
 }
 
 export interface OptionSelect {
