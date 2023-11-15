@@ -54,6 +54,8 @@
     "minusTotalPayDebt": "$PLAYER$pays off the debt in the amount: $$VALUEROLL$.",
     "minusTotalPayRent": "$PLAYER$ pays rent in the amount: $$VALUEROLL$.",
     "minusTotalPayPrison": "$PLAYER$ pays a fine and will be released from prison",
+    "leavePrison": "$PLAYER$ leaves prison",
+    "getInPrison": "$PLAYER$ goes to jail",
 
     "prisonDesc": "You are in prison. To be released from prison, you must pay a fine of $50,000, or throw out a double in three attempts.",
     "prisonAttempt": "You have attempts left:",
