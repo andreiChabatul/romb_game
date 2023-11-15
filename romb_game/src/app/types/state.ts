@@ -19,7 +19,6 @@ export interface State {
         infoCellTurn?: infoCellTurn,
         valueSellProfit?: number;
         offer?: {};
-        prisonAttempt?: number;
     }
 }
 
@@ -28,5 +27,5 @@ export interface AppStore {
 }
 
 export type insideBoardState =
-    controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'prison' | 'offerDeal' | 'receiveDeal';
+    controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn'  | 'offerDeal' | 'receiveDeal';
 export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';

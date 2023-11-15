@@ -25,7 +25,12 @@ export interface UpdatePlayerPayload {
     total: number;
     capital: number;
     cellPosition: number;
-    prison?: boolean;
+    prison: prisonPlayer;
+}
+
+export type prisonPlayer = {
+    state: boolean;
+    attempt: number;
 }
 
 export interface CompanyInfo {

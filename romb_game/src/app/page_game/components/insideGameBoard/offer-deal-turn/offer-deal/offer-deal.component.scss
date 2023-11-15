@@ -78,12 +78,6 @@
     }
 }
 
-.deal-send-button__disable {
-    pointer-events: none;
-    filter: grayscale(.5);
-    opacity: .8;
-}
-
 .offer-deal-buttons {
     @include flex_c_c;
     gap: 2vw;

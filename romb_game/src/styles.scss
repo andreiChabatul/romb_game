@@ -236,3 +236,9 @@ body {
 .offer-company-li_img {
   width: 90%;
 }
+
+.button__disable {
+  pointer-events: none;
+  filter: grayscale(.5);
+  opacity: .8;
+}

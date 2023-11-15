@@ -20,13 +20,13 @@ export enum ACTIONS_BUTTON {
     BUY_OUT_COMPANY = 'Buy out company',
     PAY = 'payButton',
     PAY_RENT = 'payRentButton',
-    PAY_PRISON = 'payPrison',
-    SELL_STOCK = 'Sell stock',
-    MORTGAGE = 'Mortgage',
+    PAY_PRISON = 'payPrisonButton',
+    SELL_STOCK = 'sellStockButton',
+    MORTGAGE = 'mortgageButton',
     START_AUCTION = 'startAuctionButton',
     AUCTION_STEP = 'Make bid',
     AUCTION_LEAVE = 'Leave',
-    END_CONTROL = 'Finish',
+    END_CONTROL = 'finishButton',
     SEND_DEAL = 'sendDealButton',
     ACCEPT_DEAL = 'acceptDealButton',
     REFUSE_DEAL = 'refuseDealButton'
@@ -49,7 +49,6 @@ export enum EACTION_WEBSOCKET {
     CALC_VALUE_LS = 'calc value ls',
     START_GAME = 'start game',
     CONTROL_COMPANY = 'control company',
-    PRISON = 'prison',
     CONTROL_DEAL = 'control deal'
 }
 

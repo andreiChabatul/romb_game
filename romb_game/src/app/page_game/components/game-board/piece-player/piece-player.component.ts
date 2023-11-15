@@ -79,18 +79,18 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isCircle = true;
-    if (!this.player.prison) {
-      let prevPosition: number = 0;
+    let prevPosition: number = 0;
 
-      for (let propName in changes) {
-        const chng = changes[propName];
-        prevPosition = chng.previousValue ? chng.previousValue.cellPosition : 0;
-      }
-      this.changePosition = this.player.cellPosition - prevPosition;
-      this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
-      this.changePosition > 0 ? this.step() : '';
+    for (let propName in changes) {
+      const chng = changes[propName];
+      prevPosition = chng.previousValue ? chng.previousValue.cellPosition : 0;
     }
-    if (this.player.cellPosition === 12 && this.player.prison) {
+    this.changePosition = this.player.cellPosition - prevPosition;
+    this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
+    this.changePosition > 0 ? this.step() : '';
+
+
+    if (this.player.cellPosition === 12 && this.player.prison.state) {
       this.changePosition = 19;
       this.moveRight();
     }
@@ -102,7 +102,7 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
       (this.coorX === coorInitX && this.coorY === coorEndY)
       ? this._rotate = 'deg90'
       : '';
-    this.player.prison ? this.moveTop() : '';
+    this.player.prison.state ? this.moveTop() : '';
   }
 
   animEndY(): void {
@@ -114,7 +114,6 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   }
 
   animEndText(): void {
-    console.log(this._animText)
     this._animText = 'off';
   }
 
@@ -124,7 +123,7 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   }
 
   step(): void {
-    if (!this.player.prison) {
+    if (!this.player.prison.state) {
       if (this.coorX < coorEndX && this.coorY === coorInitY) {
         this.moveRight();
       }

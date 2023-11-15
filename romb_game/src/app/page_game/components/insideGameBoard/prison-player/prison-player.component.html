@@ -1,11 +1,12 @@
-<p class="prison-title-text">Вы находитесь в тюрьме. Для выхода из тюрьмы необходимо заплатить штраф $50000, либо
-    выбросить дубль в трех попытках.</p>
+<p class="prison-title-text">{{'prisonDesc' | transloco}}</p>
 <div class="prison-info-container">
     <img src="assets/inJail.png" alt="inJail">
     <div class="prison-buttons-container">
-        <app-button-standart *ngFor="let button of buttons" [button]="button"></app-button-standart>
+        <app-button-standart *ngFor="let button of buttons" [button]="button"
+            [ngClass]="{'button__disable': (button.action === 'payPrisonButton' && !(checkMoney() | async))}">
+        </app-button-standart>
     </div>
 </div>
-<p *ngIf="checkButtons()" class="prison-title-text prison-title-text_second">У вас осталось попыток: {{(insideBoard$
-    | async)?.prisonAttempt}}
+<p *ngIf="checkAttempt() | async" class="prison-title-text prison-title-text_second">{{'prisonAttempt' | transloco}}
+    {{(gamePLayer$ | async)?.prison?.attempt}}
 </p>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { InfoRoom, Player, UpdatePlayerPayload, chatRoomPayload, infoCellTurn, offerDealInfo, startGame, updateCellCompany } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, PrisonAttempt, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
@@ -92,11 +92,11 @@ export class WebSocketController {
           break;
         }
 
-        case EACTION_WEBSOCKET.PRISON: {
-          const attemptPayload = wsMessage.payload as attemptPayload;
-          this.store.dispatch(new PrisonAttempt(attemptPayload.attemp));
-          break;
-        }
+        // case EACTION_WEBSOCKET.PRISON: {
+        //   const attemptPayload = wsMessage.payload as attemptPayload;
+        //   this.store.dispatch(new PrisonAttempt(attemptPayload.attemp));
+        //   break;
+        // }
 
         case EACTION_WEBSOCKET.CONTROL_DEAL: {
           const offerDealInfo = wsMessage.payload as offerDealInfo;

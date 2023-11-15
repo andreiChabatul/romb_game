@@ -55,8 +55,8 @@
     "minusTotalPayRent": "$PLAYER$ pays rent in the amount: $$VALUEROLL$.",
     "minusTotalPayPrison": "$PLAYER$ pays a fine and will be released from prison",
 
-
-
+    "prisonDesc": "You are in prison. To be released from prison, you must pay a fine of $50,000, or throw out a double in three attempts.",
+    "prisonAttempt": "You have attempts left:",
 
     "diceRollButton": "Dice Roll",
     "buyCompanyButton": "Buy company",
@@ -64,7 +64,11 @@
     "offerDealButton": "Offer deal",
     "newGameButton": "New game",
     "payRentButton": "Pay rent",
+    "payPrisonButton": "Pay a fine",
     "payButton": "Pay off debt",
+    "mortgageButton": "Mortgage companies",
+    "sellStockButton": "Sell stock",
+    "finishButton": "Complete",
 
     "buyStockDesc": "Select the shares you want to buy on the company playing field.",
     "buyOutCompanyDesc": "Select the companies you want to buy out on the playing field.",

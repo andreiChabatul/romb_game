@@ -1,8 +1,9 @@
+import { Observable } from "rxjs";
 import { ACTIONS_BUTTON } from "src/app/const/enum";
 
 export interface ButtonStandart extends Button {
     height: string;
-    show: boolean;
+    show: boolean | Observable<boolean>;
 }
 
 export interface OptionSelect {

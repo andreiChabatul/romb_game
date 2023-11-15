@@ -21,7 +21,6 @@ export enum AppActionTypes {
     InitPlayer = '[INIT Player] InitPlayer',
     InitBoard = '[INIT BOARD] InitBoard',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
-    PrisonAttempt = '[PRISON ATTEMPT] PrisonAttempt',
     SetValueSellProfit = '[SET VALUE SELL PROFIT] SetValueSellProfit',
     SetOfferDeal = '[SET OFFER DEAL] SetOfferDeal',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
@@ -44,11 +43,6 @@ export class SetOfferDeal implements Action {
 
 export class SetValueSellProfit implements Action {
     readonly type = AppActionTypes.SetValueSellProfit;
-    constructor(public payload: number) { }
-}
-
-export class PrisonAttempt implements Action {
-    readonly type = AppActionTypes.PrisonAttempt;
     constructor(public payload: number) { }
 }
 
@@ -146,7 +140,6 @@ export type ActionUnion =
     InitPlayer |
     UpdateTurn |
     InitBoard |
-    PrisonAttempt |
     SetValueSellProfit |
     SetOfferDeal |
     SetOfferDealInfo |

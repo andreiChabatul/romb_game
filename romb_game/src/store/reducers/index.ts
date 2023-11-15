@@ -76,10 +76,6 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                 }
         }
 
-        case AppActionTypes.PrisonAttempt: {
-            return { ...state, insideBoard: { ...state.insideBoard, prisonAttempt: action.payload } };
-        }
-
         case AppActionTypes.InitPlayer: {
             const players = { ...state.gameRoom.players };
             players[action.payload.id] = action.payload;
