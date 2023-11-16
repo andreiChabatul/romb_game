@@ -13,7 +13,8 @@ import { selectPlayerTurnId } from 'src/store/selectors';
 export class InfoPlayerComponent implements OnChanges {
 
   @Input() player: Player;
-  prevValue: number;
+  prevTotal: number;
+  prevCapital: number;
 
   playerTurnId$ = this.store.select(selectPlayerTurnId);
 
@@ -22,7 +23,8 @@ export class InfoPlayerComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     for (let propName in changes) {
       const chng = changes[propName];
-      this.prevValue = chng.previousValue ? chng.previousValue.total : 0;
+      this.prevTotal = chng.previousValue ? chng.previousValue.total : 0;
+      this.prevCapital = chng.previousValue ? chng.previousValue.capital : 0;
     }
   }
 

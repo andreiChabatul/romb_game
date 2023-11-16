@@ -6,9 +6,10 @@
             </div>
             <div>
                 <p class="info-player_text info-player_text_name">{{player.name}}</p>
-                <p class="info-player_text">Total: <app-info-player-balanse [prevValue]="prevValue"
+                <p class="info-player_text">{{'total' | transloco}}: <app-info-player-balanse [prevValue]="prevTotal"
                         [currValue]="player.total"></app-info-player-balanse> </p>
-                <p class="info-player_text">Capital: {{player.capital}}</p>
+                <p class="info-player_text">{{'capital' | transloco}}: <app-info-player-balanse
+                        [prevValue]="prevCapital" [currValue]="player.capital"></app-info-player-balanse> </p>
             </div>
         </div>
     </div>
