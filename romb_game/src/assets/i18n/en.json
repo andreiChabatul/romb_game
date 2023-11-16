@@ -72,6 +72,7 @@
     "mortgageButton": "Mortgage companies",
     "sellStockButton": "Sell stock",
     "finishButton": "Complete",
+    "canselDealButton": "Cansel offer",
     "buyStockDesc": "Select the shares you want to buy on the company playing field.",
     "buyOutCompanyDesc": "Select the companies you want to buy out on the playing field.",
     "sellStockDesc": "Select the shares you want to sell on the company playing field.",

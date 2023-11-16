@@ -29,7 +29,8 @@ export enum ACTIONS_BUTTON {
     END_CONTROL = 'finishButton',
     SEND_DEAL = 'sendDealButton',
     ACCEPT_DEAL = 'acceptDealButton',
-    REFUSE_DEAL = 'refuseDealButton'
+    REFUSE_DEAL = 'refuseDealButton',
+    CANSEL_DEAL = 'canselDealButton'
 }
 
 export enum EACTION_WEBSOCKET {

@@ -22,7 +22,7 @@ export class OfferDealComponent {
 
   buttonOffer: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.SEND_DEAL, width: '12vw', height: '5vh', show: false },
-    { action: ACTIONS_BUTTON.END_CONTROL, width: '12vw', height: '5vh', show: true }];
+    { action: ACTIONS_BUTTON.CANSEL_DEAL, width: '12vw', height: '5vh', show: true }];
 
   constructor(private store: Store<AppStore>) {
     this._isAwaitSoluton = true;

@@ -187,6 +187,11 @@ export class ButtonControllerService implements OnDestroy {
         break;
       }
 
+      case ACTIONS_BUTTON.CANSEL_DEAL: {
+        this.store.dispatch(new ControlInsideBoard('startButtons'));
+        break;
+      }
+
       default:
         break;
     }
