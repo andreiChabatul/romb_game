@@ -13,6 +13,7 @@
     "start": "Старт",
     "total": "Баланс",
     "capital": "Капитал",
+    "bankrot": "Банкрот",
     "infoCellTurnTitle": "Вы попали на ячейку: ",
     "startDesc": "Стартовое поле. Вы получаете $200.000",
     "inJailDesc": "Вы не несете никаких потерь. Ожидайте следующего хода.",
@@ -52,16 +53,14 @@
     "noEnoughMoney": "У вас недостаточно средств для погашения долга. Вы можете продать акции или заложить компании.",
     "addTotal": "$PLAYER$ получает доход в размере: $VALUEROLL$.",
     "minusTotal": "$PLAYER$ несет затраты в размере: $VALUEROLL$.",
-    "minusTotalBuyCompany":  "$PLAYER$ покупает компанию $CELLNAME$ за: $$VALUEROLL$.",
+    "minusTotalBuyCompany": "$PLAYER$ покупает компанию $CELLNAME$ за: $$VALUEROLL$.",
     "minusTotalPayDebt": "$PLAYER$ выплачивает долг в размере: $$VALUEROLL$.",
     "minusTotalPayRent": "$PLAYER$ выплачивает аренду в размере: $$VALUEROLL$.",
     "minusTotalPayPrison": "$PLAYER$ выплачивает штраф и будет освобожден из тюрьмы",
     "leavePrison": "$PLAYER$ покидает тюрьму",
     "getInPrison": "$PLAYER$ отправляется тюрьму",
-
     "prisonDesc": "Вы находитесь в тюрьме. Для выхода из тюрьмы необходимо заплатить штраф $50000, либо выбросить дубль в трех попытках.",
     "prisonAttempt": "У вас осталось попыток:",
-
     "diceRollButton": "Бросить Кости",
     "buyCompanyButton": "Купить компанию",
     "startAuctionButton": "Объявить аукцион",
@@ -73,8 +72,6 @@
     "mortgageButton": "Заложить компании",
     "sellStockButton": "Продать акции",
     "finishButton": "Завершить",
-
-
     "buyStockDesc": "Выберите на игровом поле компании акции, которых хотите купить.",
     "buyOutCompanyDesc": "Выберите на игровом поле компании, которые хотите выкупить.",
     "sellStockDesc": "Выберите на игровом поле компании акции, которых хотите продать.",
@@ -84,16 +81,15 @@
     "ownedCompanyInfo": "Вы владелец компании. Вы не несете затрат.",
     "rentCompanyInfo": "Вам необходимо уплатить аренду игроку $PLAYER_OWNED$, в размере $$RENT$.",
     "auctionCompanyInfo": "У вас недостаточно средст для приобретения. Компания будет выставлена на аукцион.",
-
     "offerPersonCompany": "Предложить компании:",
     "receivePersonCompany": "Запросить компании:",
     "offerPersonMoney": "Предложить деньги:",
     "receivePersonMoney": "Запросить деньги:",
     "nanResult": "Предложите условия сделки",
     "noBalanseDeal": "Предложение не может быть отправлено. Сделка не сбалансирована.",
-    "balanseDeal" : "Предложение можно отправить.",
+    "balanseDeal": "Предложение можно отправить.",
     "sendDealButton": "Выслать предложение",
-    "balanseTitle" : "Баланс сделки",
+    "balanseTitle": "Баланс сделки",
     "choisePlayerTitle": "Выберите игрока, которому хотите предложить сделку:",
     "player": "Игрок",
     "getOffer": "отдаст:",
@@ -105,7 +101,4 @@
     "awaitSolution": "Ожидайте решения другого игрока.",
     "refuseDealInfo": "Сделка не состоялась. $PLAYER$ не принял условия сделки.",
     "acceptDealInfo": "Сделка состоялась. $PLAYER$ принял условия сделки."
-
-
-
 }

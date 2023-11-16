@@ -39,3 +39,12 @@
 .info-player_turn {
     box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
 }
+
+.info-player_bankrupt {
+    @include font-default;
+    font-size: 1.7vw;
+    padding: 1% 4%;
+    border: thick double;
+    font-weight: 700;
+    transform: rotate(13deg);
+}

@@ -26,6 +26,7 @@ export interface UpdatePlayerPayload {
     capital: number;
     cellPosition: number;
     prison: prisonPlayer;
+    bankrot: boolean;
 }
 
 export type prisonPlayer = {

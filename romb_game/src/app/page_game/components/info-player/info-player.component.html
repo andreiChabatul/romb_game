@@ -4,13 +4,17 @@
             <div [style.background]="player.color" class="info-player_img-container">
                 <img class="info-player_img-type" src="assets/defaultAvatar.png" alt="typeImg">
             </div>
-            <div>
-                <p class="info-player_text info-player_text_name">{{player.name}}</p>
-                <p class="info-player_text">{{'total' | transloco}}: <app-info-player-balanse [prevValue]="prevTotal"
-                        [currValue]="player.total"></app-info-player-balanse> </p>
-                <p class="info-player_text">{{'capital' | transloco}}: <app-info-player-balanse
-                        [prevValue]="prevCapital" [currValue]="player.capital"></app-info-player-balanse> </p>
-            </div>
+            <p *ngIf="player.bankrot; else elseBlock" class="info-player_bankrupt" [style.color]="player.color"
+                [style.border-color]="player.color"> {{'bankrot' | transloco}}</p>
+            <ng-template #elseBlock>
+                <div>
+                    <p class="info-player_text info-player_text_name">{{player.name}}</p>
+                    <p class="info-player_text">{{'total' | transloco}}: <app-info-player-balanse
+                            [prevValue]="prevTotal" [currValue]="player.total"></app-info-player-balanse> </p>
+                    <p class="info-player_text">{{'capital' | transloco}}: <app-info-player-balanse
+                            [prevValue]="prevCapital" [currValue]="player.capital"></app-info-player-balanse> </p>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>
