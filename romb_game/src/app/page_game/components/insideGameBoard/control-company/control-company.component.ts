@@ -4,7 +4,7 @@ import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types/components';
 
 import { AppStore } from 'src/app/types/state';
-import { selectInsideBoardState } from 'src/store/selectors';
+import { selectControlCompanyState } from 'src/store/selectors';
 
 @Component({
   selector: 'app-control-company',
@@ -14,7 +14,7 @@ import { selectInsideBoardState } from 'src/store/selectors';
 export class ControlCompanyComponent {
 
   buttonFinish: ButtonStandart = { action: ACTIONS_BUTTON.END_CONTROL, width: '15vw', height: '6vh', show: true };
-  insideBoardState$ = this.store.select(selectInsideBoardState);
+  controlCompanyState$ = this.store.select(selectControlCompanyState);
 
   constructor(private store: Store<AppStore>) { }
 

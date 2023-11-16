@@ -15,10 +15,10 @@ export interface State {
     };
     gameRoom: GameRoom;
     insideBoard: {
+        controlCompany?: controlCompanyState;
         state: insideBoardState,
         infoCellTurn?: infoCellTurn,
         valueSellProfit?: number;
-        offer?: {};
     }
 }
 
@@ -26,6 +26,5 @@ export interface AppStore {
     state: State;
 }
 
-export type insideBoardState =
-    controlCompanyState | 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn'  | 'offerDeal' | 'receiveDeal';
-export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';
+export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal';
+export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany' | undefined;

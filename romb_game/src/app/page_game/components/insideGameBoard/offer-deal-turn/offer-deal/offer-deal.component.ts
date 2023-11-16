@@ -65,7 +65,8 @@ export class OfferDealComponent {
     )
   }
 
-  clickButton(): void {
-    this._isAwaitSoluton = false;
+  clickButton(action: ACTIONS_BUTTON): void {
+    action === 'finishButton'
+      ? this._isAwaitSoluton = false : ''
   }
 }

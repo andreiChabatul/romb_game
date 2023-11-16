@@ -25,7 +25,7 @@
         </div>
     </ng-template>
     <div class="offer-deal-buttons">
-        <app-button-standart (click)="clickButton()"
+        <app-button-standart (click)="clickButton(button.action)"
             [ngClass]="{'button__disable': (button.action === 'sendDealButton' && (textBalanse() | async) === 'noBalanseDeal')}"
             *ngFor="let button of buttonOffer" [button]="button"></app-button-standart>
     </div>

@@ -5,7 +5,7 @@ import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { cellDirections, gameCell } from 'src/app/types';
 import { AppStore, controlCompanyState } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { selectIdUser, selectInsideBoardState } from 'src/store/selectors';
+import { selectIdUser, selectControlCompanyState } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-cell-company',
@@ -17,13 +17,13 @@ export class GameCellCompanyComponent implements OnInit {
   @Input() gameCell: gameCell;
   cellDirections: cellDirections;
   userId$ = this.store.select(selectIdUser);
-  insideBoardState$ = this.store.select(selectInsideBoardState);
+  controlCompanyState$ = this.store.select(selectControlCompanyState);
 
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
   ngOnInit(): void {
     this.cellDirections = this.gameCell.location.cellDirections;
-  } 
+  }
 
   controlCompany(event: MouseEvent, action: controlCompanyState) {
     this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY, {
@@ -34,7 +34,7 @@ export class GameCellCompanyComponent implements OnInit {
   }
 
   checkBuyStock(): Observable<boolean> {
-    return this.insideBoardState$.pipe(
+    return this.controlCompanyState$.pipe(
       mergeMap((action => this.userId$.pipe(
         map((userId) =>
           Boolean(action === 'buyStock' &&
@@ -47,7 +47,7 @@ export class GameCellCompanyComponent implements OnInit {
   }
 
   checkMortage(): Observable<boolean> {
-    return this.insideBoardState$.pipe(
+    return this.controlCompanyState$.pipe(
       mergeMap((action => this.userId$.pipe(
         map((userId) =>
           Boolean(action === 'pledgeCompany' &&
@@ -58,7 +58,7 @@ export class GameCellCompanyComponent implements OnInit {
   }
 
   checkBuyOut(): Observable<boolean> {
-    return this.insideBoardState$.pipe(
+    return this.controlCompanyState$.pipe(
       mergeMap((action => this.userId$.pipe(
         map((userId) =>
           Boolean(action === 'buyOutCompany' &&
@@ -69,7 +69,7 @@ export class GameCellCompanyComponent implements OnInit {
   }
 
   checkSellStock(): Observable<boolean> {
-    return this.insideBoardState$.pipe(
+    return this.controlCompanyState$.pipe(
       mergeMap((action => this.userId$.pipe(
         map((userId) =>
           Boolean(action === 'sellStock' &&

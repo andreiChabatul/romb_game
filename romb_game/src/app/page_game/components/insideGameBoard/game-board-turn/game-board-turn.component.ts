@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'src/app/types/state';
-import { selectIdUser, selectInfoCellTurn, selectInsideBoardState, selectPlayerTurnId } from 'src/store/selectors';
+import { selectIdUser, selectInfoCellTurn, selectInsideBoard, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board-turn',
@@ -28,7 +28,7 @@ export class GameBoardTurnComponent implements OnInit {
   minute: number;
   seconds: number;
   fontColor: string;
-  insideBoardState$ = this.store.select(selectInsideBoardState);
+  insideBoard$ = this.store.select(selectInsideBoard);
   playerTurnId$ = this.store.select(selectPlayerTurnId);
   userId$ = this.store.select(selectIdUser);
   infoCellTurn$ = this.store.select(selectInfoCellTurn);

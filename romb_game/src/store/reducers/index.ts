@@ -35,7 +35,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                     ...state.gameRoom,
                     players: {
                         ...state.gameRoom.players,
-                        
+
                         [action.payload.id]: { ...state.gameRoom.players[action.payload.id], ...action.payload }
                     }
                 }
@@ -95,6 +95,16 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             };
         }
 
+        case AppActionTypes.ControlCompany: {
+            return {
+                ...state,
+                insideBoard: {
+                    ...state.insideBoard,
+                    controlCompany: action.payload
+                }
+            };
+        }
+
         case AppActionTypes.ControlInsideBoard: {
             return {
                 ...state,
@@ -103,6 +113,7 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                     offerDealInfo: undefined
                 },
                 insideBoard: {
+                    ...state.insideBoard,
                     state: action.payload
                 }
             };

@@ -11,16 +11,17 @@
                     <app-loss-profit-description [cell]="cell"></app-loss-profit-description>
                 </ng-template>
                 <ng-template ngSwitchCase="company">
-                    <p class="company-info-text">
-                        {{((infoCellTurn$ |async)?.description | transloco | changeMessage: {cellId: cell.indexCell}) |
-                        async}}</p>
+                    <p class="company-info-text"> {{((insideBoard$ |async)?.infoCellTurn?.description | transloco |
+                        changeMessage: {cellId: cell.indexCell}) | async}}</p>
                 </ng-template>
                 <ng-template ngSwitchDefault>
                     <p class="info-cell-text">{{(cell.nameCell + 'Desc') | transloco}}</p>
                 </ng-template>
             </div>
             <div class="info-cell-buttons">
-                <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"></app-button-standart>
+                <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"
+                    [ngClass]="{'button__disable': ((button.action === 'payButton' || button.action === 'payRentButton') && (checkButton() | async))}">
+                </app-button-standart>
             </div>
         </div>
     </div>

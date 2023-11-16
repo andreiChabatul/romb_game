@@ -6,7 +6,7 @@ import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { offerDealInfo } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { ChangeModal, ControlInsideBoard } from 'src/store/actions';
+import { ChangeModal, ControlCompany, ControlInsideBoard } from 'src/store/actions';
 import { selectGameRoom, selectInsideBoard, selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
@@ -84,11 +84,11 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.BUY_STOCK:
-        this.store.dispatch(new ControlInsideBoard('buyStock'));
+        this.store.dispatch(new ControlCompany('buyStock'));
         break;
 
       case ACTIONS_BUTTON.SELL_STOCK:
-        this.store.dispatch(new ControlInsideBoard('sellStock'));
+        this.store.dispatch(new ControlCompany('sellStock'));
         break;
 
       case ACTIONS_BUTTON.BUY_COMPANY:
@@ -128,21 +128,15 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.MORTGAGE:
-        this.store.dispatch(new ControlInsideBoard('pledgeCompany'));
+        this.store.dispatch(new ControlCompany('pledgeCompany'));
         break;
 
       case ACTIONS_BUTTON.BUY_OUT_COMPANY:
-        this.store.dispatch(new ControlInsideBoard('buyOutCompany'));
+        this.store.dispatch(new ControlCompany('buyOutCompany'));
         break;
 
       case ACTIONS_BUTTON.END_CONTROL:
-        this.insideBoard$
-          .pipe(take(1))
-          .subscribe((insideBoard) =>
-            insideBoard.infoCellTurn
-              ? this.store.dispatch(new ControlInsideBoard('infoCellTurn'))
-              : this.store.dispatch(new ControlInsideBoard('startButtons'))
-          );
+        this.store.dispatch(new ControlCompany(undefined));
         break;
 
       case ACTIONS_BUTTON.PAY:

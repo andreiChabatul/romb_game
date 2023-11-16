@@ -1,12 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription, map, mergeMap } from 'rxjs';
+import { Observable, Subscription, map, mergeMap } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { gameCell, infoCellButtons } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGameRoom, selectInfoCellTurn } from 'src/store/selectors';
+import { selectGamePLayer, selectGameRoom, selectInfoCellTurn, selectInsideBoard } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.PAY_RENT, width: '13vw', height: '6vh', show: true },
@@ -35,21 +35,24 @@ const buttons: ButtonStandart[] = [
 export class InfoCellTurnComponent implements OnInit, OnDestroy {
 
   buttonsResult: ButtonStandart[] = [];
-  infoCellTurn$ = this.store.select(selectInfoCellTurn);
+  insideBoard$ = this.store.select(selectInsideBoard);
   gameRoom$ = this.store.select(selectGameRoom);
+  gamePlayer$ = this.store.select(selectGamePLayer);
+  debtAmount: number;
   cell: gameCell;
   subscription$: Subscription;
 
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
-   
-    this.subscription$ = this.infoCellTurn$.pipe(
-      mergeMap((infoCell) => this.gameRoom$.pipe(
+
+    this.subscription$ = this.insideBoard$.pipe(
+      mergeMap((insideBoard) => this.gameRoom$.pipe(
         map((gameBoard) => {
-          if (infoCell) {
-            this.cell = gameBoard.board[infoCell?.indexCompany];
-            this.buttonsResult = this.updateButtons(infoCell.buttons);
+          if (insideBoard.infoCellTurn) {
+            this.cell = gameBoard.board[insideBoard.infoCellTurn?.indexCompany];
+            this.buttonsResult = this.updateButtons(insideBoard.infoCellTurn.buttons);
+            this.debtAmount = this.cell.cellCompany ? this.cell.cellCompany.rentCompany : Number(insideBoard.valueSellProfit);
           }
         })
       ))
@@ -71,13 +74,16 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
       default:
         return [];
     }
-
   }
 
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
 
-
+  checkButton(): Observable<boolean> {
+    return this.gamePlayer$.pipe(
+      map((player) => player.total < this.debtAmount)
+    )
+  }
 
 }
