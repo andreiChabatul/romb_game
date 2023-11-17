@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { offerInfo, gameCell } from 'src/app/types';
+import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { offerInfo, gameCell, offerDealInfo, dealPerson } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
+import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { selectAllPlayerArr, selectGameRoom, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
@@ -17,6 +18,7 @@ export class OfferDealComponent {
   gameRoom$ = this.store.select(selectGameRoom);
   players$ = this.store.select(selectAllPlayerArr);
   turnId$ = this.store.select(selectPlayerTurnId);
+  _offerDealInfo: offerDealInfo = {} as offerDealInfo;
   _isAwaitSoluton: boolean;
   _userIdReceiver: string = '';
 
@@ -24,7 +26,7 @@ export class OfferDealComponent {
     { action: ACTIONS_BUTTON.SEND_DEAL, width: '12vw', height: '5vh', show: false },
     { action: ACTIONS_BUTTON.CANSEL_DEAL, width: '12vw', height: '5vh', show: true }];
 
-  constructor(private store: Store<AppStore>) {
+  constructor(private store: Store<AppStore>, private webSocketController: WebSocketController) {
     this._isAwaitSoluton = true;
   }
 
@@ -35,19 +37,19 @@ export class OfferDealComponent {
   }
 
   calcBalanse(): Observable<number> {
-    const sumCompany = (board: gameCell[], dealInfo: offerInfo | undefined): number =>
-      dealInfo
+    const sumCompany = (board: gameCell[], offerInfo: offerInfo): number =>
+      offerInfo
         ? board.reduce((prev, cur) =>
-          dealInfo.indexCompany.includes(cur.indexCell)
+          offerInfo.indexCompany.includes(cur.indexCell)
             ? prev + Number(cur.cellCompany?.priceCompany)
             : prev,
-          (dealInfo ? dealInfo.valueMoney : 0))
+          (offerInfo ? offerInfo.valueMoney : 0))
         : 0;
 
     return this.gameRoom$.pipe(
       map((gameroom) => {
-        const sumOffer = sumCompany(gameroom.board, gameroom.offerDealInfo?.offerPerson);
-        const sumReceive = sumCompany(gameroom.board, gameroom.offerDealInfo?.receivePerson);
+        const sumOffer = sumCompany(gameroom.board, this._offerDealInfo.offerPerson);
+        const sumReceive = sumCompany(gameroom.board, this._offerDealInfo.receivePerson);
         let result = sumOffer / sumReceive;
         result = result > 2 ? 2 : result;
         return result = result < 0 ? 0 : result;
@@ -66,7 +68,16 @@ export class OfferDealComponent {
   }
 
   clickButton(action: ACTIONS_BUTTON): void {
-    action === 'finishButton'
-      ? this._isAwaitSoluton = false : ''
+    if (action === 'sendDealButton') {
+      this._isAwaitSoluton = false;
+      this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, {
+        action: 'offer',
+        offerDealInfo: this._offerDealInfo
+      });
+    }
+  }
+
+  setOffer(event: { dealPerson: dealPerson, offerInfo: offerInfo }) {
+    this._offerDealInfo[event.dealPerson] = event.offerInfo;
   }
 }

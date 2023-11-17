@@ -1,9 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription, map, mergeMap, take } from 'rxjs';
+import { Subscription, map, mergeMap, } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { offerDealInfo } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal, ControlCompany, ControlInsideBoard } from 'src/store/actions';
@@ -18,7 +17,6 @@ export class ButtonControllerService implements OnDestroy {
   isLogin: boolean;
   indexCompany: number;
   deptValue: number;
-  offerDealInfo: offerDealInfo;
   isLogin$ = this.store.select(selectIsLogin);
   insideBoard$ = this.store.select(selectInsideBoard);
   gameRoom$ = this.store.select(selectGameRoom);
@@ -28,15 +26,12 @@ export class ButtonControllerService implements OnDestroy {
     private router: Router) {
     this.susbscription$ = this.isLogin$.pipe(
       mergeMap((login) => this.insideBoard$.pipe(
-        mergeMap((insideBoard) => this.gameRoom$.pipe(
-          map(gameRoom => {
-            this.isLogin = login;
-            this.indexCompany = Number(insideBoard.infoCellTurn?.indexCompany);
-            this.deptValue = Number(insideBoard.valueSellProfit);
-            this.offerDealInfo = gameRoom.offerDealInfo ? gameRoom.offerDealInfo : {};
-          }
-          )
-        ))))).subscribe()
+        map((insideBoard) => {
+          this.isLogin = login;
+          this.indexCompany = Number(insideBoard.infoCellTurn?.indexCompany);
+          this.deptValue = Number(insideBoard.valueSellProfit);
+        }
+        )))).subscribe()
   }
 
   actionButton(action: ACTIONS_BUTTON) {
@@ -162,14 +157,6 @@ export class ButtonControllerService implements OnDestroy {
 
       case ACTIONS_BUTTON.OFFER_DEAL: {
         this.store.dispatch(new ControlInsideBoard('offerDeal'));
-        break;
-      }
-
-      case ACTIONS_BUTTON.SEND_DEAL: {
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, {
-          action: 'offer',
-          offerDealInfo: this.offerDealInfo
-        });
         break;
       }
 

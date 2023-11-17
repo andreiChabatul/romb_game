@@ -2,7 +2,7 @@
     <p class="offer-deal-item-name" [ngStyle]="{'color': (player | async)?.color }">
         {{(player | async)?.name}}</p>
     <p class="offer-deal-item-text">
-        {{(offersPerson === 'offerPerson'? 'offerPersonCompany' : 'receivePersonCompany') | transloco}}</p>
+        {{(dealPerson === 'offerPerson'? 'offerPersonCompany' : 'receivePersonCompany') | transloco}}</p>
     <ul class="offer-company-container">
         <li [ngClass]="{'offer-company-li__select': (searchIndexCompany(cell.indexCell) > -1)}"
             (click)="company = cell.indexCell" class="offer-company-li offer-company-li__click"
@@ -11,8 +11,8 @@
         </li>
     </ul>
     <p class="offer-deal-item-text">
-        {{(offersPerson === 'offerPerson'? 'offerPersonMoney' : 'receivePersonMoney') | transloco}}
-        <span class="offer-deal-item-text_value">{{offerInfo.valueMoney}}$</span>
+        {{(dealPerson === 'offerPerson'? 'offerPersonMoney' : 'receivePersonMoney') | transloco}}
+        <span class="offer-deal-item-text_value">{{_offerInfo.valueMoney}}$</span>
     </p>
     <mat-slider min="0" [max]="(player | async)?.total" step="1000" showTickMarks discrete [displayWith]="formatLabel">
         <input matSliderThumb>

@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { Player, gameCell, offerInfo, offersPerson } from 'src/app/types';
+import { Player, gameCell, offerInfo, dealPerson } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
-import { SetOfferDeal } from 'src/store/actions';
 import { selectGameRoom } from 'src/store/selectors';
 
 @Component({
@@ -14,16 +13,17 @@ import { selectGameRoom } from 'src/store/selectors';
 export class OfferDealItemComponent implements OnInit {
 
   @Input() idUser: string | null;
-  @Input() offersPerson: offersPerson;
+  @Input() dealPerson: dealPerson;
+  @Output() offerEvent = new EventEmitter<{ dealPerson: dealPerson, offerInfo: offerInfo }>();
   gameRoom$ = this.store.select(selectGameRoom);
-  offerInfo: offerInfo = {} as offerInfo;
+  _offerInfo: offerInfo = {} as offerInfo;
 
   constructor(private store: Store<AppStore>) {
     this.formatLabel = this.formatLabel.bind(this);
   }
 
   ngOnInit(): void {
-    this.offerInfo = {
+    this._offerInfo = {
       idPerson: this.idUser ? this.idUser : '',
       indexCompany: [],
       valueMoney: 0
@@ -31,7 +31,7 @@ export class OfferDealItemComponent implements OnInit {
   }
 
   searchIndexCompany(idCompany: number): number {
-    return this.offerInfo.indexCompany.indexOf(idCompany);
+    return this._offerInfo.indexCompany.indexOf(idCompany);
   }
 
   formatLabel(value: number): string {
@@ -43,18 +43,18 @@ export class OfferDealItemComponent implements OnInit {
   }
 
   set valueMoney(valueMoney: number) {
-    this.offerInfo = { ...this.offerInfo, valueMoney };
-    this.sendStore();
+    this._offerInfo.valueMoney = valueMoney;
+    this.sendItemOffer();
   }
 
   set company(idCompany: number) {
-    const resultArr = [...this.offerInfo.indexCompany]
+    const resultArr = [...this._offerInfo.indexCompany]
     const indexSelect = this.searchIndexCompany(idCompany);
     (indexSelect === -1)
       ? resultArr.push(idCompany)
       : resultArr.splice(indexSelect, 1);
-    this.offerInfo = { ...this.offerInfo, indexCompany: [...resultArr] };
-    this.sendStore();
+    this._offerInfo.indexCompany = resultArr;
+    this.sendItemOffer();
   }
 
   get player(): Observable<Player> {
@@ -66,11 +66,11 @@ export class OfferDealItemComponent implements OnInit {
   get companyPlayer(): Observable<gameCell[]> {
     return this.gameRoom$.pipe(
       map((gameRoom) => gameRoom.board.filter((cell) => cell.cellCompany?.owned === this.idUser))
-    )
+    );
   }
 
-  sendStore(): void {
-    this.store.dispatch(new SetOfferDeal({ offersPerson: this.offersPerson, offerInfo: this.offerInfo }));
+  sendItemOffer(): void {
+    this.offerEvent.emit({ dealPerson: this.dealPerson, offerInfo: this._offerInfo });
   }
 
 }

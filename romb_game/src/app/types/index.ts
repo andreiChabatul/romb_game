@@ -2,7 +2,7 @@ export type modal = 'none' | 'login' | 'register' | 'infoCell';
 export type companyType = 'company' | 'lossProfit' | 'empty';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none' | 'payRent';
-export type offersPerson = 'offerPerson' | 'receivePerson';
+export type dealPerson = 'offerPerson' | 'receivePerson';
 export type offerInfo = {
     indexCompany: number[];
     valueMoney: number;
@@ -10,8 +10,7 @@ export type offerInfo = {
 }
 
 export type offerDealInfo = {
-    offerPerson?: offerInfo,
-    receivePerson?: offerInfo,
+    [key in dealPerson]: offerInfo;
 }
 
 export interface Player extends UpdatePlayerPayload {

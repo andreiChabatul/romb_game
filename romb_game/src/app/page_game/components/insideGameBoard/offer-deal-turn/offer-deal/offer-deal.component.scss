@@ -94,3 +94,8 @@
     font-size: .9vw;
     position: absolute;
 }
+
+.info-player-container {
+    @include flex_c_c;
+    gap: 0.8vw;
+}

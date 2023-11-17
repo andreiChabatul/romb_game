@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offersPerson, offerInfo, offerDealInfo } from 'src/app/types';
+import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offerDealInfo } from 'src/app/types';
 import { controlCompanyState, insideBoardState } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
@@ -23,7 +23,6 @@ export enum AppActionTypes {
     InitBoard = '[INIT BOARD] InitBoard',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
     SetValueSellProfit = '[SET VALUE SELL PROFIT] SetValueSellProfit',
-    SetOfferDeal = '[SET OFFER DEAL] SetOfferDeal',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
 };
 
@@ -42,10 +41,6 @@ export class SetOfferDealInfo implements Action {
     constructor(public payload: offerDealInfo) { }
 }
 
-export class SetOfferDeal implements Action {
-    readonly type = AppActionTypes.SetOfferDeal;
-    constructor(public payload: { offersPerson: offersPerson, offerInfo: offerInfo }) { }
-}
 
 export class SetValueSellProfit implements Action {
     readonly type = AppActionTypes.SetValueSellProfit;
@@ -147,7 +142,6 @@ export type ActionUnion =
     UpdateTurn |
     InitBoard |
     SetValueSellProfit |
-    SetOfferDeal |
     SetOfferDealInfo |
     ControlCompany |
     EndTurn;

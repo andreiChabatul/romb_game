@@ -56,26 +56,6 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, gameRoom: { ...state.gameRoom, board: [], idRoom: action.payload } };
         }
 
-        case AppActionTypes.SetOfferDeal: {
-            return action.payload.offersPerson === 'offerPerson'
-                ? {
-                    ...state, gameRoom: {
-                        ...state.gameRoom, offerDealInfo: {
-                            ...state.gameRoom.offerDealInfo,
-                            offerPerson: action.payload.offerInfo
-                        }
-                    }
-                }
-                : {
-                    ...state, gameRoom: {
-                        ...state.gameRoom, offerDealInfo: {
-                            ...state.gameRoom.offerDealInfo,
-                            receivePerson: action.payload.offerInfo
-                        }
-                    }
-                }
-        }
-
         case AppActionTypes.InitPlayer: {
             const players = { ...state.gameRoom.players };
             players[action.payload.id] = action.payload;
