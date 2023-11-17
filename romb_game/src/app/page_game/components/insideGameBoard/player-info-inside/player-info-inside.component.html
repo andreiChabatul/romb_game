@@ -1,1 +1,4 @@
-<p>player-info-inside works!</p>
+<p>{{(infoUser$ | async)?.nickname}}</p>
+
+
+<app-raiting-stars [statUser]="(infoUser$ | async)?.statUser" [width]="'10vw'"></app-raiting-stars>
