@@ -16,7 +16,7 @@ export class TurnEffects {
                 map((userId) => {
                     const payload = action['payload'] as turnPayload;
                     return (userId === payload.turnId)
-                        ? new ControlInsideBoard('startButtons')
+                        ? new ControlInsideBoard('playerInfo') //временно, пока дела страницу инфо юзера, вернуть потом старт бутттон
                         : new ControlInsideBoard('playerInfo');
                 })
             ))

@@ -14,6 +14,7 @@ import { StockAssetsPipe } from './pipe/stock.assets.pipe';
 import { RentPipe } from './pipe/rent.pipe';
 import { TranslocoRootModule } from '../transloco-root.module';
 import { ChangeMessagePipe } from './pipe/change.message.pipe';
+import { RaitingStarsComponent } from './components/raiting-stars/raiting-stars.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { ChangeMessagePipe } from './pipe/change.message.pipe';
         StockAssetsPipe,
         RentPipe,
         ChangeMessagePipe,
+        RaitingStarsComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule
@@ -42,7 +44,8 @@ import { ChangeMessagePipe } from './pipe/change.message.pipe';
         StockAssetsPipe,
         RentPipe,
         TranslocoRootModule,
-        ChangeMessagePipe
+        ChangeMessagePipe,
+        RaitingStarsComponent
     ],
     providers: [ButtonControllerService],
     bootstrap: []

@@ -14,9 +14,7 @@ export const stateApp: State = {
         state: 'playerInfo',
     },
     user: {
-        idUser: '',
-        isLogin: false,
-        nickname: ''
+        isLogin: false
     },
     rooms: [],
     modal: {

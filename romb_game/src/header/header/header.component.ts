@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.checkGamePage();
-    this.subscriptionTwo$ = this.store.select(selectUserName).subscribe((nickname) => this.nickname = nickname);
+    // this.subscriptionTwo$ = this.store.select(selectUserName).subscribe((nickname) => this.nickname = nickname);
     this.subscriptionOne$ = this.store.select(selectIsLogin).subscribe(
       (isLogin) => isLogin
         ? this.buttons[3] = { action: ACTIONS_BUTTON.LOG_OUT, width: "45px", text: `Exit ${this.nickname}` }

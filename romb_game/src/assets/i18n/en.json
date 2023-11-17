@@ -14,6 +14,8 @@
     "total": "Total",
     "capital": "Capital",
     "bankrot": "Bankrupt",
+    "totalGame": "Total games played: ",
+    "winGame": "Total wins: ",
     "infoCellTurnTitle": "You are in a cell: ",
     "startDesc": "Starting field. You receive $200,000",
     "inJailDesc": "You do not incur any losses. Wait for the next move.",

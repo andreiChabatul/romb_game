@@ -10,8 +10,7 @@ export interface State {
     rooms: InfoRoom[];
     user: {
         isLogin: boolean;
-        nickname: string;
-        idUser: string;
+        infoUser?: infoUser;
     };
     gameRoom: GameRoom;
     insideBoard: {
@@ -24,6 +23,17 @@ export interface State {
 
 export interface AppStore {
     state: State;
+}
+
+export type statUser = {
+    totalGame: number;
+    winGame: number;
+}
+
+export type infoUser = {
+    statUser: statUser;
+    nickname: string;
+    idUser: string;
 }
 
 export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal';

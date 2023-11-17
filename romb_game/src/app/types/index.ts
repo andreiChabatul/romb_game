@@ -1,3 +1,5 @@
+import { statUser } from "./state";
+
 export type modal = 'none' | 'login' | 'register' | 'infoCell';
 export type companyType = 'company' | 'lossProfit' | 'empty';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
@@ -114,6 +116,7 @@ export interface ResponseAuth {
     accessToken: string;
     nickname: string;
     idUser: string;
+    statUser: statUser;
 }
 
 export type location = {

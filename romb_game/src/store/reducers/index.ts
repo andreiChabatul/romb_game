@@ -1,4 +1,4 @@
-import { State } from "src/app/types/state";
+import { State, statUser } from "src/app/types/state";
 import { stateApp } from "..";
 import { ActionUnion, AppActionTypes } from "../actions";
 
@@ -147,8 +147,11 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                 user: {
                     ...state.user,
                     isLogin: true,
-                    nickname: action.payload.nickname ? action.payload.nickname : '',
-                    idUser: action.payload.idUser ? action.payload.idUser : ''
+                    infoUser: {
+                        nickname: action.payload.nickname ? action.payload.nickname : '',
+                        idUser: action.payload.idUser ? action.payload.idUser : '',
+                        statUser: action.payload.statUser ? action.payload.statUser : {} as statUser,
+                    }
                 }
             };
 

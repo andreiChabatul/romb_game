@@ -37,7 +37,7 @@ export class GameCellCompanyComponent implements OnInit {
     return this.controlCompanyState$.pipe(
       mergeMap((action => this.userId$.pipe(
         map((userId) =>
-          Boolean(action === 'buyStock' &&
+          Boolean(userId && action === 'buyStock' &&
             userId === this.gameCell.cellCompany?.owned &&
             this.gameCell.cellCompany.shares < 5 &&
             this.gameCell.cellCompany?.isMonopoly &&
@@ -72,7 +72,7 @@ export class GameCellCompanyComponent implements OnInit {
     return this.controlCompanyState$.pipe(
       mergeMap((action => this.userId$.pipe(
         map((userId) =>
-          Boolean(action === 'sellStock' &&
+          Boolean(userId && action === 'sellStock' &&
             userId === this.gameCell.cellCompany?.owned &&
             this.gameCell.cellCompany.countryCompany !== 'japan' &&
             this.gameCell.cellCompany.countryCompany !== 'ukraine' &&

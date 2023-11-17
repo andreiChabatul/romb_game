@@ -6,8 +6,7 @@ import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, SetOfferDealInfo, Star
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
-import { SendPayloadSocket, attemptPayload, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
-import { take } from 'rxjs';
+import { SendPayloadSocket, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
 
 
 @Injectable({
@@ -22,7 +21,7 @@ export class WebSocketController {
   private idRoom: string;
 
   constructor(private store: Store<AppStore>) {
-    this.idUser$.subscribe((id) => this.idUser = id);
+    this.idUser$.subscribe((id) => this.idUser = String(id));
     this.idRoom$.subscribe((id) => this.idRoom = id);
     this.handleMessage();
   }
