@@ -17,6 +17,7 @@
     "totalGame": "Total games played: ",
     "totalCompany": "Owned company",
     "leaveGameButton": "Leave game",
+    "leaveGameSure": "Are you sure you want to leave the game?",
     "winGame": "Total wins: ",
     "infoCellTurnTitle": "You are in a cell: ",
     "startDesc": "Starting field. You receive $200,000",

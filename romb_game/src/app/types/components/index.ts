@@ -17,10 +17,6 @@ export interface InputTextFormOption {
     type: string;
 }
 
-export interface ButtonMaterialOption extends Button {
-    text: string;
-}
-
 export interface Button {
     action: ACTIONS_BUTTON;
     width: string;

@@ -1,0 +1,17 @@
+@import "./../../../../scss/default-styles";
+@import "./../../../../scss/color-styles";
+
+
+.modal-exit-container {
+    padding-top: 5%;
+    @include flex_c_c;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.modal-exit_text {
+    @include font-default;
+    font-size: 1.5vw;
+    text-align: center;
+
+}

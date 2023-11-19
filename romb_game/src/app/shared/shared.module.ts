@@ -16,6 +16,7 @@ import { TranslocoRootModule } from '../transloco-root.module';
 import { ChangeMessagePipe } from './pipe/change.message.pipe';
 import { RaitingStarsComponent } from './components/raiting-stars/raiting-stars.component';
 import { FotoPlayerComponent } from './components/foto-player/foto-player.component';
+import { ModalExitGameComponent } from './components/modal-exit-game/modal-exit-game.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { FotoPlayerComponent } from './components/foto-player/foto-player.compon
         RentPipe,
         ChangeMessagePipe,
         RaitingStarsComponent,
-        FotoPlayerComponent
+        FotoPlayerComponent,
+        ModalExitGameComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule

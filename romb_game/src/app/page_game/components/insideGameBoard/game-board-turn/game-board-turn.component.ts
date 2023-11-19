@@ -2,6 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'src/app/types/state';
+import { ChangeModal } from 'src/store/actions';
 import { selectIdUser, selectInfoCellTurn, selectInsideBoard, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
@@ -76,6 +77,10 @@ export class GameBoardTurnComponent implements OnInit {
 
   resetCheat(): void {
     this.cheatNumbers = [];
+  }
+
+  exitGame(): void {
+    this.store.dispatch(new ChangeModal('exitGame'));
   }
 
 }

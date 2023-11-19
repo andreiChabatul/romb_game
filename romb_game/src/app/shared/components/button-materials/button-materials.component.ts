@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ButtonControllerService } from '../../services/button-controller.service';
-import { ButtonMaterialOption } from 'src/app/types/components';
+import { Button } from 'src/app/types/components';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { ButtonMaterialOption } from 'src/app/types/components';
 })
 export class ButtonMaterialsComponent {
 
-  @Input() option: ButtonMaterialOption;
+  @Input() option: Button;
 
   constructor(private readonly buttonControllerService: ButtonControllerService) { }
 

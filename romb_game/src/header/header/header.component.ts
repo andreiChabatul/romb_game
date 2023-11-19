@@ -2,10 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { ButtonMaterialOption } from 'src/app/types/components';
-
+import { Button } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectIsLogin, selectUserName } from 'src/store/selectors';
+import { selectIsLogin } from 'src/store/selectors';
 
 @Component({
   selector: 'app-header',
@@ -19,10 +18,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private nickname: string;
   isShow = true;
 
-  buttons: ButtonMaterialOption[] = [
-    { action: ACTIONS_BUTTON.INFO, width: "45px", text: "Info" },
-    { action: ACTIONS_BUTTON.HELP, width: "45px", text: "Help" },
-    { action: ACTIONS_BUTTON.SETTING, width: "45px", text: "Setting" },
+  buttons: Button[] = [
+    { action: ACTIONS_BUTTON.INFO, width: "45px" },
+    { action: ACTIONS_BUTTON.HELP, width: "45px" },
+    { action: ACTIONS_BUTTON.SETTING, width: "45px" },
   ]
 
   constructor(private readonly store: Store<AppStore>) { }
@@ -32,8 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     // this.subscriptionTwo$ = this.store.select(selectUserName).subscribe((nickname) => this.nickname = nickname);
     this.subscriptionOne$ = this.store.select(selectIsLogin).subscribe(
       (isLogin) => isLogin
-        ? this.buttons[3] = { action: ACTIONS_BUTTON.LOG_OUT, width: "45px", text: `Exit ${this.nickname}` }
-        : this.buttons[3] = { action: ACTIONS_BUTTON.LOG_IN, width: "45px", text: "Войти" }
+        ? this.buttons[3] = { action: ACTIONS_BUTTON.LOG_OUT, width: "45px" }
+        : this.buttons[3] = { action: ACTIONS_BUTTON.LOG_IN, width: "45px" }
     )
 
   }

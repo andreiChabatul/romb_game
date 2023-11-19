@@ -11,6 +11,7 @@
     height: 95%;
     @include flex_c_s;
     flex-direction: column;
+    position: relative;
 }
 
 .timer-container {
@@ -34,4 +35,17 @@
     top: 0;
     background: $light_blue;
     z-index: 1111;
+}
+
+.turn-player-container_exit {
+    position: absolute;
+    right: 0;
+    transition: all .5s;
+    width: 2vw;
+    cursor: pointer;
+    z-index: 11;
+
+    &:hover {
+        filter: hue-rotate(253deg)
+    }
 }
