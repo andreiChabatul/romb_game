@@ -1,9 +1,7 @@
 <div class="info-player-container">
     <div class="info-player" [ngClass]="{'info-player_turn': (playerTurnId$ | async) === player.id}">
         <div class="info-player_gradient">
-            <div [style.background]="player.color" class="info-player_img-container">
-                <img class="info-player_img-type" src="assets/defaultAvatar.png" alt="typeImg">
-            </div>
+            <app-foto-player [player]="player" [size]="'4vw'"></app-foto-player>
             <p *ngIf="player.bankrot; else elseBlock" class="info-player_bankrupt" [style.color]="player.color"
                 [style.border-color]="player.color"> {{'bankrot' | transloco}}</p>
             <ng-template #elseBlock>

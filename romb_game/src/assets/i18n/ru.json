@@ -15,6 +15,8 @@
     "capital": "Капитал",
     "bankrot": "Банкрот",
     "totalGame": "Всего cыгранных игр: ",
+    "totalCompany": "Компаний в собственности",
+    "leaveGameButton": "Покинуть игру",
     "winGame": "Всего побед: ",
     "infoCellTurnTitle": "Вы попали на ячейку: ",
     "startDesc": "Стартовое поле. Вы получаете $200.000",

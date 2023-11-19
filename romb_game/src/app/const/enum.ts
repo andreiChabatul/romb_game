@@ -30,7 +30,8 @@ export enum ACTIONS_BUTTON {
     SEND_DEAL = 'sendDealButton',
     ACCEPT_DEAL = 'acceptDealButton',
     REFUSE_DEAL = 'refuseDealButton',
-    CANSEL_DEAL = 'canselDealButton'
+    CANSEL_DEAL = 'canselDealButton',
+    LEAVE_GAME = 'leaveGameButton',
 }
 
 export enum EACTION_WEBSOCKET {

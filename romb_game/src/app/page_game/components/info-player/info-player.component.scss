@@ -1,9 +1,7 @@
 @import "./../../../../scss/color-styles";
 @import "./../../../../scss/default-styles";
 
-.info-player-container {
-    width: 17vw;
-}
+
 
 .info-player {
     @include fon-blue;
@@ -14,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 10%;
+    gap: 1vw;
     padding: 1%;
 }
 

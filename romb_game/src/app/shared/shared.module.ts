@@ -15,6 +15,7 @@ import { RentPipe } from './pipe/rent.pipe';
 import { TranslocoRootModule } from '../transloco-root.module';
 import { ChangeMessagePipe } from './pipe/change.message.pipe';
 import { RaitingStarsComponent } from './components/raiting-stars/raiting-stars.component';
+import { FotoPlayerComponent } from './components/foto-player/foto-player.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,8 @@ import { RaitingStarsComponent } from './components/raiting-stars/raiting-stars.
         StockAssetsPipe,
         RentPipe,
         ChangeMessagePipe,
-        RaitingStarsComponent
+        RaitingStarsComponent,
+        FotoPlayerComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule
@@ -45,7 +47,8 @@ import { RaitingStarsComponent } from './components/raiting-stars/raiting-stars.
         RentPipe,
         TranslocoRootModule,
         ChangeMessagePipe,
-        RaitingStarsComponent
+        RaitingStarsComponent,
+        FotoPlayerComponent
     ],
     providers: [ButtonControllerService],
     bootstrap: []

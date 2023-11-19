@@ -1,0 +1,13 @@
+@import './../../../../scss/default-styles';
+
+.info-player_img-container {
+    @include flex_c_c;
+    border-radius: 50%;
+    box-shadow: inset 1px 1px 12px #00000080,
+        inset 1px 1px 3px #00000080, inset 1px 1px 5px #00000080,
+        inset 1px 1px 3px #00000080;
+}
+
+.info-player_img-type {
+    height: 75%;
+}

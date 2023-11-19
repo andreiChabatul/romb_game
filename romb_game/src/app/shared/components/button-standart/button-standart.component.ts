@@ -21,9 +21,13 @@ export class ButtonStandartComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    (isObservable(this.button.show))
-      ? this.subscription$ = this.button.show.subscribe(show => { console.log(show); this.isShow = show })
-      : this.isShow = Boolean(this.button.show);
+    if (this.button.show) {
+      (isObservable(this.button.show))
+        ? this.subscription$ = this.button.show.subscribe(show => this.isShow = show)
+        : this.isShow = Boolean(this.button.show);
+    } else {
+      this.isShow = true;
+    }
   }
 
   ngOnDestroy(): void {

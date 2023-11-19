@@ -1,4 +1,17 @@
-<p>{{(infoUser$ | async)?.nickname}}</p>
-
-
-<app-raiting-stars [statUser]="(infoUser$ | async)?.statUser" [width]="'10vw'"></app-raiting-stars>
+<div class="info-inside-container">
+        <app-foto-player [player]="player$ | async" [size]="'9vw'"></app-foto-player>
+        <p class="info-inside-name">{{(infoUser$ | async)?.nickname}}</p>
+        <app-raiting-stars [statUser]="(infoUser$ | async)?.statUser" [width]="'10vw'"></app-raiting-stars>
+        <ng-template #elseBankrot>
+                <div>
+                        <p class="info-inside-text">{{'total' | transloco}}: <span class="info-inside-text_value">
+                                        ${{(player$ |async)?.total}}</span></p>
+                        <p class="info-inside-text">{{'capital' | transloco}}: <span class="info-inside-text_value">
+                                        ${{(player$ |async)?.capital}}</span></p>
+                        <p class="info-inside-text">{{'totalCompany' | transloco}}: <span
+                                        class="info-inside-text_value"> {{amountCompany() |async}}</span></p>
+                </div>
+        </ng-template>
+        <app-button-standart *ngIf="(player$ | async)?.bankrot; else elseBankrot"
+                [button]="leaveGameButton"></app-button-standart>
+</div>

@@ -210,20 +210,6 @@ body {
   margin-bottom: 1vw;
 }
 
-.info-player_img-type {
-  height: 75%;
-}
-
-.info-player_img-container {
-  @include flex_c_c;
-  height: 3.5vw;
-  width: 3.5vw;
-  border-radius: 50%;
-  box-shadow: inset 1px 1px 12px #00000080,
-    inset 1px 1px 3px #00000080, inset 1px 1px 5px #00000080,
-    inset 1px 1px 3px #00000080;
-}
-
 .offer-company-li {
   @include flex-c_c;
   list-style: none;
