@@ -3,8 +3,7 @@
     <div class="info-cell-container">
         <img class="info-cell-img" [src]="cell.nameCell| imgAssets" alt="img info">
         <p class="info-cell-text info-cell-title">
-            {{('infoCellTurnTitle' | transloco)}}
-            {{cell.nameCell | uppercase}} </p>
+            {{('infoCellTurnTitle' | transloco)}} {{cell.nameCell | uppercase}} </p>
         <div class="info-desc-container">
             <div [ngSwitch]="cell.type">
                 <ng-template ngSwitchCase="lossProfit">
@@ -20,7 +19,7 @@
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"
-                    [ngClass]="{'button__disable': ((button.action === 'payButton' || button.action === 'payRentButton') && (checkButton() | async))}">
+                    [ngClass]="{'button__disable': ((button.action === 'payButton' || button.action === 'payRentButton') && isPay)}">
                 </app-button-standart>
             </div>
         </div>

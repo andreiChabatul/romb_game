@@ -127,6 +127,7 @@ export type location = {
 export type infoCellTurn = {
     indexCompany: number;
     buttons: infoCellButtons;
-    description?: string;
+    description: string;
+    value?: number;
 }
 

@@ -51,7 +51,8 @@ export enum EACTION_WEBSOCKET {
     CALC_VALUE_LS = 'calc value ls',
     START_GAME = 'start game',
     CONTROL_COMPANY = 'control company',
-    CONTROL_DEAL = 'control deal'
+    CONTROL_DEAL = 'control deal',
+    BANKRUPT = 'bankrupt',
 }
 
 export enum ENDPOINT {

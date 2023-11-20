@@ -1,12 +1,13 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription, map, mergeMap } from 'rxjs';
-import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { gameCell, infoCellButtons } from 'src/app/types';
+import { Observable, Subscription, map, switchMap, take } from 'rxjs';
+import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { Player, gameCell, infoCellButtons } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGamePLayer, selectGameRoom, selectInfoCellTurn, selectInsideBoard } from 'src/store/selectors';
+import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { selectGamePLayer, selectGameRoom, selectInsideBoard } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.PAY_RENT, width: '13vw', height: '6vh', show: true },
@@ -38,25 +39,31 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
   insideBoard$ = this.store.select(selectInsideBoard);
   gameRoom$ = this.store.select(selectGameRoom);
   gamePlayer$ = this.store.select(selectGamePLayer);
+  player: Player;
   debtAmount: number;
   cell: gameCell;
   subscription$: Subscription;
+  isPay: boolean;
 
-  constructor(private store: Store<AppStore>) { }
+  constructor(private store: Store<AppStore>, private webSocketController: WebSocketController) { }
 
   ngOnInit(): void {
 
     this.subscription$ = this.insideBoard$.pipe(
-      mergeMap((insideBoard) => this.gameRoom$.pipe(
-        map((gameBoard) => {
-          if (insideBoard.infoCellTurn) {
-            this.cell = gameBoard.board[insideBoard.infoCellTurn?.indexCompany];
-            this.buttonsResult = this.updateButtons(insideBoard.infoCellTurn.buttons);
-            this.debtAmount = this.cell.cellCompany ? this.cell.cellCompany.rentCompany : Number(insideBoard.valueSellProfit);
-          }
-        })
-      ))
-    ).subscribe();
+      switchMap((insideBoard) => this.gameRoom$.pipe(
+        switchMap((gameBoard) => this.gamePlayer$.pipe(
+          map((player) => {
+            return { insideBoard, gameBoard, player };
+          })))))).subscribe(value => {
+            if (value.insideBoard.infoCellTurn) {
+              this.cell = value.gameBoard.board[value.insideBoard.infoCellTurn.indexCompany];
+              this.buttonsResult = this.updateButtons(value.insideBoard.infoCellTurn.buttons);
+              this.debtAmount = this.cell.cellCompany ? this.cell.cellCompany.rentCompany : Number(value.insideBoard.valueSellProfit);
+              this.isPay = value.player.total < this.debtAmount;
+              this.player = value.player;
+            }
+          });
+    // .player.capital < this.debtAmount ? this.webSocketController.sendMessage(EACTION_WEBSOCKET.BANKRUPT) : '';
   }
 
   private updateButtons(type: infoCellButtons): ButtonStandart[] {
@@ -78,12 +85,6 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
-  }
-
-  checkButton(): Observable<boolean> {
-    return this.gamePlayer$.pipe(
-      map((player) => player.total < this.debtAmount)
-    )
   }
 
 }

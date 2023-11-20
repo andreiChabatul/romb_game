@@ -18,10 +18,9 @@
             <p class="balanse-offer-title">{{'choisePlayerTitle' | transloco}}</p>
             <div class="info-player-container">
                 <div class="info-player-offer-container_item" *ngFor="let player of players$ | async">
-                    <div *ngIf="player.id !== (turnId$ | async)" (click)="selectPlayer(player.id)">
-                        <div [style.background]="player.color" class="info-player_img-container info-player_img-offer">
-                            <img class="info-player_img-type" src="assets/defaultAvatar.png" alt="typeImg">
-                        </div>
+                    <div class="info-player_img-offer" *ngIf="player.id !== (turnId$ | async)"
+                        (click)="selectPlayer(player.id)">
+                        <app-foto-player [player]="player" [size]="'4vw'"></app-foto-player>
                         <p class="info-player-name" [ngStyle]="{'color': player.color }">{{player.name}}</p>
                     </div>
                 </div>
