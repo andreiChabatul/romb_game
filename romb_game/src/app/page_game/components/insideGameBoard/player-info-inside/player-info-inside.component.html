@@ -12,6 +12,6 @@
                                         class="info-inside-text_value"> {{amountCompany() |async}}</span></p>
                 </div>
         </ng-template>
-        <app-button-standart *ngIf="(player$ | async)?.bankrot; else elseBankrot"
+        <app-button-standart *ngIf="(player$ | async)?.bankrupt; else elseBankrot"
                 [button]="leaveGameButton"></app-button-standart>
 </div>

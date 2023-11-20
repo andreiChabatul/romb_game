@@ -5,10 +5,12 @@
         <p class="info-cell-text info-cell-title">
             {{('infoCellTurnTitle' | transloco)}} {{cell.nameCell | uppercase}} </p>
         <div class="info-desc-container">
-            <div [ngSwitch]="cell.type">
+            <div [ngSwitch]="cell.type" [style.width]="'100%'">
                 <ng-template ngSwitchCase="lossProfit">
                     <app-loss-profit-description [cell]="cell"></app-loss-profit-description>
                 </ng-template>
+                <ng-template ngSwitchCase="tax"><app-cell-tax></app-cell-tax></ng-template>
+                <ng-template ngSwitchCase="profit"><app-cell-profit></app-cell-profit></ng-template>
                 <ng-template ngSwitchCase="company">
                     <p class="company-info-text"> {{((insideBoard$ |async)?.infoCellTurn?.description | transloco |
                         changeMessage: {cellId: cell.indexCell}) | async}}</p>

@@ -28,6 +28,8 @@ import { ReceiveDealComponent } from './components/insideGameBoard/offer-deal-tu
 import { ReceiveDealItemComponent } from './components/insideGameBoard/offer-deal-turn/receive-deal-item/receive-deal-item.component';
 import { InfoPlayerBalanseComponent } from './components/info-player/info-player-balanse/info-player-balanse.component';
 import { PiecePlayerComponent } from './components/game-board/piece-player/piece-player.component';
+import { CellTaxComponent } from './components/insideGameBoard/cell-tax/cell-tax.component';
+import { CellProfitComponent } from './components/insideGameBoard/cell-profit/cell-profit.component';
 
 @NgModule({
     declarations: [
@@ -56,7 +58,9 @@ import { PiecePlayerComponent } from './components/game-board/piece-player/piece
         ReceiveDealComponent,
         ReceiveDealItemComponent,
         InfoPlayerBalanseComponent,
-        PiecePlayerComponent
+        PiecePlayerComponent,
+        CellTaxComponent,
+        CellProfitComponent
     ],
     imports: [
         SharedModule,

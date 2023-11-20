@@ -53,6 +53,7 @@ export enum EACTION_WEBSOCKET {
     CONTROL_COMPANY = 'control company',
     CONTROL_DEAL = 'control deal',
     BANKRUPT = 'bankrupt',
+    ACTIVE_CELL = 'active cell',
 }
 
 export enum ENDPOINT {

@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import { InfoRoom, Player, UpdatePlayerPayload, chatRoomPayload, infoCellTurn, offerDealInfo, startGame, updateCellCompany } from '../types';
 import { Store } from '@ngrx/store';
 import { EndTurn, InfoCellTurnAdd, InitBoard, InitPlayer, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
-import { selectIdRoom, selectIdUser } from 'src/store/selectors';
+import { selectIdRoom, selectIdUser, selectInfoCellTurn } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
 import { SendPayloadSocket, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
@@ -17,12 +17,15 @@ export class WebSocketController {
   private wsSocket = io("http://localhost:3100/");
   private idUser$ = this.store.select(selectIdUser);
   private idRoom$ = this.store.select(selectIdRoom);
+  private infoCellTurn$ = this.store.select(selectInfoCellTurn);
   private idUser: string;
   private idRoom: string;
+  private incexCell: number;
 
   constructor(private store: Store<AppStore>) {
     this.idUser$.subscribe((id) => this.idUser = String(id));
     this.idRoom$.subscribe((id) => this.idRoom = id);
+    this.infoCellTurn$.subscribe((info) => this.incexCell = Number(info?.indexCompany));
     this.handleMessage();
   }
 
@@ -117,7 +120,8 @@ export class WebSocketController {
         {
           ...payload,
           idUser: this.idUser,
-          idRoom: this.idRoom
+          idRoom: this.idRoom,
+          indexCell: this.incexCell
         }
       }
     ));

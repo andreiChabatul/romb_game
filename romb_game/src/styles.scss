@@ -210,6 +210,14 @@ body {
   margin-bottom: 1vw;
 }
 
+.info-cell-text_money {
+  font-size: 0.8vw;
+}
+
+.info-cell-text_value{
+  font-weight: 600;
+}
+
 .offer-company-li {
   @include flex-c_c;
   list-style: none;

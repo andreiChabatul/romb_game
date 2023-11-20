@@ -135,10 +135,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.PAY:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CALC_VALUE_LS, {
-          debtValue: this.deptValue,
-          action: 'pay',
-        });
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL);
         break;
 
       case ACTIONS_BUTTON.PAY_RENT:
