@@ -116,16 +116,6 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
         }
 
-        case AppActionTypes.SetValueSellProfit: {
-            return {
-                ...state,
-                insideBoard: {
-                    ...state.insideBoard,
-                    valueSellProfit: action.payload
-                }
-            }
-        };
-
         case AppActionTypes.EndTurn: {
             return {
                 ...state,

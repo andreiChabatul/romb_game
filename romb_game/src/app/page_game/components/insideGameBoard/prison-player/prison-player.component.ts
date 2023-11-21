@@ -18,7 +18,7 @@ export class PrisonPlayerComponent {
 
   buttons: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.DICE_ROLL, width: '12vw', height: '6vh', show: this.checkAttempt() },
-    { action: ACTIONS_BUTTON.PAY_PRISON, width: '12vw', height: '6vh', show: true },
+    { action: ACTIONS_BUTTON.PAY, width: '12vw', height: '6vh', show: true },
     { action: ACTIONS_BUTTON.SELL_STOCK, width: '12vw', height: '6vh', show: true },
     { action: ACTIONS_BUTTON.MORTGAGE, width: '12vw', height: '6vh', show: true }
   ]
@@ -32,7 +32,7 @@ export class PrisonPlayerComponent {
 
   checkMoney(): Observable<boolean> {
     return this.gamePLayer$.pipe(
-      map((player) => player.total > DEBT_PRISON || player.total === DEBT_PRISON)
+      map((player) => player.total > DEBT_PRISON)
     )
   }
 }

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable, map } from 'rxjs';
+import { infoCellTurn } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
-import { selectInfoCellTurn } from 'src/store/selectors';
+import { selectGamePLayer } from 'src/store/selectors';
 
 @Component({
   selector: 'app-cell-loss',
@@ -10,8 +12,18 @@ import { selectInfoCellTurn } from 'src/store/selectors';
 })
 export class CellLossComponent {
 
-  infoCellTurn$ = this.store.select(selectInfoCellTurn);
+  @Input() infoCellTurn: infoCellTurn | undefined | null;
+  gamePlayer$ = this.store.select(selectGamePLayer);
 
   constructor(private store: Store<AppStore>) { }
+
+  checkEnoughMoney(): Observable<string> {
+    return this.gamePlayer$.pipe(
+      map((player) =>
+        player.total > Number(this.infoCellTurn?.value)
+          ? 'enoughMoney'
+          : 'noEnoughMoney')
+    )
+  }
 
 }

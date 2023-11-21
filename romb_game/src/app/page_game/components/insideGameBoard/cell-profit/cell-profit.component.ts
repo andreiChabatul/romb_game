@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppStore } from 'src/app/types/state';
-import { selectInfoCellTurn } from 'src/store/selectors';
+import { Component, Input } from '@angular/core';
+import { infoCellTurn } from 'src/app/types';
 
 @Component({
   selector: 'app-cell-profit',
@@ -10,8 +8,6 @@ import { selectInfoCellTurn } from 'src/store/selectors';
 })
 export class CellProfitComponent {
 
-  infoCellTurn$ = this.store.select(selectInfoCellTurn);
-
-  constructor(private store: Store<AppStore>) { }
+  @Input() infoCellTurn: infoCellTurn | undefined | null;
 
 }

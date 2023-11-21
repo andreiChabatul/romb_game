@@ -6,19 +6,18 @@
             {{('infoCellTurnTitle' | transloco)}} {{cell.nameCell | uppercase}} </p>
         <div class="info-desc-container">
             <div [ngSwitch]="cell.type" [style.width]="'100%'">
-                <ng-template ngSwitchCase="lossProfit">
-                    <app-loss-profit-description [cell]="cell"></app-loss-profit-description>
-                </ng-template>
-                <ng-template ngSwitchCase="tax"><app-cell-tax></app-cell-tax></ng-template>
-                <ng-template ngSwitchCase="profit"><app-cell-profit></app-cell-profit></ng-template>
-                <ng-template ngSwitchCase="loss"><app-cell-loss></app-cell-loss></ng-template>
-                <ng-template ngSwitchCase="company">
+                <ng-template ngSwitchCase="tax"><app-cell-tax
+                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-tax></ng-template>
+                <ng-template ngSwitchCase="profit"><app-cell-profit
+                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-profit></ng-template>
+                <ng-template ngSwitchCase="loss"><app-cell-loss
+                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-loss></ng-template>
+                <ng-template ngSwitchCase="empty"><app-cell-empty
+                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-empty></ng-template>
+                <!-- <ng-template ngSwitchCase="company">
                     <p class="company-info-text"> {{((insideBoard$ |async)?.infoCellTurn?.description | transloco |
                         changeMessage: {cellId: cell.indexCell}) | async}}</p>
-                </ng-template>
-                <ng-template ngSwitchDefault>
-                    <p class="info-cell-text">{{(cell.nameCell + 'Desc') | transloco}}</p>
-                </ng-template>
+                </ng-template> -->
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"
@@ -26,5 +25,6 @@
                 </app-button-standart>
             </div>
         </div>
+        <p class="bankrupt-fon">Банкрот</p>
     </div>
 </ng-template>

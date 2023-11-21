@@ -22,7 +22,6 @@ export enum AppActionTypes {
     InitPlayer = '[INIT Player] InitPlayer',
     InitBoard = '[INIT BOARD] InitBoard',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
-    SetValueSellProfit = '[SET VALUE SELL PROFIT] SetValueSellProfit',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
 };
 
@@ -39,12 +38,6 @@ export class InfoCellTurnAdd implements Action {
 export class SetOfferDealInfo implements Action {
     readonly type = AppActionTypes.SetOfferDealInfo;
     constructor(public payload: offerDealInfo) { }
-}
-
-
-export class SetValueSellProfit implements Action {
-    readonly type = AppActionTypes.SetValueSellProfit;
-    constructor(public payload: number) { }
 }
 
 export class InitBoard implements Action {
@@ -141,7 +134,6 @@ export type ActionUnion =
     InitPlayer |
     UpdateTurn |
     InitBoard |
-    SetValueSellProfit |
     SetOfferDealInfo |
     ControlCompany |
     EndTurn;

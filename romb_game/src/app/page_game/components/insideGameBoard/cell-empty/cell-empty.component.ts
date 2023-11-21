@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { infoCellTurn } from 'src/app/types';
 
 @Component({
-  selector: 'app-cell-tax',
-  templateUrl: './cell-tax.component.html',
-  styleUrls: ['./cell-tax.component.scss']
+  selector: 'app-cell-empty',
+  templateUrl: './cell-empty.component.html',
+  styleUrls: ['./cell-empty.component.scss']
 })
-export class CellTaxComponent {
+export class CellEmptyComponent {
 
   @Input() infoCellTurn: infoCellTurn | undefined | null;
 

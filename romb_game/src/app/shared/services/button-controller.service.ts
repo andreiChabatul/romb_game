@@ -16,7 +16,6 @@ export class ButtonControllerService implements OnDestroy {
   susbscription$: Subscription
   isLogin: boolean;
   indexCompany: number;
-  deptValue: number;
   isLogin$ = this.store.select(selectIsLogin);
   insideBoard$ = this.store.select(selectInsideBoard);
   gameRoom$ = this.store.select(selectGameRoom);
@@ -29,7 +28,6 @@ export class ButtonControllerService implements OnDestroy {
         map((insideBoard) => {
           this.isLogin = login;
           this.indexCompany = Number(insideBoard.infoCellTurn?.indexCompany);
-          this.deptValue = Number(insideBoard.valueSellProfit);
         }
         )))).subscribe()
   }
@@ -137,20 +135,6 @@ export class ButtonControllerService implements OnDestroy {
       case ACTIONS_BUTTON.PAY:
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL);
         break;
-
-      case ACTIONS_BUTTON.PAY_RENT:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CALC_VALUE_LS, {
-          action: 'payRent',
-          indexCompany: this.indexCompany
-        });
-        break;
-
-      case ACTIONS_BUTTON.PAY_PRISON: {
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CALC_VALUE_LS, {
-          action: 'payPrison'
-        });
-        break;
-      }
 
       case ACTIONS_BUTTON.OFFER_DEAL: {
         this.store.dispatch(new ControlInsideBoard('offerDeal'));

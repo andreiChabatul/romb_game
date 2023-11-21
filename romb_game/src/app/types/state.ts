@@ -17,7 +17,6 @@ export interface State {
         controlCompany?: controlCompanyState;
         state: insideBoardState,
         infoCellTurn?: infoCellTurn,
-        valueSellProfit?: number;
     }
 }
 

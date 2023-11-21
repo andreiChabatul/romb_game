@@ -21,7 +21,6 @@ import { StartTurnButtonsComponent } from './components/insideGameBoard/start-tu
 import { PlayerInfoInsideComponent } from './components/insideGameBoard/player-info-inside/player-info-inside.component';
 import { ControlCompanyComponent } from './components/insideGameBoard/control-company/control-company.component';
 import { PrisonPlayerComponent } from './components/insideGameBoard/prison-player/prison-player.component';
-import { LossProfitDescriptionComponent } from './components/insideGameBoard/loss-profit-description/loss-profit-description.component';
 import { OfferDealComponent } from './components/insideGameBoard/offer-deal-turn/offer-deal/offer-deal.component';
 import { OfferDealItemComponent } from './components/insideGameBoard/offer-deal-turn/offer-deal-item/offer-deal-item.component';
 import { ReceiveDealComponent } from './components/insideGameBoard/offer-deal-turn/receive-deal/receive-deal.component';
@@ -31,6 +30,7 @@ import { PiecePlayerComponent } from './components/game-board/piece-player/piece
 import { CellTaxComponent } from './components/insideGameBoard/cell-tax/cell-tax.component';
 import { CellProfitComponent } from './components/insideGameBoard/cell-profit/cell-profit.component';
 import { CellLossComponent } from './components/insideGameBoard/cell-loss/cell-loss.component';
+import { CellEmptyComponent } from './components/insideGameBoard/cell-empty/cell-empty.component';
 
 @NgModule({
     declarations: [
@@ -53,7 +53,6 @@ import { CellLossComponent } from './components/insideGameBoard/cell-loss/cell-l
         PlayerInfoInsideComponent,
         ControlCompanyComponent,
         PrisonPlayerComponent,
-        LossProfitDescriptionComponent,
         OfferDealComponent,
         OfferDealItemComponent,
         ReceiveDealComponent,
@@ -62,7 +61,8 @@ import { CellLossComponent } from './components/insideGameBoard/cell-loss/cell-l
         PiecePlayerComponent,
         CellTaxComponent,
         CellProfitComponent,
-        CellLossComponent
+        CellLossComponent,
+        CellEmptyComponent
     ],
     imports: [
         SharedModule,

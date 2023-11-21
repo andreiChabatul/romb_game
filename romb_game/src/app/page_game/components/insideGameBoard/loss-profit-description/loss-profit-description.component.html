@@ -1,7 +1,0 @@
-<p class="info-cell-text">{{('desc'+cell.nameCell+change) | transloco}}</p>
-<p class="info-cell-text">{{((cell.nameCell === 'profit') ? 'profitRes' : 'lossRes') | transloco}}
-    <span>${{calcDebt() | async}}</span>
-</p>
-<p class="info-cell-text info-cell-text_money" *ngIf="cell.nameCell !== 'profit'">
-    {{((checkEnoughMoney() | async) ? 'enoughMoney' : 'noEnoughMoney')| transloco}}
-</p>

@@ -17,15 +17,12 @@ export class WebSocketController {
   private wsSocket = io("http://localhost:3100/");
   private idUser$ = this.store.select(selectIdUser);
   private idRoom$ = this.store.select(selectIdRoom);
-  private infoCellTurn$ = this.store.select(selectInfoCellTurn);
   private idUser: string;
   private idRoom: string;
-  private incexCell: number;
 
   constructor(private store: Store<AppStore>) {
     this.idUser$.subscribe((id) => this.idUser = String(id));
     this.idRoom$.subscribe((id) => this.idRoom = id);
-    this.infoCellTurn$.subscribe((info) => this.incexCell = Number(info?.indexCompany));
     this.handleMessage();
   }
 
@@ -94,11 +91,6 @@ export class WebSocketController {
           break;
         }
 
-        // case EACTION_WEBSOCKET.PRISON: {
-        //   const attemptPayload = wsMessage.payload as attemptPayload;
-        //   this.store.dispatch(new PrisonAttempt(attemptPayload.attemp));
-        //   break;
-        // }
 
         case EACTION_WEBSOCKET.CONTROL_DEAL: {
           const offerDealInfo = wsMessage.payload as offerDealInfo;
@@ -120,8 +112,7 @@ export class WebSocketController {
         {
           ...payload,
           idUser: this.idUser,
-          idRoom: this.idRoom,
-          indexCell: this.incexCell
+          idRoom: this.idRoom
         }
       }
     ));

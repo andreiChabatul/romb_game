@@ -1,9 +1,9 @@
 import { statUser } from "./state";
 
 export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame';
-export type companyType = 'company' | 'lossProfit' | 'empty';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
-export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none' | 'payRent' | 'bankrupt';
+export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none' | 'bankrupt';
+export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
 export type offerInfo = {
     indexCompany: number[];
@@ -61,7 +61,7 @@ export interface GameRoom {
 }
 
 export type gameCell = {
-    type: companyType;
+    type: cellType;
     location: location;
     indexCell: number;
     nameCell: string;
