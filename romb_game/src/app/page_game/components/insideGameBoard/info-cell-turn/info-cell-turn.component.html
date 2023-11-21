@@ -11,6 +11,7 @@
                 </ng-template>
                 <ng-template ngSwitchCase="tax"><app-cell-tax></app-cell-tax></ng-template>
                 <ng-template ngSwitchCase="profit"><app-cell-profit></app-cell-profit></ng-template>
+                <ng-template ngSwitchCase="loss"><app-cell-loss></app-cell-loss></ng-template>
                 <ng-template ngSwitchCase="company">
                     <p class="company-info-text"> {{((insideBoard$ |async)?.infoCellTurn?.description | transloco |
                         changeMessage: {cellId: cell.indexCell}) | async}}</p>

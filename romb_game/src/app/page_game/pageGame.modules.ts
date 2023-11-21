@@ -30,6 +30,7 @@ import { InfoPlayerBalanseComponent } from './components/info-player/info-player
 import { PiecePlayerComponent } from './components/game-board/piece-player/piece-player.component';
 import { CellTaxComponent } from './components/insideGameBoard/cell-tax/cell-tax.component';
 import { CellProfitComponent } from './components/insideGameBoard/cell-profit/cell-profit.component';
+import { CellLossComponent } from './components/insideGameBoard/cell-loss/cell-loss.component';
 
 @NgModule({
     declarations: [
@@ -60,7 +61,8 @@ import { CellProfitComponent } from './components/insideGameBoard/cell-profit/ce
         InfoPlayerBalanseComponent,
         PiecePlayerComponent,
         CellTaxComponent,
-        CellProfitComponent
+        CellProfitComponent,
+        CellLossComponent
     ],
     imports: [
         SharedModule,

@@ -1,5 +1,4 @@
 <p class="info-cell-text">{{(infoCellTurn$ | async)?.description | transloco}}</p>
-<p class="info-cell-text">{{'profitRes' | transloco}}
+<p class="info-cell-text">{{'lossRes' | transloco}}
     <span class="info-cell-text_value">${{(infoCellTurn$ | async)?.value}}</span>
 </p>
-<app-loader-time></app-loader-time>

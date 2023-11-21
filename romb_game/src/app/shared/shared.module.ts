@@ -17,6 +17,7 @@ import { ChangeMessagePipe } from './pipe/change.message.pipe';
 import { RaitingStarsComponent } from './components/raiting-stars/raiting-stars.component';
 import { FotoPlayerComponent } from './components/foto-player/foto-player.component';
 import { ModalExitGameComponent } from './components/modal-exit-game/modal-exit-game.component';
+import { LoaderTimeComponent } from './components/loader-time/loader-time.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { ModalExitGameComponent } from './components/modal-exit-game/modal-exit-
         ChangeMessagePipe,
         RaitingStarsComponent,
         FotoPlayerComponent,
-        ModalExitGameComponent
+        ModalExitGameComponent,
+        LoaderTimeComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule
@@ -50,7 +52,8 @@ import { ModalExitGameComponent } from './components/modal-exit-game/modal-exit-
         TranslocoRootModule,
         ChangeMessagePipe,
         RaitingStarsComponent,
-        FotoPlayerComponent
+        FotoPlayerComponent,
+        LoaderTimeComponent
     ],
     providers: [ButtonControllerService],
     bootstrap: []
