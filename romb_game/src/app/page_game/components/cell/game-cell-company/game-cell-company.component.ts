@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map, mergeMap } from 'rxjs';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { cellDirections, gameCell } from 'src/app/types';
+import { CompanyInfo, cellDirections, gameCell } from 'src/app/types';
 import { AppStore, controlCompanyState } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { selectIdUser, selectControlCompanyState } from 'src/store/selectors';
@@ -15,6 +15,7 @@ import { selectIdUser, selectControlCompanyState } from 'src/store/selectors';
 export class GameCellCompanyComponent implements OnInit {
 
   @Input() gameCell: gameCell;
+  companyInfo: CompanyInfo | undefined;
   cellDirections: cellDirections;
   userId$ = this.store.select(selectIdUser);
   controlCompanyState$ = this.store.select(selectControlCompanyState);
@@ -22,6 +23,7 @@ export class GameCellCompanyComponent implements OnInit {
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
   ngOnInit(): void {
+    this.companyInfo = this.gameCell.cellCompany?.companyInfo;
     this.cellDirections = this.gameCell.location.cellDirections;
   }
 
@@ -41,7 +43,7 @@ export class GameCellCompanyComponent implements OnInit {
             userId === this.gameCell.cellCompany?.owned &&
             this.gameCell.cellCompany.shares < 5 &&
             this.gameCell.cellCompany?.isMonopoly &&
-            this.gameCell.cellCompany?.priceStock))
+            this.gameCell.cellCompany?.companyInfo.priceStock))
       )))
     )
   }
@@ -74,8 +76,8 @@ export class GameCellCompanyComponent implements OnInit {
         map((userId) =>
           Boolean(userId && action === 'sellStock' &&
             userId === this.gameCell.cellCompany?.owned &&
-            this.gameCell.cellCompany.countryCompany !== 'japan' &&
-            this.gameCell.cellCompany.countryCompany !== 'ukraine' &&
+            this.gameCell.cellCompany.companyInfo.countryCompany !== 'japan' &&
+            this.gameCell.cellCompany.companyInfo.countryCompany !== 'ukraine' &&
             this.gameCell.cellCompany?.shares > 0))
       )))
     )

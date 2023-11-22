@@ -41,7 +41,7 @@ export class OfferDealComponent {
       offerInfo
         ? board.reduce((prev, cur) =>
           offerInfo.indexCompany.includes(cur.indexCell)
-            ? prev + Number(cur.cellCompany?.priceCompany)
+            ? prev + Number(cur.cellCompany?.companyInfo.priceCompany)
             : prev,
           (offerInfo ? offerInfo.valueMoney : 0))
         : 0;

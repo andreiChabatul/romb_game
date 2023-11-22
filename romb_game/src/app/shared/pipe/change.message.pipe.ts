@@ -29,8 +29,8 @@ export class ChangeMessagePipe implements PipeTransform {
                     resultString = (chatMessage.cellId !== undefined && gameRoom.board[chatMessage.cellId])
                         ? resultString
                             .replaceAll('$CELLNAME$', gameRoom.board[chatMessage.cellId].nameCell.toUpperCase())
-                            .replaceAll('$PRICE$', String(gameRoom.board[chatMessage.cellId].cellCompany?.priceCompany))
-                            .replaceAll('$RENT$', gameRoom.board[chatMessage.cellId].cellCompany?.countryCompany === 'ukraine'
+                            .replaceAll('$PRICE$', String(gameRoom.board[chatMessage.cellId].cellCompany?.companyInfo.priceCompany))
+                            .replaceAll('$RENT$', gameRoom.board[chatMessage.cellId].cellCompany?.companyInfo.countryCompany === 'ukraine'
                                 ? String(gameRoom.board[chatMessage.cellId].cellCompany?.rentCompany) + '×🎲'
                                 : String(gameRoom.board[chatMessage.cellId].cellCompany?.rentCompany))
                             .replaceAll('$PLAYER_OWNED$', String(players[String(gameRoom.board[chatMessage.cellId].cellCompany?.owned)]?.name))

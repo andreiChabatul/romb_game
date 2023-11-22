@@ -41,7 +41,8 @@ export type initBoardPayload = {
     board: gameCell[]
 }
 
-export type controlCompany = 'buyCompany' | 'startAuction' | 'leaveAuction' | 'stepAuction' | controlCompanyState;
+export type controlCompany = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';
+export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction';
 
 export type SendPayloadSocket = {}
     | JoinGamePayload

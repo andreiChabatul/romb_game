@@ -1,0 +1,3 @@
+<p class="info-cell-text">{{(infoCellTurn?.description | transloco | changeMessage: {cellId: indexCell}) | async}}
+</p>
+<app-loader-time *ngIf="infoCellTurn?.buttons === 'none'"></app-loader-time>

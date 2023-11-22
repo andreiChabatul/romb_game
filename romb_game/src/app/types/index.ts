@@ -40,15 +40,16 @@ export interface CompanyInfo {
     priceCompany: number;
     collateralCompany: number;
     buyBackCompany: number;
-    rentCompany: number;
-    priceStock?: number;
+    priceStock: number;
 }
 
-export interface GameCellCompanyInfo extends CompanyInfo {
+export interface GameCellCompanyInfo {
+    companyInfo: CompanyInfo;
     shares: number;
     isPledge: boolean;
-    isMonopoly?: boolean;
-    owned?: string;
+    owned: string;
+    isMonopoly: boolean;
+    rentCompany: number;
 }
 
 export interface GameRoom {
@@ -73,7 +74,7 @@ export type updateCellCompany = {
     cellCompany: {
         shares: number;
         isPledge: boolean;
-        isMonopoly?: boolean;
+        isMonopoly: boolean;
         owned?: string;
         rentCompany: number;
     }

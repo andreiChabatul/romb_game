@@ -14,10 +14,8 @@
                         [infoCellTurn]="infoCellTurn$ | async"></app-cell-loss></ng-template>
                 <ng-template ngSwitchCase="empty"><app-cell-empty
                         [infoCellTurn]="infoCellTurn$ | async"></app-cell-empty></ng-template>
-                <!-- <ng-template ngSwitchCase="company">
-                    <p class="company-info-text"> {{((insideBoard$ |async)?.infoCellTurn?.description | transloco |
-                        changeMessage: {cellId: cell.indexCell}) | async}}</p>
-                </ng-template> -->
+                <ng-template ngSwitchCase="company"><app-cell-company [infoCellTurn]="infoCellTurn$ | async"
+                        [indexCell]="cell.indexCell"></app-cell-company></ng-template>
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"
@@ -25,6 +23,6 @@
                 </app-button-standart>
             </div>
         </div>
-        <p class="bankrupt-fon">Банкрот</p>
+        <!-- <p class="bankrupt-fon">Банкрот</p> -->
     </div>
 </ng-template>
