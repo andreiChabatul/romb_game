@@ -14,8 +14,6 @@ const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.MORTGAGE, width: '13vw', height: '6vh', show: true },
   { action: ACTIONS_BUTTON.BUY_COMPANY, width: '13vw', height: '6vh', show: true },
   { action: ACTIONS_BUTTON.START_AUCTION, width: '13vw', height: '6vh', show: true },
-  { action: ACTIONS_BUTTON.AUCTION_STEP, width: '13vw', height: '6vh', show: true },
-  { action: ACTIONS_BUTTON.AUCTION_LEAVE, width: '13vw', height: '6vh', show: true },
 ]
 
 @Component({
@@ -67,8 +65,6 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
         return [0, 1, 2].map((index) => buttons[index]);
       case 'buy':
         return [3, 4].map((index) => buttons[index]);
-      case 'auction':
-        return [5, 6].map((index) => buttons[index]);
       default:
         return [];
     }

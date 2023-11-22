@@ -89,9 +89,8 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.START_AUCTION:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY,
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION,
           {
-            indexCompany: this.indexCompany,
             action: 'startAuction'
           });
         break;

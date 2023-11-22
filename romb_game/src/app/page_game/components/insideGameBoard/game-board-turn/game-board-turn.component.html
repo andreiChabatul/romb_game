@@ -10,6 +10,7 @@
             </app-info-cell-turn></ng-template>
         <ng-template ngSwitchCase="offerDeal"><app-offer-deal></app-offer-deal></ng-template>
         <ng-template ngSwitchCase="receiveDeal"><app-receive-deal></app-receive-deal></ng-template>
+        <ng-template ngSwitchCase="auction"><app-auction-company></app-auction-company></ng-template>
         <app-control-company *ngIf="(insideBoard$ | async)?.controlCompany"
             class="control-company-container"></app-control-company>
     </div>

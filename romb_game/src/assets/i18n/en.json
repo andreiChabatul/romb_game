@@ -20,6 +20,7 @@
     "leaveGameSure": "Are you sure you want to leave the game?",
     "winGame": "Total wins: ",
     "infoCellTurnTitle": "You are in a cell: ",
+    "infoAuctionTitle": "Bidding for the company is being held: ",
     "startDesc": "Starting field. You receive $200,000",
     "inJailDesc": "You do not incur any losses. Wait for the next move.",
     "parkingDesc": "Rest place. Wait for the next move.",

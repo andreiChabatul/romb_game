@@ -2,7 +2,8 @@ import { statUser } from "./state";
 
 export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
-export type infoCellButtons = 'auction' | 'pay' | 'buy' | 'none' | 'bankrupt';
+export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt';
+export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAuction';
 export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
 export type offerInfo = {
@@ -59,6 +60,7 @@ export interface GameRoom {
     board: gameCell[];
     turnId: string;
     offerDealInfo?: offerDealInfo;
+    infoAuction?: infoAuction;
 }
 
 export type gameCell = {
@@ -132,3 +134,9 @@ export type infoCellTurn = {
     value?: number;
 }
 
+export type infoAuction = {
+    currentPrice: number;
+    currentPlayer: string;
+    action: controlAuction;
+    indexCompany: number;
+}

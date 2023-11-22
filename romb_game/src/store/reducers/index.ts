@@ -99,6 +99,19 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             };
         }
 
+        case AppActionTypes.InfoAuction: {
+            return {
+                ...state,
+                gameRoom: {
+                    ...state.gameRoom,
+                    infoAuction: action.payload,
+                },
+                insideBoard: {
+                    state: 'auction',
+                }
+            }
+        }
+
         case AppActionTypes.SetOfferDealInfo: {
             return {
                 ...state,

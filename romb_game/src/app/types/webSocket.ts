@@ -1,6 +1,5 @@
 import { gameCell, } from "."
 import { EACTION_WEBSOCKET } from "../const/enum"
-import { controlCompanyState } from "./state"
 
 export type PayloadCreateGame = {
     roomName: string
@@ -28,13 +27,8 @@ export type ControlCompanyPayload = {
     action: controlCompany
 }
 
-
 export type turnPayload = {
     turnId: string;
-}
-
-export type attemptPayload = {
-    attemp: number;
 }
 
 export type initBoardPayload = {
@@ -42,7 +36,7 @@ export type initBoardPayload = {
 }
 
 export type controlCompany = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';
-export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction';
+export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAction';
 
 export type SendPayloadSocket = {}
     | JoinGamePayload

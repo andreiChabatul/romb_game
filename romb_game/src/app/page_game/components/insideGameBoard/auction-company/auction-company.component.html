@@ -1,1 +1,12 @@
-<p>auction-company works!</p>
+<div class="auction-container">
+    <img class="info-cell-img" src="assets/auction.png" alt="imgAuction">
+    <p class="info-cell-text info-cell-title"> {{('infoAuctionTitle' | transloco)}} {{gameCell?.nameCell | uppercase}}
+    </p>
+    <div class="auction-container_info">
+        <p>Информация о лоте</p>
+        <p>Стартовая цена компании: <span>{{gameCell?.cellCompany?.companyInfo?.priceCompany}}</span></p>
+        <p>Арендная ставка: <span>{{gameCell?.cellCompany?.rentCompany}}</span></p>
+        <p>Текущая ставка: <span>{{infoAuction?.currentPrice}}</span></p>
+        <p>Текущий победитель: <span>{{infoAuction?.currentPlayer}}</span></p>
+    </div>
+</div>

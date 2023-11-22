@@ -214,8 +214,18 @@ body {
   font-size: 0.8vw;
 }
 
-.info-cell-text_value{
+.info-cell-text_value {
   font-weight: 600;
+}
+
+.info-cell-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.info-cell-img {
+  width: 8vw;
+  justify-self: center;
 }
 
 .offer-company-li {
