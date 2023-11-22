@@ -32,6 +32,7 @@ import { CellProfitComponent } from './components/insideGameBoard/cell-profit/ce
 import { CellLossComponent } from './components/insideGameBoard/cell-loss/cell-loss.component';
 import { CellEmptyComponent } from './components/insideGameBoard/cell-empty/cell-empty.component';
 import { CellCompanyComponent } from './components/insideGameBoard/cell-company/cell-company.component';
+import { AuctionCompanyComponent } from './components/insideGameBoard/auction-company/auction-company.component';
 
 @NgModule({
     declarations: [
@@ -64,7 +65,8 @@ import { CellCompanyComponent } from './components/insideGameBoard/cell-company/
         CellProfitComponent,
         CellLossComponent,
         CellEmptyComponent,
-        CellCompanyComponent
+        CellCompanyComponent,
+        AuctionCompanyComponent
     ],
     imports: [
         SharedModule,

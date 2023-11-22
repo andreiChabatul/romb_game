@@ -3,8 +3,8 @@
     <p *ngIf="(playerTurnId$ | async) === (userId$ | async)" class="game-board_inside__text">Your turn</p>
     <div @animationTriggerName class="info-cell-turn" [ngSwitch]="(insideBoard$ | async)?.state">
         <ng-template ngSwitchCase="playerInfo"><app-player-info-inside></app-player-info-inside></ng-template>
-        <ng-template ngSwitchCase="startButtons"> <app-start-turn-buttons></app-start-turn-buttons></ng-template>
-        <ng-template ngSwitchCase="diceRoll"> <app-dice-roll (resetDice)="resetCheat()" class="dice-roll-container"
+        <ng-template ngSwitchCase="startButtons"><app-start-turn-buttons></app-start-turn-buttons></ng-template>
+        <ng-template ngSwitchCase="diceRoll"><app-dice-roll (resetDice)="resetCheat()" class="dice-roll-container"
                 [cheatNumbers]="cheatNumbers"></app-dice-roll></ng-template>
         <ng-template ngSwitchCase="infoCellTurn" class="info-cell-turn"><app-info-cell-turn>
             </app-info-cell-turn></ng-template>
