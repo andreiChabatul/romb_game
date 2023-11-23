@@ -11,12 +11,12 @@ import { OpenInfoCell } from 'src/store/actions';
 })
 export class GameCellComponent {
 
-  @Input() gameCellInfo: gameCell;
+  @Input() gameCell: gameCell;
 
   constructor(private store: Store<AppStore>) { }
 
   clickCellInfo() {
-    this.store.dispatch(new OpenInfoCell(this.gameCellInfo.indexCell));
+    this.store.dispatch(new OpenInfoCell(this.gameCell.indexCell));
   }
 
 }

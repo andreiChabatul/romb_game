@@ -1,12 +1,38 @@
 <div class="auction-container">
-    <img class="info-cell-img" src="assets/auction.png" alt="imgAuction">
+    <img class="auction-img img-title" src="assets/auction.png" alt="imgAuction">
     <p class="info-cell-text info-cell-title"> {{('infoAuctionTitle' | transloco)}} {{gameCell?.nameCell | uppercase}}
     </p>
     <div class="auction-container_info">
-        <p>Информация о лоте</p>
-        <p>Стартовая цена компании: <span>{{gameCell?.cellCompany?.companyInfo?.priceCompany}}</span></p>
-        <p>Арендная ставка: <span>{{gameCell?.cellCompany?.rentCompany}}</span></p>
-        <p>Текущая ставка: <span>{{infoAuction?.currentPrice}}</span></p>
-        <p>Текущий победитель: <span>{{infoAuction?.currentPlayer}}</span></p>
+        <ul class="auction-info-title">Информация о лоте
+            <li class="auction-info-text">Стартовая цена компании:
+                <span class="auction-info-text auction-info-text_value">${{gameCell?.company?.priceCompany}}</span>
+            </li>
+            <li class="auction-info-text">Арендная ставка:
+                <span class="auction-info-text auction-info-text_value">${{gameCell?.company?.rentCompany}}</span>
+            </li>
+            <li class="auction-info-text">Текущая ставка:
+                <span class="auction-info-text auction-info-text_value">${{infoAuction?.currentPrice}}</span>
+            </li>
+            <li class="auction-info-text">Текущий победитель:
+                <span class="auction-info-text auction-info-text_value">{{infoAuction?.currentPlayer}}</span>
+            </li>
+        </ul>
+        <img class="auction-img" [src]="gameCell?.nameCell | imgAssets" alt="nameInfo">
     </div>
+    <div *ngIf="infoAuction?.action === 'startAuction'; else auctionElse" class="auction-button"
+        [ngSwitch]="infoAuction?.description">
+        <ng-template ngSwitchCase="active">
+            <app-button-standart *ngFor="let button of buttonsAuction" [button]="button"></app-button-standart>
+        </ng-template>
+        <ng-template ngSwitchCase="wait">
+            <p>{{'waitAuction' | transloco}}</p>
+        </ng-template>
+        <ng-template ngSwitchCase="inactive">
+            <p>{{'inactiveAuction' | transloco}}</p>
+        </ng-template>
+    </div>
+    <ng-template #auctionElse>
+        <p>Auction end</p>
+        <app-loader-time [typeLoading]="'auction'"></app-loader-time>
+    </ng-template>
 </div>

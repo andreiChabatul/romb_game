@@ -1,7 +1,8 @@
-import { AnimationEvent, animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit, Input } from '@angular/core';
 import { TIME_TURN_DEFAULT } from 'src/app/const';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { typeLoading } from 'src/app/types';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({
@@ -24,6 +25,7 @@ import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 export class LoaderTimeComponent implements OnInit {
 
   isSend: boolean;
+  @Input() typeLoading: typeLoading;
 
   constructor(private webSocketController: WebSocketController) { }
 
@@ -33,7 +35,9 @@ export class LoaderTimeComponent implements OnInit {
 
   loadingEnd(): void {
     if (this.isSend) {
-      this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL);
+      this.typeLoading === 'cell'
+        ? this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL)
+        : this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'endAuction' })
       this.isSend = false;
     }
   }

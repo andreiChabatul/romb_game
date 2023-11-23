@@ -65,8 +65,8 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.UpdateCell: {
             const newBoard = [...state.gameRoom.board];
             let cell = newBoard[action.payload.indexCell];
-            if (cell.cellCompany) {
-                cell = { ...cell, cellCompany: { ...cell.cellCompany, ...action.payload.cellCompany } };
+            if (cell.company) {
+                cell = { ...cell, company: { ...cell.company, ...action.payload.company } };
                 newBoard[action.payload.indexCell] = cell;
             };
 

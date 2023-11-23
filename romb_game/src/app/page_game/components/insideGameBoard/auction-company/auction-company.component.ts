@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { gameCell, infoAuction } from 'src/app/types';
+import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
 import { selectGameRoom } from 'src/store/selectors';
 
@@ -16,6 +18,10 @@ export class AuctionCompanyComponent implements OnInit, OnDestroy {
   gameCell: gameCell | null;
   infoAuction: infoAuction | null;
   subscription$: Subscription;
+  buttonsAuction: ButtonStandart[] = [
+    { action: ACTIONS_BUTTON.AUCTION_STEP, width: '14vw', height: '5vh' },
+    { action: ACTIONS_BUTTON.AUCTION_LEAVE, width: '14vw', height: '5vh' },
+  ];
 
   constructor(private store: Store<AppStore>) { }
 

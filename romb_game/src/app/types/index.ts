@@ -6,6 +6,7 @@ export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAuction';
 export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
+export type typeLoading = 'cell' | 'auction';
 export type offerInfo = {
     indexCompany: number[];
     valueMoney: number;
@@ -42,10 +43,6 @@ export interface CompanyInfo {
     collateralCompany: number;
     buyBackCompany: number;
     priceStock: number;
-}
-
-export interface GameCellCompanyInfo {
-    companyInfo: CompanyInfo;
     shares: number;
     isPledge: boolean;
     owned: string;
@@ -68,12 +65,12 @@ export type gameCell = {
     location: location;
     indexCell: number;
     nameCell: string;
-    cellCompany?: GameCellCompanyInfo;
+    company?: CompanyInfo;
 }
 
 export type updateCellCompany = {
     indexCell: number,
-    cellCompany: {
+    company: {
         shares: number;
         isPledge: boolean;
         isMonopoly: boolean;
@@ -138,5 +135,8 @@ export type infoAuction = {
     currentPrice: number;
     currentPlayer: string;
     action: controlAuction;
+    description: descAuction;
     indexCompany: number;
 }
+
+export type descAuction = 'active' | 'wait' | 'inactive'

@@ -29,11 +29,11 @@ export class ChangeMessagePipe implements PipeTransform {
                     resultString = (chatMessage.cellId !== undefined && gameRoom.board[chatMessage.cellId])
                         ? resultString
                             .replaceAll('$CELLNAME$', gameRoom.board[chatMessage.cellId].nameCell.toUpperCase())
-                            .replaceAll('$PRICE$', String(gameRoom.board[chatMessage.cellId].cellCompany?.companyInfo.priceCompany))
-                            .replaceAll('$RENT$', gameRoom.board[chatMessage.cellId].cellCompany?.companyInfo.countryCompany === 'ukraine'
-                                ? String(gameRoom.board[chatMessage.cellId].cellCompany?.rentCompany) + '×🎲'
-                                : String(gameRoom.board[chatMessage.cellId].cellCompany?.rentCompany))
-                            .replaceAll('$PLAYER_OWNED$', String(players[String(gameRoom.board[chatMessage.cellId].cellCompany?.owned)]?.name))
+                            .replaceAll('$PRICE$', String(gameRoom.board[chatMessage.cellId].company?.priceCompany))
+                            .replaceAll('$RENT$', gameRoom.board[chatMessage.cellId].company?.countryCompany === 'ukraine'
+                                ? String(gameRoom.board[chatMessage.cellId].company?.rentCompany) + '×🎲'
+                                : String(gameRoom.board[chatMessage.cellId].company?.rentCompany))
+                            .replaceAll('$PLAYER_OWNED$', String(players[String(gameRoom.board[chatMessage.cellId].company?.owned)]?.name))
                         : resultString;
 
                     resultString = chatMessage.valueroll

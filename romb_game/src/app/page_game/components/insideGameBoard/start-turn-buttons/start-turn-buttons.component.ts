@@ -33,9 +33,9 @@ export class StartTurnButtonsComponent implements OnInit {
         
         map((gameRoom) => {
           gameRoom.board.forEach((cell) => {
-            if (cell.cellCompany?.owned === userId) {
-              cell.cellCompany?.isMonopoly ? this.buttons[2].show = true : '';
-              cell.cellCompany?.isPledge ? this.buttons[3].show = true : '';
+            if (cell.company?.owned === userId) {
+              cell.company?.isMonopoly ? this.buttons[2].show = true : '';
+              cell.company?.isPledge ? this.buttons[3].show = true : '';
             }
           });
         }

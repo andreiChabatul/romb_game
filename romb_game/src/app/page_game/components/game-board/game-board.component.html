@@ -1,6 +1,6 @@
 <div class="game-board-container">
     <app-game-cell *ngFor="let cell of (gameRoom$ | async)?.board;trackBy:trackByFunction"
-        [style.grid-area]="cell.location.gridArea" [gameCellInfo]="cell"></app-game-cell>
+        [style.grid-area]="cell.location.gridArea" [gameCell]="cell"></app-game-cell>
     <app-piece-player *ngFor="let player of allPlayerArr$ | async; index as i;trackBy:trackByPlayer" [player]="player"
         [index]="i"></app-piece-player>
     <div class="game-board_inside-container">

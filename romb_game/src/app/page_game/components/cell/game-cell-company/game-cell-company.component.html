@@ -1,12 +1,10 @@
 <div class="game-cell_content">
-    <div appColorShadow [playerId]="gameCell.cellCompany?.owned" [directtion]="cellDirections" class="owned-shadow"
-        [ngClass]="{
+    <div appColorShadow [playerId]="companyInfo?.owned" [directtion]="cellDirections" class="owned-shadow" [ngClass]="{
         'owned-shadow_left':cellDirections === 'left',
         'owned-shadow_right': cellDirections === 'right',
         'owned-shadow_bottom': cellDirections === 'bottom'}"></div>
-    <div *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-container__grayscale">
-        <img *ngIf="gameCell.cellCompany?.isPledge" class="game-cell-pledge_img" src="./assets/pledge.png"
-            alt="pledgeImg">
+    <div *ngIf="companyInfo?.isPledge" class="game-cell-container__grayscale">
+        <img *ngIf="companyInfo?.isPledge" class="game-cell-pledge_img" src="./assets/pledge.png" alt="pledgeImg">
     </div>
     <!-- control company block start-->
     <p *ngIf="checkBuyStock() | async" class="game-cell-control" (click)="controlCompany($event,'buyStock')">
@@ -28,15 +26,15 @@
             <img class="game-cell-company_logo" [src]="gameCell.nameCell | imgAssets" [ngClass]="{
         'game-cell-company_logo__gorizontal': cellDirections === 'left' || cellDirections === 'right'
         }" alt='name assets'>
-            <p *ngIf="!(gameCell.cellCompany?.owned !== null)" class="game-cell-company_price">
+            <p *ngIf="!(companyInfo?.owned !== null)" class="game-cell-company_price">
                 ${{companyInfo?.priceCompany}}</p>
-            <p *ngIf="gameCell.cellCompany?.owned !== null" class="game-cell-company_price">
-                {{gameCell.cellCompany?.rentCompany | rentPipe: companyInfo?.countryCompany}}</p>
+            <p *ngIf="companyInfo?.owned !== null" class="game-cell-company_price">
+                {{companyInfo?.rentCompany | rentPipe: companyInfo?.countryCompany}}</p>
         </div>
         <div class="game-cell-company_stock" [ngClass]="{
             'game-cell-company_stock__gorizontal': cellDirections === 'left' || cellDirections === 'right'
             }">
-            <img class="game-cell-company_stock__img" *ngFor="let i of [].constructor(gameCell.cellCompany?.shares)"
+            <img class="game-cell-company_stock__img" *ngFor="let i of [].constructor(companyInfo?.shares)"
                 [src]="companyInfo?.countryCompany | stockAssets" alt="stock image">
         </div>
     </div>

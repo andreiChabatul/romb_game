@@ -1,12 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription, map, mergeMap, } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ChangeModal, ControlCompany, ControlInsideBoard } from 'src/store/actions';
-import { selectGameRoom, selectInsideBoard, selectIsLogin } from 'src/store/selectors';
+import { selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -15,21 +15,13 @@ export class ButtonControllerService implements OnDestroy {
 
   susbscription$: Subscription
   isLogin: boolean;
-  indexCompany: number;
   isLogin$ = this.store.select(selectIsLogin);
-  insideBoard$ = this.store.select(selectInsideBoard);
-  gameRoom$ = this.store.select(selectGameRoom);
 
   constructor(private store: Store<AppStore>,
     private webSocketController: WebSocketController,
     private router: Router) {
     this.susbscription$ = this.isLogin$.pipe(
-      mergeMap((login) => this.insideBoard$.pipe(
-        map((insideBoard) => {
-          this.isLogin = login;
-          this.indexCompany = Number(insideBoard.infoCellTurn?.indexCompany);
-        }
-        )))).subscribe()
+      map((login) => this.isLogin = login)).subscribe()
   }
 
   actionButton(action: ACTIONS_BUTTON) {
@@ -39,13 +31,15 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.NEW_GAME:
-        if (this.isLogin) { this.router.navigate(['create-game']) }
-        else { this.store.dispatch(new ChangeModal('login')); }
+        (this.isLogin)
+          ? this.router.navigate(['create-game'])
+          : this.store.dispatch(new ChangeModal('login'));
         break;
 
       case ACTIONS_BUTTON.JOIN_GAME:
-        if (this.isLogin) { this.router.navigate(['rooms']) }
-        else { this.store.dispatch(new ChangeModal('login')); }
+        (this.isLogin)
+          ? this.router.navigate(['rooms'])
+          : this.store.dispatch(new ChangeModal('login'));
         break;
 
       case ACTIONS_BUTTON.SETTING:
@@ -89,26 +83,15 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.START_AUCTION:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION,
-          {
-            action: 'startAuction'
-          });
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'startAuction' });
         break;
 
       case ACTIONS_BUTTON.AUCTION_STEP:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY,
-          {
-            indexCompany: this.indexCompany,
-            action: 'stepAuction'
-          });
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'stepAuction' });
         break;
 
       case ACTIONS_BUTTON.AUCTION_LEAVE:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_COMPANY,
-          {
-            indexCompany: this.indexCompany,
-            action: 'leaveAuction'
-          });
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'leaveAuction' });
         break;
 
       case ACTIONS_BUTTON.DICE_ROLL:
@@ -131,35 +114,25 @@ export class ButtonControllerService implements OnDestroy {
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL);
         break;
 
-      case ACTIONS_BUTTON.OFFER_DEAL: {
+      case ACTIONS_BUTTON.OFFER_DEAL:
         this.store.dispatch(new ControlInsideBoard('offerDeal'));
         break;
-      }
 
-      case ACTIONS_BUTTON.ACCEPT_DEAL: {
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, {
-          action: 'accept'
-        });
+      case ACTIONS_BUTTON.ACCEPT_DEAL:
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, { action: 'accept' });
         break;
-      }
 
-      case ACTIONS_BUTTON.REFUSE_DEAL: {
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, {
-          action: 'refuse'
-        });
+      case ACTIONS_BUTTON.REFUSE_DEAL:
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_DEAL, { action: 'refuse' });
         break;
-      }
 
-      case ACTIONS_BUTTON.CANSEL_DEAL: {
+      case ACTIONS_BUTTON.CANSEL_DEAL:
         this.store.dispatch(new ControlInsideBoard('startButtons'));
         break;
-      }
 
       default:
         break;
     }
-
-
   }
 
   ngOnDestroy(): void {
