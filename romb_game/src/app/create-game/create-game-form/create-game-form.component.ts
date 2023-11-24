@@ -42,14 +42,6 @@ export class CreateGameFormComponent {
         { option: '1min 30s', value: 90 },
         { option: '2min', value: 120 }
       ]
-    },
-    {
-      nameForm: 'visibility',
-      namelabel: 'Visibility Room',
-      optionSelect: [
-        { option: 'Visible to everyone', value: 1 },
-        { option: 'Access by idRoom', value: 0 }
-      ]
     }
   ]
   createGame: FormGroup;
@@ -70,11 +62,13 @@ export class CreateGameFormComponent {
       this.createGame.markAllAsTouched()
       return;
     }
-    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CREATE_GAME, {
-      roomName: this.createGame.value['roomName'].value,
-      players: this.createGame.value['players'].value,
-      runningGame: this.createGame.value['runningTime'].value,
-      visibility: this.createGame.value['visibility'].value
+    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, {
+      action: 'create',
+      gameCreate: {
+        roomName: this.createGame.value['roomName'].value,
+        players: this.createGame.value['players'].value,
+        runningGame: this.createGame.value['runningTime'].value,
+      }
     });
     this.router.navigate(['rooms']);
   }

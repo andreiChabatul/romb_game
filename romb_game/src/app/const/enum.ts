@@ -34,9 +34,10 @@ export enum ACTIONS_BUTTON {
 }
 
 export enum EACTION_WEBSOCKET {
-    CREATE_GAME = 'create game',
-    JOIN_GAME = 'join game',
     LIST_ROOM = 'list room',
+    LEAVE_ROOM = 'leave room',
+
+    CONTROL_ROOM = 'control room',
     MESSAGE_CHAT = 'message chat',
     INIT_PLAYER = 'init player',
     INIT_BOARD = 'init board',

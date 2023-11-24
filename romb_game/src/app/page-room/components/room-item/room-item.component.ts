@@ -1,7 +1,11 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, map } from 'rxjs';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { Player, infoRoom } from 'src/app/types';
+import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { selectIdUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-room-item',
@@ -13,8 +17,10 @@ export class RoomItemComponent implements OnChanges {
   @Input() infoRoom: infoRoom;
   playerArr: (Player | null)[];
   color: string;
+  isJoin: boolean;
+  IdUser$ = this.store.select(selectIdUser);
 
-  constructor(private webSocketController: WebSocketController) { }
+  constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
   ngOnChanges(): void {
     this.playerArr = [...this.infoRoom.players];
@@ -23,9 +29,30 @@ export class RoomItemComponent implements OnChanges {
     };
   }
 
-  joinRoom(): void {
+  checkJoin(): Observable<boolean> {
+    return this.IdUser$.pipe(
+      map((idUser) => {
+        let result: boolean = true;
+        this.infoRoom.players.forEach((player) => player.id === idUser ? result = false : '');
+        return result;
+      })
+    );
+  }
 
-    // this.webSocketController.sendMessage(EACTION_WEBSOCKET.JOIN_GAME, { idRoomJoin: this.infoRoom.idRoom });
+  joinRoom(): void {
+    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM,
+      {
+        action: "join",
+        idRoomJoin: this.infoRoom.idRoom
+      });
+  }
+
+  leaveRoom(): void {
+    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM,
+      {
+        action: "leave",
+        idRoomJoin: this.infoRoom.idRoom
+      });
   }
 
 }

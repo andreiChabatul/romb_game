@@ -6,6 +6,7 @@ export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAuction';
 export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
+export type statePlayer = 'active' | 'wait' | 'inactive';
 export type typeLoading = 'cell' | 'auction';
 export type offerInfo = {
     indexCompany: number[];
@@ -137,5 +138,3 @@ export type infoAuction = {
     statePlayer: statePlayer;
     indexCompany: number;
 }
-
-export type statePlayer = 'active' | 'wait' | 'inactive'

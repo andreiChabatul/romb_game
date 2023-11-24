@@ -18,7 +18,7 @@ export class PageRoomComponent implements OnInit {
   constructor(private store: Store<AppStore>, private webSocketController: WebSocketController) { }
 
   ngOnInit() {
-    this.webSocketController.sendMessage(EACTION_WEBSOCKET.LIST_ROOM);
+    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, { action: 'list' });
   }
 
   buttons: Button[] = [

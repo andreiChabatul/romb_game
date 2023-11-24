@@ -63,7 +63,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.UPDATE_ROOM:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.LIST_ROOM);
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, { action: 'list' });
         break;
 
       case ACTIONS_BUTTON.ADD_ROOM:
