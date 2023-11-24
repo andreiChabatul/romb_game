@@ -22,8 +22,8 @@ export class ChangeMessagePipe implements PipeTransform {
                 map((gameRoom) => {
                     let resultString = value;
 
-                    resultString = (chatMessage.playerId && players[chatMessage.playerId])
-                        ? resultString.replaceAll('$PLAYER$', players[chatMessage.playerId].name)
+                    resultString = (chatMessage.idUser && players[chatMessage.idUser])
+                        ? resultString.replaceAll('$PLAYER$', players[chatMessage.idUser].name)
                         : resultString;
 
                     resultString = (chatMessage.cellId !== undefined && gameRoom.board[chatMessage.cellId])

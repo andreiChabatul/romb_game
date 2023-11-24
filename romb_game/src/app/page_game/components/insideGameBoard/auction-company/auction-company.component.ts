@@ -27,7 +27,7 @@ export class AuctionCompanyComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription$ = this.gameRoom$.subscribe((gameRoom) => {
-      this.gameCell = gameRoom.infoAuction ? gameRoom.board[gameRoom.infoAuction?.indexCompany] : null;
+      this.gameCell = gameRoom.infoAuction ? gameRoom.board[gameRoom.infoAuction.indexCompany] : null;
       this.infoAuction = gameRoom.infoAuction ? gameRoom.infoAuction : null;
     });
   }

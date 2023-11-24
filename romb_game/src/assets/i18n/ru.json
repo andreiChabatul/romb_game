@@ -109,5 +109,15 @@
     "refuseDealButton": "Отказаться",
     "awaitSolution": "Ожидайте решения другого игрока.",
     "refuseDealInfo": "Сделка не состоялась. $PLAYER$ не принял условия сделки.",
-    "acceptDealInfo": "Сделка состоялась. $PLAYER$ принял условия сделки."
+    "acceptDealInfo": "Сделка состоялась. $PLAYER$ принял условия сделки.",
+    "startAuction": "Компания $CELLNAME$ была выставлена на аукцион. Стартовая цена составляет: $$PRICE$.",
+    "leaveAuction": "$PLAYER$ покидает торги.",
+    "stepAuction": "$PLAYER$ повышает ставку.",
+    "endAuction": "Аукцион завершен.",
+    "infoAuction": "Информация о лоте",
+    "rentValue": "Арендная ставка:",
+    "startPrice": "Стартовая цена компании:",
+    "currentBid": "Текущая ставка:",
+    "currentWinner": "Текущий победитель:",
+    "noWinner": "Не определен"
 }

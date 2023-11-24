@@ -109,5 +109,15 @@
     "refuseDealButton": "Refuse",
     "awaitSolution": "Wait for the other player's decision.",
     "refuseDealInfo": "The deal fell through. $PLAYER$ did not accept the terms of the deal.",
-    "acceptDealInfo": "The deal was completed. $PLAYER$ accepted the terms of the deal."
+    "acceptDealInfo": "The deal was completed. $PLAYER$ accepted the terms of the deal.",
+    "startAuction": "Company $CELLNAME$ has been put up for auction. Starting price is: $$PRICE$.",
+    "leaveAuction": "$PLAYER$ leaves the auction.",
+    "stepAuction": "$PLAYER$ ups the bet.",
+    "endAuction": "Auction finished.",
+    "infoAuction": "Lot information",
+    "rentValue": "Rent rate:",
+    "startPrice": "Start price company:",
+    "currentBid": "Current rate:",
+    "currentWinner": "Current winner:",
+    "noWinner": "Not defined"
 }

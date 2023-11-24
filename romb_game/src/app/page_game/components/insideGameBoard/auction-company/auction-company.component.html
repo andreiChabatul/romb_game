@@ -3,24 +3,26 @@
     <p class="info-cell-text info-cell-title"> {{('infoAuctionTitle' | transloco)}} {{gameCell?.nameCell | uppercase}}
     </p>
     <div class="auction-container_info">
-        <ul class="auction-info-title">Информация о лоте
-            <li class="auction-info-text">Стартовая цена компании:
+        <ul class="auction-info-title">{{'infoAuction' | transloco}}
+            <li class="auction-info-text">{{'startPrice' | transloco}}
                 <span class="auction-info-text auction-info-text_value">${{gameCell?.company?.priceCompany}}</span>
             </li>
-            <li class="auction-info-text">Арендная ставка:
-                <span class="auction-info-text auction-info-text_value">${{gameCell?.company?.rentCompany}}</span>
+            <li class="auction-info-text">{{'rentValue' | transloco}}
+                <span class="auction-info-text auction-info-text_value">
+                    {{gameCell?.company?.rentCompany | rentPipe: gameCell?.company?.countryCompany}}</span>
             </li>
-            <li class="auction-info-text">Текущая ставка:
+            <li class="auction-info-text">{{'currentBid' | transloco}}
                 <span class="auction-info-text auction-info-text_value">${{infoAuction?.currentPrice}}</span>
             </li>
-            <li class="auction-info-text">Текущий победитель:
-                <span class="auction-info-text auction-info-text_value">{{infoAuction?.currentPlayer}}</span>
+            <li class="auction-info-text">{{'currentWinner' | transloco}}
+                <span class="auction-info-text auction-info-text_value">
+                    {{infoAuction?.currentPlayer ? infoAuction?.currentPlayer : 'noWinner' | transloco}}</span>
             </li>
         </ul>
         <img class="auction-img" [src]="gameCell?.nameCell | imgAssets" alt="nameInfo">
     </div>
     <div *ngIf="infoAuction?.action === 'startAuction'; else auctionElse" class="auction-button"
-        [ngSwitch]="infoAuction?.description">
+        [ngSwitch]="infoAuction?.statePlayer">
         <ng-template ngSwitchCase="active">
             <app-button-standart *ngFor="let button of buttonsAuction" [button]="button"></app-button-standart>
         </ng-template>
@@ -32,7 +34,7 @@
         </ng-template>
     </div>
     <ng-template #auctionElse>
-        <p>Auction end</p>
+        <p class="auction-info-text auction-info-text_value">{{'endAuction' | transloco}}</p>
         <app-loader-time [typeLoading]="'auction'"></app-loader-time>
     </ng-template>
 </div>

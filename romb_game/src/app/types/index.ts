@@ -93,7 +93,7 @@ export type chatMessage = {
     message?: string;
     senderName?: string;
     senderColor?: string;
-    playerId?: string;
+    idUser?: string;
     cellId?: number;
     valueroll?: number;
     action?: string
@@ -135,8 +135,8 @@ export type infoAuction = {
     currentPrice: number;
     currentPlayer: string;
     action: controlAuction;
-    description: descAuction;
+    statePlayer: statePlayer;
     indexCompany: number;
 }
 
-export type descAuction = 'active' | 'wait' | 'inactive'
+export type statePlayer = 'active' | 'wait' | 'inactive'
