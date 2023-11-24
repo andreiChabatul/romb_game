@@ -16,10 +16,7 @@
 }
 
 .page-room_rooms {
-    @include flex-c_s;
-    justify-content: flex-start;
-    gap: 15px;
-    flex-wrap: wrap;
+    width: 100%;
 }
 
 .page-room_title__text {

@@ -119,5 +119,12 @@
     "startPrice": "Start price company:",
     "currentBid": "Current rate:",
     "currentWinner": "Current winner:",
-    "noWinner": "Not defined"
+    "noWinner": "Not defined",
+    "frelly": "Аree cell",
+    "maxPlayerRoom": "Maximum number of players: ",
+    "nameRoom": "Name room: ",
+    "playerOnline": "Игроков в комнате: ",
+    "durationStep": "Time moves: ",
+    "joinRoom": "Join the game",
+    "leaveRoom": "Leave the game"
 }

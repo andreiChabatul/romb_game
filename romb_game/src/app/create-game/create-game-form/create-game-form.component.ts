@@ -76,7 +76,7 @@ export class CreateGameFormComponent {
       runningGame: this.createGame.value['runningTime'].value,
       visibility: this.createGame.value['visibility'].value
     });
-    this.router.navigate(['game']);
+    this.router.navigate(['rooms']);
   }
 }
 

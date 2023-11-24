@@ -104,12 +104,11 @@ export interface Profile {
     password: string;
 }
 
-export interface InfoRoom {
+export type infoRoom = {
     maxPLayers: number,
-    players: Player[],
     idRoom: string,
-    isVisiblity: boolean,
-    roomName: string
+    roomName: string,
+    players: Player[],
 }
 
 export interface ResponseAuth {

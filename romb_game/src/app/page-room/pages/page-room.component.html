@@ -7,7 +7,6 @@
         <app-page-room-search></app-page-room-search>
     </div>
     <div class="page-room_rooms">
-        <app-room-item *ngFor="let room of (rooms$ | async); let i = index" [itemRoom]="room"
-            [index]="i+1"></app-room-item>
+        <app-room-item *ngFor="let infoRoom of (rooms$ | async)" [infoRoom]="infoRoom"></app-room-item>
     </div>
 </div>

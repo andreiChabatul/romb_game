@@ -119,5 +119,12 @@
     "startPrice": "Стартовая цена компании:",
     "currentBid": "Текущая ставка:",
     "currentWinner": "Текущий победитель:",
-    "noWinner": "Не определен"
+    "noWinner": "Не определен",
+    "frelly": "Свободно",
+    "maxPlayerRoom": "Максимальное число игроков: ",
+    "nameRoom": "Имя комнаты: ",
+    "playerOnline" : "Игроков в комнате: ",
+    "durationStep" : "Время хода: ",
+    "joinRoom": "Join the game",
+    "leaveRoom": "Leave the game"
 }

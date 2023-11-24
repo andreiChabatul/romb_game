@@ -6,12 +6,14 @@ import { RoomItemComponent } from './components/room-item/room-item.component';
 import { PageRoomSearchComponent } from './components/page-room-search/page-room-search.component';
 import { CommonModule } from '@angular/common';
 import { PageRoomRoutingModule } from './page.room.routing.module';
+import { FreelyCellRoomComponent } from './components/freely-cell-room/freely-cell-room.component';
 
 @NgModule({
     declarations: [
         PageRoomComponent,
         RoomItemComponent,
-        PageRoomSearchComponent
+        PageRoomSearchComponent,
+        FreelyCellRoomComponent
 
     ],
     imports: [

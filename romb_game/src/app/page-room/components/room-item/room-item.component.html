@@ -1,12 +1,27 @@
 <div class="room-item-container">
-    <div class="room-item">
-        <div class="room-item_gradient">
-            <div class="room-item_join" (click)="joinRoom()">Присоединиться к игре</div>
-            <p class="room-item_index">Комната №{{index}}</p>
-            <p class="room-item_desc__title">Имя комнаты: <span
-                    class="room-item_desc">{{itemRoom.roomName}}</span></p>
-           
-            <p class="room-item_desc__title">Игроков: <span class="room-item_desc">12541</span></p>
+    <div class="room-item_gradient">
+        <div class="room-item_join" (click)="joinRoom()">{{'joinRoom' | transloco}}</div>
+        <!-- <div class="room-item_join" (click)="joinRoom()">{{'leaveRoom' | transloco}}</div> -->
+        <div>
+            <p class="room-item_title">{{'nameRoom'| transloco}}{{infoRoom.roomName}}</p>
+            <p class="room-item_desc__title">{{'maxPlayerRoom' | transloco}}
+                <span class="room-item_desc">{{infoRoom.maxPLayers}}</span>
+            </p>
+            <p class="room-item_desc__title">{{'playerOnline' | transloco}}
+                <span class="room-item_desc">{{infoRoom.players.length}}</span>
+            </p>
+            <p class="room-item_desc__title">{{'durationStep' | transloco}}
+                <span class="room-item_desc">1</span>
+            </p>
+        </div>
+        <div class="cell-room-container">
+            <div *ngFor="let cell of playerArr">
+                <div *ngIf="cell; else freeCell">
+                    <app-foto-player [player]="cell" [size]="'5vw'"></app-foto-player>
+                    <p class="frelly_text">{{cell.name}}</p>
+                </div>
+                <ng-template #freeCell><app-freely-cell-room></app-freely-cell-room></ng-template>
+            </div>
         </div>
     </div>
 </div>

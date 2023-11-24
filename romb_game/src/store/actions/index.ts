@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { chatMessage, InfoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction } from 'src/app/types';
+import { chatMessage, infoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction } from 'src/app/types';
 import { controlCompanyState, insideBoardState } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
@@ -110,7 +110,7 @@ export class ClearModalError implements Action {
 
 export class UpdateRooms implements Action {
     readonly type = AppActionTypes.UpdateRooms;
-    constructor(public payload: InfoRoom[]) { }
+    constructor(public payload: infoRoom[]) { }
 }
 
 export class LoginUser implements Action {

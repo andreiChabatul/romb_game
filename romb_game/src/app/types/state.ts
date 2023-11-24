@@ -1,4 +1,4 @@
-import { GameRoom, InfoRoom, infoCellTurn, modal } from ".";
+import { GameRoom, infoRoom, infoCellTurn, modal } from ".";
 
 export interface State {
 
@@ -7,7 +7,7 @@ export interface State {
         modalError: string;
         payload?: number
     };
-    rooms: InfoRoom[];
+    rooms: infoRoom[];
     user: {
         isLogin: boolean;
         infoUser?: infoUser;
