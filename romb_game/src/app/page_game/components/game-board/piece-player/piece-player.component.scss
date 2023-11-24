@@ -15,12 +15,9 @@
 }
 
 .piece-player-item {
-    width: 1.5vw;
-    height: 1.5vw;
     border-radius: 50%;
-    box-shadow: inset 2px 2px 5px #00000080,
-        inset 2px 2px 5px #00000080, inset 2px 2px 5px #00000080,
-        inset 2px 2px 10px #00000080;
+    background: $cell_hover;
+    box-shadow: 0.05vw 0.05vw 0.5vw 0.2vw $cell_border;
 }
 
 .text-finish-circle {
