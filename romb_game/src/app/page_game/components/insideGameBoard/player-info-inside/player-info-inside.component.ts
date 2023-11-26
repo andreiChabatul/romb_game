@@ -25,7 +25,7 @@ export class PlayerInfoInsideComponent {
     return this.gameRoom$.pipe(
       mergeMap((gameRoom => this.infoUser$.pipe(
         map((infoUser) =>
-          gameRoom.board.reduce((res, cell) =>
+          gameRoom?.board?.reduce((res, cell) =>
             res + ((cell.company && cell.company.owned === infoUser?.idUser) ? 1 : 0), 0)
         )
       )))

@@ -1,4 +1,3 @@
-import { gameCell, } from "."
 import { EACTION_WEBSOCKET } from "../const/enum"
 
 export type PayloadCreateGame = {
@@ -31,9 +30,6 @@ export type turnPayload = {
     turnId: string;
 }
 
-export type initBoardPayload = {
-    board: gameCell[]
-}
 
 export type controlCompany = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAction';

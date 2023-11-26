@@ -5,7 +5,7 @@ import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { Player, infoRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { selectIdUser } from 'src/store/selectors';
+import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-room-item',
@@ -19,6 +19,7 @@ export class RoomItemComponent implements OnChanges {
   color: string;
   isJoin: boolean;
   IdUser$ = this.store.select(selectIdUser);
+  idRoom$ = this.store.select(selectIdRoom);
 
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 

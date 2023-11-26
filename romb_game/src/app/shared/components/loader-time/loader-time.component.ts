@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { TIME_TURN_DEFAULT } from 'src/app/const';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { typeLoading } from 'src/app/types';
@@ -27,7 +28,7 @@ export class LoaderTimeComponent implements OnInit {
   isSend: boolean;
   @Input() typeLoading: typeLoading;
 
-  constructor(private webSocketController: WebSocketController) { }
+  constructor(private webSocketController: WebSocketController, private router: Router) { }
 
   ngOnInit(): void {
     this.isSend = true;
@@ -35,9 +36,19 @@ export class LoaderTimeComponent implements OnInit {
 
   loadingEnd(): void {
     if (this.isSend) {
-      this.typeLoading === 'cell'
-        ? this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL)
-        : this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'endAuction' })
+      switch (this.typeLoading) {
+        case 'cell':
+          this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL);
+          break;
+        case 'auction':
+          this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'endAuction' });
+          break;
+        case 'startGame':
+          this.router.navigate(['game']);
+          break;
+        default:
+          break;
+      }
       this.isSend = false;
     }
   }

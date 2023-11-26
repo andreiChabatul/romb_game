@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { chatMessage, infoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction } from 'src/app/types';
+import { chatMessage, infoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction, gameRoom } from 'src/app/types';
 import { controlCompanyState, insideBoardState } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
@@ -19,8 +19,6 @@ export enum AppActionTypes {
     UpdateCell = '[UPDATE CELL] UpdateCell',
     UpdateInfoPlayer = '[UPDATE Player] UpdateInfoPlayer',
     StartGame = '[START GAME] StartGame',
-    InitPlayer = '[INIT Player] InitPlayer',
-    InitBoard = '[INIT BOARD] InitBoard',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
     InfoAuction = '[INFO AUCTION] InfoAuction',
@@ -46,11 +44,6 @@ export class SetOfferDealInfo implements Action {
     constructor(public payload: offerDealInfo) { }
 }
 
-export class InitBoard implements Action {
-    readonly type = AppActionTypes.InitBoard;
-    constructor(public payload: gameCell[]) { }
-}
-
 export class UpdateTurn implements Action {
     readonly type = AppActionTypes.UpdateTurn;
     constructor(public payload: turnPayload) { }
@@ -61,11 +54,6 @@ export class UpdateInfoPlayer implements Action {
     constructor(public payload: UpdatePlayerPayload) { }
 }
 
-export class InitPlayer implements Action {
-    readonly type = AppActionTypes.InitPlayer;
-    constructor(public payload: Player) { }
-}
-
 export class UpdateCell implements Action {
     readonly type = AppActionTypes.UpdateCell;
     constructor(public payload: updateCellCompany) { }
@@ -73,7 +61,7 @@ export class UpdateCell implements Action {
 
 export class StartGame implements Action {
     readonly type = AppActionTypes.StartGame;
-    constructor(public payload: string) { }
+    constructor(public payload: gameRoom) { }
 }
 
 export class EndTurn implements Action {
@@ -137,9 +125,7 @@ export type ActionUnion =
     UpdateCell |
     StartGame |
     UpdateInfoPlayer |
-    InitPlayer |
     UpdateTurn |
-    InitBoard |
     SetOfferDealInfo |
     ControlCompany |
     InfoAuction |

@@ -39,7 +39,7 @@ export class ChatInputComponent {
     this.store.select(selectIdRoom).subscribe((idRoom) => idRoom = idRoom)
 
     this.webSocketController.sendMessage(
-      EACTION_WEBSOCKET.MESSAGE_CHAT,
+      EACTION_WEBSOCKET.UPDATE_CHAT,
       {
         message: this.chatForm.get('message')?.value
       }

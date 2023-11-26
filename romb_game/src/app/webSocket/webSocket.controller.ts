@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { infoRoom, Player, UpdatePlayerPayload, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, startGame, updateCellCompany } from '../types';
+import { infoRoom, UpdatePlayerPayload, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoAuction, InfoCellTurnAdd, InitBoard, InitPlayer, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
-import { selectIdRoom, selectIdUser, selectInfoCellTurn } from 'src/store/selectors';
+import { EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
-import { SendPayloadSocket, initBoardPayload, payloadSocket, turnPayload } from '../types/webSocket';
+import { SendPayloadSocket, payloadSocket, turnPayload } from '../types/webSocket';
 
 
 @Injectable({
@@ -22,7 +22,7 @@ export class WebSocketController {
 
   constructor(private store: Store<AppStore>) {
     this.idUser$.subscribe((id) => this.idUser = String(id));
-    this.idRoom$.subscribe((id) => this.idRoom = id);
+    this.idRoom$.subscribe((id) => this.idRoom = String(id));
     this.handleMessage();
   }
 
@@ -49,17 +49,10 @@ export class WebSocketController {
           break;
         }
 
-        case EACTION_WEBSOCKET.START_GAME: {
-          const startGame = wsMessage.payload as startGame;
-          this.store.dispatch(new StartGame(startGame.idRoom));
+        case EACTION_WEBSOCKET.START_GAME:
+          const gameRoom = wsMessage.payload as gameRoom;
+          this.store.dispatch(new StartGame(gameRoom));
           break;
-        }
-
-        case EACTION_WEBSOCKET.INIT_PLAYER: {
-          const player = wsMessage.payload as Player;
-          this.store.dispatch(new InitPlayer(player));
-          break;
-        }
 
         case EACTION_WEBSOCKET.UPDATE_CELL: {
           const infoCell = wsMessage.payload as updateCellCompany;
@@ -82,12 +75,6 @@ export class WebSocketController {
         case EACTION_WEBSOCKET.UPDATE_PLAYER: {
           const updatePlayerPayload = wsMessage.payload as UpdatePlayerPayload;
           this.store.dispatch(new UpdateInfoPlayer(updatePlayerPayload));
-          break;
-        }
-
-        case EACTION_WEBSOCKET.INIT_BOARD: {
-          const boardPayload = wsMessage.payload as initBoardPayload;
-          this.store.dispatch(new InitBoard(boardPayload.board));
           break;
         }
 

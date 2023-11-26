@@ -27,5 +27,7 @@
                 <ng-template #freeCell><app-freely-cell-room></app-freely-cell-room></ng-template>
             </div>
         </div>
+        <app-loader-time class="loading-room" *ngIf="(idRoom$ | async) === infoRoom.idRoom"
+            [typeLoading]="'startGame'"></app-loader-time>
     </div>
 </div>

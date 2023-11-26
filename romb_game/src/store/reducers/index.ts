@@ -20,13 +20,10 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.UpdateRooms:
             return { ...state, rooms: action.payload };
 
-        case AppActionTypes.InitBoard: {
-            return { ...state, gameRoom: { ...state.gameRoom, board: action.payload } };
-        }
-
-        case AppActionTypes.UpdateTurn: {
-            return { ...state, gameRoom: { ...state.gameRoom, turnId: action.payload.turnId } };
-        }
+        case AppActionTypes.UpdateTurn:
+            return state.gameRoom
+                ? { ...state, gameRoom: { ...state.gameRoom, turnId: action.payload.turnId } }
+                : state;
 
         case AppActionTypes.UpdateInfoPlayer: {
             return {
@@ -35,7 +32,6 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                     ...state.gameRoom,
                     players: {
                         ...state.gameRoom.players,
-
                         [action.payload.id]: { ...state.gameRoom.players[action.payload.id], ...action.payload }
                     }
                 }
@@ -52,30 +48,23 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             };
         }
 
-        case AppActionTypes.StartGame: {
-            return { ...state, gameRoom: { ...state.gameRoom, board: [], idRoom: action.payload } };
-        }
+        case AppActionTypes.StartGame:
+            return { ...state, gameRoom: action.payload };
 
-        case AppActionTypes.InitPlayer: {
-            const players = { ...state.gameRoom.players };
-            players[action.payload.id] = action.payload;
-            return { ...state, gameRoom: { ...state.gameRoom, players: { ...players } } };
-        }
-
-        case AppActionTypes.UpdateCell: {
-            const newBoard = [...state.gameRoom.board];
-            let cell = newBoard[action.payload.indexCell];
-            if (cell.company) {
-                cell = { ...cell, company: { ...cell.company, ...action.payload.company } };
-                newBoard[action.payload.indexCell] = cell;
-            };
-
+        case AppActionTypes.UpdateCell:
+            const newBoard = state.gameRoom.board.map((cell, index) =>
+                (index === action.payload.indexCell && cell.company)
+                    ? { ...cell, company: { ...cell.company, ...action.payload.company } }
+                    : cell
+            );
             return {
-                ...state, gameRoom: { ...state.gameRoom, board: newBoard }
+                ...state, gameRoom: {
+                    ...state.gameRoom,
+                    board: newBoard
+                }
             };
-        }
 
-        case AppActionTypes.ControlCompany: {
+        case AppActionTypes.ControlCompany:
             return {
                 ...state,
                 insideBoard: {
@@ -83,23 +72,17 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                     controlCompany: action.payload
                 }
             };
-        }
 
-        case AppActionTypes.ControlInsideBoard: {
+        case AppActionTypes.ControlInsideBoard:
             return {
                 ...state,
-                gameRoom: {
-                    ...state.gameRoom,
-                    offerDealInfo: undefined
-                },
                 insideBoard: {
                     ...state.insideBoard,
                     state: action.payload
                 }
             };
-        }
 
-        case AppActionTypes.InfoAuction: {
+        case AppActionTypes.InfoAuction:
             return {
                 ...state,
                 gameRoom: {
@@ -109,21 +92,14 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                 insideBoard: {
                     state: 'auction',
                 }
-            }
-        }
+            };
 
-        case AppActionTypes.SetOfferDealInfo: {
+        case AppActionTypes.SetOfferDealInfo:
             return {
                 ...state,
-                gameRoom: {
-                    ...state.gameRoom,
-                    offerDealInfo: action.payload
-                },
-                insideBoard: {
-                    state: 'receiveDeal'
-                }
-            }
-        }
+                gameRoom: { ...state.gameRoom, offerDealInfo: action.payload },
+                insideBoard: { state: 'receiveDeal' }
+            };
 
         case AppActionTypes.OpenInfoCell: {
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
@@ -139,9 +115,8 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
             };
         }
 
-        case AppActionTypes.UpdateChatRoom: {
+        case AppActionTypes.UpdateChatRoom:
             return { ...state, gameRoom: { ...state.gameRoom, chat: [...state.gameRoom.chat, action.payload] } };
-        }
 
         case AppActionTypes.LoginUser:
             return {

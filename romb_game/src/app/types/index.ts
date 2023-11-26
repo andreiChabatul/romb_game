@@ -7,7 +7,7 @@ export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | '
 export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
 export type statePlayer = 'active' | 'wait' | 'inactive';
-export type typeLoading = 'cell' | 'auction';
+export type typeLoading = 'cell' | 'auction' | 'startGame';
 export type offerInfo = {
     indexCompany: number[];
     valueMoney: number;
@@ -51,10 +51,10 @@ export interface CompanyInfo {
     rentCompany: number;
 }
 
-export interface GameRoom {
+export type gameRoom = {
     chat: chatMessage[];
     idRoom: string;
-    players: gamePlayer;
+    players: playersGame;
     board: gameCell[];
     turnId: string;
     offerDealInfo?: offerDealInfo;
@@ -80,11 +80,7 @@ export type updateCellCompany = {
     }
 }
 
-export type startGame = {
-    idRoom: string;
-}
-
-export type gamePlayer = {
+export type playersGame = {
     [key: string]: Player
 }
 

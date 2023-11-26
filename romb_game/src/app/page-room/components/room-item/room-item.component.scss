@@ -43,6 +43,7 @@
     @include fon-gradient;
     display: grid;
     grid-template-columns: max-content 1fr;
+    grid-template-columns: repeat(2 auto);
 }
 
 .room-item_desc__title {
@@ -64,4 +65,8 @@
 .cell-room-container {
     @include flex-c_c;
     gap: 2%;
+}
+
+.loading-room {
+    grid-area: 2/1/2/3
 }
