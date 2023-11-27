@@ -17,5 +17,6 @@
         <app-control-company *ngIf="(insideBoard$ | async)?.controlCompany"
             class="control-company-container"></app-control-company>
     </div>
-    <div class="timer-container" [ngStyle]="{'color':fontColor}">0{{minute}}:{{seconds}}</div>
+    <app-turn-timer></app-turn-timer>
+    <app-loader-time></app-loader-time>
 </div>

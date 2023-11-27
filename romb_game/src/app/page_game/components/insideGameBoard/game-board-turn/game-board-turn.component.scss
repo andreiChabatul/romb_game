@@ -13,6 +13,7 @@
 }
 
 .turn-player-container {
+    width: 100%;
     height: 95%;
     @include flex_c_s;
     flex-direction: column;

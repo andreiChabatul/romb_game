@@ -35,6 +35,7 @@ import { CellCompanyComponent } from './components/insideGameBoard/cell-company/
 import { AuctionCompanyComponent } from './components/insideGameBoard/auction-company/auction-company.component';
 import { EnoughMoneyComponent } from './components/insideGameBoard/enough-money/enough-money.component';
 import { WinnerGameComponent } from './components/insideGameBoard/winner-game/winner-game.component';
+import { TurnTimerComponent } from './components/insideGameBoard/turn-timer/turn-timer.component';
 
 @NgModule({
     declarations: [
@@ -70,7 +71,8 @@ import { WinnerGameComponent } from './components/insideGameBoard/winner-game/wi
         CellCompanyComponent,
         AuctionCompanyComponent,
         EnoughMoneyComponent,
-        WinnerGameComponent
+        WinnerGameComponent,
+        TurnTimerComponent
     ],
     imports: [
         SharedModule,
