@@ -1,3 +1,6 @@
+@import "./../../../../../scss/color-styles";
+@import "./../../../../../scss/default-styles";
+
 .winner-container {
     position: relative;
 }
@@ -14,4 +17,24 @@
     width: 9vw;
     left: calc(50% - 4.5vw);
     top: calc(50% - 5vw);
+}
+
+.winner-title {
+    @include font-default;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5vw;
+    margin-bottom: 1vh;
+}
+
+.winner-text {
+    @include font-default;
+    text-align: center;
+    margin-top: 1vh;
+    font-size: 1vw;
+    margin-bottom: 2vh;
+}
+
+.winner-text_name {
+    font-weight: 600;
 }

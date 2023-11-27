@@ -3,7 +3,7 @@
         <div class="info-player_gradient">
             <app-foto-player [player]="player" [size]="'4vw'"></app-foto-player>
             <p *ngIf="player.bankrupt; else elseBlock" class="info-player_bankrupt" [style.color]="player.color"
-                [style.border-color]="player.color"> {{'bankrot' | transloco}}</p>
+                [style.border-color]="player.color">{{'bankrot' | transloco}}</p>
             <ng-template #elseBlock>
                 <div>
                     <p class="info-player_text info-player_text_name">{{player.name}}</p>

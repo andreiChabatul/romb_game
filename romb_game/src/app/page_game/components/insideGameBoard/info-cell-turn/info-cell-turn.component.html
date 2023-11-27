@@ -23,6 +23,7 @@
                 </app-button-standart>
             </div>
         </div>
-        <p class="bankrupt-fon" [style.color]="(gamePlayer$ | async)?.color">Банкрот</p>
+        <p *ngIf="(gamePlayer$ | async)?.bankrupt" class="bankrupt-fon" [style.color]="(gamePlayer$ | async)?.color">
+            {{'bankrot' | transloco}}</p>
     </div>
 </ng-template>

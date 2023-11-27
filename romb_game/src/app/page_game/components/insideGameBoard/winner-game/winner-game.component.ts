@@ -21,10 +21,10 @@ export class WinnerGameComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
-    this.gameRoom$.pipe(
+    this.subscription$ = this.gameRoom$.pipe(
       mergeMap((gameRoom) => this.userId$.pipe(
         map((userId) => {
-          this.isWinner = userId === gameRoom.winner;
+          this.isWinner = (userId === gameRoom.winner);
           return gameRoom;
         })))).subscribe((gameRoom) => {
           if (gameRoom.winner) {
