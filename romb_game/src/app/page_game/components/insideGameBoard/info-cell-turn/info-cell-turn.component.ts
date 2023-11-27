@@ -9,11 +9,13 @@ import { AppStore } from 'src/app/types/state';
 import { selectGamePLayer, selectGameRoom, selectInfoCellTurn } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
-  { action: ACTIONS_BUTTON.PAY, width: '13vw', height: '6vh', show: true },
-  { action: ACTIONS_BUTTON.SELL_STOCK, width: '13vw', height: '6vh', show: true },
-  { action: ACTIONS_BUTTON.MORTGAGE, width: '13vw', height: '6vh', show: true },
-  { action: ACTIONS_BUTTON.BUY_COMPANY, width: '13vw', height: '6vh', show: true },
-  { action: ACTIONS_BUTTON.START_AUCTION, width: '13vw', height: '6vh', show: true },
+  { action: ACTIONS_BUTTON.PAY, width: '13vw', height: '6vh' },
+  { action: ACTIONS_BUTTON.SELL_STOCK, width: '13vw', height: '6vh' },
+  { action: ACTIONS_BUTTON.MORTGAGE, width: '13vw', height: '6vh' },
+  { action: ACTIONS_BUTTON.BUY_COMPANY, width: '13vw', height: '6vh' },
+  { action: ACTIONS_BUTTON.START_AUCTION, width: '13vw', height: '6vh' },
+  { action: ACTIONS_BUTTON.LEAVE_GAME, width: '13vw', height: '6vh' },
+  { action: ACTIONS_BUTTON.STAY_GAME, width: '13vw', height: '6vh' },
 ]
 
 @Component({
@@ -65,6 +67,8 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
         return [0, 1, 2].map((index) => buttons[index]);
       case 'buy':
         return [3, 4].map((index) => buttons[index]);
+      case 'bankrupt':
+        return [5, 6].map((index) => buttons[index]);
       default:
         return [];
     }

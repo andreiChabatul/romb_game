@@ -4,7 +4,7 @@ export interface State {
 
     modal: {
         type: modal,
-        modalError: string;
+        modalError?: string;
         payload?: number
     };
     rooms: infoRoom[];
@@ -35,5 +35,5 @@ export type infoUser = {
     idUser: string;
 }
 
-export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal' | 'auction';
+export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal' | 'auction' | 'none' | 'winner';
 export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany' | undefined;

@@ -38,7 +38,13 @@
 }
 
 .bankrupt-fon {
+    @include font-default;
     position: absolute;
     font-size: 5vw;
     border: thick double;
+    transform: rotate(335deg);
+    opacity: .2;
+    padding: 1% 4%;
+    font-weight: 800;
+    top: calc(50% - 2.5vw);
 }

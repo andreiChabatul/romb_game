@@ -23,6 +23,6 @@
                 </app-button-standart>
             </div>
         </div>
-        <!-- <p class="bankrupt-fon">Банкрот</p> -->
+        <p class="bankrupt-fon" [style.color]="(gamePlayer$ | async)?.color">Банкрот</p>
     </div>
 </ng-template>

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { infoRoom, UpdatePlayerPayload, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom } from '../types';
+import { infoRoom, UpdatePlayerPayload, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom, endGamePayload } from '../types';
 import { Store } from '@ngrx/store';
-import { EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { AddModalError, EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
@@ -78,17 +78,20 @@ export class WebSocketController {
           break;
         }
 
-        case EACTION_WEBSOCKET.CONTROL_DEAL: {
+        case EACTION_WEBSOCKET.CONTROL_DEAL:
           const offerDealInfo = wsMessage.payload as offerDealInfo;
           this.store.dispatch(new SetOfferDealInfo(offerDealInfo));
           break;
-        }
 
-        case EACTION_WEBSOCKET.AUCTION: {
+        case EACTION_WEBSOCKET.AUCTION:
           const infoAuction = wsMessage.payload as infoAuction;
           this.store.dispatch(new InfoAuction(infoAuction));
           break;
-        }
+
+        case EACTION_WEBSOCKET.END_GAME:
+          const endGamePayload = wsMessage.payload as endGamePayload;
+          this.store.dispatch(new EndGame(endGamePayload.winUser));
+          break;
 
         default:
           break;

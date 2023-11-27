@@ -22,6 +22,7 @@ export enum AppActionTypes {
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
     InfoAuction = '[INFO AUCTION] InfoAuction',
+    EndGame = '[END GAME] EndGame'
 };
 
 export class ControlCompany implements Action {
@@ -32,6 +33,10 @@ export class ControlCompany implements Action {
 export class InfoCellTurnAdd implements Action {
     readonly type = AppActionTypes.InfoCellTurn;
     constructor(public payload: infoCellTurn) { }
+}
+export class EndGame implements Action {
+    readonly type = AppActionTypes.EndGame;
+    constructor(public payload: string) { }
 }
 
 export class InfoAuction implements Action {
@@ -129,4 +134,5 @@ export type ActionUnion =
     SetOfferDealInfo |
     ControlCompany |
     InfoAuction |
-    EndTurn;
+    EndTurn |
+    EndGame;

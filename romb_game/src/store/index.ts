@@ -1,13 +1,13 @@
 import { AppStore, State } from 'src/app/types/state';
 import { ActionReducerMap } from '@ngrx/store';
 import { Reducers } from './reducers';
-import { gameRoom } from 'src/app/types';
+import { EMPTY_GAME_ROOM } from 'src/app/const';
 
 export const stateApp: State = {
     insideBoard: {
-        state: 'playerInfo',
+        state: 'none',
     },
-    gameRoom: {} as gameRoom,
+    gameRoom: EMPTY_GAME_ROOM,
     user: {
         isLogin: false
     },

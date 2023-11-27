@@ -1,6 +1,6 @@
 import { statUser } from "./state";
 
-export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame';
+export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame' ;
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAuction';
@@ -8,6 +8,7 @@ export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
 export type statePlayer = 'active' | 'wait' | 'inactive';
 export type typeLoading = 'cell' | 'auction' | 'startGame';
+export type endGameAction = 'leave' | 'stay';
 export type offerInfo = {
     indexCompany: number[];
     valueMoney: number;
@@ -59,6 +60,7 @@ export type gameRoom = {
     turnId: string;
     offerDealInfo?: offerDealInfo;
     infoAuction?: infoAuction;
+    winner?: string;
 }
 
 export type gameCell = {
@@ -85,6 +87,7 @@ export type playersGame = {
 }
 
 export type chatRoomPayload = { chat: chatMessage };
+export type endGamePayload = { winUser: string };
 
 export type chatMessage = {
     message?: string;

@@ -2,10 +2,12 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription, map } from 'rxjs';
+import { EMPTY_GAME_ROOM } from 'src/app/const';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { gameRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { ChangeModal, ControlCompany, ControlInsideBoard } from 'src/store/actions';
+import { ChangeModal, ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions';
 import { selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
@@ -129,6 +131,18 @@ export class ButtonControllerService implements OnDestroy {
       case ACTIONS_BUTTON.CANSEL_DEAL:
         this.store.dispatch(new ControlInsideBoard('startButtons'));
         break;
+
+      case ACTIONS_BUTTON.LEAVE_GAME: {
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'leave' });
+        this.store.dispatch(new StartGame(EMPTY_GAME_ROOM));
+        this.router.navigate(['rooms']);
+        break;
+      }
+
+      case ACTIONS_BUTTON.STAY_GAME: {
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'stay' });
+        break;
+      }
 
       default:
         break;

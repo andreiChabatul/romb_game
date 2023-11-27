@@ -49,7 +49,15 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         }
 
         case AppActionTypes.StartGame:
-            return { ...state, gameRoom: action.payload };
+            return { ...state, gameRoom: action.payload, insideBoard: { state: 'none' } };
+
+        case AppActionTypes.EndGame:
+            return {
+                ...state,
+                insideBoard: { state: 'winner' },
+                gameRoom: { ...state.gameRoom, winner: action.payload }
+            }
+
 
         case AppActionTypes.UpdateCell:
             const newBoard = state.gameRoom.board.map((cell, index) =>
@@ -58,7 +66,8 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                     : cell
             );
             return {
-                ...state, gameRoom: {
+                ...state,
+                gameRoom: {
                     ...state.gameRoom,
                     board: newBoard
                 }

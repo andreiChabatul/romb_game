@@ -2,8 +2,13 @@
 @import "./../../../../../scss/default-styles";
 
 .game-board_inside__text {
-    @include font_22px;
-    text-align: left;
+    @include font-default;
+    font-weight: 600;
+    font-size: 1.5vw;
+}
+
+.game-board_turn {
+    height: 1.5vw;
     width: 100%;
 }
 

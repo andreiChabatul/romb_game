@@ -17,6 +17,7 @@
     "totalGame": "Всего cыгранных игр: ",
     "totalCompany": "Компаний в собственности",
     "leaveGameButton": "Покинуть игру",
+    "stayGameButton": "Остаться в игре",
     "leaveGameSure": "Вы уверены, что хотите выйти из игры?",
     "winGame": "Всего побед: ",
     "infoCellTurnTitle": "Вы попали на ячейку: ",
@@ -57,6 +58,7 @@
     "lossRes": "Вам необходимо погасить расходы в размере: ",
     "enoughMoney": "У вас достаточно средств для погашения долга. Но вы можете продать акции или заложить компании.",
     "noEnoughMoney": "У вас недостаточно средств для погашения долга. Вы можете продать акции или заложить компании.",
+    "playerBankrupt": "У вас не достаточно капитала для погашения долга. Вы можете покинуть игру или остаться в качестве зрителя.",
     "addTotal": "$PLAYER$ получает доход в размере: $VALUEROLL$.",
     "minusTotal": "$PLAYER$ несет затраты в размере: $VALUEROLL$.",
     "minusTotalBuyCompany": "$PLAYER$ покупает компанию $CELLNAME$ за: $$VALUEROLL$.",
@@ -123,8 +125,8 @@
     "frelly": "Свободно",
     "maxPlayerRoom": "Максимальное число игроков: ",
     "nameRoom": "Имя комнаты: ",
-    "playerOnline" : "Игроков в комнате: ",
-    "durationStep" : "Время хода: ",
+    "playerOnline": "Игроков в комнате: ",
+    "durationStep": "Время хода: ",
     "joinRoom": "Join the game",
     "leaveRoom": "Leave the game"
 }

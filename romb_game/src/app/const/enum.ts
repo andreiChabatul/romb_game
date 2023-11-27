@@ -31,6 +31,7 @@ export enum ACTIONS_BUTTON {
     REFUSE_DEAL = 'refuseDealButton',
     CANSEL_DEAL = 'canselDealButton',
     LEAVE_GAME = 'leaveGameButton',
+    STAY_GAME = 'stayGameButton'
 }
 
 export enum EACTION_WEBSOCKET {
@@ -48,7 +49,8 @@ export enum EACTION_WEBSOCKET {
     CONTROL_DEAL = 'control deal',
     BANKRUPT = 'bankrupt',
     ACTIVE_CELL = 'active cell',
-    AUCTION = 'auction'
+    AUCTION = 'auction',
+    END_GAME = 'end game'
 }
 
 export enum ENDPOINT {

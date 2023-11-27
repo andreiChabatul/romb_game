@@ -2,4 +2,4 @@
 <p class="info-cell-text">{{'lossRes' | transloco}}
     <span class="info-cell-text_value">${{infoCellTurn?.value}}</span>
 </p>
-<p class="info-cell-text info-cell-text_money">{{(checkEnoughMoney() | async)| transloco}}</p>
+<app-enough-money [value]="infoCellTurn?.value"></app-enough-money>
