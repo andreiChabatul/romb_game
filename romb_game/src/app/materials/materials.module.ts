@@ -8,6 +8,7 @@ import { InputMaterialComponent } from './component/input-material/input-materia
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSliderModule} from '@angular/material/slider';
 import { CommonModule } from '@angular/common';
+import { TranslocoRootModule } from '../transloco-root.module';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { CommonModule } from '@angular/common';
         FormsModule,
         ReactiveFormsModule,
         MatProgressSpinnerModule,
-        MatSliderModule
+        MatSliderModule,
+        TranslocoRootModule
     ],
     exports: [
         MatInputModule,

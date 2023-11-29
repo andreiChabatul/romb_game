@@ -1,6 +1,6 @@
 import { statUser } from "./state";
 
-export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame';
+export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame' | 'createGame' | 'joinGame';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAuction';

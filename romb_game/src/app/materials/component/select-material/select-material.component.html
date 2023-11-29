@@ -1,6 +1,6 @@
 <form class="form-container_material" [formGroup]="selectForm">
     <mat-form-field>
-        <mat-label>{{optionForm.namelabel}}</mat-label>
+        <mat-label>{{optionForm.nameForm | transloco}}</mat-label>
         <mat-select formControlName="value">
             <mat-option *ngFor="let option of optionForm.optionSelect" value={{option.value}}>
                 {{option.option}}

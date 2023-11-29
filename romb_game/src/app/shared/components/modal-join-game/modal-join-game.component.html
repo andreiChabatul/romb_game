@@ -1,0 +1,7 @@
+<form class="form-create-container" [formGroup]="joinGame" (ngSubmit)="onSubmit()">
+    <p class="form-create-title">{{'createRoomButton' | transloco}}</p>
+    <div>
+        <app-input-material [optionForm]="choiseColor" [parentForm]="joinGame"></app-input-material>
+    </div>
+    <app-button-standart [button]="joinButton"></app-button-standart>
+</form>

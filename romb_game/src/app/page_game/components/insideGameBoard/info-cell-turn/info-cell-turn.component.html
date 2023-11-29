@@ -6,16 +6,12 @@
             {{('infoCellTurnTitle' | transloco)}} {{cell.nameCell | uppercase}} </p>
         <div class="info-desc-container">
             <div [ngSwitch]="cell.type" [style.width]="'100%'">
-                <ng-template ngSwitchCase="tax"><app-cell-tax
-                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-tax></ng-template>
-                <ng-template ngSwitchCase="profit"><app-cell-profit
-                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-profit></ng-template>
-                <ng-template ngSwitchCase="loss"><app-cell-loss
-                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-loss></ng-template>
-                <ng-template ngSwitchCase="empty"><app-cell-empty
-                        [infoCellTurn]="infoCellTurn$ | async"></app-cell-empty></ng-template>
-                <ng-template ngSwitchCase="company"><app-cell-company [infoCellTurn]="infoCellTurn$ | async"
-                        [indexCell]="cell.indexCell"></app-cell-company></ng-template>
+                <app-cell-tax *ngSwitchCase="'tax'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-tax>
+                <app-cell-profit *ngSwitchCase="'profit'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-profit>
+                <app-cell-loss *ngSwitchCase="'loss'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-loss>
+                <app-cell-empty *ngSwitchCase="'empty'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-empty>
+                <app-cell-company *ngSwitchCase="'company'" [infoCellTurn]="infoCellTurn$ | async"
+                    [indexCell]="cell.indexCell"></app-cell-company>
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"

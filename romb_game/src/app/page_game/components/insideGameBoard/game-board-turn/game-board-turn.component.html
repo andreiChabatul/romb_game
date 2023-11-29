@@ -2,16 +2,15 @@
     <img src="assets/leaveGame.png" class="turn-player-container_exit" (click)="exitGame()">
     <p *ngIf="(playerTurnId$ | async) === (userId$ | async)" class="game-board_inside__text">Your turn</p>
     <div class="info-cell-turn" [ngSwitch]="(insideBoard$ | async)?.state">
-        <ng-template ngSwitchCase="playerInfo"><app-player-info-inside></app-player-info-inside></ng-template>
-        <ng-template ngSwitchCase="startButtons"><app-start-turn-buttons></app-start-turn-buttons></ng-template>
-        <ng-template ngSwitchCase="diceRoll"><app-dice-roll (resetDice)="resetCheat()" class="dice-roll-container"
-                [cheatNumbers]="cheatNumbers"></app-dice-roll></ng-template>
-        <ng-template ngSwitchCase="infoCellTurn" class="info-cell-turn"><app-info-cell-turn>
-            </app-info-cell-turn></ng-template>
-        <ng-template ngSwitchCase="offerDeal"><app-offer-deal></app-offer-deal></ng-template>
-        <ng-template ngSwitchCase="receiveDeal"><app-receive-deal></app-receive-deal></ng-template>
-        <ng-template ngSwitchCase="auction"><app-auction-company></app-auction-company></ng-template>
-        <ng-template ngSwitchCase="winner"><app-winner-game></app-winner-game>></ng-template>
+        <app-player-info-inside *ngSwitchCase="'playerInfo'"></app-player-info-inside>
+        <app-start-turn-buttons *ngSwitchCase="'startButtons'"></app-start-turn-buttons>
+        <app-dice-roll *ngSwitchCase="'diceRoll'" (resetDice)="resetCheat()" class="dice-roll-container"
+            [cheatNumbers]="cheatNumbers"></app-dice-roll>
+        <app-info-cell-turn *ngSwitchCase="'infoCellTurn'" class="info-cell-turn"> </app-info-cell-turn>
+        <app-offer-deal *ngSwitchCase="'offerDeal'"></app-offer-deal>
+        <app-receive-deal *ngSwitchCase="'receiveDeal'"></app-receive-deal>
+        <app-auction-company *ngSwitchCase="'auction'"></app-auction-company>
+        <app-winner-game *ngSwitchCase="'winner'"></app-winner-game>
         <app-control-company *ngIf="(insideBoard$ | async)?.controlCompany"
             class="control-company-container"></app-control-company>
     </div>

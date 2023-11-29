@@ -5,7 +5,7 @@ export interface State {
     modal: {
         type: modal,
         modalError?: string;
-        payload?: number
+        payload?: number | string;
     };
     rooms: infoRoom[];
     user: {

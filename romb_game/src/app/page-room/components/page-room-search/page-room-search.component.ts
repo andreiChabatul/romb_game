@@ -9,7 +9,7 @@ import { InputTextFormOption } from 'src/app/types/components';
 })
 export class PageRoomSearchComponent {
 
-  inputForm: InputTextFormOption = { nameForm: 'searchRoom', namelabel: 'Search Room', type: 'text' }
+  inputForm: InputTextFormOption = { nameForm: 'searchRoom', type: 'text' }
     
   searchForm: FormGroup;
 

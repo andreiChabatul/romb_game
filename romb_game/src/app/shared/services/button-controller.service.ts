@@ -7,7 +7,7 @@ import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { gameRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { ChangeModal, ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions';
+import { OpenModal, CloseModal, ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions';
 import { selectIsLogin } from 'src/store/selectors';
 
 @Injectable({
@@ -34,14 +34,14 @@ export class ButtonControllerService implements OnDestroy {
 
       case ACTIONS_BUTTON.NEW_GAME:
         (this.isLogin)
-          ? this.router.navigate(['create-game'])
-          : this.store.dispatch(new ChangeModal('login'));
+          ? this.store.dispatch(new OpenModal({ type: 'createGame' }))
+          : this.store.dispatch(new OpenModal({ type: 'login' }));
         break;
 
       case ACTIONS_BUTTON.JOIN_GAME:
         (this.isLogin)
           ? this.router.navigate(['rooms'])
-          : this.store.dispatch(new ChangeModal('login'));
+          : this.store.dispatch(new OpenModal({ type: 'login' }));
         break;
 
       case ACTIONS_BUTTON.SETTING:
@@ -61,7 +61,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.LOG_IN:
-        this.store.dispatch(new ChangeModal('login'));
+        this.store.dispatch(new OpenModal({ type: 'login' }));
         break;
 
       case ACTIONS_BUTTON.UPDATE_ROOM:
@@ -69,7 +69,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.ADD_ROOM:
-        this.router.navigate(['create-game']);
+        this.store.dispatch(new OpenModal({ type: 'createGame' }));
         break;
 
       case ACTIONS_BUTTON.BUY_STOCK:

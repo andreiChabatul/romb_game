@@ -1,8 +1,9 @@
 export enum ACTIONS_BUTTON {
     NEW_GAME = 'newGameButton',
     JOIN_GAME = 'Join game',
+    JOIN_ITEM_GAME = 'Join item game',
     SETTING = 'settings',
-    CREATE_ROOM = 'Create Room',
+    CREATE_ROOM = 'createRoomButton',
     LOG_OUT = 'person_2',
     LOG_IN = 'login',
     HELP = 'quiz',

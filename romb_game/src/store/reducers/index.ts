@@ -6,10 +6,10 @@ import { ActionUnion, AppActionTypes } from "../actions";
 export const Reducers = (state = stateApp, action: ActionUnion): State => {
     switch (action.type) {
         case AppActionTypes.CloseModal:
-            return { ...state, modal: { ...state.modal, type: 'none' } };
+            return { ...state, modal: { type: 'none' } };
 
-        case AppActionTypes.ChangeModal:
-            return { ...state, modal: { ...state.modal, modalError: '', type: action.payload } };
+        case AppActionTypes.OpenModal:
+            return { ...state, modal: action.payload };
 
         case AppActionTypes.AddModalError:
             return { ...state, modal: { ...state.modal, modalError: action.payload } };

@@ -5,7 +5,7 @@ import { turnPayload } from 'src/app/types/webSocket';
 
 export enum AppActionTypes {
     CloseModal = '[CLOSE MODAL] CloseModal',
-    ChangeModal = '[CHANGE MODAL] ChangeModal',
+    OpenModal = '[OPEN MODAL] OpenModal',
     AddModalError = '[ADD MODAL ERROR] AddModalError',
     ClearModalError = '[CLEAR MODAL ERROR] ClearModalError',
     UpdateRooms = '[UPDATE ROOMS] UpdateRooms',
@@ -87,9 +87,9 @@ export class CloseModal implements Action {
     readonly type = AppActionTypes.CloseModal;
 }
 
-export class ChangeModal implements Action {
-    readonly type = AppActionTypes.ChangeModal;
-    constructor(public payload: modal) { }
+export class OpenModal implements Action {
+    readonly type = AppActionTypes.OpenModal;
+    constructor(public payload: { type: modal, payload?: string | number }) { }
 }
 
 export class AddModalError implements Action {
@@ -118,7 +118,7 @@ export class OpenInfoCell implements Action {
 
 export type ActionUnion =
     CloseModal |
-    ChangeModal |
+    OpenModal |
     AddModalError |
     ClearModalError |
     UpdateRooms |

@@ -9,11 +9,11 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 11111;
+    z-index: 111;
 }
 
 .modal-container {
-    min-width: 400px;
+    min-width: 30vw;
     background: $light_blue;
     border-radius: 20px;
     border: 8px solid $blue;

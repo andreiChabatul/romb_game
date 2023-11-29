@@ -1,9 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { ButtonStandart, InputTextFormOption, SelectFormOption } from 'src/app/types/components';
+import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { CloseModal } from 'src/store/actions';
 
 @Component({
   selector: 'app-create-game-form',
@@ -15,13 +18,13 @@ import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 export class CreateGameFormComponent {
 
   inputForm: InputTextFormOption[] = [
-    { nameForm: 'roomName', namelabel: 'NameRoom', type: 'text' }
+    { nameForm: 'roomName', type: 'text' },
+    { nameForm: 'colorPlayer', type: 'color' }
   ]
 
   selectsForm: SelectFormOption[] = [
     {
-      nameForm: 'players',
-      namelabel: 'Number of Players',
+      nameForm: 'maxPlayers',
       optionSelect: [
         { option: 'Two', value: 2 },
         { option: 'Three', value: 3 },
@@ -33,25 +36,25 @@ export class CreateGameFormComponent {
       ]
     },
     {
-      nameForm: 'runningTime',
-      namelabel: 'Running Time',
+      nameForm: 'timeTurn',
       optionSelect: [
         { option: '5s', value: 5000 },
         { option: '30s', value: 30000 },
-        { option: '1min', value: 60000 },
-        { option: '2min', value: 120000 },
-        { option: '3min', value: 180000 },
-        { option: '4min', value: 240000 },
-        { option: '5min', value: 300000 },
+        { option: '60s', value: 60000 },
+        { option: '120s', value: 120000 },
+        { option: '180s', value: 180000 },
+        { option: '240s', value: 240000 },
+        { option: '300s', value: 300000 },
       ]
     }
   ]
   createGame: FormGroup;
-  textButton: ButtonStandart = { action: ACTIONS_BUTTON.CREATE_ROOM, height: '60px', width: '230px', show: true };
+  textButton: ButtonStandart = { action: ACTIONS_BUTTON.CREATE_ROOM, height: '4vw', width: '18vw' };
 
   constructor(private fb: FormBuilder,
     private webSocketController: WebSocketController,
-    private router: Router) {
+    private router: Router,
+    private store: Store<AppStore>) {
     this.createForm();
   }
 
@@ -64,17 +67,16 @@ export class CreateGameFormComponent {
       this.createGame.markAllAsTouched()
       return;
     }
+    this.store.dispatch(new CloseModal());
     this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, {
       action: 'create',
       gameCreate: {
         roomName: this.createGame.value['roomName'].value,
-        maxPlayers: this.createGame.value['players'].value,
-        timeTurn: this.createGame.value['runningTime'].value,
+        maxPlayers: this.createGame.value['maxPlayers'].value,
+        timeTurn: this.createGame.value['timeTurn'].value,
+        colorPlayer: this.createGame.value['colorPlayer'].value,
       }
     });
     this.router.navigate(['rooms']);
   }
 }
-
-
-

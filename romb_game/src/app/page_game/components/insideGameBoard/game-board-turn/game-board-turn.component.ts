@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'src/app/types/state';
-import { ChangeModal } from 'src/store/actions';
+import { OpenModal } from 'src/store/actions';
 import { selectIdUser, selectInfoCellTurn, selectInsideBoard, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
@@ -38,7 +38,7 @@ export class GameBoardTurnComponent implements OnInit {
   }
 
   exitGame(): void {
-    this.store.dispatch(new ChangeModal('exitGame'));
+    this.store.dispatch(new OpenModal({ type: 'exitGame' }));
   }
 
 }

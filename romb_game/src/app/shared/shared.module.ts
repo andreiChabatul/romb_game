@@ -18,6 +18,8 @@ import { RaitingStarsComponent } from './components/raiting-stars/raiting-stars.
 import { FotoPlayerComponent } from './components/foto-player/foto-player.component';
 import { ModalExitGameComponent } from './components/modal-exit-game/modal-exit-game.component';
 import { LoaderTimeComponent } from './components/loader-time/loader-time.component';
+import { CreateGameFormComponent } from './components/create-game-form/create-game-form.component';
+import { ModalJoinGameComponent } from './components/modal-join-game/modal-join-game.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +37,9 @@ import { LoaderTimeComponent } from './components/loader-time/loader-time.compon
         RaitingStarsComponent,
         FotoPlayerComponent,
         ModalExitGameComponent,
-        LoaderTimeComponent
+        LoaderTimeComponent,
+        CreateGameFormComponent,
+        ModalJoinGameComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule

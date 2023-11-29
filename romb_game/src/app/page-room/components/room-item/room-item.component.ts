@@ -5,6 +5,7 @@ import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { Player, infoRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { OpenModal } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 
 @Component({
@@ -41,11 +42,7 @@ export class RoomItemComponent implements OnChanges {
   }
 
   joinRoom(): void {
-    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM,
-      {
-        action: "join",
-        idRoomJoin: this.infoRoom.idRoom
-      });
+    this.store.dispatch(new OpenModal({ type: 'joinGame', payload: this.infoRoom.idRoom }));
   }
 
   leaveRoom(): void {

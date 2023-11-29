@@ -14,7 +14,7 @@ export const selectIsLogin = createSelector(select, (state: State) => state.user
 export const selectIdUser = createSelector(select, (state: State) => state.user.infoUser?.idUser);
 export const selectUserName = createSelector(select, (state: State) => state.user.infoUser?.nickname);
 export const selectInfoUser = createSelector(select, (state: State) => state.user.infoUser);
-export const selectModal = createSelector(select, (state: State) => state.modal.type);
+export const selectModal = createSelector(select, (state: State) => state.modal);
 export const selectModalError = createSelector(select, (state: State) => state.modal.modalError);
 export const selectRooms = createSelector(select, (state: State) => state.rooms);
 export const selectIndexCell = createSelector(select, (state: State) => state.modal.payload);

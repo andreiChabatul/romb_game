@@ -13,7 +13,6 @@ export interface OptionSelect {
 
 export interface InputTextFormOption {
     nameForm: string;
-    namelabel: string;
     type: string;
 }
 
@@ -24,6 +23,5 @@ export interface Button {
 
 export interface SelectFormOption {
     nameForm: string;
-    namelabel: string;
     optionSelect: OptionSelect[];
 }

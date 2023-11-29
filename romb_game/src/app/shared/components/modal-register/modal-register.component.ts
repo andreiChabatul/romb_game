@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart, InputTextFormOption } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { ChangeModal } from 'src/store/actions';
+import { OpenModal } from 'src/store/actions';
 
 @Component({
   selector: 'app-modal-register',
@@ -16,8 +16,8 @@ import { ChangeModal } from 'src/store/actions';
 export class ModalRegisterComponent {
 
   inputForm: InputTextFormOption[] = [
-    { nameForm: 'nickname', namelabel: 'Nickname', type: 'text' },
-    { nameForm: 'password', namelabel: 'Password', type: 'password' }
+    { nameForm: 'nickname', type: 'text' },
+    { nameForm: 'password', type: 'password' }
   ]
   registerForm: FormGroup;
   textButton: ButtonStandart = { action: ACTIONS_BUTTON.REGISTER, height: '60px', width: '230px', show: true };
@@ -35,7 +35,7 @@ export class ModalRegisterComponent {
   }
 
   loginOpen() {
-    this.store.dispatch(new ChangeModal('login'));
+    this.store.dispatch(new OpenModal({ type: 'login' }));
   }
 
   onSubmit() {

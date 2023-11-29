@@ -8,11 +8,6 @@ const routes: Routes = [
     component: MainPageComponent,
   },
   {
-    path: 'create-game',
-    loadChildren: () =>
-      import('./create-game/createGamePage.modules').then((m) => m.PageCreateGame),
-  },
-  {
     path: 'rooms',
     loadChildren: () =>
       import('./page-room/pageRoom.module').then((m) => m.PageRoomModule),
