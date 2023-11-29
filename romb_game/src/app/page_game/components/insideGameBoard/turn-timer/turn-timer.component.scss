@@ -1,9 +1,10 @@
 @import "./../../../../../scss/color-styles";
 
 .turn-time-container {
+    margin-top: 3vh;
     width: 100%;
-    height: 3vh;
-    border-radius: 0.5vh;
+    height: 2.5vh;
+    border-radius: 1vh;
     background: rgba($color: $blue, $alpha: 0.05);
     -webkit-box-shadow:
         inset 0 2px 9px rgba(255, 255, 255, 0.3),
@@ -14,8 +15,8 @@
 }
 
 .turn-time {
-    border-radius: 0.5vh;
-    background: $blue;
+    border-radius: 1vh;
+    background: linear-gradient(90deg, $color_red 0%, $orange_default 50%, $color_green 100%);
     height: 100%;
     display: block;
     -webkit-box-shadow:

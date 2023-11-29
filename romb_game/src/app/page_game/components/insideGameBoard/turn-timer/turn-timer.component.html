@@ -1,3 +1,4 @@
-<div @timerAnimation class="turn-time-container">
-    <span @timerAnimation class="turn-time" (@timerAnimation.done)="turnEnd()"></span>
+<div class="turn-time-container">
+    <span [@timerAnimation]="{value: true, params: {time:(gameRoom$ | async)?.timeTurn}}" class="turn-time"
+        (@timerAnimation.done)="turnEnd()"></span>
 </div>

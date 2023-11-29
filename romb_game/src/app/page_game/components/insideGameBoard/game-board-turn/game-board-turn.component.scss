@@ -7,16 +7,16 @@
     font-size: 1.5vw;
 }
 
-.game-board_turn {
-    height: 1.5vw;
-    width: 100%;
-}
+// .game-board_turn {
+//     height: 1.5vw;
+//     width: 100%;
+// }
 
 .turn-player-container {
     width: 100%;
     height: 95%;
-    @include flex_c_s;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1.5vw 1fr;
     position: relative;
 }
 
@@ -32,6 +32,8 @@
 .info-cell-turn {
     width: 100%;
     position: relative;
+    grid-row-start: 2;
+    align-self: center;
 }
 
 .control-company-container {

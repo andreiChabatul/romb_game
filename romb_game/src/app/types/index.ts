@@ -8,7 +8,7 @@ export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
 export type statePlayer = 'active' | 'wait' | 'inactive';
 export type typeLoading = 'cell' | 'auction' | 'startGame' | 'endGame';
-export type endGameAction = 'leave' | 'stay';
+export type endGameAction = 'leave' | 'stay' | 'endGame' | 'endTime';
 export type offerInfo = {
     indexCompany: number[];
     valueMoney: number;
@@ -58,6 +58,7 @@ export type gameRoom = {
     players: playersGame;
     board: gameCell[];
     turnId: string;
+    timeTurn: number;
     offerDealInfo?: offerDealInfo;
     infoAuction?: infoAuction;
     winner?: string;
@@ -105,7 +106,7 @@ export interface Profile {
 }
 
 export type infoRoom = {
-    maxPLayers: number,
+    maxPlayers: number,
     idRoom: string,
     roomName: string,
     players: Player[],

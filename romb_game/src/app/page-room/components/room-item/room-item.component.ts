@@ -25,7 +25,7 @@ export class RoomItemComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.playerArr = [...this.infoRoom.players];
-    while (this.playerArr.length < this.infoRoom.maxPLayers) {
+    while (this.playerArr.length < this.infoRoom.maxPlayers) {
       this.playerArr.push(null);
     };
   }

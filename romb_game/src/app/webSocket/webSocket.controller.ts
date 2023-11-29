@@ -8,7 +8,6 @@ import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
 import { SendPayloadSocket, payloadSocket, turnPayload } from '../types/webSocket';
 
-
 @Injectable({
   providedIn: 'root'
 })

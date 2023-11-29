@@ -26,4 +26,5 @@
         <p *ngIf="(gamePlayer$ | async)?.bankrupt" class="bankrupt-fon" [style.color]="(gamePlayer$ | async)?.color">
             {{'bankrot' | transloco}}</p>
     </div>
+    <app-turn-timer *ngIf="(infoCellTurn$ | async)?.buttons !== 'none'"></app-turn-timer>
 </ng-template>

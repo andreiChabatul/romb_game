@@ -36,11 +36,13 @@ export class CreateGameFormComponent {
       nameForm: 'runningTime',
       namelabel: 'Running Time',
       optionSelect: [
-        { option: '15s', value: 15 },
-        { option: '30s', value: 30 },
-        { option: '1min', value: 60 },
-        { option: '1min 30s', value: 90 },
-        { option: '2min', value: 120 }
+        { option: '5s', value: 5000 },
+        { option: '30s', value: 30000 },
+        { option: '1min', value: 60000 },
+        { option: '2min', value: 120000 },
+        { option: '3min', value: 180000 },
+        { option: '4min', value: 240000 },
+        { option: '5min', value: 300000 },
       ]
     }
   ]
@@ -66,8 +68,8 @@ export class CreateGameFormComponent {
       action: 'create',
       gameCreate: {
         roomName: this.createGame.value['roomName'].value,
-        players: this.createGame.value['players'].value,
-        runningGame: this.createGame.value['runningTime'].value,
+        maxPlayers: this.createGame.value['players'].value,
+        timeTurn: this.createGame.value['runningTime'].value,
       }
     });
     this.router.navigate(['rooms']);

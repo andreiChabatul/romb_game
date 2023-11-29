@@ -20,7 +20,7 @@ export class ColorShadowDirective implements OnChanges {
     ngOnChanges(): void {
 
         this.players$.subscribe((players) =>
-            this.playerId
+            (this.playerId && players[this.playerId])
                 ? this.colorShadow = players[this.playerId].color
                 : this.colorShadow = COLOR_PLAYER_DEFAULT
         );
