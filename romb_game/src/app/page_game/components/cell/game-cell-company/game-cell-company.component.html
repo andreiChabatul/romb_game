@@ -31,9 +31,8 @@
             <p *ngIf="companyInfo?.owned !== null" class="game-cell-company_price">
                 {{companyInfo?.rentCompany | rentPipe: companyInfo?.countryCompany}}</p>
         </div>
-        <div class="game-cell-company_stock" [ngClass]="{
-            'game-cell-company_stock__gorizontal': cellDirections === 'left' || cellDirections === 'right'
-            }">
+        <div class="game-cell-company_stock"
+            [ngClass]="{'game-cell-company_stock__gorizontal': cellDirections === 'left' || cellDirections === 'right'}">
             <img class="game-cell-company_stock__img" *ngFor="let i of [].constructor(companyInfo?.shares)"
                 [src]="companyInfo?.countryCompany | stockAssets" alt="stock image">
         </div>

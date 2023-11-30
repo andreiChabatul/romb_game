@@ -6,6 +6,7 @@ import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { ButtonStandart, InputTextFormOption } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
+import { CloseModal } from 'src/store/actions';
 import { selectModal } from 'src/store/selectors';
 
 @Component({
@@ -44,6 +45,7 @@ export class ModalJoinGameComponent implements OnInit, OnDestroy {
       idRoomJoin: this.idRoomJoin,
       colorPlayer: this.joinGame.value['colorPlayer'].value,
     });
+    this.store.dispatch(new CloseModal());
   }
 }
 

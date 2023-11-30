@@ -1,7 +1,7 @@
 export enum ACTIONS_BUTTON {
     NEW_GAME = 'newGameButton',
     JOIN_GAME = 'Join game',
-    JOIN_ITEM_GAME = 'Join item game',
+    JOIN_ITEM_GAME = 'joinItemButton',
     SETTING = 'settings',
     CREATE_ROOM = 'createRoomButton',
     LOG_OUT = 'person_2',
