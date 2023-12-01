@@ -30,18 +30,10 @@ export type turnPayload = {
     turnId: string;
 }
 
-
 export type controlCompany = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAction';
 
-export type SendPayloadSocket = {}
-    | JoinGamePayload
-    | PayloadCreateGame
-    | MessageChatGamePayload
-    | DiceRoolGamePayload
-    | ControlCompanyPayload;
-
 export interface payloadSocket {
     action: EACTION_WEBSOCKET,
-    payload: SendPayloadSocket
+    payload: {}
 }

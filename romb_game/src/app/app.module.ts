@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
-import { WebSocketController } from './webSocket/webSocket.controller';
 import { EffectsModule } from '@ngrx/effects';
 import { TurnEffects } from 'src/store/effects/turn.effects';
 
@@ -33,7 +32,7 @@ import { TurnEffects } from 'src/store/effects/turn.effects';
     StoreModule.forRoot(appReducers),
     HttpClientModule,
   ],
-  providers: [AuthService, WebSocketController],
+  providers: [AuthService, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

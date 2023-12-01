@@ -17,7 +17,7 @@ export class ModalLoginComponent {
     { nameForm: 'password', type: 'password' }
   ]
   loginForm: FormGroup;
-  textButton: ButtonStandart = { action: ACTIONS_BUTTON.LOGIN, height: '60px', width: '230px', show: true };
+  textButton: ButtonStandart = { action: ACTIONS_BUTTON.LOGIN, height: '4vw', width: '15vw' };
 
   constructor(private fb: FormBuilder, private store: Store<AppStore>) {
     this.createForm();

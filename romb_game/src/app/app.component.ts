@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { WebSocketController } from './webSocket/webSocket.controller';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +6,6 @@ import { WebSocketController } from './webSocket/webSocket.controller';
   styleUrls: ['./app.component.scss']
 })
 
-
-
 export class AppComponent {
   title = 'romb_game';
-
-
-  constructor(private webSocketController: WebSocketController) { }
-
-
-
-
 }

@@ -24,6 +24,12 @@
     "youWin": "You Win!",
     "youLose": "You lose=(",
     "nameWinner": "Winner: ",
+    "nickname": "Nickname",
+    "password": "Password",
+    "logInProfile": "Log in profile",
+    "register": "Create",
+    "loginForm": "Login",
+    "registerForm": "Register",
     "infoCellTurnTitle": "You are in a cell: ",
     "infoAuctionTitle": "Bidding for the company is being held: ",
     "startDesc": "Starting field. You receive $200,000",
@@ -81,8 +87,8 @@
     "createRoomButton": "Create game",
     "roomName": "Room name",
     "colorPlayer": "Player's color",
-    "maxPlayers":"Number of players",
-    "timeTurn":"Time turn",
+    "maxPlayers": "Number of players",
+    "timeTurn": "Time turn",
     "placeholderInput": "Please enter ",
     "payButton": "Pay off debt",
     "mortgageButton": "Mortgage companies",
@@ -137,6 +143,5 @@
     "nameRoom": "Name room: ",
     "playerOnline": "Игроков в комнате: ",
     "durationStep": "Time moves: ",
-    "joinRoom": "Join the game",
-    "leaveRoom": "Leave the game"
+    "joinGameButton": "Join game"
 }

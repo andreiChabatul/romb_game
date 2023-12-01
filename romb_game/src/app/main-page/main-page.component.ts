@@ -10,8 +10,8 @@ import { ButtonStandart } from '../types/components';
 export class MainPageComponent {
 
   buttons: ButtonStandart[] = [
-    { action: ACTIONS_BUTTON.NEW_GAME, width: '200px', height: '70px', show: true },
-    { action: ACTIONS_BUTTON.JOIN_GAME, width: '200px', height: '70px', show: true },
+    { action: ACTIONS_BUTTON.NEW_GAME, width: '17vw', height: '5vw' },
+    { action: ACTIONS_BUTTON.JOIN_GAME, width: '17vw', height: '5vw' },
   ];
 
 }

@@ -2,9 +2,9 @@
     <div class="room-item_gradient">
         <ng-template #elseJoin>
             <div class="room-item_join" (click)="leaveRoom()">
-                {{'leaveRoom' | transloco}}</div>
+                {{'leaveGameButton' | transloco}}</div>
         </ng-template>
-        <div *ngIf="checkJoin() | async; else elseJoin" class="room-item_join" (click)="joinRoom()">{{'joinRoom' |
+        <div *ngIf="checkJoin() | async; else elseJoin" class="room-item_join" (click)="joinRoom()">{{'joinItemButton' |
             transloco}}</div>
         <div>
             <p class="room-item_title">{{'nameRoom'| transloco}}{{infoRoom.roomName}}</p>

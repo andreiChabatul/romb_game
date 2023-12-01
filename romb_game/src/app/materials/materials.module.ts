@@ -5,10 +5,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectMaterialComponent } from './component/select-material/select-material.component';
 import { InputMaterialComponent } from './component/input-material/input-material.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSliderModule} from '@angular/material/slider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSliderModule } from '@angular/material/slider';
 import { CommonModule } from '@angular/common';
 import { TranslocoRootModule } from '../transloco-root.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -16,7 +19,7 @@ import { TranslocoRootModule } from '../transloco-root.module';
         InputMaterialComponent
     ],
     imports: [
-        CommonModule ,
+        CommonModule,
         MatInputModule,
         MatFormFieldModule,
         MatSelectModule,
@@ -24,7 +27,10 @@ import { TranslocoRootModule } from '../transloco-root.module';
         ReactiveFormsModule,
         MatProgressSpinnerModule,
         MatSliderModule,
-        TranslocoRootModule
+        TranslocoRootModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule
     ],
     exports: [
         MatInputModule,
@@ -34,7 +40,10 @@ import { TranslocoRootModule } from '../transloco-root.module';
         ReactiveFormsModule,
         InputMaterialComponent,
         MatProgressSpinnerModule,
-        MatSliderModule
+        MatSliderModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule
     ],
     providers: [],
     bootstrap: []

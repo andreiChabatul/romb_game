@@ -1,5 +1,5 @@
 <form class="container-modal_switch" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <p class="title-modal">Login</p>
+    <p class="title-modal">{{'loginForm' | transloco}}</p>
     <app-input-material *ngFor="let option of inputForm" [parentForm]="loginForm"
         [optionForm]="option"></app-input-material>
     <app-button-standart [button]="textButton"></app-button-standart>

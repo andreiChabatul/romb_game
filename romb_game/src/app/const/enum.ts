@@ -1,6 +1,6 @@
 export enum ACTIONS_BUTTON {
     NEW_GAME = 'newGameButton',
-    JOIN_GAME = 'Join game',
+    JOIN_GAME = 'joinGameButton',
     JOIN_ITEM_GAME = 'joinItemButton',
     SETTING = 'settings',
     CREATE_ROOM = 'createRoomButton',
@@ -8,8 +8,8 @@ export enum ACTIONS_BUTTON {
     LOG_IN = 'login',
     HELP = 'quiz',
     INFO = 'info_i',
-    REGISTER = 'Create Player',
-    LOGIN = 'Log in profile',
+    REGISTER = 'register',
+    LOGIN = 'logInProfile',
     UPDATE_ROOM = 'sync',
     SEARCH_ROOM = 'search',
     ADD_ROOM = 'add',
@@ -48,7 +48,6 @@ export enum EACTION_WEBSOCKET {
     START_GAME = 'start game',
     CONTROL_COMPANY = 'control company',
     CONTROL_DEAL = 'control deal',
-    BANKRUPT = 'bankrupt',
     ACTIVE_CELL = 'active cell',
     AUCTION = 'auction',
     END_GAME = 'end game'
