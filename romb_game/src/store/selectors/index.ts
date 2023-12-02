@@ -10,7 +10,7 @@ export const selectGameRoom = createSelector(select, (state: State) => state.gam
 export const selectChat = createSelector(select, (state: State) => state.gameRoom.chat);
 export const selectPlayerTurnId = createSelector(select, (state: State) => state.gameRoom.turnId);
 export const selectIdRoom = createSelector(select, (state: State) => state.gameRoom.idRoom);
-export const selectIsLogin = createSelector(select, (state: State) => state.user.isLogin);
+export const selectUser = createSelector(select, (state: State) => state.user);
 export const selectIdUser = createSelector(select, (state: State) => state.user.infoUser?.idUser);
 export const selectUserName = createSelector(select, (state: State) => state.user.infoUser?.nickname);
 export const selectInfoUser = createSelector(select, (state: State) => state.user.infoUser);
@@ -23,3 +23,4 @@ export const selectControlCompanyState = createSelector(select, (state: State) =
 export const selectInfoCellTurn = createSelector(select, (state: State) => state.insideBoard.infoCellTurn);
 export const selectOfferDealInfo = createSelector(select, (state: State) => state.gameRoom.offerDealInfo);
 export const selectInsideBoard = createSelector(select, (state: State) => state.insideBoard);
+export const selectLang = createSelector(select, (state: State) => state.lang);

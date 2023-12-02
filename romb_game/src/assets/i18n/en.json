@@ -143,5 +143,10 @@
     "nameRoom": "Name room: ",
     "playerOnline": "Игроков в комнате: ",
     "durationStep": "Time moves: ",
-    "joinGameButton": "Join game"
+    "joinGameButton": "Join game",
+    "language": "Language",
+    "rules" : "Game rules",
+    "info": "About project",
+    "exitProfile": "Exit profile",
+    "editProfile" : "Edit profile"
 }

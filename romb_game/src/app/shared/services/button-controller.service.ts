@@ -4,11 +4,10 @@ import { Store } from '@ngrx/store';
 import { Subscription, map } from 'rxjs';
 import { EMPTY_GAME_ROOM } from 'src/app/const';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { gameRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { OpenModal, CloseModal, ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions';
-import { selectIsLogin } from 'src/store/selectors';
+import { selectUser } from 'src/store/selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +16,13 @@ export class ButtonControllerService implements OnDestroy {
 
   susbscription$: Subscription
   isLogin: boolean;
-  isLogin$ = this.store.select(selectIsLogin);
+  user$ = this.store.select(selectUser);
 
   constructor(private store: Store<AppStore>,
     private webSocketController: WebSocketController,
     private router: Router) {
-    this.susbscription$ = this.isLogin$.pipe(
-      map((login) => this.isLogin = login)).subscribe()
+    this.susbscription$ = this.user$.pipe(
+      map((user) => this.isLogin = user.isLogin)).subscribe()
   }
 
   actionButton(action: ACTIONS_BUTTON) {
@@ -135,6 +134,7 @@ export class ButtonControllerService implements OnDestroy {
       case ACTIONS_BUTTON.LEAVE_GAME: {
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'leave' });
         this.store.dispatch(new StartGame(EMPTY_GAME_ROOM));
+        this.store.dispatch(new CloseModal());
         this.router.navigate(['rooms']);
         break;
       }

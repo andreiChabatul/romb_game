@@ -1,4 +1,5 @@
 @import "./../../scss/default-styles";
+@import "./../../scss/color-styles";
 
 .header-container {
     padding: 1%;
@@ -16,6 +17,3 @@
     gap: 10px;
 }
 
-.menu-img {
-    width: 3vw;
-}

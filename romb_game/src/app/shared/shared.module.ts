@@ -20,6 +20,7 @@ import { ModalExitGameComponent } from './components/modal-exit-game/modal-exit-
 import { LoaderTimeComponent } from './components/loader-time/loader-time.component';
 import { CreateGameFormComponent } from './components/create-game-form/create-game-form.component';
 import { ModalJoinGameComponent } from './components/modal-join-game/modal-join-game.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { ModalJoinGameComponent } from './components/modal-join-game/modal-join-
         ModalExitGameComponent,
         LoaderTimeComponent,
         CreateGameFormComponent,
-        ModalJoinGameComponent
+        ModalJoinGameComponent,
+        MenuComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule
@@ -57,7 +59,8 @@ import { ModalJoinGameComponent } from './components/modal-join-game/modal-join-
         ChangeMessagePipe,
         RaitingStarsComponent,
         FotoPlayerComponent,
-        LoaderTimeComponent
+        LoaderTimeComponent,
+        MenuComponent
     ],
     providers: [ButtonControllerService],
     bootstrap: []

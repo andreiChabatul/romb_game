@@ -37,8 +37,6 @@ export class GameBoardTurnComponent implements OnInit {
     this.cheatNumbers = [];
   }
 
-  exitGame(): void {
-    this.store.dispatch(new OpenModal({ type: 'exitGame' }));
-  }
+  
 
 }

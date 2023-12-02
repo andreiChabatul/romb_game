@@ -11,7 +11,10 @@
 
 .modal-exit_text {
     @include font-default;
-    font-size: 1.5vw;
-    text-align: center;
+    font-size: 1.2vw;
+    font-weight: 500;
+}
 
+.modal-exit_img {
+    width: 10vw;
 }

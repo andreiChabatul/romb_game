@@ -1,5 +1,5 @@
 <div class="turn-player-container">
-    <img src="assets/leaveGame.png" class="turn-player-container_exit" (click)="exitGame()">
+    <app-menu class="turn-player-menu" [size]="'2vw'"></app-menu>
     <p *ngIf="(playerTurnId$ | async) === (userId$ | async)" class="game-board_inside__text">Your turn</p>
     <div class="info-cell-turn" [ngSwitch]="(insideBoard$ | async)?.state">
         <app-player-info-inside *ngSwitchCase="'playerInfo'"></app-player-info-inside>

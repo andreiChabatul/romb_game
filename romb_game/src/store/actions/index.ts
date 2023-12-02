@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { chatMessage, infoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction, gameRoom } from 'src/app/types';
-import { controlCompanyState, insideBoardState } from 'src/app/types/state';
+import { controlCompanyState, insideBoardState, lang } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
 export enum AppActionTypes {
@@ -22,12 +22,18 @@ export enum AppActionTypes {
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
     InfoAuction = '[INFO AUCTION] InfoAuction',
-    EndGame = '[END GAME] EndGame'
+    EndGame = '[END GAME] EndGame',
+    ChangeLanguage = '[CHANGE LANGUAGE] ChangeLanguage'
 };
 
 export class ControlCompany implements Action {
     readonly type = AppActionTypes.ControlCompany;
     constructor(public payload: controlCompanyState) { }
+}
+
+export class ChangeLanguage implements Action {
+    readonly type = AppActionTypes.ChangeLanguage;
+    constructor(public payload: lang) { }
 }
 
 export class InfoCellTurnAdd implements Action {
@@ -135,4 +141,5 @@ export type ActionUnion =
     ControlCompany |
     InfoAuction |
     EndTurn |
+    ChangeLanguage |
     EndGame;

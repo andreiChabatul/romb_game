@@ -4,6 +4,7 @@ import { Reducers } from './reducers';
 import { EMPTY_GAME_ROOM } from 'src/app/const';
 
 export const stateApp: State = {
+    lang: 'ru',
     insideBoard: {
         state: 'none',
     },

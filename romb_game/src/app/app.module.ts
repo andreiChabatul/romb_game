@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { TurnEffects } from 'src/store/effects/turn.effects';
+import { LangEffects } from 'src/store/effects/lang.effects';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,11 @@ import { TurnEffects } from 'src/store/effects/turn.effects';
     SharedModule,
     CommonModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([TurnEffects]),
+    EffectsModule.forRoot([TurnEffects, LangEffects]),
     StoreModule.forRoot(appReducers),
     HttpClientModule,
   ],
-  providers: [AuthService, ],
+  providers: [AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

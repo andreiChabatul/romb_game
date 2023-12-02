@@ -14,6 +14,9 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.AddModalError:
             return { ...state, modal: { ...state.modal, modalError: action.payload } };
 
+        case AppActionTypes.ChangeLanguage:
+            return { ...state, lang: action.payload };
+
         case AppActionTypes.ClearModalError:
             return { ...state, modal: { ...state.modal, modalError: '' } };
 

@@ -1,0 +1,70 @@
+<button mat-button [matMenuTriggerFor]="menu">
+    <img [style.width]="size" src="assets/menu.png" alt="menuImg"></button>
+<mat-menu #menu="matMenu">
+    <button *ngIf="userName$ | async; else loginMenu" mat-menu-item [matMenuTriggerFor]="profile">
+        <div class="lang-container">
+            <img class="img-lang-choise" src="./../../assets/defaultAvatar.png" alt="langImg">
+            <span class="menu-text menu-text_name">{{userName$ | async}}</span>
+        </div>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="languages">
+        <div class="lang-container">
+            <img class="img-lang-choise" [src]="lang$ | async | imgAssets" alt="langImg">
+            <span class="menu-text">{{'language' | transloco}}</span>
+        </div>
+    </button>
+    <button mat-menu-item>
+        <div class="lang-container">
+            <img class="img-lang-choise" src="assets/rules.png" alt="rulesImg">
+            <span class="menu-text">{{'rules' | transloco}}</span>
+        </div>
+    </button>
+    <button mat-menu-item>
+        <div class="lang-container">
+            <img class="img-lang-choise" src="assets/info.png" alt="infoImg">
+            <span class="menu-text">{{'info' | transloco}}</span>
+        </div>
+    </button>
+    <button mat-menu-item *ngIf="idRoom$ | async" (click)="exitGame()">
+        <div class="lang-container">
+            <img class="img-lang-choise" src="assets/leaveGame.png" alt="leaveImg">
+            <span class="menu-text">{{'leaveGameButton' | transloco}}</span>
+        </div>
+    </button>
+</mat-menu>
+<mat-menu #languages="matMenu">
+    <button mat-menu-item>
+        <div class="lang-container" (click)="changeLang('ru')">
+            <img class="img-lang-choise" src="assets/ru.png" alt="">
+            <span class="menu-text">Русский</span>
+        </div>
+    </button>
+    <button mat-menu-item>
+        <div class="lang-container" (click)="changeLang('en')">
+            <img class=" img-lang-choise" src="assets/en.png" alt="">
+            <span class="menu-text">English</span>
+        </div>
+    </button>
+</mat-menu>
+<mat-menu #profile="matMenu">
+    <button mat-menu-item>
+        <div class="lang-container">
+            <img class="img-lang-choise" src="assets/edit.png" alt="">
+            <span class="menu-text">{{'editProfile' | transloco}}</span>
+        </div>
+    </button>
+    <button mat-menu-item>
+        <div class="lang-container">
+            <img class="img-lang-choise" src="assets/exit.png" alt="">
+            <span class="menu-text">{{'exitProfile' | transloco}}</span>
+        </div>
+    </button>
+    <ng-template #loginMenu>
+        <button mat-menu-item (click)="loginProfile()">
+            <div class="lang-container">
+                <img class="img-lang-choise" src="assets/login.png" alt="rulesImg">
+                <span class="menu-text">{{'logInProfile' | transloco}}</span>
+            </div>
+        </button>
+    </ng-template>
+</mat-menu>

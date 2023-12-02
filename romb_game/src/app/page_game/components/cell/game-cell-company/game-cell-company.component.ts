@@ -42,7 +42,7 @@ export class GameCellCompanyComponent implements OnChanges, OnInit {
     return this.controlCompanyState$.pipe(
       mergeMap((action => this.gamePlayer$.pipe(
         map((player) =>
-          Boolean(player.id && action === 'buyStock' &&
+          Boolean(player && action === 'buyStock' &&
             player.id === this.gameCell.company?.owned &&
             this.gameCell.company.shares < 5 &&
             this.gameCell.company?.isMonopoly &&
@@ -56,7 +56,7 @@ export class GameCellCompanyComponent implements OnChanges, OnInit {
     return this.controlCompanyState$.pipe(
       mergeMap((action => this.gamePlayer$.pipe(
         map((player) =>
-          action === 'pledgeCompany' &&
+          player && action === 'pledgeCompany' &&
           player.id === this.gameCell.company?.owned &&
           !this.gameCell.company?.isPledge)
       )))
@@ -67,7 +67,7 @@ export class GameCellCompanyComponent implements OnChanges, OnInit {
     return this.controlCompanyState$.pipe(
       mergeMap((action => this.gamePlayer$.pipe(
         map((player) =>
-          action === 'buyOutCompany' &&
+          player && action === 'buyOutCompany' &&
           player.id === this.gameCell.company?.owned &&
           player.total >= this.gameCell.company.buyBackCompany &&
           this.gameCell.company?.isPledge)
@@ -79,7 +79,7 @@ export class GameCellCompanyComponent implements OnChanges, OnInit {
     return this.controlCompanyState$.pipe(
       mergeMap((action => this.gamePlayer$.pipe(
         map((player) =>
-          Boolean(player.id && action === 'sellStock' &&
+          Boolean(player && action === 'sellStock' &&
             player.id === this.gameCell.company?.owned &&
             this.gameCell.company.countryCompany !== 'japan' &&
             this.gameCell.company.countryCompany !== 'ukraine' &&
