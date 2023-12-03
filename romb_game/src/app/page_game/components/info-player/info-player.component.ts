@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges, } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { Player } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { selectPlayerTurnId } from 'src/store/selectors';
@@ -27,9 +26,5 @@ export class InfoPlayerComponent implements OnChanges {
       this.prevCapital = chng.previousValue ? chng.previousValue.capital : 0;
     }
   }
-
-
-
-
 
 }

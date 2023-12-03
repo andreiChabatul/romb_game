@@ -16,12 +16,12 @@ export class WebSocketController {
   private wsSocket = io("http://localhost:3100/");
   private idUser$ = this.store.select(selectIdUser);
   private idRoom$ = this.store.select(selectIdRoom);
-  private idUser: string;
+  private idUser: string | undefined;
   private idRoom: string;
 
   constructor(private store: Store<AppStore>) {
-    this.idUser$.subscribe((id) => this.idUser = String(id));
-    this.idRoom$.subscribe((id) => this.idRoom = String(id));
+    this.idUser$.subscribe((id) => this.idUser = id);
+    this.idRoom$.subscribe((id) => this.idRoom = id);
     this.handleMessage();
   }
 
@@ -92,13 +92,16 @@ export class WebSocketController {
   }
 
   sendMessage(action: EACTION_WEBSOCKET, payload?: {}): void {
-    this.wsSocket.send(action,
-      {
-        ...payload,
-        idUser: this.idUser,
-        idRoom: this.idRoom
-      }
-    );
+   
+    if (this.idUser) {
+      this.wsSocket.send(action,
+        {
+          ...payload,
+          idUser: this.idUser,
+          idRoom: this.idRoom
+        }
+      );
+    }
   }
 
 }
