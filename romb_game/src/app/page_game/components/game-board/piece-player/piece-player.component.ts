@@ -1,7 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MAX_INDEX_CELL_BOARD } from 'src/app/const';
-import { Player } from 'src/app/types';
+import { fullPlayer } from 'src/app/types';
 import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from './const';
 
 @Component({
@@ -54,7 +54,7 @@ import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from
 })
 export class PiecePlayerComponent implements OnInit, OnChanges {
 
-  @Input() player: Player;
+  @Input() player: fullPlayer;
   @Input() index: number;
   changePosition: number;
   coorX: number;

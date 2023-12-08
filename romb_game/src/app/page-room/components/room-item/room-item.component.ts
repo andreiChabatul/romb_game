@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { Player, infoRoom } from 'src/app/types';
+import { fullPlayer, infoRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { OpenModal } from 'src/store/actions';
@@ -16,7 +16,7 @@ import { selectIdRoom, selectIdUser } from 'src/store/selectors';
 export class RoomItemComponent implements OnChanges {
 
   @Input() infoRoom: infoRoom;
-  playerArr: (Player | null)[];
+  playerArr: (fullPlayer | null)[];
   color: string;
   isJoin: boolean;
   IdUser$ = this.store.select(selectIdUser);

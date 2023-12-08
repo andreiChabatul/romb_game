@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { Player, gameCell, offerInfo } from 'src/app/types';
+import { fullPlayer, gameCell, offerInfo } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { selectGameRoom } from 'src/store/selectors';
 
@@ -17,7 +17,7 @@ export class ReceiveDealItemComponent {
 
   constructor(private store: Store<AppStore>) { }
 
-  get player(): Observable<Player> {
+  get player(): Observable<fullPlayer> {
     return this.gameRoom$.pipe(
       map((gameRoom) => gameRoom.players[String(this.offerInfo?.idPerson)]))
   }

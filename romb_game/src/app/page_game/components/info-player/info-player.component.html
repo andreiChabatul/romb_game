@@ -8,7 +8,7 @@
                 <ul>
                     <li class="info-player_title">
                         <span class="status-player" [ngClass]="{'status-player_online': player.online}"></span>
-                        <span class="info-player_text info-player_text_name">{{player.name}} </span>
+                        <span class="info-player_text info-player_text_name">{{player.nickName}} </span>
                     </li>
                     <li class="info-player_text">{{'total' | transloco}}: <app-info-player-balanse
                             [prevValue]="prevTotal" [currValue]="player.total"></app-info-player-balanse> </li>

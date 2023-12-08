@@ -22,7 +22,7 @@
             <div *ngFor="let cell of playerArr">
                 <div *ngIf="cell; else freeCell">
                     <app-foto-player [player]="cell" [size]="'5vw'"></app-foto-player>
-                    <p class="frelly_text">{{cell.name}}</p>
+                    <p class="frelly_text">{{cell.nickName}}</p>
                 </div>
                 <ng-template #freeCell><app-freely-cell-room></app-freely-cell-room></ng-template>
             </div>

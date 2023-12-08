@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { Player, gameCell, offerInfo, dealPerson } from 'src/app/types';
+import { fullPlayer, gameCell, offerInfo, dealPerson } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { selectGameRoom } from 'src/store/selectors';
 
@@ -57,7 +57,7 @@ export class OfferDealItemComponent implements OnInit {
     this.sendItemOffer();
   }
 
-  get player(): Observable<Player> {
+  get player(): Observable<fullPlayer> {
     return this.gameRoom$.pipe(
       map((gameRoom) => gameRoom.players[String(this.idUser)])
     )

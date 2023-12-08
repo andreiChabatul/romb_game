@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Player } from 'src/app/types';
+import { fullPlayer } from 'src/app/types';
 
 @Component({
   selector: 'app-foto-player',
@@ -8,7 +8,7 @@ import { Player } from 'src/app/types';
 })
 export class FotoPlayerComponent {
 
-  @Input() player: Player | null;
+  @Input() player: fullPlayer | null;
   @Input() size: string;
 
 }

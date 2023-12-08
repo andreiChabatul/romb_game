@@ -1,6 +1,6 @@
 <div class="offer-deal-item-container">
     <p class="offer-deal-item-name" [ngStyle]="{'color': (player | async)?.color }">
-        {{(player | async)?.name}}</p>
+        {{(player | async)?.nickName}}</p>
     <p class="offer-deal-item-text">
         {{(dealPerson === 'offerPerson'? 'offerPersonCompany' : 'receivePersonCompany') | transloco}}</p>
     <ul class="offer-company-container">

@@ -21,7 +21,7 @@
                     <div class="info-player_img-offer" *ngIf="player.id !== (turnId$ | async)"
                         (click)="selectPlayer(player.id)">
                         <app-foto-player [player]="player" [size]="'4vw'"></app-foto-player>
-                        <p class="info-player-name" [ngStyle]="{'color': player.color }">{{player.name}}</p>
+                        <p class="info-player-name" [ngStyle]="{'color': player.color }">{{player.nickName}}</p>
                     </div>
                 </div>
             </div>

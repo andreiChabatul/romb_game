@@ -23,7 +23,7 @@ export class ChangeMessagePipe implements PipeTransform {
                     let resultString = value;
 
                     resultString = (chatMessage.idUser && players[chatMessage.idUser])
-                        ? resultString.replaceAll('$PLAYER$', players[chatMessage.idUser].name)
+                        ? resultString.replaceAll('$PLAYER$', players[chatMessage.idUser].nickName)
                         : resultString;
 
                     resultString = (chatMessage.cellId !== undefined && gameRoom.board[chatMessage.cellId])
@@ -33,7 +33,7 @@ export class ChangeMessagePipe implements PipeTransform {
                             .replaceAll('$RENT$', gameRoom.board[chatMessage.cellId].company?.countryCompany === 'ukraine'
                                 ? String(gameRoom.board[chatMessage.cellId].company?.rentCompany) + '×🎲'
                                 : String(gameRoom.board[chatMessage.cellId].company?.rentCompany))
-                            .replaceAll('$PLAYER_OWNED$', String(players[String(gameRoom.board[chatMessage.cellId].company?.owned)]?.name))
+                            .replaceAll('$PLAYER_OWNED$', String(players[String(gameRoom.board[chatMessage.cellId].company?.owned)]?.nickName))
                         : resultString;
 
                     resultString = chatMessage.valueroll

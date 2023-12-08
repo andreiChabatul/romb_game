@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges, } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Player } from 'src/app/types';
+import { fullPlayer } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { selectPlayerTurnId } from 'src/store/selectors';
 
@@ -11,7 +11,7 @@ import { selectPlayerTurnId } from 'src/store/selectors';
 })
 export class InfoPlayerComponent implements OnChanges {
 
-  @Input() player: Player;
+  @Input() player: fullPlayer;
   prevTotal: number;
   prevCapital: number;
 

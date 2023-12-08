@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Player, gameCell } from 'src/app/types';
+import { fullPlayer, gameCell } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { selectAllPlayerArr, selectGameRoom } from 'src/store/selectors';
 
@@ -20,7 +20,7 @@ export class GameBoardComponent {
     return item ? item.indexCell : undefined;
   }
 
-  trackByPlayer(index: number, item: Player) {
+  trackByPlayer(index: number, item: fullPlayer) {
     return item ? item.id : undefined;
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { infoRoom, UpdatePlayerPayload, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom, endGamePayload } from '../types';
+import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom, endGamePayload, updatePlayer } from '../types';
 import { Store } from '@ngrx/store';
 import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectIdUser } from 'src/store/selectors';
@@ -13,7 +13,7 @@ import { payloadSocket, turnPayload } from '../types/webSocket';
 })
 export class WebSocketController {
 
-  private wsSocket = io("http://localhost:3100/");
+  private wsSocket = io("127.0.0.1:3001");
   private idUser$ = this.store.select(selectIdUser);
   private idRoom$ = this.store.select(selectIdRoom);
   private idUser: string | undefined;
@@ -33,6 +33,7 @@ export class WebSocketController {
 
         case EACTION_WEBSOCKET.LIST_ROOM:
           const rooms = wsMessage.payload as infoRoom[];
+          console.log(rooms)
           this.store.dispatch(new UpdateRooms(rooms));
           break;
 
@@ -66,7 +67,7 @@ export class WebSocketController {
           break;
 
         case EACTION_WEBSOCKET.UPDATE_PLAYER:
-          const updatePlayerPayload = wsMessage.payload as UpdatePlayerPayload;
+          const updatePlayerPayload = wsMessage.payload as updatePlayer;
           this.store.dispatch(new UpdateInfoPlayer(updatePlayerPayload));
           break;
 

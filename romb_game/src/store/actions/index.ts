@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { chatMessage, infoRoom, Player, ResponseAuth, UpdatePlayerPayload, gameCell, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction, gameRoom } from 'src/app/types';
+import { chatMessage, infoRoom, ResponseAuth, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction, gameRoom, updatePlayer } from 'src/app/types';
 import { controlCompanyState, insideBoardState, lang } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
@@ -62,7 +62,7 @@ export class UpdateTurn implements Action {
 
 export class UpdateInfoPlayer implements Action {
     readonly type = AppActionTypes.UpdateInfoPlayer;
-    constructor(public payload: UpdatePlayerPayload) { }
+    constructor(public payload: updatePlayer) { }
 }
 
 export class UpdateCell implements Action {

@@ -28,7 +28,7 @@ export class WinnerGameComponent implements OnInit, OnDestroy {
           return gameRoom;
         })))).subscribe((gameRoom) => {
           if (gameRoom.winner) {
-            this.nameWinner = gameRoom.players[gameRoom.winner].name;
+            this.nameWinner = gameRoom.players[gameRoom.winner].nickName;
           };
         });
   }

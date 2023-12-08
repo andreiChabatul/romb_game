@@ -9,6 +9,7 @@ export type dealPerson = 'offerPerson' | 'receivePerson';
 export type statePlayer = 'active' | 'wait' | 'inactive';
 export type typeLoading = 'cell' | 'auction' | 'startGame' | 'endGame';
 export type endGameAction = 'leave' | 'stay' | 'endGame' | 'endTime';
+export type fullPlayer = mainPlayer & updatePlayer;
 export type offerInfo = {
     indexCompany: number[];
     valueMoney: number;
@@ -19,13 +20,15 @@ export type offerDealInfo = {
     [key in dealPerson]: offerInfo;
 }
 
-export interface Player extends UpdatePlayerPayload {
-    color: string;
-    name: string;
+export type mainPlayer = {
+    nickName: string;
     image: string;
+    color: string;
+    numberGame: number;
+    numberWin: number;
 }
 
-export interface UpdatePlayerPayload {
+export type updatePlayer = {
     id: string;
     total: number;
     capital: number;
@@ -53,7 +56,7 @@ export interface CompanyInfo {
     rentCompany: number;
 }
 
-export type gameRoom = {
+export interface gameRoom {
     chat: chatMessage[];
     idRoom: string;
     players: playersGame;
@@ -85,7 +88,7 @@ export type updateCellCompany = {
 }
 
 export type playersGame = {
-    [key: string]: Player
+    [key: string]: fullPlayer
 }
 
 export type chatRoomPayload = { chat: chatMessage };
@@ -93,8 +96,7 @@ export type endGamePayload = { winUser: string };
 
 export type chatMessage = {
     message?: string;
-    senderName?: string;
-    senderColor?: string;
+    senderId?: string;
     idUser?: string;
     cellId?: number;
     valueroll?: number;
@@ -110,7 +112,7 @@ export type infoRoom = {
     maxPlayers: number,
     idRoom: string,
     roomName: string,
-    players: Player[],
+    players: fullPlayer[],
 }
 
 export interface ResponseAuth {
