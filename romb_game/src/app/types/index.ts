@@ -104,7 +104,7 @@ export type chatMessage = {
 }
 
 export interface Profile {
-    nickname: string;
+    nickName: string;
     password: string;
 }
 
@@ -117,9 +117,6 @@ export type infoRoom = {
 
 export interface ResponseAuth {
     accessToken: string;
-    nickname: string;
-    idUser: string;
-    statUser: statUser;
 }
 
 export type location = {

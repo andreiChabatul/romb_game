@@ -44,7 +44,7 @@ export class ModalRegisterComponent {
       return;
     }
     this.authService.register({
-      nickname: this.registerForm.value.nickname.value,
+      nickName: this.registerForm.value.nickname.value,
       password: this.registerForm.value.password.value
     })
   }
