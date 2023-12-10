@@ -1,6 +1,7 @@
-import { State, statUser } from "src/app/types/state";
+import { State } from "src/app/types/state";
 import { stateApp } from "..";
 import { ActionUnion, AppActionTypes } from "../actions";
+import { EMPTY_USER } from "src/app/const";
 
 
 export const Reducers = (state = stateApp, action: ActionUnion): State => {
@@ -133,15 +134,10 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.LoginUser:
             return {
                 ...state,
-                modal: { ...state.modal, type: 'none' },
+                modal: { type: 'none' },
                 user: {
-                    ...state.user,
                     isLogin: true,
-                    infoUser: {
-                        nickname: action.payload.nickname ? action.payload.nickname : '',
-                        idUser: action.payload.idUser ? action.payload.idUser : '',
-                        statUser: action.payload.statUser ? action.payload.statUser : {} as statUser,
-                    }
+                    infoUser: { ...EMPTY_USER, ...action.payload }
                 }
             };
 

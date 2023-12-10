@@ -1,4 +1,5 @@
 import { gameRoom } from "../types";
+import { infoUser } from "../types/state";
 
 export const COLOR_PLAYER_DEFAULT = '#DBE0E4';
 export const TIME_TURN_DEFAULT = 1500;
@@ -6,3 +7,5 @@ export const DEBT_PRISON = 50000;
 export const MAX_INDEX_CELL_BOARD = 38;
 export const BASIC_URL = "http://localhost:3000/";
 export const EMPTY_GAME_ROOM: gameRoom = { idRoom: '', players: {}, board: [], chat: [], turnId: '', timeTurn: 0 }
+export const EMPTY_USER: infoUser = { id: '', createdAt: new Date, image: '', nickName: '', numberGame: 0, numberWin: 0 }
+

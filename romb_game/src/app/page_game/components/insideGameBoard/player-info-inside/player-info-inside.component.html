@@ -1,7 +1,7 @@
 <div class="info-inside-container">
         <app-foto-player [player]="player$ | async" [size]="'9vw'"></app-foto-player>
-        <p class="info-inside-name">{{(infoUser$ | async)?.nickname}}</p>
-        <app-raiting-stars [statUser]="(infoUser$ | async)?.statUser" [width]="'10vw'"></app-raiting-stars>
+        <p class="info-inside-name">{{(infoUser$ | async)?.nickName}}</p>
+        <!-- <app-raiting-stars [statUser]="(infoUser$ | async)?.statUser" [width]="'10vw'"></app-raiting-stars> -->
         <ng-template #elseBankrot>
                 <div>
                         <p class="info-inside-text">{{'total' | transloco}}: <span class="info-inside-text_value">

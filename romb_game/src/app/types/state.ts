@@ -25,15 +25,13 @@ export interface AppStore {
     state: State;
 }
 
-export type statUser = {
-    totalGame: number;
-    winGame: number;
-}
-
 export type infoUser = {
-    statUser: statUser;
-    nickname: string;
-    idUser: string;
+    createdAt: Date,
+    id: string,
+    image: string;
+    nickName: string;
+    numberGame: number;
+    numberWin: number;
 }
 
 export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal' | 'auction' | 'none' | 'winner';

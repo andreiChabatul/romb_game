@@ -148,5 +148,7 @@
     "rules" : "Game rules",
     "info": "About project",
     "exitProfile": "Exit profile",
-    "editProfile" : "Edit profile"
+    "editProfile" : "Edit profile",
+    "modalInfoTitle": "Info about cell: ",
+    "companyInfo" : "By purchasing a company, you can receive rent from other players in the future. Below is information about rental rates and stock prices.."
 }

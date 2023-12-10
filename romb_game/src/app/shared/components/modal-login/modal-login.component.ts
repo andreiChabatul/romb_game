@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart, InputTextFormOption } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
@@ -19,7 +20,7 @@ export class ModalLoginComponent {
   loginForm: FormGroup;
   textButton: ButtonStandart = { action: ACTIONS_BUTTON.LOGIN, height: '4vw', width: '15vw' };
 
-  constructor(private fb: FormBuilder, private store: Store<AppStore>) {
+  constructor(private fb: FormBuilder, private store: Store<AppStore>, private authService: AuthService) {
     this.createForm();
   }
 
@@ -36,6 +37,9 @@ export class ModalLoginComponent {
       this.loginForm.markAllAsTouched()
       return;
     }
-    console.log('htubcnhfwbz')
+    this.authService.login({
+      nickName: this.loginForm.value.nickname.value,
+      password: this.loginForm.value.password.value
+    })
   }
 }

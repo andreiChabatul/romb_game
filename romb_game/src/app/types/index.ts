@@ -1,5 +1,3 @@
-import { statUser } from "./state";
-
 export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame' | 'createGame' | 'joinGame';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt';
@@ -103,7 +101,7 @@ export type chatMessage = {
     action?: string
 }
 
-export interface Profile {
+export type createUserDto = {
     nickName: string;
     password: string;
 }
@@ -117,6 +115,11 @@ export type infoRoom = {
 
 export interface ResponseAuth {
     accessToken: string;
+}
+
+export interface JwtPayload {
+    id: string;
+    nickName: string;
 }
 
 export type location = {

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { chatMessage, infoRoom, ResponseAuth, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction, gameRoom, updatePlayer } from 'src/app/types';
-import { controlCompanyState, insideBoardState, lang } from 'src/app/types/state';
+import { controlCompanyState, infoUser, insideBoardState, lang } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
 export enum AppActionTypes {
@@ -114,7 +114,7 @@ export class UpdateRooms implements Action {
 
 export class LoginUser implements Action {
     readonly type = AppActionTypes.LoginUser;
-    constructor(public payload: Partial<ResponseAuth>) { }
+    constructor(public payload: Partial<infoUser>) { }
 }
 
 export class OpenInfoCell implements Action {

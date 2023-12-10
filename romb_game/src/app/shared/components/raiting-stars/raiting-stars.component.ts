@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { statUser } from 'src/app/types/state';
+import { infoUser } from 'src/app/types/state';
 
 @Component({
   selector: 'app-raiting-stars',
@@ -8,11 +8,11 @@ import { statUser } from 'src/app/types/state';
 })
 export class RaitingStarsComponent {
 
-  @Input() statUser: statUser | undefined;
+  @Input() infoUser: infoUser | undefined;
   @Input() width: string;
 
   calcWidth(): string {
-    return ((Number(this.statUser?.winGame) / Number(this.statUser?.totalGame)) * 100) + '%'
+    return ((Number(this.infoUser?.numberWin) / Number(this.infoUser?.numberGame)) * 100) + '%'
   }
 
 }

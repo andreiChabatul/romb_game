@@ -5,14 +5,14 @@ const select = (state: AppStore) => state.state;
 
 export const selectAllPlayer = createSelector(select, (state: State) => state.gameRoom.players);
 export const selectAllPlayerArr = createSelector(select, (state: State) => Object.values(state.gameRoom.players));
-export const selectGamePLayer = createSelector(select, (state: State) => state.gameRoom.players[String(state.user.infoUser?.idUser)]);
+export const selectGamePLayer = createSelector(select, (state: State) => state.gameRoom.players[String(state.user.infoUser?.id)]);
 export const selectGameRoom = createSelector(select, (state: State) => state.gameRoom);
 export const selectChat = createSelector(select, (state: State) => state.gameRoom.chat);
 export const selectPlayerTurnId = createSelector(select, (state: State) => state.gameRoom.turnId);
 export const selectIdRoom = createSelector(select, (state: State) => state.gameRoom.idRoom);
 export const selectUser = createSelector(select, (state: State) => state.user);
-export const selectIdUser = createSelector(select, (state: State) => state.user.infoUser?.idUser);
-export const selectUserName = createSelector(select, (state: State) => state.user.infoUser?.nickname);
+export const selectIdUser = createSelector(select, (state: State) => state.user.infoUser?.id);
+export const selectUserName = createSelector(select, (state: State) => state.user.infoUser?.nickName);
 export const selectInfoUser = createSelector(select, (state: State) => state.user.infoUser);
 export const selectModal = createSelector(select, (state: State) => state.modal);
 export const selectModalError = createSelector(select, (state: State) => state.modal.modalError);
