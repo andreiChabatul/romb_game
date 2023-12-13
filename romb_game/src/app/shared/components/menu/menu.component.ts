@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { AuthService } from 'src/app/auth/auth.service';
 import { AppStore, lang } from 'src/app/types/state';
 import { ChangeLanguage, OpenModal } from 'src/store/actions';
 import { selectIdRoom, selectLang, selectUserName } from 'src/store/selectors';
@@ -17,7 +18,7 @@ export class MenuComponent {
   userName$ = this.store.select(selectUserName);
   idRoom$ = this.store.select(selectIdRoom);
 
-  constructor(private store: Store<AppStore>) { }
+  constructor(private store: Store<AppStore>, private authService: AuthService) { }
 
 
   changeLang(lang: lang): void {
@@ -26,6 +27,10 @@ export class MenuComponent {
 
   loginProfile(): void {
     this.store.dispatch(new OpenModal({ type: 'login' }));
+  }
+
+  loguotProfile(): void {
+    this.authService.logout();
   }
 
   exitGame(): void {

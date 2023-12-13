@@ -1,3 +1,9 @@
+@import "./../../../../scss/default-styles";
+
 .container-modal_switch {
     padding-bottom: 5%;
+}
+
+.footer-modal-login {
+    @include flex_c_s;
 }

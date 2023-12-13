@@ -21,6 +21,8 @@ import { LoaderTimeComponent } from './components/loader-time/loader-time.compon
 import { CreateGameFormComponent } from './components/create-game-form/create-game-form.component';
 import { ModalJoinGameComponent } from './components/modal-join-game/modal-join-game.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { GoogleAuthComponent } from './components/google-auth/google-auth.component';
+import { YandexAuthComponent } from './components/yandex-auth/yandex-auth.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +43,9 @@ import { MenuComponent } from './components/menu/menu.component';
         LoaderTimeComponent,
         CreateGameFormComponent,
         ModalJoinGameComponent,
-        MenuComponent
+        MenuComponent,
+        GoogleAuthComponent,
+        YandexAuthComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule

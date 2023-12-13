@@ -56,6 +56,8 @@ export enum EACTION_WEBSOCKET {
 export enum ENDPOINT {
     REG = 'auth/registration',
     LOGIN = 'auth/login',
+    LOGOUT = 'auth/logout',
+    GOOGLE = 'auth/google',
     REFRESH = 'auth/refresh-tokens',
     USER = 'user/'
 }

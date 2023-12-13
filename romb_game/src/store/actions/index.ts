@@ -10,6 +10,7 @@ export enum AppActionTypes {
     ClearModalError = '[CLEAR MODAL ERROR] ClearModalError',
     UpdateRooms = '[UPDATE ROOMS] UpdateRooms',
     LoginUser = '[LOGIN USER] LoginUser',
+    LogoutUser = '[LOGOUT USER] LogoutUser',
     OpenInfoCell = '[OPEN INFO CELL] OpenInfoCell',
     ControlInsideBoard = '[CONTROL INSIDE BOARD] ControlInsideBoard',
     ControlCompany = '[CONTROL COMPANY] ControlCompany',
@@ -117,6 +118,11 @@ export class LoginUser implements Action {
     constructor(public payload: Partial<infoUser>) { }
 }
 
+export class LogoutUser implements Action {
+    readonly type = AppActionTypes.LogoutUser;
+    constructor() { }
+}
+
 export class OpenInfoCell implements Action {
     readonly type = AppActionTypes.OpenInfoCell
     constructor(public payload: number) { }
@@ -129,6 +135,7 @@ export type ActionUnion =
     ClearModalError |
     UpdateRooms |
     LoginUser |
+    LogoutUser| 
     OpenInfoCell |
     ControlInsideBoard |
     InfoCellTurnAdd |

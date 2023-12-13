@@ -10,11 +10,12 @@ import { appReducers } from 'src/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { TurnEffects } from 'src/store/effects/turn.effects';
 import { LangEffects } from 'src/store/effects/lang.effects';
+import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,11 @@ import { LangEffects } from 'src/store/effects/lang.effects';
     StoreModule.forRoot(appReducers),
     HttpClientModule,
   ],
-  providers: [AuthService,],
+  providers: [AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AccessTokenInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
