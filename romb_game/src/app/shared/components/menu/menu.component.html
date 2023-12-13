@@ -1,10 +1,10 @@
 <button mat-button [matMenuTriggerFor]="menu">
     <img [style.width]="size" src="assets/menu.png" alt="menuImg"></button>
 <mat-menu #menu="matMenu">
-    <button *ngIf="userName$ | async; else loginMenu" mat-menu-item [matMenuTriggerFor]="profile">
+    <button *ngIf="(infoUser$ | async)?.nickName; else loginMenu" mat-menu-item [matMenuTriggerFor]="profile">
         <div class="lang-container">
-            <img class="img-lang-choise" src="./../../assets/defaultAvatar.png" alt="langImg">
-            <span class="menu-text menu-text_name">{{userName$ | async}}</span>
+            <img class="img-lang-choise" [src]="(infoUser$ | async)?.image" alt="langImg">
+            <span class="menu-text menu-text_name">{{(infoUser$ | async)?.nickName}}</span>
         </div>
     </button>
     <button mat-menu-item [matMenuTriggerFor]="languages">

@@ -2,12 +2,13 @@
     <p class="title-modal">{{'loginForm' | transloco}}</p>
     <app-input-material *ngFor="let option of inputForm" [parentForm]="loginForm"
         [optionForm]="option"></app-input-material>
+    <app-button-standart [button]="textButton"></app-button-standart>
     <div class="footer-modal-login">
-        <app-button-standart [button]="textButton"></app-button-standart>
-        <div>
-            <app-google-auth [size]="'3vw'"></app-google-auth>
-            <app-yandex-auth [size]="'3vw'"></app-yandex-auth>
+        <p class="footer-modal_text" (click)="registerOpen()">Зарегистрироваться</p>
+        <div class="social-container">
+            <app-anonim-auth [size]="'2.5vw'"></app-anonim-auth>
+            <app-google-auth [size]="'2.5vw'"></app-google-auth>
+            <app-yandex-auth [size]="'2.5vw'"></app-yandex-auth>
         </div>
     </div>
-    <p class="footer-modal_text" (click)="registerOpen()">Зарегистрироваться</p>
 </form>

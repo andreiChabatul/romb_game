@@ -128,7 +128,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 15px;
+  gap: 1vh;
 }
 
 .title-modal {
@@ -140,9 +140,6 @@ body {
 }
 
 .footer-modal_text {
-  position: absolute;
-  left: 10px;
-  bottom: 5px;
   @include font_default;
   font-size: 14px;
   cursor: pointer;
@@ -259,9 +256,7 @@ body {
 }
 
 .container-auth {
-
   @include flex_c_c;
-
   border-radius: 25%;
   cursor: pointer;
   opacity: .8;
@@ -273,10 +268,19 @@ body {
       inset 0 -2px 6px rgba(0, 0, 0, 0.4);
     background: $light_blue;
     opacity: 1;
-    transform: scale(1.08);
+    transform: translateY(-1vh);
   }
 }
 
 .img-auth {
   width: 80%;
+}
+
+.footer-modal-login {
+  @include flex_c_s;
+  align-items: flex-end;
+}
+
+.social-container {
+  @include flex_c_c;
 }

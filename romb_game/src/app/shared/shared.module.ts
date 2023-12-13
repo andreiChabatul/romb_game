@@ -23,6 +23,7 @@ import { ModalJoinGameComponent } from './components/modal-join-game/modal-join-
 import { MenuComponent } from './components/menu/menu.component';
 import { GoogleAuthComponent } from './components/google-auth/google-auth.component';
 import { YandexAuthComponent } from './components/yandex-auth/yandex-auth.component';
+import { AnonimAuthComponent } from './components/anonim-auth/anonim-auth.component';
 
 @NgModule({
     declarations: [
@@ -45,7 +46,8 @@ import { YandexAuthComponent } from './components/yandex-auth/yandex-auth.compon
         ModalJoinGameComponent,
         MenuComponent,
         GoogleAuthComponent,
-        YandexAuthComponent
+        YandexAuthComponent,
+        AnonimAuthComponent
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule
