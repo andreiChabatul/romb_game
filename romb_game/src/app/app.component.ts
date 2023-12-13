@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import { AuthService } from './auth/auth.service';
 
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private translocoService: TranslocoService) { }
 
   ngOnInit(): void {
     this.authService.refresh();
+    const lang = localStorage.getItem('langMonopoly');
+    lang ? this.translocoService.setActiveLang(lang) : '';
   }
 
 }

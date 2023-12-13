@@ -4,7 +4,7 @@ import { mergeMap, map, take } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGamePLayer, selectGameRoom, selectIdUser } from 'src/store/selectors';
+import { selectGamePLayer, selectGameRoom, selectUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-start-turn-buttons',
@@ -13,7 +13,7 @@ import { selectGamePLayer, selectGameRoom, selectIdUser } from 'src/store/select
 })
 export class StartTurnButtonsComponent implements OnInit {
 
-  userId$ = this.store.select(selectIdUser);
+  user$ = this.store.select(selectUser);
   gameRoom$ = this.store.select(selectGameRoom);
   player$ = this.store.select(selectGamePLayer);
 
@@ -27,13 +27,13 @@ export class StartTurnButtonsComponent implements OnInit {
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
-    this.userId$.pipe(
+    this.user$.pipe(
       take(1),
-      mergeMap((userId => this.gameRoom$.pipe(
+      mergeMap((user => this.gameRoom$.pipe(
         
         map((gameRoom) => {
           gameRoom.board.forEach((cell) => {
-            if (cell.company?.owned === userId) {
+            if (cell.company?.owned === user.infoUser?.id) {
               cell.company?.isMonopoly ? this.buttons[2].show = true : '';
               cell.company?.isPledge ? this.buttons[3].show = true : '';
             }

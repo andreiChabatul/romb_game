@@ -1,8 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'src/app/types/state';
-import { OpenModal } from 'src/store/actions';
-import { selectIdUser, selectInfoCellTurn, selectInsideBoard, selectPlayerTurnId } from 'src/store/selectors';
+import { selectInfoCellTurn, selectInfoUser, selectInsideBoard, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board-turn',
@@ -15,7 +14,7 @@ export class GameBoardTurnComponent implements OnInit {
 
   insideBoard$ = this.store.select(selectInsideBoard);
   playerTurnId$ = this.store.select(selectPlayerTurnId);
-  userId$ = this.store.select(selectIdUser);
+  infoUser$ = this.store.select(selectInfoUser);
   infoCellTurn$ = this.store.select(selectInfoCellTurn);
   cheatNumbers: number[];
 

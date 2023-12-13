@@ -12,7 +12,6 @@ export interface State {
         isLogin: boolean;
         infoUser?: infoUser;
     };
-    lang: lang;
     gameRoom: gameRoom;
     insideBoard: {
         controlCompany?: controlCompanyState;
@@ -36,4 +35,3 @@ export type infoUser = {
 
 export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal' | 'auction' | 'none' | 'winner';
 export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany' | undefined;
-export type lang = 'ru' | 'en';

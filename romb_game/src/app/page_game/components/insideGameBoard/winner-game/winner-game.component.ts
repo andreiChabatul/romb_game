@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription, map, mergeMap } from 'rxjs';
 import { AppStore } from 'src/app/types/state';
-import { selectGameRoom, selectIdUser } from 'src/store/selectors';
+import { selectGameRoom, selectInfoUser, selectUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-winner-game',
@@ -12,7 +12,7 @@ import { selectGameRoom, selectIdUser } from 'src/store/selectors';
 export class WinnerGameComponent implements OnInit, OnDestroy {
 
   gameRoom$ = this.store.select(selectGameRoom);
-  userId$ = this.store.select(selectIdUser);
+  infoUser$ = this.store.select(selectInfoUser);
   nameWinner: string;
   photoWinner: string;
   subscription$: Subscription;
@@ -22,9 +22,9 @@ export class WinnerGameComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription$ = this.gameRoom$.pipe(
-      mergeMap((gameRoom) => this.userId$.pipe(
-        map((userId) => {
-          this.isWinner = (userId === gameRoom.winner);
+      mergeMap((gameRoom) => this.infoUser$.pipe(
+        map((infoUser) => {
+          this.isWinner = (infoUser?.id === gameRoom.winner);
           return gameRoom;
         })))).subscribe((gameRoom) => {
           if (gameRoom.winner) {

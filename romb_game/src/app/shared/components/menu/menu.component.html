@@ -9,7 +9,7 @@
     </button>
     <button mat-menu-item [matMenuTriggerFor]="languages">
         <div class="lang-container">
-            <img class="img-lang-choise" [src]="lang$ | async | imgAssets" alt="langImg">
+            <img class="img-lang-choise" [src]="activeLang | imgAssets" alt="langImg">
             <span class="menu-text">{{'language' | transloco}}</span>
         </div>
     </button>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'src/app/types/state';
 import { CloseModal } from 'src/store/actions';
-import { selectModal, selectModalError } from 'src/store/selectors';
+import { selectModal } from 'src/store/selectors';
 
 @Component({
   selector: 'app-modal',
@@ -12,7 +12,6 @@ import { selectModal, selectModalError } from 'src/store/selectors';
 export class ModalComponent {
 
   modal$ = this.store.select(selectModal);
-  modalError$ = this.store.select(selectModalError);
 
   constructor(private readonly store: Store<AppStore>) { }
 

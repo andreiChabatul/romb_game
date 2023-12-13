@@ -14,7 +14,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { TurnEffects } from 'src/store/effects/turn.effects';
-import { LangEffects } from 'src/store/effects/lang.effects';
 import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
 
 @NgModule({
@@ -30,7 +29,7 @@ import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
     SharedModule,
     CommonModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([TurnEffects, LangEffects]),
+    EffectsModule.forRoot([TurnEffects]),
     StoreModule.forRoot(appReducers),
     HttpClientModule,
   ],

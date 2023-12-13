@@ -4,18 +4,18 @@ import { AppActionTypes, ControlInsideBoard, } from "../actions";
 import { map, switchMap } from 'rxjs';
 import { Store } from "@ngrx/store";
 import { AppStore } from 'src/app/types/state';
-import { selectIdUser } from "../selectors";
 import { turnPayload } from "src/app/types/webSocket";
+import { selectUser } from "../selectors";
 
 @Injectable()
 export class TurnEffects {
     turn$ = createEffect(
         () => this.actionUnion$.pipe(
             ofType(AppActionTypes.UpdateTurn),
-            switchMap((action) => this.userId$.pipe(
-                map((userId) => {
+            switchMap((action) => this.user$.pipe(
+                map((user) => {
                     const payload = action['payload'] as turnPayload;
-                    return (userId === payload.turnId)
+                    return (user.infoUser?.id === payload.turnId)
                         ? new ControlInsideBoard('startButtons')
                         : new ControlInsideBoard('playerInfo');
                 })
@@ -24,5 +24,5 @@ export class TurnEffects {
     );
 
     constructor(private actionUnion$: Actions, private store: Store<AppStore>) { }
-    userId$ = this.store.select(selectIdUser);
+    user$ = this.store.select(selectUser);
 }

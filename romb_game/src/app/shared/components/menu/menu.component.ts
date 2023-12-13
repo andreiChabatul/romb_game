@@ -1,28 +1,37 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/auth/auth.service';
-import { AppStore, lang } from 'src/app/types/state';
-import { ChangeLanguage, OpenModal } from 'src/store/actions';
-import { selectIdRoom, selectInfoUser, selectLang, selectUserName } from 'src/store/selectors';
+import { AppStore } from 'src/app/types/state';
+import { OpenModal } from 'src/store/actions';
+import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
 
   @Input() size: string;
 
-  lang$ = this.store.select(selectLang);
+  activeLang: string;
   infoUser$ = this.store.select(selectInfoUser);
   idRoom$ = this.store.select(selectIdRoom);
 
-  constructor(private store: Store<AppStore>, private authService: AuthService) { }
+  constructor(
+    private store: Store<AppStore>,
+    private authService: AuthService,
+    private translocoService: TranslocoService
+  ) { }
 
+  ngOnInit(): void {
+    this.activeLang = this.translocoService.getActiveLang();
+  }
 
-  changeLang(lang: lang): void {
-    this.store.dispatch(new ChangeLanguage(lang));
+  changeLang(lang: string): void {
+    localStorage.setItem('langMonopoly', lang);
+    this.translocoService.setActiveLang(lang);
   }
 
   loginProfile(): void {

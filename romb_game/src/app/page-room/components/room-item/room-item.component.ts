@@ -6,7 +6,7 @@ import { fullPlayer, infoRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { OpenModal } from 'src/store/actions';
-import { selectIdRoom, selectIdUser } from 'src/store/selectors';
+import { selectIdRoom, selectInfoUser, selectUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-room-item',
@@ -19,7 +19,7 @@ export class RoomItemComponent implements OnChanges {
   playerArr: (fullPlayer | null)[];
   color: string;
   isJoin: boolean;
-  IdUser$ = this.store.select(selectIdUser);
+  infoUser$ = this.store.select(selectInfoUser);
   idRoom$ = this.store.select(selectIdRoom);
 
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
@@ -32,10 +32,10 @@ export class RoomItemComponent implements OnChanges {
   }
 
   checkJoin(): Observable<boolean> {
-    return this.IdUser$.pipe(
-      map((idUser) => {
+    return this.infoUser$.pipe(
+      map((infoUser) => {
         let result: boolean = true;
-        this.infoRoom.players.forEach((player) => player.id === idUser ? result = false : '');
+        this.infoRoom.players.forEach((player) => player.id === infoUser?.id ? result = false : '');
         return result;
       })
     );

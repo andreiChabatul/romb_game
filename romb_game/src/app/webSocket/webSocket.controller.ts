@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom, endGamePayload, updatePlayer } from '../types';
 import { Store } from '@ngrx/store';
 import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
-import { selectIdRoom, selectIdUser } from 'src/store/selectors';
+import { selectIdRoom, selectInfoUser, selectUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
 import { payloadSocket, turnPayload } from '../types/webSocket';
@@ -14,13 +14,13 @@ import { payloadSocket, turnPayload } from '../types/webSocket';
 export class WebSocketController {
 
   private wsSocket = io("127.0.0.1:3001");
-  private idUser$ = this.store.select(selectIdUser);
+  private infoUser$ = this.store.select(selectInfoUser);
   private idRoom$ = this.store.select(selectIdRoom);
   private idUser: string | undefined;
   private idRoom: string;
 
   constructor(private store: Store<AppStore>) {
-    this.idUser$.subscribe((id) => this.idUser = id);
+    this.infoUser$.subscribe((infoUser) => this.idUser = infoUser?.id);
     this.idRoom$.subscribe((id) => this.idRoom = id);
     this.handleMessage();
   }
