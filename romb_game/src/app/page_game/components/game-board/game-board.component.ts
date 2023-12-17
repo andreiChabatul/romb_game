@@ -17,7 +17,7 @@ export class GameBoardComponent {
   constructor(private store: Store<AppStore>) { }
 
   trackByFunction(index: number, item: gameCell) {
-    return item ? item.indexCell : undefined;
+    return item ? item.nameCell : undefined;
   }
 
   trackByPlayer(index: number, item: fullPlayer) {

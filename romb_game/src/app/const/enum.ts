@@ -32,10 +32,13 @@ export enum ACTIONS_BUTTON {
     REFUSE_DEAL = 'refuseDealButton',
     CANSEL_DEAL = 'canselDealButton',
     LEAVE_GAME = 'leaveGameButton',
-    STAY_GAME = 'stayGameButton'
+    STAY_GAME = 'stayGameButton',
+    RECONNECT_GAME = 'reconnectGame',
 }
 
 export enum EACTION_WEBSOCKET {
+    CONNECT = 'connect',
+    RECONNECT = 'reconnect',
     LIST_ROOM = 'list room',
     CONTROL_ROOM = 'control room',
     UPDATE_CHAT = 'update chat',

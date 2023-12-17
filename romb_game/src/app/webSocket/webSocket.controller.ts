@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom, endGamePayload, updatePlayer } from '../types';
 import { Store } from '@ngrx/store';
-import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
-import { selectIdRoom, selectInfoUser, selectUser } from 'src/store/selectors';
+import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, OpenModal, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore } from '../types/state';
 import { payloadSocket, turnPayload } from '../types/webSocket';
@@ -33,7 +33,6 @@ export class WebSocketController {
 
         case EACTION_WEBSOCKET.LIST_ROOM:
           const rooms = wsMessage.payload as infoRoom[];
-          console.log(rooms)
           this.store.dispatch(new UpdateRooms(rooms));
           break;
 
@@ -86,6 +85,10 @@ export class WebSocketController {
           this.store.dispatch(new EndGame(endGamePayload.winUser));
           break;
 
+        case EACTION_WEBSOCKET.RECONNECT:
+          this.store.dispatch(new OpenModal({ type: 'reconnect' }));
+          break;
+
         default:
           break;
       }
@@ -93,7 +96,6 @@ export class WebSocketController {
   }
 
   sendMessage(action: EACTION_WEBSOCKET, payload?: {}): void {
-   
     if (this.idUser) {
       this.wsSocket.send(action,
         {

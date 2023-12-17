@@ -26,12 +26,14 @@
             <img class="game-cell-company_logo" [src]="gameCell.nameCell | imgAssets" [ngClass]="{
         'game-cell-company_logo__gorizontal': cellDirections === 'left' || cellDirections === 'right'
         }" alt='name assets'>
-            <p *ngIf="!(companyInfo?.owned !== null)" class="game-cell-company_price">
-                ${{companyInfo?.priceCompany}}</p>
-            <p *ngIf="companyInfo?.owned !== null" class="game-cell-company_price">
+            <p *ngIf="companyInfo?.owned; else priceBlock" class="game-cell-company_price">
                 {{companyInfo?.rentCompany | rentPipe: companyInfo?.countryCompany}}</p>
+            <ng-template #priceBlock>
+                <p *ngIf="!(companyInfo?.owned)" class="game-cell-company_price">
+                    ${{companyInfo?.priceCompany}}</p>
+            </ng-template>
         </div>
-        <div class="game-cell-company_stock"
+        <div *ngIf="companyInfo?.shares" class="game-cell-company_stock"
             [ngClass]="{'game-cell-company_stock__gorizontal': cellDirections === 'left' || cellDirections === 'right'}">
             <img class="game-cell-company_stock__img" *ngFor="let i of [].constructor(companyInfo?.shares)"
                 [src]="companyInfo?.countryCompany | stockAssets" alt="stock image">

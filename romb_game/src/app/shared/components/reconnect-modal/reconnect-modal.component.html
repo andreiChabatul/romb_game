@@ -1,0 +1,8 @@
+<div class="reconnect-container">
+    <p class="reconnect-title">{{'reconnectTitle' | transloco}}</p>
+    <div class="reconnect-line"></div>
+    <p class="reconnect-text ">{{'reconnectText' | transloco}}</p>
+    <div class="reconnect-buttons">
+        <app-button-standart *ngFor="let button of buttons" [button]="button"></app-button-standart>
+    </div>
+</div>
