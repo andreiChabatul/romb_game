@@ -7,7 +7,7 @@ import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { typeLoading } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { StartGame } from 'src/store/actions';
+import { CloseModal, StartGame } from 'src/store/actions';
 
 @Component({
   selector: 'app-loader-time',
@@ -47,6 +47,7 @@ export class LoaderTimeComponent implements OnInit {
           this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'endAuction' });
           break;
         case 'startGame':
+          this.store.dispatch(new CloseModal());
           this.router.navigate(['game']);
           break;
         case 'endGame':

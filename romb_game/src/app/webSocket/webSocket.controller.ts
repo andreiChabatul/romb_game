@@ -86,6 +86,8 @@ export class WebSocketController {
           break;
 
         case EACTION_WEBSOCKET.RECONNECT:
+          const gameRoomReconnect = wsMessage.payload as gameRoom;
+          this.store.dispatch(new StartGame(gameRoomReconnect));
           this.store.dispatch(new OpenModal({ type: 'reconnect' }));
           break;
 

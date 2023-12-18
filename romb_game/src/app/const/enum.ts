@@ -39,6 +39,7 @@ export enum ACTIONS_BUTTON {
 export enum EACTION_WEBSOCKET {
     CONNECT = 'connect',
     RECONNECT = 'reconnect',
+    RECONNECT_ACCESS = 'reconnect_access',
     LIST_ROOM = 'list room',
     CONTROL_ROOM = 'control room',
     UPDATE_CHAT = 'update chat',

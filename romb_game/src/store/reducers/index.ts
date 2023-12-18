@@ -138,14 +138,14 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                 }
             };
 
-            case AppActionTypes.LogoutUser:
-                return{
-                    ...state,
-                    modal: { type: 'none' },
-                    user: {
-                        isLogin: false
-                    }
+        case AppActionTypes.LogoutUser:
+            return {
+                ...state,
+                modal: { type: 'none' },
+                user: {
+                    isLogin: false
                 }
+            }
 
         default:
             return state;

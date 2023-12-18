@@ -12,6 +12,11 @@ export class ReconnectModalComponent {
   buttons: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.RECONNECT_GAME, width: '12vw', height: '6vh' },
     { action: ACTIONS_BUTTON.LEAVE_GAME, width: '12vw', height: '6vh' }
-  ]
+  ];
+  isReconnect: boolean;
+
+  reconnectAccess(action: ACTIONS_BUTTON): void {
+    this.isReconnect = (action === ACTIONS_BUTTON.RECONNECT_GAME);
+  }
 
 }
