@@ -42,7 +42,7 @@ export class ModalJoinGameComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, {
       action: 'join',
-      idRoomJoin: this.idRoomJoin,
+      idRoom: this.idRoomJoin,
       colorPlayer: this.joinGame.value['colorPlayer'].value,
     });
     this.store.dispatch(new CloseModal());

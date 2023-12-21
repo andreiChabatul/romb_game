@@ -37,10 +37,7 @@ export enum ACTIONS_BUTTON {
 }
 
 export enum EACTION_WEBSOCKET {
-    CONNECT = 'connect',
     RECONNECT = 'reconnect',
-    RECONNECT_ACCESS = 'reconnect_access',
-    LIST_ROOM = 'list room',
     CONTROL_ROOM = 'control room',
     UPDATE_CHAT = 'update chat',
     UPDATE_CELL = 'update cell',
@@ -63,5 +60,7 @@ export enum ENDPOINT {
     LOGOUT = 'auth/logout',
     GOOGLE = 'auth/google',
     REFRESH = 'auth/refresh-tokens',
-    USER = 'user/'
+    USER = 'user/',
+    ROOMS_RECONNECT = 'rooms/reconnect',
+    ROOMS = 'rooms/'
 }

@@ -1,7 +1,7 @@
 import { State } from "src/app/types/state";
 import { stateApp } from "..";
 import { ActionUnion, AppActionTypes } from "../actions";
-import { EMPTY_USER } from "src/app/const";
+import { EMPTY_GAME_ROOM, EMPTY_USER } from "src/app/const";
 
 
 export const Reducers = (state = stateApp, action: ActionUnion): State => {
@@ -51,6 +51,13 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
 
         case AppActionTypes.StartGame:
             return { ...state, gameRoom: action.payload, insideBoard: { state: 'none' } };
+
+        case AppActionTypes.SetIdRoom:
+            return {
+                ...state,
+                gameRoom: { ...EMPTY_GAME_ROOM, idRoom: action.payload },
+                modal: { type: 'reconnect' }
+            };
 
         case AppActionTypes.EndGame:
             return {

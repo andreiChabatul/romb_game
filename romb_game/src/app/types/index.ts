@@ -105,6 +105,12 @@ export type createUserDto = {
     password: string;
 }
 
+export type createRoomDto = {
+    roomName: string;
+    maxPlayers: number;
+    timeTurn: number;
+}
+
 export type infoRoom = {
     maxPlayers: number,
     idRoom: string,

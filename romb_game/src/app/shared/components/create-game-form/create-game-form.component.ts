@@ -1,12 +1,15 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnDestroy, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { RoomsService } from 'src/app/rooms/rooms.services';
 import { ButtonStandart, InputTextFormOption, SelectFormOption } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { CloseModal } from 'src/store/actions';
+import { AddModalError, CloseModal } from 'src/store/actions';
 
 @Component({
   selector: 'app-create-game-form',
@@ -15,7 +18,7 @@ import { CloseModal } from 'src/store/actions';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class CreateGameFormComponent {
+export class CreateGameFormComponent implements OnInit, OnDestroy {
 
   inputForm: InputTextFormOption[] = [
     { nameForm: 'roomName', type: 'text' },
@@ -50,12 +53,18 @@ export class CreateGameFormComponent {
   ]
   createGame: FormGroup;
   textButton: ButtonStandart = { action: ACTIONS_BUTTON.CREATE_ROOM, height: '4vw', width: '18vw' };
+  subscriptin$: Subscription;
 
   constructor(private fb: FormBuilder,
     private webSocketController: WebSocketController,
     private router: Router,
-    private store: Store<AppStore>) {
+    private store: Store<AppStore>,
+    private roomsService: RoomsService) {
     this.createForm();
+  }
+
+  ngOnInit(): void {
+    this.router.navigate(['rooms']);
   }
 
   private createForm(): void {
@@ -66,17 +75,28 @@ export class CreateGameFormComponent {
     if (this.createGame.invalid) {
       this.createGame.markAllAsTouched()
       return;
-    }
-    this.store.dispatch(new CloseModal());
-    this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, {
-      action: 'create',
-      gameCreate: {
-        roomName: this.createGame.value['roomName'].value,
-        maxPlayers: this.createGame.value['maxPlayers'].value,
-        timeTurn: this.createGame.value['timeTurn'].value,
-        colorPlayer: this.createGame.value['colorPlayer'].value,
-      }
-    });
-    this.router.navigate(['rooms']);
+    };
+
+    this.subscriptin$ = this.roomsService.createRoom({
+      roomName: this.createGame.value['roomName'].value,
+      maxPlayers: Number(this.createGame.value['maxPlayers'].value),
+      timeTurn: Number(this.createGame.value['timeTurn'].value),
+    }).subscribe({
+      next: (idRoom: string) => {
+        if (idRoom) {
+          this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, {
+            action: 'join',
+            colorPlayer: this.createGame.value['colorPlayer'].value,
+            idRoom,
+          });
+          this.store.dispatch(new CloseModal());
+        };
+      },
+      error: (error: HttpErrorResponse) => this.store.dispatch(new AddModalError(error.error.message))
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptin$.unsubscribe();
   }
 }

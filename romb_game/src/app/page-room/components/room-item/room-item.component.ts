@@ -6,7 +6,7 @@ import { fullPlayer, infoRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { OpenModal } from 'src/store/actions';
-import { selectIdRoom, selectInfoUser, selectUser } from 'src/store/selectors';
+import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-room-item',
@@ -17,11 +17,10 @@ export class RoomItemComponent implements OnChanges {
 
   @Input() infoRoom: infoRoom;
   playerArr: (fullPlayer | null)[];
-  color: string;
   isJoin: boolean;
   infoUser$ = this.store.select(selectInfoUser);
   idRoom$ = this.store.select(selectIdRoom);
-
+  
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
   ngOnChanges(): void {
@@ -49,7 +48,7 @@ export class RoomItemComponent implements OnChanges {
     this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM,
       {
         action: "leave",
-        idRoomJoin: this.infoRoom.idRoom
+        idRoom: this.infoRoom.idRoom
       });
   }
 

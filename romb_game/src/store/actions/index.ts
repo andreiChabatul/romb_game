@@ -24,11 +24,17 @@ export enum AppActionTypes {
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
     InfoAuction = '[INFO AUCTION] InfoAuction',
     EndGame = '[END GAME] EndGame',
+    SetIdRoom = '[SET ID ROOM] SetIdRoom',
 };
 
 export class ControlCompany implements Action {
     readonly type = AppActionTypes.ControlCompany;
     constructor(public payload: controlCompanyState) { }
+}
+
+export class SetIdRoom implements Action {
+    readonly type = AppActionTypes.SetIdRoom;
+    constructor(public payload: string) { }
 }
 
 export class InfoCellTurnAdd implements Action {
@@ -129,7 +135,7 @@ export type ActionUnion =
     ClearModalError |
     UpdateRooms |
     LoginUser |
-    LogoutUser| 
+    LogoutUser |
     OpenInfoCell |
     ControlInsideBoard |
     InfoCellTurnAdd |
@@ -142,4 +148,5 @@ export type ActionUnion =
     ControlCompany |
     InfoAuction |
     EndTurn |
+    SetIdRoom |
     EndGame;

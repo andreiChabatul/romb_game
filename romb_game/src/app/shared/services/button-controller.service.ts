@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subscription, map } from 'rxjs';
 import { EMPTY_GAME_ROOM } from 'src/app/const';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { RoomsService } from 'src/app/rooms/rooms.services';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { OpenModal, CloseModal, ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions';
@@ -20,7 +21,8 @@ export class ButtonControllerService implements OnDestroy {
 
   constructor(private store: Store<AppStore>,
     private webSocketController: WebSocketController,
-    private router: Router) {
+    private router: Router,
+    private roomsService: RoomsService) {
     this.susbscription$ = this.user$.pipe(
       map((user) => this.isLogin = user.isLogin)).subscribe()
   }
@@ -64,7 +66,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.UPDATE_ROOM:
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.CONTROL_ROOM, { action: 'list' });
+        this.roomsService.getAllRooms();
         break;
 
       case ACTIONS_BUTTON.ADD_ROOM:
@@ -145,7 +147,7 @@ export class ButtonControllerService implements OnDestroy {
       }
 
       case ACTIONS_BUTTON.RECONNECT_GAME: {
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.RECONNECT_ACCESS);
+        this.webSocketController.sendMessage(EACTION_WEBSOCKET.RECONNECT);
         break;
       }
 
