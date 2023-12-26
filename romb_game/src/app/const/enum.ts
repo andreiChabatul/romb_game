@@ -20,7 +20,6 @@ export enum ACTIONS_BUTTON {
     BUY_STOCK = 'Buy stock',
     BUY_OUT_COMPANY = 'Buy out company',
     PAY = 'payButton',
-    PAY_RENT = 'payRentButton',
     SELL_STOCK = 'sellStockButton',
     MORTGAGE = 'mortgageButton',
     START_AUCTION = 'startAuctionButton',

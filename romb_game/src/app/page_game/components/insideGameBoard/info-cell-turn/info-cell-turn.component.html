@@ -15,7 +15,7 @@
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"
-                    [ngClass]="{'button__disable': ((button.action === 'payButton' || button.action === 'payRentButton') && isPay)}">
+                    [ngClass]="{'button__disable': ((button.action === 'payButton') && isPay)}">
                 </app-button-standart>
             </div>
         </div>
