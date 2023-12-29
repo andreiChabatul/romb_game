@@ -23,10 +23,8 @@ export class PageRoomComponent implements OnInit {
   }
 
   buttons: Button[] = [
-    { action: ACTIONS_BUTTON.UPDATE_ROOM, width: "45px" },
-    { action: ACTIONS_BUTTON.ADD_ROOM, width: "45px" },
-    { action: ACTIONS_BUTTON.SEARCH_ROOM, width: "45px" },
-    { action: ACTIONS_BUTTON.SHADOW_ROOM, width: "45px" }
+    { action: ACTIONS_BUTTON.UPDATE_ROOM, width: "3vw" },
+    { action: ACTIONS_BUTTON.ADD_ROOM, width: "3vw" }
   ]
 
 }

@@ -20,7 +20,7 @@ export class ModalRegisterComponent {
     { nameForm: 'password', type: 'password' }
   ]
   registerForm: FormGroup;
-  textButton: ButtonStandart = { action: ACTIONS_BUTTON.REGISTER, height: '4vw', width: '15vw' };
+  textButton: ButtonStandart = { action: ACTIONS_BUTTON.REGISTER, height: '4vw', width: '17vw' };
 
   constructor(
     private fb: FormBuilder,

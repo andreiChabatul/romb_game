@@ -1,11 +1,11 @@
 export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame' | 'createGame' | 'joinGame' | 'reconnect';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
-export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt';
+export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt' | 'auction';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAuction';
 export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
 export type statePlayer = 'active' | 'wait' | 'inactive';
-export type typeLoading = 'cell' | 'auction' | 'startGame' | 'endGame'
+export type typeLoading = 'cell' | 'auction' | 'startGame' | 'endGame' | 'startAuction'
 export type fullPlayer = mainPlayer & updatePlayer;
 export type offerInfo = {
     indexCompany: number[];

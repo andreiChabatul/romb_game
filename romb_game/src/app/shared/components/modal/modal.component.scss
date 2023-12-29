@@ -15,28 +15,28 @@
 .modal-container {
     min-width: 30vw;
     background: $light_blue;
-    border-radius: 20px;
-    border: 8px solid $blue;
-    padding: 6px;
-    box-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+    border-radius: 1.1vw;
+    border: 0.6vw solid $dark_grey;
+    padding: 0.3vw;
+    box-shadow: 1px 1px 2px black, 0 0 1em $pink, 0 0 0.2em $pink;
 }
 
 
 .close-modal {
     position: absolute;
-    color: $light_blue_text;
+    color: $dark_grey;
     cursor: pointer;
     transition: .3s;
     right: 3px;
     top: 3px;
 
     &:hover {
-        color: $color_cell;
+        color: $light_grey;
         transform: rotate(180deg);
     }
 
     &:active {
-        color: $orange_default
+        color: $dark_purple;
     }
 }
 
@@ -44,8 +44,8 @@
     position: relative;
     padding: 2% 3%;
     height: 100%;
-    border-radius: 10px;
-    background: linear-gradient(360deg, rgba(68, 150, 171, 1) 0%, rgba(156, 218, 238, 1) 100%);
+    border-radius: 0.7vw;
+    background: linear-gradient(125deg, rgba(216, 191, 248, 1) 0%, rgba(104, 33, 173, 1) 100%);
 }
 
 .modal-error {

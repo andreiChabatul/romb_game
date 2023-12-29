@@ -2,32 +2,36 @@
 @import "./../../../../scss/color-styles";
 
 .container-button_circle {
-    border-radius: 50%;
-}
+    padding: 0.3vw;
+    border-radius: 1.5vw;
+    transition: all .6s;
 
-.button-desc {
-    @include font_default;
-    color: $default_white;
-    font-size: 0px;
-    transition: all .3s;
-    opacity: 0;
-}
-
-.container-button_circle {
     &:hover {
-        width: max-content !important;
-        border-radius: 20px;
+        width: 9vw !important;
     }
 
     &:hover .button-desc {
+        width: auto;
         opacity: 1;
-        font-size: 12px;
+        font-size: 1vw;
+
     }
 
     &:active .button-desc {
         color: $orange_default;
     }
+
 }
+
+.button-desc {
+    @include font_default;
+    color: $default_white;
+    transition: all .3s;
+    opacity: 0;
+    width: 0;
+    transition: all .4s;
+}
+
 
 .button-action {
     transform: scale(.6);

@@ -153,5 +153,10 @@
     "reconnectTitle": "Reconnecting game",
     "reconnectGame": "Reconnecting",
     "reconnectText": "You have an active game. You can reconnect to the game or leave it.",
-    "companyInfo": "By purchasing a company, you can receive rent from other players in the future. Below is information about rental rates and stock prices.."
+    "companyInfo": "By purchasing a company, you can receive rent from other players in the future. Below is information about rental rates and stock prices.",
+    "mainPageInfo": "In this version of the classic board game Monopoly, based on trading companies, each player controls his own piece and takes turns moving around the playing field. Buy and trade companies to collect rent from other players when they land on your companies. Buy additional shares of companies to drive your opponents to bankruptcy and build the biggest monopoly.",
+    "listRoom": "List room",
+    "sync": "Refresh",
+    "add" : "Create",
+    "placeholderRoom": "Enter request..."
 }

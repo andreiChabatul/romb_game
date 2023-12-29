@@ -2,18 +2,10 @@
 @import "./../../scss/color-styles";
 
 .header-container {
-    padding: 1%;
+    padding: 0 0.5%;
     @include flex-c_s;
 }
 
 .header-logo {
-    width: 120px;
-    height: 40px;
-    background: yellow;
+    width: 5vw;
 }
-
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
-

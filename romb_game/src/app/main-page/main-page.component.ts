@@ -3,7 +3,6 @@ import { ACTIONS_BUTTON } from '../const/enum';
 import { ButtonStandart } from '../types/components';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UsersService } from '../users/users.service';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -18,8 +17,8 @@ export class MainPageComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router) { }
 
   buttons: ButtonStandart[] = [
-    { action: ACTIONS_BUTTON.NEW_GAME, width: '17vw', height: '5vw' },
-    { action: ACTIONS_BUTTON.JOIN_GAME, width: '17vw', height: '5vw' },
+    { action: ACTIONS_BUTTON.NEW_GAME, width: '18vw', height: '4vw' },
+    { action: ACTIONS_BUTTON.JOIN_GAME, width: '18vw', height: '4vw' },
   ];
 
   ngOnInit(): void {

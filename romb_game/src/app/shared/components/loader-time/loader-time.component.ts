@@ -46,6 +46,9 @@ export class LoaderTimeComponent implements OnInit {
         case 'auction':
           this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'endAuction' });
           break;
+        case 'startAuction':
+          this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'startAuction' });
+          break;
         case 'startGame':
           this.store.dispatch(new CloseModal());
           this.router.navigate(['game']);

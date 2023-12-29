@@ -44,8 +44,9 @@ p {
 
 body {
   margin: 0 !important;
-  background: url(./assets/fon.png);
-  font-family: 'Tektur', cursive;
+  padding: 4vh 2vw;
+  background: linear-gradient(125deg, rgba(216, 191, 248, 1) 0%, rgba(104, 33, 173, 1) 100%);
+  box-sizing: border-box;
 }
 
 html,
@@ -80,7 +81,7 @@ body {
 
 .animation-button {
   width: 100%;
-  height: 10px;
+  height: 2vw;
   position: absolute;
   background: $color_turquoise;
   transition: all .6s;
@@ -90,18 +91,18 @@ body {
 
 
 .button-standart {
+  padding: 0;
   @include flex-c_c;
   background: url(./assets/buttonFon.png);
   background-size: cover;
-  border: 2px solid $default_white;
+  border: 0.2vw solid $default_white;
   width: 100%;
   height: 100%;
-  border-radius: 18px;
+  border-radius: 1.5vw;
   color: $default_white;
-  font-size: 26px;
   cursor: pointer;
   z-index: 11;
-  transition: all .3s;
+  transition: all .4s;
 
   &:active {
     border: 2px solid $orange_default;
@@ -121,7 +122,7 @@ body {
   @include flex-c_c;
   position: relative;
   overflow: hidden;
-  padding: 5px;
+  padding: 2%;
 }
 
 .container-modal_switch {
@@ -133,46 +134,50 @@ body {
 
 .title-modal {
   @include font_default;
-  color: $blue;
+  color: $pink;
   font-size: 2.1vw;
   font-weight: 600;
   white-space: nowrap;
+  text-shadow: 1px 1px 2px black, 0 0 0.3em $dark_grey, 0 0 0.1em $dark_grey;
+  margin-bottom: 1vw;
 }
 
 .footer-modal_text {
   @include font_default;
-  font-size: 14px;
+  font-size: 1.1vw;
   cursor: pointer;
   transition: all .3s;
+  font-weight: 600;
 
   &:hover {
-    color: $color_cell;
+    color: $dark_purple;
     text-decoration: underline
   }
 
   &:active {
     transform: scale(0.95);
-    color: $orange_default;
+    color: $light_grey;
   }
 
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  border-radius: 15px;
-  border: 4px solid $blue;
-  background: url(./assets/fonInput.png);
-  background-size: cover;
+  border-radius: 1vw;
+  background: $default_white;
+  box-shadow:
+    inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
-  color: $blue;
+  color: $dark_grey;
   font-family: 'Tektur', cursive;
-  font-size: 22px;
+  font-size: 1.5vw;
   font-weight: 600;
 }
 
 .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
-  color: $blue;
+  color: $dark_purple;
   font-family: 'Tektur', cursive;
 }
 

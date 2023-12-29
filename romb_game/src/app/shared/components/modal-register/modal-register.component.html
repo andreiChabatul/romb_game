@@ -4,7 +4,7 @@
         [optionForm]="option"></app-input-material>
     <app-button-standart [button]="textButton"></app-button-standart>
     <div class="footer-modal-login">
-        <p class="footer-modal_text" (click)="loginOpen()">Войти в профиль</p>
+        <p class="footer-modal_text" (click)="loginOpen()">{{'logInProfile' | transloco}}</p>
         <div class="social-container">
             <app-anonim-auth [size]="'2.5vw'"></app-anonim-auth>
             <app-google-auth [size]="'2.5vw'"></app-google-auth>

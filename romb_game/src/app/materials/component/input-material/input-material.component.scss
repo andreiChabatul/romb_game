@@ -12,12 +12,12 @@
 
     &:hover {
         opacity: 1;
-        color: $blue;
+        color: $dark_purple;
     }
 
     &:active {
         transform: scale(0.95);
-        color: $orange_default;
+        color: $light_grey;
     }
 
 }

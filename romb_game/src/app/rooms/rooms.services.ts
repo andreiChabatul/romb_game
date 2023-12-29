@@ -26,6 +26,13 @@ export class RoomsService {
         return this.http.post(`${BASIC_URL}${ENDPOINT.ROOMS}`, createRoomDto, { responseType: 'text' });
     }
 
+    getRoom(reguest: string): void {
+        this.http.get(`${BASIC_URL}${ENDPOINT.ROOMS}${reguest}`).subscribe({
+            next: (rooms) => this.store.dispatch(new UpdateRooms(rooms as infoRoom[])),
+            error: (error: HttpErrorResponse) => this.store.dispatch(new AddModalError(error.error.message))
+        });
+    }
+
     reconnectRoom(idUser: string | undefined): void {
         if (idUser) {
             this.http.post(`${BASIC_URL}${ENDPOINT.ROOMS_RECONNECT}`, { idUser }, { responseType: 'text' }).subscribe(

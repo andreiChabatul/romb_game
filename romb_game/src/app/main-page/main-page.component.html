@@ -1,12 +1,11 @@
 <div class="main-page-container">
-    <p class="main-page_title">DOTS & BOXES</p>
-    <div>
-        <img class="main-img" src="./../../assets/playerOne.png" alt="krest">
-        <img class="main-img" src="./../../assets/playerTwo.png" alt="krest">
-        <img class="main-img" src="./../../assets/playerThree.png" alt="zero">
-        <img class="main-img" src="./../../assets/playerFour.png" alt="zero">
+    <div class="main-page-info">
+        <p class="main-page_title">Monopoly Game</p>
+        <div class="main-page-line"></div>
+        <p class="main-page-info_text">{{'mainPageInfo' | transloco}}</p>
+        <div class="main-page-buttons">
+            <app-button-standart *ngFor="let button of buttons" [button]="button"></app-button-standart>
+        </div>
     </div>
-    <div class="main-page-buttons">
-        <app-button-standart *ngFor="let button of buttons" [button]="button"></app-button-standart>
-    </div>
+    <img class="main-page-img" src="assets/temp.png" alt="">
 </div>

@@ -1,35 +1,35 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { InputTextFormOption } from 'src/app/types/components';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { RoomsService } from 'src/app/rooms/rooms.services';
 
 @Component({
   selector: 'app-page-room-search',
   templateUrl: './page-room-search.component.html',
   styleUrls: ['./page-room-search.component.scss']
 })
-export class PageRoomSearchComponent {
+export class PageRoomSearchComponent implements OnInit, OnDestroy {
 
-  inputForm: InputTextFormOption = { nameForm: 'searchRoom', type: 'text' }
-    
-  searchForm: FormGroup;
+  searchForm: FormControl = new FormControl();
+  subscription$: Subscription;
 
-  constructor(private fb: FormBuilder) {
-    this.createForm();
+
+  constructor(private roomsService: RoomsService) { }
+
+  ngOnInit(): void {
+    this.subscription$ = this.searchForm.valueChanges
+      .pipe(
+        debounceTime(1000),
+        distinctUntilChanged())
+      .subscribe(request => request ? this.roomsService.getRoom(request) : '')
   }
 
-  private createForm(): void {
-    this.searchForm = this.fb.group({});
+  ngOnDestroy(): void {
+    this.subscription$.unsubscribe();
   }
 
- 
-
-  onSubmit() {
-    if (this.searchForm.invalid) {
-      this.searchForm.markAllAsTouched()
-      return;
-    }
-   
+  clear(): void {
+    this.searchForm.reset();
   }
-
 
 }
