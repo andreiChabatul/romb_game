@@ -8,11 +8,11 @@ import { infoUser } from 'src/app/types/state';
 })
 export class RaitingStarsComponent {
 
-  @Input() infoUser: infoUser | undefined;
+  @Input() infoUser: infoUser;
   @Input() width: string;
 
   calcWidth(): string {
-    return ((Number(this.infoUser?.numberWin) / Number(this.infoUser?.numberGame)) * 100) + '%'
+    return ((Number(this.infoUser.numberWin) / Number(this.infoUser.numberGame)) * 100) + '%'
   }
 
 }

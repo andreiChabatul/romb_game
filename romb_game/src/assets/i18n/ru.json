@@ -158,5 +158,10 @@
     "listRoom": "Список комнат",
     "sync": "Обновить",
     "add": "Создать",
-    "placeholderRoom": "Введите запрос..."
+    "placeholderRoom": "Введите запрос...",
+    "uploadFile" : "Выберите файл",
+    "footerEditProfile" : "Для сохранения введите текущий пароль.",
+    "newNickName" : "Новый никнейм",
+    "newPassword": "Новый пароль",
+    "oldPassword": "Текущий пароль"
 }

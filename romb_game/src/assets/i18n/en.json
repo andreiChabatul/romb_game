@@ -158,5 +158,10 @@
     "listRoom": "List room",
     "sync": "Refresh",
     "add" : "Create",
-    "placeholderRoom": "Enter request..."
+    "placeholderRoom": "Enter request...",
+    "uploadFile" : "Select file",
+    "footerEditProfile" : "To save, enter your current password.",
+    "newNickName" : "New nickname",
+    "newPassword": "New password",
+    "oldPassword": "Current password"
 }

@@ -52,3 +52,12 @@
     @include font_default;
     color: $color_red;
 }
+
+.title-modal {
+    @include font_default;
+    color: $pink;
+    font-size: 2vw;
+    font-weight: 600;
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px black, 0 0 0.3em $dark_grey, 0 0 0.1em $dark_grey;
+}

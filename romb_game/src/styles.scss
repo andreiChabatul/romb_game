@@ -132,15 +132,7 @@ body {
   gap: 1vh;
 }
 
-.title-modal {
-  @include font_default;
-  color: $pink;
-  font-size: 2.1vw;
-  font-weight: 600;
-  white-space: nowrap;
-  text-shadow: 1px 1px 2px black, 0 0 0.3em $dark_grey, 0 0 0.1em $dark_grey;
-  margin-bottom: 1vw;
-}
+
 
 .footer-modal_text {
   @include font_default;

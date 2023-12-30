@@ -34,6 +34,10 @@ export class MenuComponent implements OnInit {
     this.translocoService.setActiveLang(lang);
   }
 
+  editProfile(): void {
+    this.store.dispatch(new OpenModal({ type: 'editProfile' }));
+  }
+
   loginProfile(): void {
     this.store.dispatch(new OpenModal({ type: 'login' }));
   }

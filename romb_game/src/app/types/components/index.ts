@@ -14,6 +14,7 @@ export interface OptionSelect {
 export interface InputTextFormOption {
     nameForm: string;
     type: string;
+    defaultValue?: string;
 }
 
 export interface Button {

@@ -47,7 +47,7 @@
     </button>
 </mat-menu>
 <mat-menu #profile="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="editProfile()">
         <div class="lang-container">
             <img class="img-lang-choise" src="assets/edit.png" alt="">
             <span class="menu-text">{{'editProfile' | transloco}}</span>

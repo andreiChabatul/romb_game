@@ -17,8 +17,9 @@ export class InputMaterialComponent implements OnChanges {
   constructor(private fb: FormBuilder) { }
 
   private createForm(): void {
+    const value = this.type === 'color' ? this.randomColor() : ''
     this.inputForm = this.fb.group({
-      value: [this.type === 'color' ? this.randomColor() : '', [Validators.required]],
+      value: [this.optionForm.defaultValue ? this.optionForm.defaultValue : value, [Validators.required]],
     });
   }
 
