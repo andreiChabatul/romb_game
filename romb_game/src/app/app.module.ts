@@ -15,6 +15,7 @@ import { AuthService } from './auth/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { TurnEffects } from 'src/store/effects/turn.effects';
 import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
     MainPageComponent
   ],
   imports: [
+    ModalModule,
     BrowserModule,
     AppRoutingModule,
     PageGameModule,

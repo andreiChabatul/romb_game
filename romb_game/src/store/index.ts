@@ -13,7 +13,7 @@ export const stateApp: State = {
     },
     rooms: [],
     modal: {
-        type: 'none',
+        type: 'editProfile',
         modalError: ''
     }
 };
