@@ -122,17 +122,15 @@ body {
   @include flex-c_c;
   position: relative;
   overflow: hidden;
-  padding: 2%;
+  padding: 0.3vw;
 }
 
 .container-modal_switch {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 1vh;
+  gap: 0.7vw;
 }
-
-
 
 .footer-modal_text {
   @include font_default;

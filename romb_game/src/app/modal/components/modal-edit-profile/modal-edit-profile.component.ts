@@ -21,7 +21,7 @@ export class ModalEditProfileComponent implements OnInit, OnDestroy {
   subscriptionInput$: Subscription;
   editProfile: FormGroup;
   inputForm: InputTextFormOption[];
-  saveButton: ButtonStandart = { action: ACTIONS_BUTTON.EDIT_PROFILE, height: '4vw', width: '20vw' };
+  saveButton: ButtonStandart = { action: ACTIONS_BUTTON.EDIT_PROFILE, height: '3.5vw', width: '20vw' };
   avatar: string;
 
   constructor(private fb: FormBuilder, private store: Store<AppStore>) {

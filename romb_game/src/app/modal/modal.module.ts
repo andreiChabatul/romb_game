@@ -12,6 +12,7 @@ import { CreateGameFormComponent } from './components/create-game-form/create-ga
 import { SharedModule } from '../shared/shared.module';
 import { MaterialsModule } from '../materials/materials.module';
 import { TranslocoRootModule } from '../transloco-root.module';
+import { ModalDeleteProfileComponent } from './components/modal-delete-profile/modal-delete-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TranslocoRootModule } from '../transloco-root.module';
     ModalJoinGameComponent,
     ModalInfoCellComponent,
     ReconnectModalComponent,
-    CreateGameFormComponent
+    CreateGameFormComponent,
+    ModalDeleteProfileComponent
   ],
   imports: [
     CommonModule,

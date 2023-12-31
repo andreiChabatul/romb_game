@@ -38,6 +38,10 @@ export class MenuComponent implements OnInit {
     this.store.dispatch(new OpenModal({ type: 'editProfile' }));
   }
 
+  deleteProfile(): void {
+    this.store.dispatch(new OpenModal({ type: 'deleteProfile' }));
+  }
+
   loginProfile(): void {
     this.store.dispatch(new OpenModal({ type: 'login' }));
   }

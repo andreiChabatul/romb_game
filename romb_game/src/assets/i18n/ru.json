@@ -163,5 +163,7 @@
     "footerEditProfile" : "Для сохранения введите текущий пароль.",
     "newNickName" : "Новый никнейм",
     "newPassword": "Новый пароль",
-    "oldPassword": "Текущий пароль"
+    "oldPassword": "Текущий пароль",
+    "deleteProfile": "Удалить профиль",
+    "deleteProfileDesc": "Для удаления профиля введите текущий логин и пароль."
 }

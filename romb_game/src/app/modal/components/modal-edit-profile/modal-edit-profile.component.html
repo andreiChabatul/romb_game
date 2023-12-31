@@ -1,5 +1,5 @@
-<div class="edit-profile-container" *ngIf="infoUser">
-    <p>{{infoUser.nickName}}</p>
+<div class="edit-profile-container container-modal_switch" *ngIf="infoUser">
+    <p class="edit-profile-nickName">{{infoUser.nickName}}</p>
     <div class="edit-profile-img">
         <div class="edit-profile-upload">
             <input id="upload_image" type="file" class="edit-profile-upload-input" (change)="inputFileAvatar($event)">

@@ -31,7 +31,8 @@ export enum ACTIONS_BUTTON {
     LEAVE_GAME = 'leaveGameButton',
     STAY_GAME = 'stayGameButton',
     RECONNECT_GAME = 'reconnectGame',
-    EDIT_PROFILE ='editProfile'
+    EDIT_PROFILE ='editProfile',
+    DELETE_PROFILE ='deleteProfile'
 }
 
 export enum EACTION_WEBSOCKET {

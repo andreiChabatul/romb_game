@@ -14,7 +14,7 @@ export const stateApp: State = {
     },
     rooms: [],
     modal: {
-        type: 'editProfile',
+        type: 'deleteProfile',
         modalError: ''
     }
 };

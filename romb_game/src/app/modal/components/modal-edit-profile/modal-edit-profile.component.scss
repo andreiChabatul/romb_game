@@ -2,9 +2,12 @@
 @import "./../../../../scss/default-styles";
 
 .edit-profile-container {
-    @include flex-c_s;
-    flex-direction: column;
-    gap: 1vw;
+    align-items: center;
+}
+
+.edit-profile-nickName {
+    @include font-default;
+    font-weight: 600;
 }
 
 .edit-profile-img {

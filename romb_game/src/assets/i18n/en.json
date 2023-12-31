@@ -163,5 +163,7 @@
     "footerEditProfile" : "To save, enter your current password.",
     "newNickName" : "New nickname",
     "newPassword": "New password",
-    "oldPassword": "Current password"
+    "oldPassword": "Current password",
+    "deleteProfile": "Delete profile",
+    "deleteProfileDesc": "To delete a profile, enter your current login and password."
 }
