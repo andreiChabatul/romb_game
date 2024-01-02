@@ -7,7 +7,8 @@ import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { RoomsService } from 'src/app/rooms/rooms.services';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { OpenModal, CloseModal, ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions';
+import { ControlCompany } from 'src/store/actions/gameActions';
+import { closeModal, openModal } from 'src/store/actions/modalActions';
 import { selectUser } from 'src/store/selectors';
 
 @Injectable({
@@ -32,14 +33,14 @@ export class ButtonControllerService implements OnDestroy {
 
       case ACTIONS_BUTTON.NEW_GAME:
         (this.isLogin)
-          ? this.store.dispatch(new OpenModal({ type: 'createGame' }))
-          : this.store.dispatch(new OpenModal({ type: 'logInProfile' }));
+          ? this.store.dispatch(openModal({ payload: { modalState: 'createGame' } }))
+          : this.store.dispatch(openModal({ payload: { modalState: 'logInProfile' } }));
         break;
 
       case ACTIONS_BUTTON.JOIN_GAME:
         (this.isLogin)
           ? this.router.navigate(['rooms'])
-          : this.store.dispatch(new OpenModal({ type: 'logInProfile' }));
+          : this.store.dispatch(openModal({ payload: { modalState: 'logInProfile' } }));
         break;
 
       case ACTIONS_BUTTON.UPDATE_ROOM:
@@ -47,11 +48,11 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.ADD_ROOM:
-        this.store.dispatch(new OpenModal({ type: 'createGame' }));
+        this.store.dispatch(openModal({ payload: { modalState: 'createGame' } }));
         break;
 
       case ACTIONS_BUTTON.BUY_STOCK:
-        this.store.dispatch(new ControlCompany('buyStock'));
+        this.store.dispatch(ControlCompany({ controlCompany: 'buyStock' }));
         break;
 
       case ACTIONS_BUTTON.SELL_STOCK:
@@ -113,7 +114,7 @@ export class ButtonControllerService implements OnDestroy {
       case ACTIONS_BUTTON.LEAVE_GAME: {
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'leave' });
         this.store.dispatch(new StartGame(EMPTY_GAME_ROOM));
-        this.store.dispatch(new CloseModal());
+        this.store.dispatch(closeModal());
         this.router.navigate(['rooms']);
         break;
       }

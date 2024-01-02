@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, endGamePayload, updatePlayer } from '../types';
 import { Store } from '@ngrx/store';
-import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
+import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore, gameRoom } from '../types/state';
 import { payloadSocket, turnPayload } from '../types/webSocket';
+import { UpdateRooms } from 'src/store/actions/roomsActions';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,8 @@ export class WebSocketController {
       switch (wsMessage.action) {
 
         case EACTION_WEBSOCKET.CONTROL_ROOM:
-          const rooms = wsMessage.payload as infoRoom[];
-          this.store.dispatch(new UpdateRooms(rooms));
+          const infoRoom = wsMessage.payload as infoRoom[];
+          this.store.dispatch(UpdateRooms({ infoRoom }));
           break;
 
         case EACTION_WEBSOCKET.INFO_CELL_TURN:

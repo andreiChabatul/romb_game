@@ -13,9 +13,9 @@ import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { EffectsModule } from '@ngrx/effects';
-import { TurnEffects } from 'src/store/effects/turn.effects';
 import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
 import { ModalModule } from './modal/modal.module';
+import { TurnEffects } from 'src/store/effects/turn.effects';
 
 @NgModule({
   declarations: [

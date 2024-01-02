@@ -9,7 +9,7 @@ import { RoomsService } from 'src/app/rooms/rooms.services';
 import { ButtonStandart, InputTextFormOption, SelectFormOption } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { AddModalError, CloseModal } from 'src/store/actions';
+import { addModalError, closeModal } from 'src/store/actions/modalActions';
 
 @Component({
   selector: 'app-create-game-form',
@@ -89,10 +89,10 @@ export class CreateGameFormComponent implements OnInit, OnDestroy {
             colorPlayer: this.createGame.value['colorPlayer'].value,
             idRoom,
           });
-          this.store.dispatch(new CloseModal());
+          this.store.dispatch(closeModal());
         };
       },
-      error: (error: HttpErrorResponse) => this.store.dispatch(new AddModalError(error.error.message))
+      error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
     })
   }
 

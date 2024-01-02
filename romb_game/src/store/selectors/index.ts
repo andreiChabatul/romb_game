@@ -1,15 +1,18 @@
+
 import { createSelector } from "@ngrx/store";
-import { AppStore, State } from "src/app/types/state";
+import { AppStore, gameRoom, modalStore, userStore } from "src/app/types/state";
 
-const select = (state: AppStore) => state.state;
+const select = (state: AppStore) => state;
+const selectmodal = (state: AppStore) => state.modalStore;
+const selectuser = (state: AppStore) => state.userStore;
+const selectGame = (state: AppStore) => state.gameStore;
 
-export const selectGameRoom = createSelector(select, (state: State) => state.gameRoom);
-export const selectAllPlayerArr = createSelector(select, (state: State) => Object.values(state.gameRoom.players));
-export const selectGamePLayer = createSelector(select, (state: State) => state.gameRoom.players[String(state.user.infoUser?.id)]);
-export const selectPlayerTurnId = createSelector(select, (state: State) => state.gameRoom.turnId);
-export const selectIdRoom = createSelector(select, (state: State) => state.gameRoom.idRoom);
-export const selectInsideBoard = createSelector(select, (state: State) => state.gameRoom.insideBoard);
-export const selectUser = createSelector(select, (state: State) => state.user);
-export const selectInfoUser = createSelector(select, (state: State) => state.user.infoUser);
-export const selectModal = createSelector(select, (state: State) => state.modal);
-export const selectRooms = createSelector(select, (state: State) => state.rooms);
+export const selectModal = createSelector(selectmodal, (state: modalStore) => state);
+export const selectUser = createSelector(selectuser, (state: userStore) => state);
+export const selectInfoUser = createSelector(selectuser, (state: userStore) => state.infoUser);
+export const selectRooms = createSelector(select, (state: AppStore) => state.roomsStore);
+export const selectGameRoom = createSelector(selectGame, (state: gameRoom) => state);
+export const selectAllPlayerArr = createSelector(selectGame, (state: gameRoom) => Object.values(state.players));
+export const selectGamePLayer = createSelector(selectGame, (state: gameRoom) => state.players['String(state.user.infoUser?.id)']);
+export const selectPlayerTurnId = createSelector(selectGame, (state: gameRoom) => state.turnId);
+export const selectIdRoom = createSelector(selectGame, (state: gameRoom) => state.idRoom);

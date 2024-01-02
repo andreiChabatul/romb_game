@@ -1,22 +1,21 @@
-import { infoRoom, infoCellTurn, modal, chatMessage, playersGame, gameCell, offerDealInfo, infoAuction } from ".";
-
-export interface State {
-
-    modal: {
-        type: modal,
-        modalError?: string;
-        payload?: number | string;
-    };
-    rooms: infoRoom[];
-    user: {
-        isLogin: boolean;
-        infoUser?: infoUser;
-    };
-    gameRoom: gameRoom;
-}
+import { infoRoom, infoCellTurn, chatMessage, playersGame, gameCell, offerDealInfo, infoAuction, modalState } from ".";
 
 export interface AppStore {
-    state: State;
+    modalStore: modalStore;
+    userStore: userStore;
+    roomsStore: infoRoom[];
+    gameStore: gameRoom;
+}
+
+export type modalStore = {
+    modalState: modalState,
+    modalError?: string;
+    payload?: number | string;
+}
+
+export type userStore = {
+    isLogin: boolean;
+    infoUser?: infoUser;
 }
 
 export type infoUser = {
@@ -41,9 +40,7 @@ export interface gameRoom {
     offerDealInfo?: offerDealInfo;
     infoAuction?: infoAuction;
     winner?: string;
-    insideBoard?: {
-        controlCompany?: controlCompanyState;
-        state?: insideBoardState,
-        infoCellTurn?: infoCellTurn,
-    }
+    controlCompany?: controlCompanyState;
+    insideBoardState?: insideBoardState,
+    infoCellTurn?: infoCellTurn,
 }

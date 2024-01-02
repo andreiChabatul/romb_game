@@ -6,7 +6,7 @@ import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { gameCell, infoCellButtons } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGamePLayer, selectGameRoom, selectInsideBoard } from 'src/store/selectors';
+import { selectGamePLayer, selectGameRoom } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.PAY, width: '13vw', height: '6vh' },
@@ -35,7 +35,6 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
 
   buttonsResult: ButtonStandart[] = [];
   gameRoom$ = this.store.select(selectGameRoom);
-  insideBoard$ = this.store.select(selectInsideBoard);
   gamePlayer$ = this.store.select(selectGamePLayer);
   cell: gameCell;
   subscription$: Subscription;
@@ -50,7 +49,7 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
         map((player) => {
           return { gameRoom, player };
         })))).subscribe(value => {
-          const infoCellTurn = value.gameRoom.insideBoard?.infoCellTurn;
+          const infoCellTurn = value.gameRoom.infoCellTurn;
           if (infoCellTurn) {
             this.cell = value.gameRoom.board[infoCellTurn.indexCompany];
             this.buttonsResult = this.updateButtons(infoCellTurn.buttons);

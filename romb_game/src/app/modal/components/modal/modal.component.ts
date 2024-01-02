@@ -6,7 +6,8 @@ import { EMPTY_GAME_ROOM } from 'src/app/const';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { CloseModal, StartGame } from 'src/store/actions';
+import { StartGame } from 'src/store/actions';
+import { closeModal } from 'src/store/actions/modalActions';
 import { selectModal } from 'src/store/selectors';
 
 @Component({
@@ -23,13 +24,13 @@ export class ModalComponent implements OnDestroy {
 
   closeModal(): void {
     this.subscription$ = this.modal$.subscribe((modal) => {
-      if (modal.type === 'reconnectGame') {
+      if (modal.modalState === 'reconnectGame') {
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'leave' });
         this.store.dispatch(new StartGame(EMPTY_GAME_ROOM));
         this.router.navigate(['rooms']);
       };
     });
-    this.store.dispatch(new CloseModal());
+    this.store.dispatch(closeModal());
   }
 
   ngOnDestroy(): void {

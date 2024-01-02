@@ -5,8 +5,10 @@ import { ENDPOINT } from '../const/enum';
 import { BASIC_URL } from '../const';
 import { AppStore } from '../types/state';
 import { Store } from '@ngrx/store';
-import { AddModalError, SetIdRoom, UpdateRooms } from 'src/store/actions';
 import { Observable } from 'rxjs';
+import { addModalError } from 'src/store/actions/modalActions';
+import { UpdateRooms } from 'src/store/actions/roomsActions';
+import { SetIdRoom } from 'src/store/actions/gameActions';
 
 @Injectable({
     providedIn: 'root'
@@ -17,8 +19,8 @@ export class RoomsService {
 
     getAllRooms(): void {
         this.http.get(`${BASIC_URL}${ENDPOINT.ROOMS}`).subscribe({
-            next: (rooms) => this.store.dispatch(new UpdateRooms(rooms as infoRoom[])),
-            error: (error: HttpErrorResponse) => this.store.dispatch(new AddModalError(error.error.message))
+            next: (rooms) => this.store.dispatch(UpdateRooms({ infoRoom: rooms as infoRoom[] })),
+            error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
         });
     }
 
@@ -28,15 +30,15 @@ export class RoomsService {
 
     getRoom(reguest: string): void {
         this.http.get(`${BASIC_URL}${ENDPOINT.ROOMS}${reguest}`).subscribe({
-            next: (rooms) => this.store.dispatch(new UpdateRooms(rooms as infoRoom[])),
-            error: (error: HttpErrorResponse) => this.store.dispatch(new AddModalError(error.error.message))
+            next: (rooms) => this.store.dispatch(UpdateRooms({ infoRoom: rooms as infoRoom[] })),
+            error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
         });
     }
 
     reconnectRoom(idUser: string | undefined): void {
         if (idUser) {
             this.http.post(`${BASIC_URL}${ENDPOINT.ROOMS_RECONNECT}`, { idUser }, { responseType: 'text' }).subscribe(
-                (idRoom) => idRoom ? this.store.dispatch(new SetIdRoom(idRoom)) : ''
+                (idRoom) => idRoom ? this.store.dispatch(SetIdRoom({ idRoom })) : ''
             )
         }
     }

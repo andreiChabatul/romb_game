@@ -4,10 +4,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BASIC_URL } from '../const';
 import { ENDPOINT } from '../const/enum';
 import { Store } from '@ngrx/store';
-import { AddModalError, ClearModalError } from 'src/store/actions';
-import { LoginUser } from 'src/store/actions';
 import { AppStore } from '../types/state';
 import { UsersService } from '../users/users.service';
+import { addModalError, clearModalError } from 'src/store/actions/modalActions';
 
 @Injectable()
 export class AuthService {
@@ -20,23 +19,23 @@ export class AuthService {
     constructor(private http: HttpClient, private store: Store<AppStore>, private users: UsersService) { }
 
     register(createUserDto: createUserDto): void {
-        this.store.dispatch(new ClearModalError());
+        this.store.dispatch(clearModalError());
         this.http.post(`${BASIC_URL}${ENDPOINT.REG}`, createUserDto).subscribe({
             next: (value: Partial<ResponseAuth>) => this.setToken(value),
-            error: (error: HttpErrorResponse) => this.store.dispatch(new AddModalError(error.error.message))
+            error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
         })
     }
 
     login(createUserDto: createUserDto): void {
-        this.store.dispatch(new ClearModalError());
+        this.store.dispatch(clearModalError());
         this.http.post(`${BASIC_URL}${ENDPOINT.LOGIN}`, createUserDto, this.httpOptions).subscribe({
             next: (value: Partial<ResponseAuth>) => this.setToken(value),
-            error: (error: HttpErrorResponse) => this.store.dispatch(new AddModalError(error.error.message))
+            error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
         })
     }
 
     logout(): void {
-        this.store.dispatch(new ClearModalError());
+        this.store.dispatch(clearModalError());
         this.http.get(`${BASIC_URL}${ENDPOINT.LOGOUT}`, this.httpOptions).subscribe();
         this.users.logOut();
     }

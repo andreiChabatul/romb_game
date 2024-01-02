@@ -5,7 +5,7 @@ import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { fullPlayer, infoRoom } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { OpenModal } from 'src/store/actions';
+import { openModal } from 'src/store/actions/modalActions';
 import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 
 @Component({
@@ -20,7 +20,7 @@ export class RoomItemComponent implements OnChanges {
   isJoin: boolean;
   infoUser$ = this.store.select(selectInfoUser);
   idRoom$ = this.store.select(selectIdRoom);
-  
+
   constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
 
   ngOnChanges(): void {
@@ -41,7 +41,7 @@ export class RoomItemComponent implements OnChanges {
   }
 
   joinRoom(): void {
-    this.store.dispatch(new OpenModal({ type: 'joinGame', payload: this.infoRoom.idRoom }));
+    this.store.dispatch(openModal({ payload: { modalState: 'joinGame', payload: this.infoRoom.idRoom } }));
   }
 
   leaveRoom(): void {
