@@ -1,10 +1,8 @@
 @import "./../../../../scss/color-styles";
 @import "./../../../../scss/default-styles";
 
-
-
 .info-player {
-    @include fon-blue;
+    @include fon-white;
     margin-bottom: 10px;
 }
 

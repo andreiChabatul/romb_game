@@ -4,9 +4,6 @@ import { Reducers } from './reducers';
 import { EMPTY_GAME_ROOM, EMPTY_USER } from 'src/app/const';
 
 export const stateApp: State = {
-    insideBoard: {
-        state: 'none',
-    },
     gameRoom: EMPTY_GAME_ROOM,
     user: {
         isLogin: false,
@@ -14,7 +11,7 @@ export const stateApp: State = {
     },
     rooms: [],
     modal: {
-        type: 'deleteProfile',
+        type: 'none',
         modalError: ''
     }
 };

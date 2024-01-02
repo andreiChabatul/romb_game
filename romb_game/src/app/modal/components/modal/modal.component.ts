@@ -23,7 +23,7 @@ export class ModalComponent implements OnDestroy {
 
   closeModal(): void {
     this.subscription$ = this.modal$.subscribe((modal) => {
-      if (modal.type === 'reconnect') {
+      if (modal.type === 'reconnectGame') {
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'leave' });
         this.store.dispatch(new StartGame(EMPTY_GAME_ROOM));
         this.router.navigate(['rooms']);

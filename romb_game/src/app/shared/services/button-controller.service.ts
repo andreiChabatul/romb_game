@@ -30,39 +30,16 @@ export class ButtonControllerService implements OnDestroy {
   actionButton(action: ACTIONS_BUTTON) {
     switch (action) {
 
-      case ACTIONS_BUTTON.CREATE_ROOM:
-        break;
-
       case ACTIONS_BUTTON.NEW_GAME:
         (this.isLogin)
           ? this.store.dispatch(new OpenModal({ type: 'createGame' }))
-          : this.store.dispatch(new OpenModal({ type: 'login' }));
+          : this.store.dispatch(new OpenModal({ type: 'logInProfile' }));
         break;
 
       case ACTIONS_BUTTON.JOIN_GAME:
         (this.isLogin)
           ? this.router.navigate(['rooms'])
-          : this.store.dispatch(new OpenModal({ type: 'login' }));
-        break;
-
-      case ACTIONS_BUTTON.SETTING:
-        console.log('setting')
-        break;
-
-      case ACTIONS_BUTTON.HELP:
-        console.log('help')
-        break;
-
-      case ACTIONS_BUTTON.INFO:
-        console.log('info')
-        break;
-
-      case ACTIONS_BUTTON.LOG_OUT:
-        console.log('log_out')
-        break;
-
-      case ACTIONS_BUTTON.LOG_IN:
-        this.store.dispatch(new OpenModal({ type: 'login' }));
+          : this.store.dispatch(new OpenModal({ type: 'logInProfile' }));
         break;
 
       case ACTIONS_BUTTON.UPDATE_ROOM:

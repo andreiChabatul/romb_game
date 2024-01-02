@@ -3,7 +3,6 @@ import { stateApp } from "..";
 import { ActionUnion, AppActionTypes } from "../actions";
 import { EMPTY_GAME_ROOM, EMPTY_USER } from "src/app/const";
 
-
 export const Reducers = (state = stateApp, action: ActionUnion): State => {
     switch (action.type) {
         case AppActionTypes.CloseModal:
@@ -42,30 +41,33 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.InfoCellTurn: {
             return {
                 ...state,
-                insideBoard: {
-                    infoCellTurn: action.payload,
-                    state: 'infoCellTurn'
+                gameRoom: {
+                    ...state.gameRoom,
+                    insideBoard: {
+                        infoCellTurn: action.payload,
+                        state: 'infoCellTurn'
+                    }
                 }
             };
         }
 
         case AppActionTypes.StartGame:
-            return { ...state, gameRoom: action.payload, insideBoard: { state: 'none' } };
+            return { ...state, gameRoom: action.payload };
 
         case AppActionTypes.SetIdRoom:
             return {
                 ...state,
                 gameRoom: { ...EMPTY_GAME_ROOM, idRoom: action.payload },
-                modal: { type: 'reconnect' }
+                modal: { type: 'reconnectGame' }
             };
 
         case AppActionTypes.EndGame:
             return {
                 ...state,
-                insideBoard: { state: 'winner' },
-                gameRoom: { ...state.gameRoom, winner: action.payload }
+                gameRoom: {
+                    ...state.gameRoom, winner: action.payload, insideBoard: { state: 'winner' }
+                }
             }
-
 
         case AppActionTypes.UpdateCell:
             const newBoard = state.gameRoom.board.map((cell, index) =>
@@ -84,18 +86,24 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
         case AppActionTypes.ControlCompany:
             return {
                 ...state,
-                insideBoard: {
-                    ...state.insideBoard,
-                    controlCompany: action.payload
+                gameRoom: {
+                    ...state.gameRoom,
+                    insideBoard: {
+                        ...state.gameRoom.insideBoard,
+                        controlCompany: action.payload
+                    }
                 }
             };
 
         case AppActionTypes.ControlInsideBoard:
             return {
                 ...state,
-                insideBoard: {
-                    ...state.insideBoard,
-                    state: action.payload
+                gameRoom: {
+                    ...state.gameRoom,
+                    insideBoard: {
+                        ...state.gameRoom.insideBoard,
+                        state: action.payload
+                    }
                 }
             };
 
@@ -105,32 +113,33 @@ export const Reducers = (state = stateApp, action: ActionUnion): State => {
                 gameRoom: {
                     ...state.gameRoom,
                     infoAuction: action.payload,
+                    insideBoard: {
+                        state: 'auction',
+                    }
                 },
-                insideBoard: {
-                    state: 'auction',
-                }
             };
 
         case AppActionTypes.SetOfferDealInfo:
             return {
                 ...state,
-                gameRoom: { ...state.gameRoom, offerDealInfo: action.payload },
-                insideBoard: { state: 'receiveDeal' }
+                gameRoom: { ...state.gameRoom, offerDealInfo: action.payload, insideBoard: { state: 'receiveDeal' } },
+
             };
 
-        case AppActionTypes.OpenInfoCell: {
+        case AppActionTypes.OpenInfoCell:
             return { ...state, modal: { ...state.modal, type: 'infoCell', payload: action.payload } };
-        }
 
-        case AppActionTypes.EndTurn: {
+        case AppActionTypes.EndTurn:
             return {
                 ...state,
-                insideBoard: {
-                    infoCellTurn: undefined,
-                    state: 'playerInfo'
+                gameRoom: {
+                    ...state.gameRoom,
+                    insideBoard: {
+                        infoCellTurn: undefined,
+                        state: 'playerInfo'
+                    }
                 }
             };
-        }
 
         case AppActionTypes.UpdateChatRoom:
             return { ...state, gameRoom: { ...state.gameRoom, chat: [...state.gameRoom.chat, action.payload] } };

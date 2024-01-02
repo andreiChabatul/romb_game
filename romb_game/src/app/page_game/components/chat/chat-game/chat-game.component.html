@@ -4,7 +4,8 @@
     </div>
     <div class="chat-area">
         <div class="chat-area_message">
-            <app-chat-message *ngFor="let message of chat$ | async" [message]="message"></app-chat-message>
+            <app-chat-message *ngFor="let message of gameRoom.chat" [message]="message"
+                [players]="gameRoom.players"></app-chat-message>
         </div>
         <app-chat-input class="chat-input"></app-chat-input>
     </div>

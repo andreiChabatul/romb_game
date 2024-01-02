@@ -6,7 +6,7 @@ import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { gameCell, infoCellButtons } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGamePLayer, selectGameRoom, selectInfoCellTurn } from 'src/store/selectors';
+import { selectGamePLayer, selectGameRoom, selectInsideBoard } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.PAY, width: '13vw', height: '6vh' },
@@ -34,8 +34,8 @@ const buttons: ButtonStandart[] = [
 export class InfoCellTurnComponent implements OnInit, OnDestroy {
 
   buttonsResult: ButtonStandart[] = [];
-  infoCellTurn$ = this.store.select(selectInfoCellTurn);
   gameRoom$ = this.store.select(selectGameRoom);
+  insideBoard$ = this.store.select(selectInsideBoard);
   gamePlayer$ = this.store.select(selectGamePLayer);
   cell: gameCell;
   subscription$: Subscription;
@@ -45,18 +45,18 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.subscription$ = this.infoCellTurn$.pipe(
-      switchMap((infoCellTurn) => this.gameRoom$.pipe(
-        switchMap((gameBoard) => this.gamePlayer$.pipe(
-          map((player) => {
-            return { infoCellTurn, gameBoard, player };
-          })))))).subscribe(value => {
-            if (value.infoCellTurn) {
-              this.cell = value.gameBoard.board[value.infoCellTurn.indexCompany];
-              this.buttonsResult = this.updateButtons(value.infoCellTurn.buttons);
-              this.isPay = value.player.total < Number(value.infoCellTurn.value);
-            }
-          });
+    this.subscription$ = this.gameRoom$.pipe(
+      switchMap((gameRoom) => this.gamePlayer$.pipe(
+        map((player) => {
+          return { gameRoom, player };
+        })))).subscribe(value => {
+          const infoCellTurn = value.gameRoom.insideBoard?.infoCellTurn;
+          if (infoCellTurn) {
+            this.cell = value.gameRoom.board[infoCellTurn.indexCompany];
+            this.buttonsResult = this.updateButtons(infoCellTurn.buttons);
+            this.isPay = value.player.total < Number(infoCellTurn.value);
+          }
+        });
   }
 
   private updateButtons(type: infoCellButtons): ButtonStandart[] {

@@ -1,4 +1,4 @@
-import { gameRoom, infoRoom, infoCellTurn, modal } from ".";
+import { infoRoom, infoCellTurn, modal, chatMessage, playersGame, gameCell, offerDealInfo, infoAuction } from ".";
 
 export interface State {
 
@@ -13,11 +13,6 @@ export interface State {
         infoUser?: infoUser;
     };
     gameRoom: gameRoom;
-    insideBoard: {
-        controlCompany?: controlCompanyState;
-        state: insideBoardState,
-        infoCellTurn?: infoCellTurn,
-    }
 }
 
 export interface AppStore {
@@ -33,5 +28,22 @@ export type infoUser = {
     numberWin: number;
 }
 
-export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal' | 'auction' | 'none' | 'winner';
+export type insideBoardState = 'playerInfo' | 'diceRoll' | 'startButtons' | 'infoCellTurn' | 'offerDeal' | 'receiveDeal' | 'auction' | 'winner' | undefined;
 export type controlCompanyState = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany' | undefined;
+
+export interface gameRoom {
+    chat: chatMessage[];
+    idRoom: string;
+    players: playersGame;
+    board: gameCell[];
+    turnId: string;
+    timeTurn: number;
+    offerDealInfo?: offerDealInfo;
+    infoAuction?: infoAuction;
+    winner?: string;
+    insideBoard?: {
+        controlCompany?: controlCompanyState;
+        state?: insideBoardState,
+        infoCellTurn?: infoCellTurn,
+    }
+}

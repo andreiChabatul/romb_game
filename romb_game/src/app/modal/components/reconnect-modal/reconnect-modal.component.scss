@@ -1,12 +1,6 @@
 @import "./../../../../scss/color-styles";
 @import "./../../../../scss/default-styles";
 
-.reconnect-title {
-    @include font-default;
-    font-weight: 600;
-    font-size: 1.5vw;
-}
-
 .reconnect-text {
     @include font-default;
     font-size: 1.1vw;
@@ -17,14 +11,6 @@
 .reconnect-buttons {
     @include flex_c-c;
     gap: 1vw;
-}
-
-.reconnect-line {
-    width: 95%;
-    height: 0.5vh;
-    background: $light_blue_text;
-    margin: 0 auto;
-    margin-bottom: 1vh;
 }
 
 .reconnect-buttons {

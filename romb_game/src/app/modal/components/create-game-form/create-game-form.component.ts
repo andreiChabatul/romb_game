@@ -52,7 +52,7 @@ export class CreateGameFormComponent implements OnInit, OnDestroy {
     }
   ]
   createGame: FormGroup;
-  textButton: ButtonStandart = { action: ACTIONS_BUTTON.CREATE_ROOM, height: '4vw', width: '18vw' };
+  textButton: ButtonStandart = { action: ACTIONS_BUTTON.CREATE_GAME, height: '4vw', width: '18vw' };
   subscriptin$: Subscription;
 
   constructor(private fb: FormBuilder,

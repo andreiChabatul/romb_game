@@ -1,4 +1,4 @@
 <div class="company-control-container">
-    <p class="company-control_desc">{{(controlCompanyState$ | async)+ 'Desc' | transloco}}</p>
+    <p class="company-control_desc">{{(insideBoard$ | async)?.controlCompany + 'Desc' | transloco}}</p>
     <app-button-standart [button]="buttonFinish"></app-button-standart>
 </div>

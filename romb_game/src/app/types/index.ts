@@ -1,4 +1,4 @@
-export type modal = 'none' | 'login' | 'register' | 'infoCell' | 'exitGame' | 'createGame' | 'joinGame' | 'reconnect' | 'editProfile' | 'deleteProfile';
+export type modal = 'none' | 'logInProfile' | 'register' | 'infoCell' | 'leaveGame' | 'createGame' | 'joinGame' | 'reconnectGame' | 'editProfile' | 'deleteProfile';
 export type cellDirections = 'top' | 'bottom' | 'left' | 'right';
 export type infoCellButtons = 'pay' | 'buy' | 'none' | 'bankrupt' | 'auction';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAuction';
@@ -51,18 +51,6 @@ export interface CompanyInfo {
     owned: string;
     isMonopoly: boolean;
     rentCompany: number;
-}
-
-export interface gameRoom {
-    chat: chatMessage[];
-    idRoom: string;
-    players: playersGame;
-    board: gameCell[];
-    turnId: string;
-    timeTurn: number;
-    offerDealInfo?: offerDealInfo;
-    infoAuction?: infoAuction;
-    winner?: string;
 }
 
 export type gameCell = {

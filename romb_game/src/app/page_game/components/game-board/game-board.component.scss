@@ -5,21 +5,19 @@
     min-height: 340px;
     min-width: 340px;
     width: 80vw;
-    height: 48vw;
+    height: 47vw;
     display: grid;
     grid-template-columns: repeat(15, calc(79.5vw / 15));
-    grid-template-rows: repeat(10, calc(47.5vw / 10));
-    @include fon-blue;
-    background: $light_blue;
+    grid-template-rows: repeat(10, calc(46.5vw / 10));
+    @include fon-white;
     padding: 0;
     position: relative;
 }
 
 .game-board_inside-container {
-    border: 1px solid $blue;
+    border: 1px solid $dark_purple;
     grid-area: 3/3/9/14;
     @include flex-c_s;
-
 }
 
 .game-board-inside-player {
@@ -35,6 +33,4 @@
 
 .game-piece-container {
     position: absolute;
-
-
 }

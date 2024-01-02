@@ -23,11 +23,10 @@
 }
 
 
-@mixin fon-blue {
-    background: $light_blue;
-    border-radius: 15px;
-    border: 6px solid $blue;
-    padding: 3px;
+@mixin fon-white {
+    background: $light_grey;
+    border-radius: 0.5vw;
+    border: 0.4vw solid $dark_purple;
 }
 
 @mixin fon-gradient {
@@ -38,7 +37,7 @@
 
 @mixin font_default {
     font-family: 'Tektur', cursive;
-    color: $dark_grey;
+    color: $dark_purple;
 }
 
 @mixin font_22px {

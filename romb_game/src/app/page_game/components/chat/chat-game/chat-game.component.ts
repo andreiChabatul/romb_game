@@ -1,9 +1,5 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { chatMessage } from 'src/app/types';
-import { AppStore } from 'src/app/types/state';
-import { selectChat } from 'src/store/selectors';
+import { Component, Input } from '@angular/core';
+import { gameRoom } from 'src/app/types/state';
 
 @Component({
   selector: 'app-chat-game',
@@ -12,8 +8,7 @@ import { selectChat } from 'src/store/selectors';
 })
 export class ChatGameComponent {
 
-  chat$: Observable<chatMessage[]> = this.store.select(selectChat);
+  @Input() gameRoom: gameRoom;
 
-  constructor(private store: Store<AppStore>) { }
 }
 

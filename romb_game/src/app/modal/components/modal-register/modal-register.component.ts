@@ -35,7 +35,7 @@ export class ModalRegisterComponent {
   }
 
   loginOpen() {
-    this.store.dispatch(new OpenModal({ type: 'login' }));
+    this.store.dispatch(new OpenModal({ type: 'logInProfile' }));
   }
 
   onSubmit() {

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fullPlayer, gameCell } from 'src/app/types';
-import { AppStore } from 'src/app/types/state';
-import { selectAllPlayerArr, selectGameRoom } from 'src/store/selectors';
+import { AppStore, gameRoom } from 'src/app/types/state';
+import { selectAllPlayerArr } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board',
@@ -11,9 +11,9 @@ import { selectAllPlayerArr, selectGameRoom } from 'src/store/selectors';
 })
 export class GameBoardComponent {
 
-  gameRoom$ = this.store.select(selectGameRoom);
+  @Input() gameRoom: gameRoom;
   allPlayerArr$ = this.store.select(selectAllPlayerArr)
-  
+
   constructor(private store: Store<AppStore>) { }
 
   trackByFunction(index: number, item: gameCell) {

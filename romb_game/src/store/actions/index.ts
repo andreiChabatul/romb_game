@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { chatMessage, infoRoom, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction, gameRoom, updatePlayer } from 'src/app/types';
-import { controlCompanyState, infoUser, insideBoardState } from 'src/app/types/state';
+import { chatMessage, infoRoom, infoCellTurn, modal, updateCellCompany, offerDealInfo, infoAuction, updatePlayer } from 'src/app/types';
+import { controlCompanyState, gameRoom, infoUser, insideBoardState } from 'src/app/types/state';
 import { turnPayload } from 'src/app/types/webSocket';
 
 export enum AppActionTypes {

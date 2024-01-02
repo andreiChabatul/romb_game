@@ -1,5 +1,5 @@
-import { gameRoom } from "../types";
-import { infoUser } from "../types/state";
+
+import { gameRoom, infoUser } from "../types/state";
 
 export const COLOR_PLAYER_DEFAULT = '#DBE0E4';
 export const TIME_TURN_DEFAULT = 1500;

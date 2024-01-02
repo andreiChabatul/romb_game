@@ -43,7 +43,7 @@ export class MenuComponent implements OnInit {
   }
 
   loginProfile(): void {
-    this.store.dispatch(new OpenModal({ type: 'login' }));
+    this.store.dispatch(new OpenModal({ type: 'logInProfile' }));
   }
 
   loguotProfile(): void {
@@ -51,7 +51,7 @@ export class MenuComponent implements OnInit {
   }
 
   exitGame(): void {
-    this.store.dispatch(new OpenModal({ type: 'exitGame' }));
+    this.store.dispatch(new OpenModal({ type: 'leaveGame' }));
   }
 
 }

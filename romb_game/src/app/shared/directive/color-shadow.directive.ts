@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { COLOR_PLAYER_DEFAULT } from 'src/app/const';
 import { cellDirections } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
-import { selectAllPlayer } from 'src/store/selectors';
+import { selectGameRoom } from 'src/store/selectors';
 
 @Directive({
     selector: '[appColorShadow]'
@@ -13,15 +13,15 @@ export class ColorShadowDirective implements OnChanges {
     @Input() playerId: string | undefined;
     @Input() directtion: cellDirections;
     colorShadow: string;
-    players$ = this.store.select(selectAllPlayer);
+    gameRoom$ = this.store.select(selectGameRoom);
 
     constructor(private el: ElementRef, private store: Store<AppStore>) { }
 
     ngOnChanges(): void {
 
-        this.players$.subscribe((players) =>
-            (this.playerId && players[this.playerId])
-                ? this.colorShadow = players[this.playerId].color
+        this.gameRoom$.subscribe((gameRoom) =>
+            (this.playerId && gameRoom.players[this.playerId])
+                ? this.colorShadow = gameRoom.players[this.playerId].color
                 : this.colorShadow = COLOR_PLAYER_DEFAULT
         );
 

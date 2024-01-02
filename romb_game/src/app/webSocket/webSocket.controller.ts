@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, gameRoom, endGamePayload, updatePlayer } from '../types';
+import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, endGamePayload, updatePlayer } from '../types';
 import { Store } from '@ngrx/store';
 import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateRooms, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
-import { AppStore } from '../types/state';
+import { AppStore, gameRoom } from '../types/state';
 import { payloadSocket, turnPayload } from '../types/webSocket';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class WebSocketController {
 
   constructor(private store: Store<AppStore>) {
     this.infoUser$.subscribe((infoUser) => this.idUser = infoUser?.id);
-    this.idRoom$.subscribe((id) => this.idRoom = id);
+    this.idRoom$.subscribe((id) => this.idRoom = String(id));
     this.handleMessage();
   }
 

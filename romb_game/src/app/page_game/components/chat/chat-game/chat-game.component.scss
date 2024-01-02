@@ -2,9 +2,9 @@
 @import "./../../../../../scss/color-styles";
 
 .chat-container {
-    margin: 2vh 0;
+    margin: 2vh 0 1vh;
     height: 93%;
-    border-left: 4px solid $blue;
+    border-left: 0.2vw solid $dark_purple;
     padding: 0 1vw;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .chat-area {
-    height: 90%;
+    height: 93%;
     padding: 1%;
     @include flex-s_s;
     flex-direction: column;

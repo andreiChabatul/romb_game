@@ -6,11 +6,15 @@
             {{('infoCellTurnTitle' | transloco)}} {{cell.nameCell | uppercase}} </p>
         <div class="info-desc-container">
             <div [ngSwitch]="cell.type" [style.width]="'100%'">
-                <app-cell-tax *ngSwitchCase="'tax'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-tax>
-                <app-cell-profit *ngSwitchCase="'profit'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-profit>
-                <app-cell-loss *ngSwitchCase="'loss'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-loss>
-                <app-cell-empty *ngSwitchCase="'empty'" [infoCellTurn]="infoCellTurn$ | async"></app-cell-empty>
-                <app-cell-company *ngSwitchCase="'company'" [infoCellTurn]="infoCellTurn$ | async"
+                <app-cell-tax *ngSwitchCase="'tax'"
+                    [infoCellTurn]="(insideBoard$ | async)?.infoCellTurn"></app-cell-tax>
+                <app-cell-profit *ngSwitchCase="'profit'"
+                    [infoCellTurn]="(insideBoard$ | async)?.infoCellTurn"></app-cell-profit>
+                <app-cell-loss *ngSwitchCase="'loss'"
+                    [infoCellTurn]="(insideBoard$ | async)?.infoCellTurn"></app-cell-loss>
+                <app-cell-empty *ngSwitchCase="'empty'"
+                    [infoCellTurn]="(insideBoard$ | async)?.infoCellTurn"></app-cell-empty>
+                <app-cell-company *ngSwitchCase="'company'" [infoCellTurn]="(insideBoard$ | async)?.infoCellTurn"
                     [indexCell]="cell.indexCell"></app-cell-company>
             </div>
             <div class="info-cell-buttons">
@@ -22,5 +26,5 @@
         <p *ngIf="(gamePlayer$ | async)?.bankrupt" class="bankrupt-fon" [style.color]="(gamePlayer$ | async)?.color">
             {{'bankrot' | transloco}}</p>
     </div>
-    <app-turn-timer *ngIf="(infoCellTurn$ | async)?.buttons !== 'none'"></app-turn-timer>
+    <app-turn-timer *ngIf="(insideBoard$ | async)?.infoCellTurn?.buttons !== 'none'"></app-turn-timer>
 </ng-template>
