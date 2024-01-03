@@ -16,6 +16,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
 import { ModalModule } from './modal/modal.module';
 import { TurnEffects } from 'src/store/effects/turn.effects';
+import { UpdateUsersEffects } from 'src/store/effects/update.user.effects';
+import { CloseModalEffects } from 'src/store/effects/close.modal.effects';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { TurnEffects } from 'src/store/effects/turn.effects';
     SharedModule,
     CommonModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([TurnEffects]),
+    EffectsModule.forRoot([TurnEffects, UpdateUsersEffects, CloseModalEffects]),
     StoreModule.forRoot(appReducers),
     HttpClientModule,
   ],

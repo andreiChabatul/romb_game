@@ -1,6 +1,6 @@
 
 import { createSelector } from "@ngrx/store";
-import { AppStore, gameRoom, modalStore, userStore } from "src/app/types/state";
+import { AppStore, gameRoom, infoUser, modalStore, userStore } from "src/app/types/state";
 
 const select = (state: AppStore) => state;
 const selectmodal = (state: AppStore) => state.modalStore;
@@ -13,6 +13,13 @@ export const selectInfoUser = createSelector(selectuser, (state: userStore) => s
 export const selectRooms = createSelector(select, (state: AppStore) => state.roomsStore);
 export const selectGameRoom = createSelector(selectGame, (state: gameRoom) => state);
 export const selectAllPlayerArr = createSelector(selectGame, (state: gameRoom) => Object.values(state.players));
-export const selectGamePLayer = createSelector(selectGame, (state: gameRoom) => state.players['String(state.user.infoUser?.id)']);
 export const selectPlayerTurnId = createSelector(selectGame, (state: gameRoom) => state.turnId);
 export const selectIdRoom = createSelector(selectGame, (state: gameRoom) => state.idRoom);
+export const selectGamePlayer = createSelector(
+    selectGame,
+    selectUser,
+    (selectGame: gameRoom, selectUser: userStore) =>
+        (selectGame && selectUser.infoUser)
+            ? selectGame.players[selectUser.infoUser?.id]
+            : null
+);

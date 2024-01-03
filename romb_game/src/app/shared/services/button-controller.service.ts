@@ -7,8 +7,8 @@ import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { RoomsService } from 'src/app/rooms/rooms.services';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { ControlCompany } from 'src/store/actions/gameActions';
-import { closeModal, openModal } from 'src/store/actions/modalActions';
+import { ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions/gameActions';
+import { closeModal, OpenModal } from 'src/store/actions/modalActions';
 import { selectUser } from 'src/store/selectors';
 
 @Injectable({
@@ -33,14 +33,14 @@ export class ButtonControllerService implements OnDestroy {
 
       case ACTIONS_BUTTON.NEW_GAME:
         (this.isLogin)
-          ? this.store.dispatch(openModal({ payload: { modalState: 'createGame' } }))
-          : this.store.dispatch(openModal({ payload: { modalState: 'logInProfile' } }));
+          ? this.store.dispatch(OpenModal({ payload: { modalState: 'createGame' } }))
+          : this.store.dispatch(OpenModal({ payload: { modalState: 'logInProfile' } }));
         break;
 
       case ACTIONS_BUTTON.JOIN_GAME:
         (this.isLogin)
           ? this.router.navigate(['rooms'])
-          : this.store.dispatch(openModal({ payload: { modalState: 'logInProfile' } }));
+          : this.store.dispatch(OpenModal({ payload: { modalState: 'logInProfile' } }));
         break;
 
       case ACTIONS_BUTTON.UPDATE_ROOM:
@@ -48,7 +48,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.ADD_ROOM:
-        this.store.dispatch(openModal({ payload: { modalState: 'createGame' } }));
+        this.store.dispatch(OpenModal({ payload: { modalState: 'createGame' } }));
         break;
 
       case ACTIONS_BUTTON.BUY_STOCK:
@@ -56,7 +56,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.SELL_STOCK:
-        this.store.dispatch(new ControlCompany('sellStock'));
+        this.store.dispatch(ControlCompany({ controlCompany: 'sellStock' }));
         break;
 
       case ACTIONS_BUTTON.BUY_COMPANY:
@@ -76,19 +76,19 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.DICE_ROLL:
-        this.store.dispatch(new ControlInsideBoard('diceRoll'));
+        this.store.dispatch(ControlInsideBoard({ insideBoardState: 'diceRoll' }));
         break;
 
       case ACTIONS_BUTTON.MORTGAGE:
-        this.store.dispatch(new ControlCompany('pledgeCompany'));
+        this.store.dispatch(ControlCompany({ controlCompany: 'pledgeCompany' }));
         break;
 
       case ACTIONS_BUTTON.BUY_OUT_COMPANY:
-        this.store.dispatch(new ControlCompany('buyOutCompany'));
+        this.store.dispatch(ControlCompany({ controlCompany: 'buyOutCompany' }));
         break;
 
       case ACTIONS_BUTTON.END_CONTROL:
-        this.store.dispatch(new ControlCompany(undefined));
+        this.store.dispatch(ControlCompany({ controlCompany: undefined }));
         break;
 
       case ACTIONS_BUTTON.PAY:
@@ -96,7 +96,7 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.OFFER_DEAL:
-        this.store.dispatch(new ControlInsideBoard('offerDeal'));
+        this.store.dispatch(ControlInsideBoard({ insideBoardState: 'offerDeal' }));
         break;
 
       case ACTIONS_BUTTON.ACCEPT_DEAL:
@@ -108,12 +108,12 @@ export class ButtonControllerService implements OnDestroy {
         break;
 
       case ACTIONS_BUTTON.CANSEL_DEAL:
-        this.store.dispatch(new ControlInsideBoard('startButtons'));
+        this.store.dispatch(ControlInsideBoard({ insideBoardState: 'startButtons' }));
         break;
 
       case ACTIONS_BUTTON.LEAVE_GAME: {
         this.webSocketController.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'leave' });
-        this.store.dispatch(new StartGame(EMPTY_GAME_ROOM));
+        this.store.dispatch(StartGame({ gameRoom: EMPTY_GAME_ROOM }));
         this.store.dispatch(closeModal());
         this.router.navigate(['rooms']);
         break;

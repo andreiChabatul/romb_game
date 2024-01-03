@@ -17,6 +17,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { GoogleAuthComponent } from './components/google-auth/google-auth.component';
 import { YandexAuthComponent } from './components/yandex-auth/yandex-auth.component';
 import { AnonimAuthComponent } from './components/anonim-auth/anonim-auth.component';
+import { AvatarImagePipe } from './pipe/avatar.pipe';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { AnonimAuthComponent } from './components/anonim-auth/anonim-auth.compon
         MenuComponent,
         GoogleAuthComponent,
         YandexAuthComponent,
-        AnonimAuthComponent
+        AnonimAuthComponent,
+        AvatarImagePipe
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule
@@ -54,7 +56,8 @@ import { AnonimAuthComponent } from './components/anonim-auth/anonim-auth.compon
         MenuComponent,
         GoogleAuthComponent,
         YandexAuthComponent,
-        AnonimAuthComponent
+        AnonimAuthComponent,
+        AvatarImagePipe
     ],
     providers: [ButtonControllerService],
     bootstrap: []

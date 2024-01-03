@@ -6,9 +6,9 @@ import { BASIC_URL } from '../const';
 import { AppStore } from '../types/state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { addModalError } from 'src/store/actions/modalActions';
 import { UpdateRooms } from 'src/store/actions/roomsActions';
 import { SetIdRoom } from 'src/store/actions/gameActions';
+import { AddModalInfo } from 'src/store/actions/modalActions';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +20,7 @@ export class RoomsService {
     getAllRooms(): void {
         this.http.get(`${BASIC_URL}${ENDPOINT.ROOMS}`).subscribe({
             next: (rooms) => this.store.dispatch(UpdateRooms({ infoRoom: rooms as infoRoom[] })),
-            error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
+            error: (error: HttpErrorResponse) => this.store.dispatch(AddModalInfo({ modalError: error.error.message }))
         });
     }
 
@@ -31,7 +31,7 @@ export class RoomsService {
     getRoom(reguest: string): void {
         this.http.get(`${BASIC_URL}${ENDPOINT.ROOMS}${reguest}`).subscribe({
             next: (rooms) => this.store.dispatch(UpdateRooms({ infoRoom: rooms as infoRoom[] })),
-            error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
+            error: (error: HttpErrorResponse) => this.store.dispatch(AddModalInfo({ modalError: error.error.message }))
         });
     }
 

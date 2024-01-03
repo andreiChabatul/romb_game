@@ -1,15 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { RoomsService } from 'src/app/rooms/rooms.services';
 import { ButtonStandart, InputTextFormOption, SelectFormOption } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { addModalError, closeModal } from 'src/store/actions/modalActions';
+import { AddModalInfo, closeModal } from 'src/store/actions/modalActions';
 
 @Component({
   selector: 'app-create-game-form',
@@ -18,7 +17,7 @@ import { addModalError, closeModal } from 'src/store/actions/modalActions';
   encapsulation: ViewEncapsulation.None,
 })
 
-export class CreateGameFormComponent implements OnInit, OnDestroy {
+export class CreateGameFormComponent implements OnInit {
 
   inputForm: InputTextFormOption[] = [
     { nameForm: 'roomName', type: 'text' },
@@ -53,7 +52,6 @@ export class CreateGameFormComponent implements OnInit, OnDestroy {
   ]
   createGame: FormGroup;
   textButton: ButtonStandart = { action: ACTIONS_BUTTON.CREATE_GAME, height: '4vw', width: '18vw' };
-  subscriptin$: Subscription;
 
   constructor(private fb: FormBuilder,
     private webSocketController: WebSocketController,
@@ -77,7 +75,7 @@ export class CreateGameFormComponent implements OnInit, OnDestroy {
       return;
     };
 
-    this.subscriptin$ = this.roomsService.createRoom({
+    this.roomsService.createRoom({
       roomName: this.createGame.value['roomName'].value,
       maxPlayers: Number(this.createGame.value['maxPlayers'].value),
       timeTurn: Number(this.createGame.value['timeTurn'].value),
@@ -92,11 +90,8 @@ export class CreateGameFormComponent implements OnInit, OnDestroy {
           this.store.dispatch(closeModal());
         };
       },
-      error: (error: HttpErrorResponse) => this.store.dispatch(addModalError({ modalError: error.error.message }))
-    })
+      error: (error: HttpErrorResponse) => this.store.dispatch(AddModalInfo({ modalError: error.error.message }))
+    });
   }
 
-  ngOnDestroy(): void {
-    this.subscriptin$.unsubscribe();
-  }
 }

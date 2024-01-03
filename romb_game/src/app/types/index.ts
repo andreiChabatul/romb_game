@@ -77,7 +77,6 @@ export type playersGame = {
 }
 
 export type chatRoomPayload = { chat: chatMessage };
-export type endGamePayload = { winUser: string };
 
 export type chatMessage = {
     message?: string;
@@ -103,6 +102,7 @@ export type infoRoom = {
     maxPlayers: number,
     idRoom: string,
     roomName: string,
+    isStart: Boolean,
     players: fullPlayer[],
 }
 
@@ -133,4 +133,12 @@ export type infoAuction = {
     action: controlAuction;
     statePlayer: statePlayer;
     indexCompany: number;
+}
+
+export type updateUser = {
+    userId: string;
+    password: string;
+    newNickName?: string;
+    newPassword?: string;
+    newAvatar?: string;
 }

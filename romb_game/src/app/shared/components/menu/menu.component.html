@@ -3,7 +3,7 @@
 <mat-menu #menu="matMenu">
     <button *ngIf="(infoUser$ | async)?.nickName; else loginMenu" mat-menu-item [matMenuTriggerFor]="profile">
         <div class="lang-container">
-            <img class="img-lang-choise" [src]="(infoUser$ | async)?.image" alt="infoUser">
+            <img class="img-lang-choise" [src]="((infoUser$ | async)?.image) | avatarImage" alt="infoUser">
             <span class="menu-text menu-text_name">{{(infoUser$ | async)?.nickName}}</span>
         </div>
     </button>

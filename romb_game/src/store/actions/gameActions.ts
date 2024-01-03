@@ -13,7 +13,7 @@ export enum gameActionsTypes {
     UpdateCell = '[UPDATE CELL] UpdateCell',
     InfoAuction = '[INFO AUCTION] InfoAuction',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
-    InfoCellTurn = '[INFO CELL TURN] InfoCellTurn',
+    UpdateInfoCellTurn = '[UPDATE INFO CELL TURN] UpdateInfoCellTurn',
     UpdateTurn = '[UPDATE TURN] UpdateTurn',
     UpdateInfoPlayer = '[UPDATE Player] UpdateInfoPlayer'
 };
@@ -46,7 +46,7 @@ export const InfoAuction = createAction(gameActionsTypes.InfoAuction,
 export const SetOfferDealInfo = createAction(gameActionsTypes.SetOfferDealInfo,
     props<{ offerDealInfo: offerDealInfo }>()
 );
-export const InfoCellTurn = createAction(gameActionsTypes.InfoCellTurn,
+export const UpdateInfoCellTurn = createAction(gameActionsTypes.UpdateInfoCellTurn,
     props<{ infoCellTurn: infoCellTurn }>()
 );
 export const UpdateTurn = createAction(gameActionsTypes.UpdateTurn,

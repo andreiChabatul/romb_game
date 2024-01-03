@@ -5,7 +5,7 @@
             <input id="upload_image" type="file" class="edit-profile-upload-input" (change)="inputFileAvatar($event)">
             <label class="edit-profile-upload-text" for="upload_image">{{'uploadFile' | transloco}}</label>
         </div>
-        <img class="edit-profile-image" src="{{'data:image/jpg;base64,' + avatar}}" alt="">
+        <img class="edit-profile-image" [src]="avatar | avatarImage" alt="avatar">
     </div>
     <app-raiting-stars [infoUser]="infoUser" [width]="'9vw'"></app-raiting-stars>
     <form class="form-edit-profile" [formGroup]="editProfile" (ngSubmit)="onSubmit()">

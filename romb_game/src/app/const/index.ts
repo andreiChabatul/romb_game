@@ -8,4 +8,3 @@ export const MAX_INDEX_CELL_BOARD = 38;
 export const BASIC_URL = "http://localhost:3000/";
 export const EMPTY_GAME_ROOM: gameRoom = { idRoom: '', players: {}, board: [], chat: [], turnId: '', timeTurn: 0 };
 export const EMPTY_USER: infoUser = { id: '', createdAt: new Date, image: '', nickName: '12', numberGame: 5, numberWin: 1 };
-

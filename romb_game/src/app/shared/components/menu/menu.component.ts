@@ -3,7 +3,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AppStore } from 'src/app/types/state';
-import { openModal } from 'src/store/actions/modalActions';
+import { OpenModal } from 'src/store/actions/modalActions';
 import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 
 @Component({
@@ -35,16 +35,16 @@ export class MenuComponent implements OnInit {
   }
 
   editProfile(): void {
-    this.store.dispatch(openModal({ payload: { modalState: 'editProfile' } }));
+    this.store.dispatch(OpenModal({ payload: { modalState: 'editProfile' } }));
   }
 
 
   deleteProfile(): void {
-    this.store.dispatch(openModal({ payload: { modalState: 'deleteProfile' } }));
+    this.store.dispatch(OpenModal({ payload: { modalState: 'deleteProfile' } }));
   }
 
   loginProfile(): void {
-    this.store.dispatch(openModal({ payload: { modalState: 'logInProfile' } }));
+    this.store.dispatch(OpenModal({ payload: { modalState: 'logInProfile' } }));
   }
 
   loguotProfile(): void {
@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit {
   }
 
   exitGame(): void {
-    this.store.dispatch(openModal({ payload: { modalState: 'leaveGame' } }));
+    this.store.dispatch(OpenModal({ payload: { modalState: 'leaveGame' } }));
   }
 
 }

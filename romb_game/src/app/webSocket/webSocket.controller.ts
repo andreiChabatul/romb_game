@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
-import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, endGamePayload, updatePlayer } from '../types';
+import { infoRoom, chatRoomPayload, infoAuction, infoCellTurn, offerDealInfo, updateCellCompany, updatePlayer } from '../types';
 import { Store } from '@ngrx/store';
-import { EndGame, EndTurn, InfoAuction, InfoCellTurnAdd, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoPlayer, UpdateTurn } from 'src/store/actions';
 import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
 import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore, gameRoom } from '../types/state';
-import { payloadSocket, turnPayload } from '../types/webSocket';
+import { payloadSocket } from '../types/webSocket';
 import { UpdateRooms } from 'src/store/actions/roomsActions';
+import { EndGame, EndTurn, InfoAuction, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoCellTurn, UpdateInfoPlayer, UpdateTurn } from 'src/store/actions/gameActions';
 
 @Injectable({
   providedIn: 'root'
@@ -34,56 +34,57 @@ export class WebSocketController {
 
         case EACTION_WEBSOCKET.CONTROL_ROOM:
           const infoRoom = wsMessage.payload as infoRoom[];
+          console.log(infoRoom)
           this.store.dispatch(UpdateRooms({ infoRoom }));
           break;
 
         case EACTION_WEBSOCKET.INFO_CELL_TURN:
-          const InfoCellTurn = wsMessage.payload as infoCellTurn;
-          this.store.dispatch(new InfoCellTurnAdd(InfoCellTurn));
+          const infoCellTurn = wsMessage.payload as infoCellTurn;
+          this.store.dispatch(UpdateInfoCellTurn({ infoCellTurn }));
           break;
 
         case EACTION_WEBSOCKET.END_TURN:
-          this.store.dispatch(new EndTurn());
+          this.store.dispatch(EndTurn());
           break;
 
         case EACTION_WEBSOCKET.START_GAME:
           const gameRoom = wsMessage.payload as gameRoom;
-          this.store.dispatch(new StartGame(gameRoom));
+          this.store.dispatch(StartGame({ gameRoom }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_CELL:
-          const infoCell = wsMessage.payload as updateCellCompany;
-          this.store.dispatch(new UpdateCell(infoCell));
+          const updateCell = wsMessage.payload as updateCellCompany;
+          this.store.dispatch(UpdateCell({ updateCell }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_CHAT:
           const chatRoomPayload = wsMessage.payload as chatRoomPayload;
-          this.store.dispatch(new UpdateChatRoom(chatRoomPayload.chat));
+          this.store.dispatch(UpdateChatRoom({ chatMessage: chatRoomPayload.chat }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_TURN:
-          const turnPayload = wsMessage.payload as turnPayload;
-          this.store.dispatch(new UpdateTurn(turnPayload));
+          const turnId = wsMessage.payload as string;
+          this.store.dispatch(UpdateTurn({ turnId }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_PLAYER:
-          const updatePlayerPayload = wsMessage.payload as updatePlayer;
-          this.store.dispatch(new UpdateInfoPlayer(updatePlayerPayload));
+          const updatePlayer = wsMessage.payload as updatePlayer;
+          this.store.dispatch(UpdateInfoPlayer({ updatePlayer }));
           break;
 
         case EACTION_WEBSOCKET.CONTROL_DEAL:
           const offerDealInfo = wsMessage.payload as offerDealInfo;
-          this.store.dispatch(new SetOfferDealInfo(offerDealInfo));
+          this.store.dispatch(SetOfferDealInfo({ offerDealInfo }));
           break;
 
         case EACTION_WEBSOCKET.AUCTION:
           const infoAuction = wsMessage.payload as infoAuction;
-          this.store.dispatch(new InfoAuction(infoAuction));
+          this.store.dispatch(InfoAuction({ infoAuction }));
           break;
 
         case EACTION_WEBSOCKET.END_GAME:
-          const endGamePayload = wsMessage.payload as endGamePayload;
-          this.store.dispatch(new EndGame(endGamePayload.winUser));
+          const winner = wsMessage.payload as string;
+          this.store.dispatch(EndGame({ winner }));
           break;
 
         default:

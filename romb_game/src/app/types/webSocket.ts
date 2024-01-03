@@ -26,10 +26,6 @@ export type ControlCompanyPayload = {
     action: controlCompany
 }
 
-export type turnPayload = {
-    turnId: string;
-}
-
 export type controlCompany = 'buyStock' | 'sellStock' | 'pledgeCompany' | 'buyOutCompany';
 export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | 'endAction';
 

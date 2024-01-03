@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map, mergeMap } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGamePLayer, selectGameRoom, selectInfoUser } from 'src/store/selectors';
+import { selectGamePlayer, selectGameRoom, selectInfoUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-player-info-inside',
@@ -14,12 +14,11 @@ import { selectGamePLayer, selectGameRoom, selectInfoUser } from 'src/store/sele
 export class PlayerInfoInsideComponent {
 
   infoUser$ = this.store.select(selectInfoUser);
-  player$ = this.store.select(selectGamePLayer);
+  player$ = this.store.select(selectGamePlayer);
   gameRoom$ = this.store.select(selectGameRoom);
   leaveGameButton: ButtonStandart = { action: ACTIONS_BUTTON.LEAVE_GAME, width: '15vw', height: '3vw' };
 
   constructor(private store: Store<AppStore>) { }
-
 
   amountCompany(): Observable<number> {
     return this.gameRoom$.pipe(
@@ -31,6 +30,5 @@ export class PlayerInfoInsideComponent {
       )))
     )
   }
-
 
 }

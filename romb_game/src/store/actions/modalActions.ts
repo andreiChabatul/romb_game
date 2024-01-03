@@ -4,15 +4,15 @@ import { modalStore } from 'src/app/types/state';
 export enum modalActionsTypes {
     CloseModal = '[CLOSE MODAL] CloseModal',
     OpenModal = '[OPEN MODAL] OpenModal',
-    AddModalError = '[ADD MODAL ERROR] AddModalError',
-    ClearModalError = '[CLEAR MODAL ERROR] ClearModalError',
+    AddModalInfo = '[ADD MODAL INFO] AddModalInfo',
+    ClearModalInfo = '[CLEAR MODAL INFO] ClearModalInfo',
 };
 
 export const closeModal = createAction(modalActionsTypes.CloseModal);
-export const clearModalError = createAction(modalActionsTypes.ClearModalError);
-export const openModal = createAction(modalActionsTypes.OpenModal,
+export const ClearModalInfo = createAction(modalActionsTypes.ClearModalInfo);
+export const OpenModal = createAction(modalActionsTypes.OpenModal,
     props<{ payload: modalStore }>()
 );
-export const addModalError = createAction(modalActionsTypes.AddModalError,
+export const AddModalInfo = createAction(modalActionsTypes.AddModalInfo,
     props<{ modalError?: string }>()
 );

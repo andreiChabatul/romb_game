@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppStore } from 'src/app/types/state';
-import { selectGamePLayer } from 'src/store/selectors';
+import { selectGamePlayer } from 'src/store/selectors';
 
 @Component({
   selector: 'app-enough-money',
@@ -12,7 +12,7 @@ import { selectGamePLayer } from 'src/store/selectors';
 export class EnoughMoneyComponent implements OnChanges, OnDestroy {
 
   @Input() value: number | undefined;
-  gamePlayer$ = this.store.select(selectGamePLayer);
+  gamePlayer$ = this.store.select(selectGamePlayer);
   resultStr: string;
   subscription$: Subscription;
 

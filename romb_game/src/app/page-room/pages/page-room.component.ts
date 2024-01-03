@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { Subscription } from 'rxjs';
+import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { RoomsService } from 'src/app/rooms/rooms.services';
+import { infoRoom } from 'src/app/types';
 import { Button } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { selectRooms } from 'src/store/selectors';
 
 @Component({
@@ -12,19 +13,26 @@ import { selectRooms } from 'src/store/selectors';
   templateUrl: './page-room.component.html',
   styleUrls: ['./page-room.component.scss']
 })
-export class PageRoomComponent implements OnInit {
+export class PageRoomComponent implements OnInit, OnDestroy {
 
   rooms$ = this.store.select(selectRooms);
-
-  constructor(private store: Store<AppStore>, private roomsService: RoomsService) { }
-
-  ngOnInit(): void {
-    this.roomsService.getAllRooms();
-  }
-
+  rooms: infoRoom[] = [];
+  subcription$: Subscription;
   buttons: Button[] = [
     { action: ACTIONS_BUTTON.UPDATE_ROOM, width: "3vw" },
     { action: ACTIONS_BUTTON.ADD_ROOM, width: "3vw" }
   ]
+
+  constructor(private store: Store<AppStore>, private roomsService: RoomsService) { }
+
+  ngOnInit(): void {
+    this.subcription$ = this.rooms$.subscribe((rooms) =>
+      this.rooms = rooms); //rooms.filter((room) => !room.isStart)
+    this.roomsService.getAllRooms();
+  }
+
+  ngOnDestroy(): void {
+    this.subcription$.unsubscribe();
+  }
 
 }

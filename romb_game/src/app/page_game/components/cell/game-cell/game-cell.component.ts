@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { gameCell } from 'src/app/types';
 import { AppStore } from 'src/app/types/state';
-import { openModal } from 'src/store/actions/modalActions';
+import { OpenModal } from 'src/store/actions/modalActions';
 
 @Component({
   selector: 'app-game-cell',
@@ -16,7 +16,7 @@ export class GameCellComponent {
   constructor(private store: Store<AppStore>) { }
 
   clickCellInfo() {
-    this.store.dispatch(openModal({ payload: { modalState: 'infoCell', payload: this.gameCell.indexCell } }));
+    this.store.dispatch(OpenModal({ payload: { modalState: 'infoCell', payload: this.gameCell.indexCell } }));
   }
 
 }

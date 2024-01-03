@@ -15,7 +15,7 @@ export const gameReducers = createReducer(initalState,
     on(gameActions.SetIdRoom, (state, { idRoom }) => ({ ...EMPTY_GAME_ROOM, idRoom })), //modal: { type: 'reconnectGame' }
     on(gameActions.InfoAuction, (state, { infoAuction }) => ({ ...state, infoAuction, insideBoardState: 'auction' })),
     on(gameActions.SetOfferDealInfo, (state, { offerDealInfo }) => ({ ...state, offerDealInfo, insideBoardState: 'receiveDeal' })),
-    on(gameActions.InfoCellTurn, (state, { infoCellTurn }) => ({ ...state, infoCellTurn, insideBoardState: 'infoCellTurn' })),
+    on(gameActions.UpdateInfoCellTurn, (state, { infoCellTurn }) => ({ ...state, infoCellTurn, insideBoardState: 'infoCellTurn' })),
     on(gameActions.UpdateTurn, (state, { turnId }) => ({ ...state, turnId })),
     on(gameActions.UpdateInfoPlayer, (state, { updatePlayer }) => ({
         ...state, players: {

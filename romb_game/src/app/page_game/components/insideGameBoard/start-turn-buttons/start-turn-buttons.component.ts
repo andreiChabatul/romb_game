@@ -4,7 +4,7 @@ import { mergeMap, map, take } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectGamePLayer, selectGameRoom, selectUser } from 'src/store/selectors';
+import { selectGamePlayer, selectGameRoom, selectUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-start-turn-buttons',
@@ -15,7 +15,7 @@ export class StartTurnButtonsComponent implements OnInit {
 
   user$ = this.store.select(selectUser);
   gameRoom$ = this.store.select(selectGameRoom);
-  player$ = this.store.select(selectGamePLayer);
+  player$ = this.store.select(selectGamePlayer);
 
   buttons: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.DICE_ROLL, width: '18vw', height: '7vh', show: true },

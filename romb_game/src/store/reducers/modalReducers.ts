@@ -8,8 +8,8 @@ const initalState: modalStore = {
 }
 
 export const modalReducers = createReducer(initalState,
-    on(modalActions.closeModal, (state) => ({ modalState: 'none' })),
-    on(modalActions.clearModalError, (state) => ({ ...state, modalError: '' })),
-    on(modalActions.openModal, (state, { payload }) => ({ ...payload })),
-    on(modalActions.addModalError, (state, { modalError }) => ({ ...state, modalError }))
+    on(modalActions.closeModal, (_) => ({ modalState: 'none' })),
+    on(modalActions.ClearModalInfo, (state) => ({ ...state, modalError: '' })),
+    on(modalActions.OpenModal, (_, { payload }) => ({ ...payload })),
+    on(modalActions.AddModalInfo, (state, { modalError }) => ({ ...state, modalError }))
 )
