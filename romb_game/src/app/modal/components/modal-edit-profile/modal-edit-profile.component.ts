@@ -5,6 +5,7 @@ import { Observable, ReplaySubject, Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart, InputTextFormOption } from 'src/app/types/components';
 import { AppStore, infoUser } from 'src/app/types/state';
+import { UsersService } from 'src/app/users/users.service';
 import { selectInfoUser } from 'src/store/selectors';
 
 @Component({
@@ -24,7 +25,7 @@ export class ModalEditProfileComponent implements OnInit, OnDestroy {
   saveButton: ButtonStandart = { action: ACTIONS_BUTTON.EDIT_PROFILE, height: '3.5vw', width: '20vw' };
   avatar: string;
 
-  constructor(private fb: FormBuilder, private store: Store<AppStore>) {
+  constructor(private fb: FormBuilder, private store: Store<AppStore>, private userService: UsersService) {
     this.createForm();
   }
 
@@ -37,7 +38,7 @@ export class ModalEditProfileComponent implements OnInit, OnDestroy {
     if (this.infoUser) {
       this.inputForm = [
         { nameForm: 'newNickName', type: 'text', defaultValue: this.infoUser.nickName },
-        { nameForm: 'newPassword', type: 'password', defaultValue: 'password' },
+        { nameForm: 'newPassword', type: 'password', defaultValue: '*******' },
         { nameForm: 'oldPassword', type: 'password' }
       ];
       this.avatar = this.infoUser.image;
@@ -66,6 +67,13 @@ export class ModalEditProfileComponent implements OnInit, OnDestroy {
       this.editProfile.markAllAsTouched()
       return;
     };
+    this.userService.updateUser({
+      userId: String(this.infoUser?.id),
+      password: this.editProfile.value.oldPassword.value,
+      newPassword: this.editProfile.value.newPassword.value,
+      newNickName: this.editProfile.value.newNickName.value,
+      newAvatar: this.avatar
+    })
   }
 
   ngOnDestroy(): void {
