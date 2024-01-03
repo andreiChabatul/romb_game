@@ -15,9 +15,7 @@ import { AuthService } from './auth/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { AccessTokenInterceptor } from './interceptors/accessToken.interceptor';
 import { ModalModule } from './modal/modal.module';
-import { TurnEffects } from 'src/store/effects/turn.effects';
-import { UpdateUsersEffects } from 'src/store/effects/update.user.effects';
-import { CloseModalEffects } from 'src/store/effects/close.modal.effects';
+import { EFFECTS } from 'src/store/effects';
 
 @NgModule({
   declarations: [
@@ -33,7 +31,7 @@ import { CloseModalEffects } from 'src/store/effects/close.modal.effects';
     SharedModule,
     CommonModule,
     BrowserAnimationsModule,
-    EffectsModule.forRoot([TurnEffects, UpdateUsersEffects, CloseModalEffects]),
+    EffectsModule.forRoot(EFFECTS),
     StoreModule.forRoot(appReducers),
     HttpClientModule,
   ],

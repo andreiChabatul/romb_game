@@ -6,16 +6,16 @@ import { EMPTY_GAME_ROOM } from "src/app/const";
 const initalState: gameRoom = EMPTY_GAME_ROOM;
 
 export const gameReducers = createReducer(initalState,
-    on(gameActions.EndTurn, (state) => ({ ...state, insideBoardState: 'playerInfo', infoCellTurn: undefined })),
-    on(gameActions.EndGame, (state, { winner }) => ({ ...state, winner, insideBoardState: 'winner' })),
+    on(gameActions.EndTurn, (state) => ({ ...state, infoCellTurn: undefined })),
+    on(gameActions.EndGame, (state, { winner }) => ({ ...state, winner })),
     on(gameActions.ControlInsideBoard, (state, { insideBoardState }) => ({ ...state, insideBoardState })),
     on(gameActions.ControlCompany, (state, { controlCompany }) => ({ ...state, controlCompany })),
-    on(gameActions.StartGame, (state, { gameRoom }) => ({ ...gameRoom })),
+    on(gameActions.StartGame, (_, { gameRoom }) => ({ ...gameRoom })),
     on(gameActions.UpdateChatRoom, (state, { chatMessage }) => ({ ...state, chat: [...state.chat, chatMessage] })),
-    on(gameActions.SetIdRoom, (state, { idRoom }) => ({ ...EMPTY_GAME_ROOM, idRoom })), //modal: { type: 'reconnectGame' }
-    on(gameActions.InfoAuction, (state, { infoAuction }) => ({ ...state, infoAuction, insideBoardState: 'auction' })),
-    on(gameActions.SetOfferDealInfo, (state, { offerDealInfo }) => ({ ...state, offerDealInfo, insideBoardState: 'receiveDeal' })),
-    on(gameActions.UpdateInfoCellTurn, (state, { infoCellTurn }) => ({ ...state, infoCellTurn, insideBoardState: 'infoCellTurn' })),
+    on(gameActions.SetIdRoom, (_, { idRoom }) => ({ ...EMPTY_GAME_ROOM, idRoom })),
+    on(gameActions.InfoAuction, (state, { infoAuction }) => ({ ...state, infoAuction })),
+    on(gameActions.SetOfferDealInfo, (state, { offerDealInfo }) => ({ ...state, offerDealInfo })),
+    on(gameActions.UpdateInfoCellTurn, (state, { infoCellTurn }) => ({ ...state, infoCellTurn })),
     on(gameActions.UpdateTurn, (state, { turnId }) => ({ ...state, turnId })),
     on(gameActions.UpdateInfoPlayer, (state, { updatePlayer }) => ({
         ...state, players: {

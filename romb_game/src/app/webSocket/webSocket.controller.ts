@@ -7,7 +7,7 @@ import { EACTION_WEBSOCKET } from '../const/enum';
 import { AppStore, gameRoom } from '../types/state';
 import { payloadSocket } from '../types/webSocket';
 import { UpdateRooms } from 'src/store/actions/roomsActions';
-import { EndGame, EndTurn, InfoAuction, SetOfferDealInfo, StartGame, UpdateCell, UpdateChatRoom, UpdateInfoCellTurn, UpdateInfoPlayer, UpdateTurn } from 'src/store/actions/gameActions';
+import * as gameActions from '../../store/actions/gameActions';
 
 @Injectable({
   providedIn: 'root'
@@ -40,51 +40,51 @@ export class WebSocketController {
 
         case EACTION_WEBSOCKET.INFO_CELL_TURN:
           const infoCellTurn = wsMessage.payload as infoCellTurn;
-          this.store.dispatch(UpdateInfoCellTurn({ infoCellTurn }));
+          this.store.dispatch(gameActions.UpdateInfoCellTurn({ infoCellTurn }));
           break;
 
         case EACTION_WEBSOCKET.END_TURN:
-          this.store.dispatch(EndTurn());
+          this.store.dispatch(gameActions.EndTurn());
           break;
 
         case EACTION_WEBSOCKET.START_GAME:
           const gameRoom = wsMessage.payload as gameRoom;
-          this.store.dispatch(StartGame({ gameRoom }));
+          this.store.dispatch(gameActions.StartGame({ gameRoom }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_CELL:
           const updateCell = wsMessage.payload as updateCellCompany;
-          this.store.dispatch(UpdateCell({ updateCell }));
+          this.store.dispatch(gameActions.UpdateCell({ updateCell }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_CHAT:
           const chatRoomPayload = wsMessage.payload as chatRoomPayload;
-          this.store.dispatch(UpdateChatRoom({ chatMessage: chatRoomPayload.chat }));
+          this.store.dispatch(gameActions.UpdateChatRoom({ chatMessage: chatRoomPayload.chat }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_TURN:
           const turnId = wsMessage.payload as string;
-          this.store.dispatch(UpdateTurn({ turnId }));
+          this.store.dispatch(gameActions.UpdateTurn({ turnId }));
           break;
 
         case EACTION_WEBSOCKET.UPDATE_PLAYER:
           const updatePlayer = wsMessage.payload as updatePlayer;
-          this.store.dispatch(UpdateInfoPlayer({ updatePlayer }));
+          this.store.dispatch(gameActions.UpdateInfoPlayer({ updatePlayer }));
           break;
 
         case EACTION_WEBSOCKET.CONTROL_DEAL:
           const offerDealInfo = wsMessage.payload as offerDealInfo;
-          this.store.dispatch(SetOfferDealInfo({ offerDealInfo }));
+          this.store.dispatch(gameActions.SetOfferDealInfo({ offerDealInfo }));
           break;
 
         case EACTION_WEBSOCKET.AUCTION:
           const infoAuction = wsMessage.payload as infoAuction;
-          this.store.dispatch(InfoAuction({ infoAuction }));
+          this.store.dispatch(gameActions.InfoAuction({ infoAuction }));
           break;
 
         case EACTION_WEBSOCKET.END_GAME:
           const winner = wsMessage.payload as string;
-          this.store.dispatch(EndGame({ winner }));
+          this.store.dispatch(gameActions.EndGame({ winner }));
           break;
 
         default:
