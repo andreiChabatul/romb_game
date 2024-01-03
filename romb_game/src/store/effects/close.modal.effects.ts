@@ -8,7 +8,7 @@ import * as modalActions from '../actions/modalActions';
 export class CloseModalEffects {
     update$ = createEffect(
         () => this.actionUnion$.pipe(
-            ofType(userActions.loginUser),
+            ofType(...[userActions.loginUser, userActions.logoutUser]),
             map(() => modalActions.closeModal())
         ));
 

@@ -92,6 +92,11 @@ export type createUserDto = {
     password: string;
 }
 
+export type deleteUserDto = {
+    nickname: string;
+    password: string;
+}
+
 export type createRoomDto = {
     roomName: string;
     maxPlayers: number;

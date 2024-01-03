@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart, InputTextFormOption } from 'src/app/types/components';
+import { UsersService } from 'src/app/users/users.service';
 
 @Component({
   selector: 'app-modal-delete-profile',
@@ -17,7 +18,7 @@ export class ModalDeleteProfileComponent {
     { nameForm: 'password', type: 'password' },
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UsersService) {
     this.createForm();
   }
 
@@ -30,6 +31,9 @@ export class ModalDeleteProfileComponent {
       this.deleteProfile.markAllAsTouched()
       return;
     };
-    console.log(this.deleteProfile.value)
+    this.userService.deleteUser({
+      password: this.deleteProfile.value.password.value,
+      nickname: this.deleteProfile.value.nickname.value,
+    })
   }
 }

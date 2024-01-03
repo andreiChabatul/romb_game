@@ -54,7 +54,7 @@ export enum ENDPOINT {
     LOGOUT = 'auth/logout',
     GOOGLE = 'auth/google',
     REFRESH = 'auth/refresh-tokens',
-    USER = 'user/',
+    USER = 'user',
     ROOMS_RECONNECT = 'rooms/reconnect',
     ROOMS = 'rooms/'
 }
