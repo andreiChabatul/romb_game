@@ -6,7 +6,7 @@ import { RoomsService } from 'src/app/rooms/rooms.services';
 import { infoRoom } from 'src/app/types';
 import { Button } from 'src/app/types/components';
 import { AppStore } from 'src/app/types/state';
-import { selectRooms } from 'src/store/selectors';
+import { selectAllRooms } from 'src/store/selectors';
 
 @Component({
   selector: 'app-page-room',
@@ -15,7 +15,7 @@ import { selectRooms } from 'src/store/selectors';
 })
 export class PageRoomComponent implements OnInit, OnDestroy {
 
-  rooms$ = this.store.select(selectRooms);
+  rooms$ = this.store.select(selectAllRooms);
   rooms: infoRoom[] = [];
   subcription$: Subscription;
   buttons: Button[] = [

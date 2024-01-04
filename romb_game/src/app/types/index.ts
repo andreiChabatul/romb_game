@@ -109,6 +109,7 @@ export type infoRoom = {
     roomName: string,
     isStart: Boolean,
     players: fullPlayer[],
+    timeTurn: number
 }
 
 export interface ResponseAuth {

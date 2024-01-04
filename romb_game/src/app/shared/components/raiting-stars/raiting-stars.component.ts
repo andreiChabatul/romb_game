@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { fullPlayer } from 'src/app/types';
 import { infoUser } from 'src/app/types/state';
 
 @Component({
@@ -8,7 +9,7 @@ import { infoUser } from 'src/app/types/state';
 })
 export class RaitingStarsComponent {
 
-  @Input() infoUser: infoUser;
+  @Input() infoUser: infoUser | fullPlayer;
   @Input() width: string;
 
   calcWidth(): string {

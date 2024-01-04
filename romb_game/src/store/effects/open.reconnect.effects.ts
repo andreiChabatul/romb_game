@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map } from 'rxjs';
 import * as modalActions from '../actions/modalActions';
-import * as gameActions from '../actions/gameActions';
+import * as roomsActions from '../actions/roomsActions';
 
 @Injectable()
 export class OpenModalEffects {
     update$ = createEffect(
         () => this.actionUnion$.pipe(
-            ofType(gameActions.SetIdRoom),
+            ofType(roomsActions.ReconnectRoom),
             map(() => modalActions.OpenModal({ payload: { modalState: 'reconnectGame' } }))
         ));
 

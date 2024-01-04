@@ -9,7 +9,6 @@ export enum gameActionsTypes {
     ControlCompany = '[CONTROL COMPANY] ControlCompany',
     StartGame = '[START GAME] StartGame',
     UpdateChatRoom = '[UPDATE CHAT ROOM] UpdateChatRoom',
-    SetIdRoom = '[SET ID ROOM] SetIdRoom',
     UpdateCell = '[UPDATE CELL] UpdateCell',
     InfoAuction = '[INFO AUCTION] InfoAuction',
     SetOfferDealInfo = '[SET OFFER DEAL INFO] SetOfferDealInfo',
@@ -33,9 +32,6 @@ export const StartGame = createAction(gameActionsTypes.StartGame,
 );
 export const UpdateChatRoom = createAction(gameActionsTypes.UpdateChatRoom,
     props<{ chatMessage: chatMessage }>()
-);
-export const SetIdRoom = createAction(gameActionsTypes.SetIdRoom,
-    props<{ idRoom: string }>()
 );
 export const UpdateCell = createAction(gameActionsTypes.UpdateCell,
     props<{ updateCell: updateCellCompany }>()

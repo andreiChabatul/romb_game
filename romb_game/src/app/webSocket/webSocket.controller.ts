@@ -33,9 +33,8 @@ export class WebSocketController {
       switch (wsMessage.action) {
 
         case EACTION_WEBSOCKET.CONTROL_ROOM:
-          const infoRoom = wsMessage.payload as infoRoom[];
-          console.log(infoRoom)
-          this.store.dispatch(UpdateRooms({ infoRoom }));
+          const infoRooms = wsMessage.payload as infoRoom[];
+          this.store.dispatch(UpdateRooms({ infoRooms }));
           break;
 
         case EACTION_WEBSOCKET.INFO_CELL_TURN:

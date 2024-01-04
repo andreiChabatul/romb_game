@@ -3,7 +3,7 @@ import { infoRoom, infoCellTurn, chatMessage, playersGame, gameCell, offerDealIn
 export interface AppStore {
     modalStore: modalStore;
     userStore: userStore;
-    roomsStore: infoRoom[];
+    roomsStore: roomsStore;
     gameStore: gameRoom;
 }
 
@@ -16,6 +16,10 @@ export type modalStore = {
 export type userStore = {
     isLogin: boolean;
     infoUser?: infoUser;
+}
+export type roomsStore = {
+    infoRooms: infoRoom[],
+    reconnectRoom?: infoRoom
 }
 
 export type infoUser = {

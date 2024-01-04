@@ -124,11 +124,6 @@ export class ButtonControllerService implements OnDestroy {
         break;
       }
 
-      case ACTIONS_BUTTON.RECONNECT_GAME: {
-        this.webSocketController.sendMessage(EACTION_WEBSOCKET.RECONNECT);
-        break;
-      }
-
       default:
         break;
     }

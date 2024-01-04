@@ -6,8 +6,7 @@ import { BASIC_URL } from '../const';
 import { AppStore } from '../types/state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { UpdateRooms } from 'src/store/actions/roomsActions';
-import { SetIdRoom } from 'src/store/actions/gameActions';
+import { ReconnectRoom, UpdateRooms } from 'src/store/actions/roomsActions';
 import { AddModalInfo } from 'src/store/actions/modalActions';
 
 @Injectable({
@@ -19,7 +18,7 @@ export class RoomsService {
 
     getAllRooms(): void {
         this.http.get(`${BASIC_URL}${ENDPOINT.ROOMS}`).subscribe({
-            next: (rooms) => this.store.dispatch(UpdateRooms({ infoRoom: rooms as infoRoom[] })),
+            next: (rooms) => this.store.dispatch(UpdateRooms({ infoRooms: rooms as infoRoom[] })),
             error: (error: HttpErrorResponse) => this.store.dispatch(AddModalInfo({ modalError: error.error.message }))
         });
     }
@@ -30,16 +29,15 @@ export class RoomsService {
 
     getRoom(reguest: string): void {
         this.http.get(`${BASIC_URL}${ENDPOINT.ROOMS}${reguest}`).subscribe({
-            next: (rooms) => this.store.dispatch(UpdateRooms({ infoRoom: rooms as infoRoom[] })),
+            next: (rooms) => this.store.dispatch(UpdateRooms({ infoRooms: rooms as infoRoom[] })),
             error: (error: HttpErrorResponse) => this.store.dispatch(AddModalInfo({ modalError: error.error.message }))
         });
     }
 
     reconnectRoom(idUser: string | undefined): void {
         if (idUser) {
-            this.http.post(`${BASIC_URL}${ENDPOINT.ROOMS_RECONNECT}`, { idUser }, { responseType: 'text' }).subscribe(
-                (idRoom) => idRoom ? this.store.dispatch(SetIdRoom({ idRoom })) : ''
-            )
+            this.http.post(`${BASIC_URL}${ENDPOINT.ROOMS_RECONNECT}`, { idUser }).subscribe(
+                (room) => room ? this.store.dispatch(ReconnectRoom({ reconnectRoom: room as infoRoom })) : '')
         }
     }
 
