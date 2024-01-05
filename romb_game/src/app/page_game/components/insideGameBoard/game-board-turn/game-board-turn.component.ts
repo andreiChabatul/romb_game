@@ -1,7 +1,8 @@
 import { Component, HostListener, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore, gameRoom } from 'src/app/types/state';
-import { selectGameRoom, selectInfoUser } from 'src/store/selectors';
+import { ControlInsideBoard } from 'src/store/actions/gameActions';
+import { selectInfoUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-game-board-turn',
@@ -12,7 +13,6 @@ import { selectGameRoom, selectInfoUser } from 'src/store/selectors';
 export class GameBoardTurnComponent implements OnInit {
 
   @Input() gameRoom: gameRoom;
-  gameRoom$ = this.store.select(selectGameRoom);
   infoUser$ = this.store.select(selectInfoUser);
   cheatNumbers: number[];
 
@@ -28,12 +28,13 @@ export class GameBoardTurnComponent implements OnInit {
     if (0 < value && value < 7) {
       this.cheatNumbers = [value, ...this.cheatNumbers];
     };
+    if (this.gameRoom.insideBoardState === 'startButtons' && event.key === 'Enter') {
+      this.store.dispatch(ControlInsideBoard({ insideBoardState: 'diceRoll' }));
+    };
   }
 
   resetCheat(): void {
     this.cheatNumbers = [];
   }
-
-
 
 }
