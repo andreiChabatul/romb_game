@@ -18,6 +18,7 @@ import { GoogleAuthComponent } from './components/google-auth/google-auth.compon
 import { YandexAuthComponent } from './components/yandex-auth/yandex-auth.component';
 import { AnonimAuthComponent } from './components/anonim-auth/anonim-auth.component';
 import { AvatarImagePipe } from './pipe/avatar.pipe';
+import { AudioServices } from './services/audio.services';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,7 @@ import { AvatarImagePipe } from './pipe/avatar.pipe';
         AnonimAuthComponent,
         AvatarImagePipe
     ],
-    providers: [ButtonControllerService],
+    providers: [ButtonControllerService, AudioServices],
     bootstrap: []
 })
 export class SharedModule { }

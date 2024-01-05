@@ -168,5 +168,6 @@
     "chatTitle" : "Chat game",
     "messageChat" : "Message",
     "placeholderChat" : "Enter your message...",
-    "resultDice" : "You rolled a: "
+    "resultDice" : "You rolled a: ",
+    "turnInside" : "Your turn"
 }

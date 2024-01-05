@@ -1,9 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { TIME_TURN_DEFAULT } from 'src/app/const';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { AppStore } from 'src/app/types/state';
+import { AudioServices } from 'src/app/shared/services/audio.services';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
 @Component({
@@ -33,7 +32,7 @@ export class DiceRollComponent implements OnInit {
   @Input() cheatNumbers: number[];
   @Output() resetDice = new EventEmitter();
 
-  constructor(private webSocketController: WebSocketController, private store: Store<AppStore>) { }
+  constructor(private webSocketController: WebSocketController, private audioServices: AudioServices) { }
 
   ngOnInit(): void {
     setTimeout(() => this.roolDice(), 0);
@@ -41,6 +40,7 @@ export class DiceRollComponent implements OnInit {
 
   roolDice() {
     this.result = '...'
+    this.audioServices.playAudioSpec('diceRool');
     if (this.cheatNumbers.length > 1) {
       [this.diceOne, this.diceTwo] = this.cheatNumbers;
     } else {

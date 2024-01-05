@@ -10,6 +10,7 @@ import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { ControlCompany, ControlInsideBoard, StartGame } from 'src/store/actions/gameActions';
 import { closeModal, OpenModal } from 'src/store/actions/modalActions';
 import { selectUser } from 'src/store/selectors';
+import { AudioServices } from './audio.services';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +24,14 @@ export class ButtonControllerService implements OnDestroy {
   constructor(private store: Store<AppStore>,
     private webSocketController: WebSocketController,
     private router: Router,
-    private roomsService: RoomsService) {
+    private roomsService: RoomsService,
+    private audioServices: AudioServices) {
     this.susbscription$ = this.user$.pipe(
       map((user) => this.isLogin = user.isLogin)).subscribe()
   }
 
   actionButton(action: ACTIONS_BUTTON) {
+    this.audioServices.playAudioSpec('buttonAction');
     switch (action) {
 
       case ACTIONS_BUTTON.NEW_GAME:

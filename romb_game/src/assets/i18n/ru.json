@@ -167,5 +167,6 @@
     "chatTitle" : "Игровой чат",
     "messageChat" : "Сообщение",
     "placeholderChat" : "Введите сообщение...",
-    "resultDice" : "Вы выбросили: "
+    "resultDice" : "Вы выбросили: ",
+    "turnInside" : "Ваш ход"
 }

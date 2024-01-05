@@ -9,6 +9,7 @@ import { AppStore } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 import { StartGame } from 'src/store/actions/gameActions';
 import { closeModal } from 'src/store/actions/modalActions';
+import { AudioServices } from '../../services/audio.services';
 
 @Component({
   selector: 'app-loader-time',
@@ -32,7 +33,11 @@ export class LoaderTimeComponent implements OnInit {
   isSend: boolean;
   @Input() typeLoading: typeLoading;
 
-  constructor(private webSocketController: WebSocketController, private router: Router, private store: Store<AppStore>) { }
+  constructor(
+    private webSocketController: WebSocketController,
+    private router: Router,
+    private store: Store<AppStore>,
+    private audioServices: AudioServices) { }
 
   ngOnInit(): void {
     this.isSend = true;
@@ -43,6 +48,7 @@ export class LoaderTimeComponent implements OnInit {
       switch (this.typeLoading) {
         case 'cell':
           this.webSocketController.sendMessage(EACTION_WEBSOCKET.ACTIVE_CELL);
+          this.audioServices.playAudioEmpty();
           break;
         case 'auction':
           this.webSocketController.sendMessage(EACTION_WEBSOCKET.AUCTION, { action: 'endAuction' });

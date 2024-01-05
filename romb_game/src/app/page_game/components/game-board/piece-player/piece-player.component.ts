@@ -3,6 +3,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { MAX_INDEX_CELL_BOARD } from 'src/app/const';
 import { fullPlayer } from 'src/app/types';
 import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from './const';
+import { AudioServices } from 'src/app/shared/services/audio.services';
 
 @Component({
   selector: 'app-piece-player',
@@ -66,6 +67,8 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   _animText: 'on' | 'off';
   isCircle: boolean;
 
+  constructor(private audioServices: AudioServices) { }
+
   ngOnInit(): void {
     this._rotate = 'deg0';
     this.moveX = '';
@@ -88,8 +91,8 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
     this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
     this.changePosition > 0 ? this.step() : '';
 
-
     if (this.player.cellPosition === 12 && this.player.prison.state) {
+      this.audioServices.playAudioSpec('prisonMove');
       this.changePosition = 19;
       this.moveRight();
     }
@@ -123,6 +126,7 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
 
   step(): void {
     if (!this.player.prison.state) {
+      this.audioServices.playAudioSpec('pieceMove');
       if (this.coorX < coorEndX && this.coorY === coorInitY) {
         this.moveRight();
       }
