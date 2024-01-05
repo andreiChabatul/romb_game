@@ -141,6 +141,7 @@
     "nameRoom": "Имя комнаты: ",
     "playerOnline": "Игроков в комнате: ",
     "durationStep": "Время хода: ",
+    "joinGameButton": "Присоединиться",
     "language": "Язык",
     "rules": "Правила игры",
     "info": "О проекте",
@@ -162,5 +163,9 @@
     "newPassword": "Новый пароль",
     "oldPassword": "Текущий пароль",
     "deleteProfile": "Удалить профиль",
-    "deleteProfileDesc": "Для удаления профиля введите текущий логин и пароль."
+    "deleteProfileDesc": "Для удаления профиля введите текущий логин и пароль.",
+    "chatTitle" : "Игровой чат",
+    "messageChat" : "Сообщение",
+    "placeholderChat" : "Введите сообщение...",
+    "resultDice" : "Вы выбросили: "
 }

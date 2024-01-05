@@ -5,7 +5,7 @@
             <p *ngIf="player.bankrupt; else elseBlock" class="info-player_bankrupt" [style.color]="player.color"
                 [style.border-color]="player.color">{{'bankrot' | transloco}}</p>
             <ng-template #elseBlock>
-                <ul>
+                <ol>
                     <li class="info-player_title">
                         <span class="status-player" [ngClass]="{'status-player_online': player.online}"></span>
                         <span class="info-player_text info-player_text_name">{{player.nickName}} </span>
@@ -14,7 +14,7 @@
                             [prevValue]="prevTotal" [currValue]="player.total"></app-info-player-balanse> </li>
                     <li class="info-player_text">{{'capital' | transloco}}: <app-info-player-balanse
                             [prevValue]="prevCapital" [currValue]="player.capital"></app-info-player-balanse> </li>
-                </ul>
+                    </ol>
             </ng-template>
 
         </div>

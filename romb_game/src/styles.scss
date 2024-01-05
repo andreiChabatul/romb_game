@@ -35,11 +35,12 @@ $romb_game-theme: mat.define-light-theme((color: (primary: $romb_game-primary,
 div,
 ul,
 li,
+ol,
 p {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+  list-style: none;
 }
 
 body {
@@ -52,10 +53,6 @@ body {
 html,
 body {
   height: 100%;
-}
-
-li {
-  list-style: none;
 }
 
 body {

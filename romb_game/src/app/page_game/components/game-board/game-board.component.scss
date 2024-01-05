@@ -15,9 +15,10 @@
 }
 
 .game-board_inside-container {
-    border: 1px solid $dark_purple;
+    border: 1px solid rgba($dark_purple, .5);
     grid-area: 3/3/9/14;
     @include flex-c_s;
+    @include box3D;
 }
 
 .game-board-inside-player {

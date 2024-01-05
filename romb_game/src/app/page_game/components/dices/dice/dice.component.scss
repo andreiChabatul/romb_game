@@ -1,23 +1,21 @@
 @import "./../../../../../scss/color-styles";
+@import "./../../../../../scss/default-styles";
 
 .dice {
     transform-style: preserve-3d;
     transition: transform 1s;
-    width: 5vw;
-    height: 5vw;
+    width: 5.5vw;
+    height: 5.5vw;
     position: relative;
 }
 
 .dice-side {
     position: absolute;
-    background-color: $button_color;
-    border-radius: 0.5vw;
-    width: 5vw;
-    height: 5vw;
-    border: 3px solid $light_blue_text;
-    box-shadow: inset 2px 2px 10px #00000080,
-        inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080,
-        inset 2px 2px 10px #00000080;
+    border-radius: 1vw;
+    width: 5.5vw;
+    height: 5.5vw;
+    background-image: url('./../../../../../assets/diseSide.png');
+    background-size: cover;
 }
 
 .dice-side:nth-child(1) {

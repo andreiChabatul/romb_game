@@ -28,7 +28,9 @@
 }
 
 .info-player_text_name {
-    font-size: 14px;
+    @include font-default;
+    @include font_clip;
+    font-size: 1vw;
     font-weight: 600;
 }
 

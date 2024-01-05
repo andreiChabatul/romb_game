@@ -1,12 +1,13 @@
 @import "./../../../../../scss/color-styles";
+@import "./../../../../../scss/default-styles";
 
 .dot {
     position: absolute;
-    width: 0.9vw;
-    height: 0.9vw;
+    width: 1vw;
+    height: 1vw;
     border-radius: 50%;
-    background-color: $light_blue;
-    box-shadow: inset 3px 2px $cell_hover;
+    background-color: #2C2C2C;
+    @include box3D;
 }
 
 .dot_center {

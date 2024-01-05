@@ -11,9 +11,7 @@
 .chat-area_message {
     width: 95%;
     overflow-y: auto;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column-reverse;
+    margin-bottom: 0.5vw;
 }
 
 .chat-title {
@@ -25,10 +23,6 @@
     padding: 1%;
     @include flex-s_s;
     flex-direction: column;
-}
-
-.chat-title-container {
-    @include flex-c_s;
 }
 
 .chat-input {

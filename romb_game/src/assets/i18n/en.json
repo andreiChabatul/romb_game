@@ -142,6 +142,7 @@
     "nameRoom": "Name room: ",
     "playerOnline": "Игроков в комнате: ",
     "durationStep": "Time moves: ",
+    "joinGameButton": "Join game",
     "language": "Language",
     "rules": "Game rules",
     "info": "About project",
@@ -163,5 +164,9 @@
     "newPassword": "New password",
     "oldPassword": "Current password",
     "deleteProfile": "Delete profile",
-    "deleteProfileDesc": "To delete a profile, enter your current login and password."
+    "deleteProfileDesc": "To delete a profile, enter your current login and password.",
+    "chatTitle" : "Chat game",
+    "messageChat" : "Message",
+    "placeholderChat" : "Enter your message...",
+    "resultDice" : "You rolled a: "
 }

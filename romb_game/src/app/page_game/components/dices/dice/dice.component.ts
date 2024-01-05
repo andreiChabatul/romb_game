@@ -14,7 +14,5 @@ export class DiceComponent implements OnChanges {
   ngOnChanges() {
     this.classShow = 'show-' + this.side;
   }
-
-
-
+  
 }

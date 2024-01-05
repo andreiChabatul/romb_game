@@ -8,14 +8,6 @@ export type PayloadCreateGame = {
     visibility: string
 }
 
-export type JoinGamePayload = {
-    idRoom: string;
-}
-
-export type MessageChatGamePayload = {
-    message: string;
-}
-
 export type DiceRoolGamePayload = {
     value: number;
     isDouble: boolean;

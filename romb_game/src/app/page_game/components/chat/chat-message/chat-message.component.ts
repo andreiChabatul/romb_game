@@ -13,7 +13,7 @@ export class ChatMessageComponent implements OnInit {
   player: fullPlayer;
 
   ngOnInit(): void {
-    this.player = this.players[String(this.message.senderId)]
+    this.player = this.players[String(this.message.idUser)]
   }
 
 }
