@@ -168,5 +168,6 @@
     "messageChat" : "Сообщение",
     "placeholderChat" : "Введите сообщение...",
     "resultDice" : "Вы выбросили: ",
-    "turnInside" : "Ваш ход"
+    "turnInside" : "Ваш ход",
+    "volume": "Громкость"
 }

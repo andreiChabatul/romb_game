@@ -19,6 +19,7 @@ import { YandexAuthComponent } from './components/yandex-auth/yandex-auth.compon
 import { AnonimAuthComponent } from './components/anonim-auth/anonim-auth.component';
 import { AvatarImagePipe } from './pipe/avatar.pipe';
 import { AudioServices } from './services/audio.services';
+import { VolumeImagePipe } from './pipe/volume.pipe';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { AudioServices } from './services/audio.services';
         GoogleAuthComponent,
         YandexAuthComponent,
         AnonimAuthComponent,
-        AvatarImagePipe
+        AvatarImagePipe,
+        VolumeImagePipe
     ],
     imports: [
         CommonModule, MaterialsModule, TranslocoRootModule

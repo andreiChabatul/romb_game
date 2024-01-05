@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { AppStore } from 'src/app/types/state';
 import { OpenModal } from 'src/store/actions/modalActions';
 import { selectIdRoom, selectInfoUser } from 'src/store/selectors';
+import { AudioServices } from '../../services/audio.services';
 
 @Component({
   selector: 'app-menu',
@@ -22,8 +23,9 @@ export class MenuComponent implements OnInit {
   constructor(
     private store: Store<AppStore>,
     private authService: AuthService,
-    private translocoService: TranslocoService
-  ) { }
+    private translocoService: TranslocoService,
+    private audioServices: AudioServices
+  ) { this.changeVolume = this.changeVolume.bind(this); }
 
   ngOnInit(): void {
     this.activeLang = this.translocoService.getActiveLang();
@@ -37,7 +39,6 @@ export class MenuComponent implements OnInit {
   editProfile(): void {
     this.store.dispatch(OpenModal({ payload: { modalState: 'editProfile' } }));
   }
-
 
   deleteProfile(): void {
     this.store.dispatch(OpenModal({ payload: { modalState: 'deleteProfile' } }));
@@ -53,6 +54,15 @@ export class MenuComponent implements OnInit {
 
   exitGame(): void {
     this.store.dispatch(OpenModal({ payload: { modalState: 'leaveGame' } }));
+  }
+
+  changeVolume(value: number): string {
+    this.audioServices.volume = value;
+    return '';
+  }
+
+  get initVolume(): number {
+    return this.audioServices.volume;
   }
 
 }

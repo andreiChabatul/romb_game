@@ -13,6 +13,13 @@
             <span class="menu-text">{{'language' | transloco}}</span>
         </div>
     </button>
+    <button mat-menu-item [matMenuTriggerFor]="volumes">
+        <div class="lang-container">
+            <img class="img-lang-choise" [src]="initVolume | volumeImage" alt="volumeImg">
+            <span class="menu-text">{{'volume' | transloco}}</span>
+            <span class="menu-text">{{initVolume}}%</span>
+        </div>
+    </button>
     <button mat-menu-item>
         <div class="lang-container">
             <img class="img-lang-choise" src="assets/menuAssets/rules.png" alt="rulesImg">
@@ -45,6 +52,15 @@
             <span class="menu-text">English</span>
         </div>
     </button>
+</mat-menu>
+<mat-menu #volumes="matMenu">
+    <div class="volume-slider-container" >
+        <img class="img-lang-choise" [src]="initVolume | volumeImage" alt="volumeImg">
+        <mat-slider [max]=100 [min]=0 [step]=1 [displayWith]="changeVolume">
+            <input matSliderThumb [value]="initVolume">
+        </mat-slider>
+        <p class="menu-text">{{initVolume}}</p>
+    </div>
 </mat-menu>
 <mat-menu #profile="matMenu">
     <button mat-menu-item (click)="editProfile()">

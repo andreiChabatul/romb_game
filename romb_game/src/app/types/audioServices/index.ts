@@ -5,4 +5,5 @@ export type eventAudio =
     'profit' |
     'pieceMove' |
     'prisonMove' |
-    'emptyCell';
+    'emptyCell' |
+    'winner';
