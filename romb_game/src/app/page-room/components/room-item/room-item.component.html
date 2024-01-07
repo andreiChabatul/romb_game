@@ -1,10 +1,8 @@
 <div class="room-item-container">
     <div class="room-item_gradient">
-        <ng-template #elseJoin>
-            <div class="room-item_join" (click)="leaveRoom()"> {{'leaveGame' | transloco}}</div>
-        </ng-template>
-        <div *ngIf="checkJoin() | async; else elseJoin" class="room-item_join" (click)="joinRoom()">
-            {{'joinGame' | transloco}}</div>
+        <p class="room-item_join" *ngIf="idUser" (click)="clickControl()">
+            {{(isJoin ? 'leaveGame' : 'joinGame' ) | transloco}}
+        </p>
         <ul>
             <li class="room-item_title">{{'nameRoom'| transloco}}{{infoRoom.roomName}}</li>
             <li class="room-item_desc__title">{{'maxPlayerRoom' | transloco}}
