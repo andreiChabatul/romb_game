@@ -9,6 +9,5 @@ import { infoCellTurn } from 'src/app/types';
 export class CellCompanyComponent {
 
   @Input() infoCellTurn: infoCellTurn | undefined | null;
-  @Input() indexCell: number;
 
 }

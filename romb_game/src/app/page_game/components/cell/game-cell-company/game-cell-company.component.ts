@@ -47,6 +47,9 @@ export class GameCellCompanyComponent implements OnChanges, OnInit {
             this.gameCell.company.shares < 5 &&
             this.gameCell.company?.isMonopoly &&
             player.total >= this.gameCell.company?.priceStock &&
+            !this.gameCell.company.isPledge &&
+            this.gameCell.company.countryCompany !== 'japan' &&
+            this.gameCell.company.countryCompany !== 'ukraine' &&
             this.gameCell.company?.priceStock))
       )))
     )

@@ -9,7 +9,7 @@
                         <li class="info-inside-text">{{'capital' | transloco}}: <span class="info-inside-text_value">
                                         ${{player.capital}}</span></li>
                         <li class="info-inside-text">{{'totalCompany' | transloco}}: <span
-                                        class="info-inside-text_value"> {{amountCompany() |async}}</span></li>
+                                        class="info-inside-text_value">{{amountCompany}}</span></li>
                 </ol>
         </ng-template>
         <app-button-standart *ngIf="player.bankrupt; else elseBankrot" [button]="leaveGameButton"></app-button-standart>

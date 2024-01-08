@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { mergeMap, map, take } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types/components';
-import { AppStore } from 'src/app/types/state';
-import { selectGamePlayer, selectGameRoom, selectUser } from 'src/store/selectors';
+import { AppStore, gameRoom } from 'src/app/types/state';
+import { selectGamePlayer } from 'src/store/selectors';
 
 @Component({
   selector: 'app-start-turn-buttons',
   templateUrl: './start-turn-buttons.component.html',
   styleUrls: ['./start-turn-buttons.component.scss']
 })
-export class StartTurnButtonsComponent implements OnInit {
+export class StartTurnButtonsComponent implements OnInit, OnDestroy {
 
-  user$ = this.store.select(selectUser);
-  gameRoom$ = this.store.select(selectGameRoom);
+  @Input() gameRoom: gameRoom;
+  subscription$: Subscription;
   player$ = this.store.select(selectGamePlayer);
 
   buttons: ButtonStandart[] = [
@@ -27,21 +27,18 @@ export class StartTurnButtonsComponent implements OnInit {
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
-    this.user$.pipe(
-      take(1),
-      mergeMap((user => this.gameRoom$.pipe(
-        
-        map((gameRoom) => {
-          gameRoom.board.forEach((cell) => {
-            if (cell.company?.owned === user.infoUser?.id) {
-              cell.company?.isMonopoly ? this.buttons[2].show = true : '';
-              cell.company?.isPledge ? this.buttons[3].show = true : '';
-            }
-          });
-        }
-        )
-      )))
-    ).subscribe();
+    this.subscription$ = this.player$.pipe(
+      map((player) =>
+        this.gameRoom.board.forEach((cell) => {
+          if (cell.company?.owned === player?.id) {
+            cell.company?.isMonopoly ? this.buttons[2].show = true : '';
+            cell.company?.isPledge ? this.buttons[3].show = true : '';
+          }
+        }))).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription$.unsubscribe();
   }
 
 }

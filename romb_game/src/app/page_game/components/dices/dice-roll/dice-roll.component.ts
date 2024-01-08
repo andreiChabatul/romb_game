@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TIME_TURN_DEFAULT } from 'src/app/const';
-import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
+import { EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { AudioServices } from 'src/app/shared/services/audio.services';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
 
@@ -27,7 +27,6 @@ export class DiceRollComponent implements OnInit {
   diceOne = 0;
   diceTwo = 0;
   isDouble: boolean;
-  actionButton = ACTIONS_BUTTON.DICE_ROLL;
   result: number | string = '...';
   @Input() cheatNumbers: number[];
   @Output() resetDice = new EventEmitter();

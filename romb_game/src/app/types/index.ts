@@ -51,6 +51,7 @@ export interface CompanyInfo {
     owned: string;
     isMonopoly: boolean;
     rentCompany: number;
+    rentCompanyInfo: number[];
 }
 
 export type gameCell = {

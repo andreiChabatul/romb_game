@@ -6,25 +6,20 @@
             {{('infoCellTurnTitle' | transloco)}} {{cell.nameCell | uppercase}} </p>
         <div class="info-desc-container">
             <div [ngSwitch]="cell.type" [style.width]="'100%'">
-                <app-cell-tax *ngSwitchCase="'tax'"
-                    [infoCellTurn]="(gameRoom$ | async)?.infoCellTurn"></app-cell-tax>
-                <app-cell-profit *ngSwitchCase="'profit'"
-                    [infoCellTurn]="(gameRoom$ | async)?.infoCellTurn"></app-cell-profit>
-                <app-cell-loss *ngSwitchCase="'loss'"
-                    [infoCellTurn]="(gameRoom$ | async)?.infoCellTurn"></app-cell-loss>
-                <app-cell-empty *ngSwitchCase="'empty'"
-                    [infoCellTurn]="(gameRoom$ | async)?.infoCellTurn"></app-cell-empty>
-                <app-cell-company *ngSwitchCase="'company'" [infoCellTurn]="(gameRoom$ | async)?.infoCellTurn"
-                    [indexCell]="cell.indexCell"></app-cell-company>
+                <app-cell-tax *ngSwitchCase="'tax'" [infoCellTurn]="infoCellTurn"></app-cell-tax>
+                <app-cell-profit *ngSwitchCase="'profit'" [infoCellTurn]="infoCellTurn"></app-cell-profit>
+                <app-cell-loss *ngSwitchCase="'loss'" [infoCellTurn]="infoCellTurn"></app-cell-loss>
+                <app-cell-empty *ngSwitchCase="'empty'" [infoCellTurn]="infoCellTurn"></app-cell-empty>
+                <app-cell-company *ngSwitchCase="'company'" [infoCellTurn]="infoCellTurn"></app-cell-company>
             </div>
             <div class="info-cell-buttons">
                 <app-button-standart *ngFor="let button of this.buttonsResult" [button]="button"
-                    [ngClass]="{'button__disable': ((button.action === 'payButton') && isPay)}">
+                    [ngClass]="{'button__disable': (button.action === 'payButton' && (isPay() | async))}">
                 </app-button-standart>
             </div>
         </div>
         <p *ngIf="(gamePlayer$ | async)?.bankrupt" class="bankrupt-fon" [style.color]="(gamePlayer$ | async)?.color">
             {{'bankrot' | transloco}}</p>
     </div>
-    <app-turn-timer *ngIf="(gameRoom$ | async)?.infoCellTurn?.buttons !== 'none'"></app-turn-timer>
+    <app-turn-timer *ngIf="infoCellTurn?.buttons !== 'none'"></app-turn-timer>
 </ng-template>

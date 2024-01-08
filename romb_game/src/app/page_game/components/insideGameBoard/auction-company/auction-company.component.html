@@ -9,20 +9,20 @@
             </li>
             <li class="auction-info-text">{{'rentValue' | transloco}}
                 <span class="auction-info-text auction-info-text_value">
-                    {{gameCell?.company?.rentCompany | rentPipe: gameCell?.company?.countryCompany}}</span>
+                    {{rentCompany | rentPipe: gameCell?.company?.countryCompany}}</span>
             </li>
             <li class="auction-info-text">{{'currentBid' | transloco}}
-                <span class="auction-info-text auction-info-text_value">${{infoAuction?.currentPrice}}</span>
+                <span class="auction-info-text auction-info-text_value">${{infoAuction.currentPrice}}</span>
             </li>
             <li class="auction-info-text">{{'currentWinner' | transloco}}
                 <span class="auction-info-text auction-info-text_value">
-                    {{infoAuction?.currentPlayer ? infoAuction?.currentPlayer : 'noWinner' | transloco}}</span>
+                    {{infoAuction.currentPlayer ? infoAuction.currentPlayer : 'noWinner' | transloco}}</span>
             </li>
         </ul>
         <img class="auction-img" [src]="gameCell?.nameCell | imgAssets" alt="nameInfo">
     </div>
     <div *ngIf="infoAuction?.action === 'startAuction'; else auctionElse" class="auction-button"
-        [ngSwitch]="infoAuction?.statePlayer">
+        [ngSwitch]="infoAuction.statePlayer">
         <ng-template ngSwitchCase="active">
             <app-button-standart *ngFor="let button of buttonsAuction" [button]="button"></app-button-standart>
         </ng-template>

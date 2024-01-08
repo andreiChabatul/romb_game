@@ -1,39 +1,31 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { gameCell, infoAuction } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
-import { AppStore } from 'src/app/types/state';
-import { selectGameRoom } from 'src/store/selectors';
+import { gameRoom } from 'src/app/types/state';
 
 @Component({
   selector: 'app-auction-company',
   templateUrl: './auction-company.component.html',
   styleUrls: ['./auction-company.component.scss']
 })
-export class AuctionCompanyComponent implements OnInit, OnDestroy {
+export class AuctionCompanyComponent implements OnChanges {
 
-  gameRoom$ = this.store.select(selectGameRoom);
+  @Input() gameRoom: gameRoom | undefined;
+  infoAuction: infoAuction;
   gameCell: gameCell | null;
-  infoAuction: infoAuction | null;
-  subscription$: Subscription;
+  rentCompany: number;
   buttonsAuction: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.AUCTION_STEP, width: '14vw', height: '5vh' },
     { action: ACTIONS_BUTTON.AUCTION_LEAVE, width: '14vw', height: '5vh' },
   ];
 
-  constructor(private store: Store<AppStore>) { }
-
-  ngOnInit(): void {
-    this.subscription$ = this.gameRoom$.subscribe((gameRoom) => {
-      this.gameCell = gameRoom.infoAuction ? gameRoom.board[gameRoom.infoAuction.indexCompany] : null;
-      this.infoAuction = gameRoom.infoAuction ? gameRoom.infoAuction : null;
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+  ngOnChanges(): void {
+    if (this.gameRoom?.infoAuction) {
+      this.infoAuction = this.gameRoom?.infoAuction;
+      this.gameCell = this.gameRoom.board[this.gameRoom.infoAuction.indexCompany];
+      this.rentCompany = Number(this.gameCell.company?.rentCompanyInfo[0]);
+    };
   }
 
 }

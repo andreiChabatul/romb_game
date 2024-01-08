@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component, Input } from '@angular/core';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types/components';
-import { AppStore } from 'src/app/types/state';
-import { selectGameRoom } from 'src/store/selectors';
+import { gameRoom } from 'src/app/types/state';
 
 @Component({
   selector: 'app-receive-deal',
@@ -12,11 +10,9 @@ import { selectGameRoom } from 'src/store/selectors';
 })
 export class ReceiveDealComponent {
 
-  gameRoom$ = this.store.select(selectGameRoom);
+  @Input() gameRoom: gameRoom;
   buttonDeal: ButtonStandart[] = [
     { action: ACTIONS_BUTTON.ACCEPT_DEAL, width: '12vw', height: '5vh', show: true },
     { action: ACTIONS_BUTTON.REFUSE_DEAL, width: '12vw', height: '5vh', show: true }];
-
-  constructor(private store: Store<AppStore>) { }
 
 }

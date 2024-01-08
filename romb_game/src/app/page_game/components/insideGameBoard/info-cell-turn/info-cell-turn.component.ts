@@ -1,12 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription, map, switchMap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
-import { gameCell, infoCellButtons } from 'src/app/types';
+import { gameCell, infoCellButtons, infoCellTurn } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
-import { AppStore } from 'src/app/types/state';
-import { selectGamePlayer, selectGameRoom } from 'src/store/selectors';
+import { AppStore, gameRoom } from 'src/app/types/state';
+import { selectGamePlayer } from 'src/store/selectors';
 
 const buttons: ButtonStandart[] = [
   { action: ACTIONS_BUTTON.PAY, width: '13vw', height: '6vh' },
@@ -31,31 +31,28 @@ const buttons: ButtonStandart[] = [
     ])
   ]
 })
-export class InfoCellTurnComponent implements OnInit, OnDestroy {
+export class InfoCellTurnComponent implements OnInit {
 
+  @Input() gameRoom: gameRoom;
   buttonsResult: ButtonStandart[] = [];
-  gameRoom$ = this.store.select(selectGameRoom);
+  infoCellTurn: infoCellTurn | undefined;
   gamePlayer$ = this.store.select(selectGamePlayer);
   cell: gameCell;
-  subscription$: Subscription;
-  isPay: boolean;
 
   constructor(private store: Store<AppStore>) { }
 
   ngOnInit(): void {
+    if (this.gameRoom.infoCellTurn) {
+      this.infoCellTurn = this.gameRoom.infoCellTurn;
+      this.buttonsResult = this.updateButtons(this.infoCellTurn.buttons);
+      this.cell = this.gameRoom.board[this.gameRoom.infoCellTurn.indexCompany];
+    };
+  }
 
-    this.subscription$ = this.gameRoom$.pipe(
-      switchMap((gameRoom) => this.gamePlayer$.pipe(
-        map((player) => {
-          return { gameRoom, player };
-        })))).subscribe(value => {
-          const infoCellTurn = value.gameRoom.infoCellTurn;
-          if (infoCellTurn && value.player) {
-            this.cell = value.gameRoom.board[infoCellTurn.indexCompany];
-            this.buttonsResult = this.updateButtons(infoCellTurn.buttons);
-            this.isPay = value.player.total < Number(infoCellTurn.value);
-          }
-        });
+  isPay(): Observable<Boolean> {
+    return this.gamePlayer$.pipe(
+      map((fullPlayer) => Number(fullPlayer?.total) < Number(this.infoCellTurn?.value))
+    )
   }
 
   private updateButtons(type: infoCellButtons): ButtonStandart[] {
@@ -70,11 +67,7 @@ export class InfoCellTurnComponent implements OnInit, OnDestroy {
         return [5, 6].map((index) => buttons[index]);
       default:
         return [];
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+    };
   }
 
 }

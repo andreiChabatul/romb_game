@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component, Input } from '@angular/core';
 import { ACTIONS_BUTTON } from 'src/app/const/enum';
 import { ButtonStandart } from 'src/app/types/components';
-import { AppStore } from 'src/app/types/state';
-import { selectGameRoom } from 'src/store/selectors';
+import { gameRoom } from 'src/app/types/state';
 
 @Component({
   selector: 'app-control-company',
@@ -12,9 +10,7 @@ import { selectGameRoom } from 'src/store/selectors';
 })
 export class ControlCompanyComponent {
 
+  @Input() gameRoom: gameRoom;
   buttonFinish: ButtonStandart = { action: ACTIONS_BUTTON.END_CONTROL, width: '15vw', height: '6vh', show: true };
-  gameRoom$ = this.store.select(selectGameRoom);
-
-  constructor(private store: Store<AppStore>) { }
 
 }
