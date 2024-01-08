@@ -169,5 +169,7 @@
     "placeholderChat" : "Введите сообщение...",
     "resultDice" : "Вы выбросили: ",
     "turnInside" : "Ваш ход",
-    "volume": "Громкость"
+    "volume": "Громкость",
+    "buyStockButton" : "Купить акции",
+    "buyOutButton" : "Выкупить компании"
 }

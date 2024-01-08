@@ -35,7 +35,7 @@ export class TurnTimerComponent implements OnInit, OnDestroy {
 
   turnEnd(): void {
     (this.isActive)
-      ? this.webSocketConroller.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'endTime' })
+      ? this.webSocketConroller.sendMessage(EACTION_WEBSOCKET.END_GAME, { action: 'leave' })
       : '';
   }
 

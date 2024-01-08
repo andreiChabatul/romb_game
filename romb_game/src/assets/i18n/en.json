@@ -170,5 +170,7 @@
     "placeholderChat": "Enter your message...",
     "resultDice": "You rolled a: ",
     "turnInside": "Your turn",
-    "volume": "Volume"
+    "volume": "Volume",
+    "buyStockButton" : "Buy stock",
+    "buyOutButton" : "Buy out company"
 }
