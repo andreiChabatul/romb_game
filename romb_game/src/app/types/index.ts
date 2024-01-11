@@ -46,11 +46,11 @@ export interface CompanyInfo {
     collateralCompany: number;
     buyBackCompany: number;
     priceStock: number;
-    shares: number;
-    isPledge: boolean;
-    owned: string;
-    isMonopoly: boolean;
-    rentCompany: number;
+    shares?: number;
+    isPledge?: boolean;
+    owned?: string;
+    isMonopoly?: boolean;
+    rentCompany?: number;
     rentCompanyInfo: number[];
 }
 

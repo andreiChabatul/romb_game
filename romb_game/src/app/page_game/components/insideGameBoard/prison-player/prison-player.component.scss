@@ -2,12 +2,21 @@
 @import "./../../../../../scss/color-styles";
 
 .prison-info-container {
-    @include flex-c_s;
+    margin-top: 1vw;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
     padding: 0 5%;
-    margin: 1vw 0;
+}
+
+.img-prison {
+    align-self: center;
+    width: 10vw;
 }
 
 .prison-buttons-container {
+    justify-self: right;
+    grid-area: 1/2/3/2;
     @include flex-c_s;
     flex-direction: column;
     gap: 1vh;
@@ -15,10 +24,6 @@
 
 .prison-title-text {
     @include font-default;
-    font-size: 16px;
+    font-size: 1vw;
     font-weight: 500;
-}
-
-.prison-title-text_second {
-    font-size: 14px;
 }

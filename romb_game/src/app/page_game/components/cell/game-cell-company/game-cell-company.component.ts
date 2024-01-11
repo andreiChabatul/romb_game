@@ -44,7 +44,7 @@ export class GameCellCompanyComponent implements OnChanges, OnInit {
         map((player) =>
           Boolean(player && gameRoom?.controlCompany === 'buyStock' &&
             player.id === this.gameCell.company?.owned &&
-            this.gameCell.company.shares < 5 &&
+            Number(this.gameCell.company.shares) < 5 &&
             this.gameCell.company?.isMonopoly &&
             player.total >= this.gameCell.company?.priceStock &&
             !this.gameCell.company.isPledge &&
@@ -86,7 +86,7 @@ export class GameCellCompanyComponent implements OnChanges, OnInit {
             player.id === this.gameCell.company?.owned &&
             this.gameCell.company.countryCompany !== 'japan' &&
             this.gameCell.company.countryCompany !== 'ukraine' &&
-            this.gameCell?.company?.shares > 0))
+            Number(this.gameCell?.company?.shares) > 0))
       )))
     )
   }

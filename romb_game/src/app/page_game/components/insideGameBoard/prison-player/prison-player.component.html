@@ -1,12 +1,12 @@
 <p class="prison-title-text">{{'prisonDesc' | transloco}}</p>
 <div class="prison-info-container">
-    <img src="assets/inJail.png" alt="inJail">
+    <img class="img-prison" src="assets/inJail.png" alt="inJail">
     <div class="prison-buttons-container">
         <app-button-standart *ngFor="let button of buttons" [button]="button"
             [ngClass]="{'button__disable': (button.action === 'payButton' && !(checkMoney() | async))}">
         </app-button-standart>
     </div>
+    <p *ngIf="checkAttempt() | async" class="prison-title-text">{{'prisonAttempt' | transloco}}
+        {{(gamePLayer$ | async)?.prison?.attempt}}
+    </p>
 </div>
-<p *ngIf="checkAttempt() | async" class="prison-title-text prison-title-text_second">{{'prisonAttempt' | transloco}}
-    {{(gamePLayer$ | async)?.prison?.attempt}}
-</p>

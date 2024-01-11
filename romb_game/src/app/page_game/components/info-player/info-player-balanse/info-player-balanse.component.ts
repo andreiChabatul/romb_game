@@ -18,7 +18,7 @@ export class InfoPlayerBalanseComponent implements OnChanges {
     if (Math.abs(difference) > 0) {
       const timer = setInterval(() => {
         this.setColor(difference);
-        const newValue = this.value + Math.floor(difference / 50);
+        const newValue = this.value + Math.floor(difference / 15);
         if (difference > 0 && newValue > this.currValue ||
           difference < 0 && newValue < this.currValue) {
           this.color = '#002260';

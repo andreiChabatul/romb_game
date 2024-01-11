@@ -9,8 +9,8 @@
         </div>
         <div class="balanse-offer-container">
             <p class="balanse-offer-title">{{'balanseTitle' | transloco }}</p>
-            <input min="0" max="2" step="0.000001" class="balanse-line" type="range" [value]="calcBalanse() | async">
-            <p class="balanse-offer-text">{{(textBalanse() | async | transloco)}}</p>
+            <input min="0" max="2" step="0.000001" class="balanse-line" type="range" [value]="calcBalanse()">
+            <p class="balanse-offer-text">{{textBalanse() | transloco}}</p>
         </div>
     </div>
     <ng-template #elseBlock>
@@ -29,7 +29,7 @@
     </ng-template>
     <div class="offer-deal-buttons">
         <app-button-standart (click)="clickButton(button.action)"
-            [ngClass]="{'button__disable': (button.action === 'sendDealButton' && (textBalanse() | async) === 'noBalanseDeal')}"
+            [ngClass]="{'button__disable': (button.action === 'sendDealButton' && textBalanse() === 'noBalanseDeal')}"
             *ngFor="let button of buttonOffer" [button]="button"></app-button-standart>
     </div>
 </div>

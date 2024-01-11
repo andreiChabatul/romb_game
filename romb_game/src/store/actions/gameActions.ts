@@ -3,7 +3,6 @@ import { chatMessage, infoAuction, infoCellTurn, offerDealInfo, updateCellCompan
 import { controlCompanyState, gameRoom, insideBoardState } from 'src/app/types/state';
 
 export enum gameActionsTypes {
-    EndTurn = '[END TURN] EndTurn',
     EndGame = '[END GAME] EndGame',
     ControlInsideBoard = '[CONTROL INSIDE BOARD] ControlInsideBoard',
     ControlCompany = '[CONTROL COMPANY] ControlCompany',
@@ -17,7 +16,6 @@ export enum gameActionsTypes {
     UpdateInfoPlayer = '[UPDATE Player] UpdateInfoPlayer'
 };
 
-export const EndTurn = createAction(gameActionsTypes.EndTurn);
 export const EndGame = createAction(gameActionsTypes.EndGame,
     props<{ winner: string }>()
 );

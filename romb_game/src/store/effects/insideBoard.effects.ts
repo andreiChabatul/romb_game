@@ -7,15 +7,13 @@ import * as gameActions from '../actions/gameActions';
 export class InsideBoardEffects {
     update$ = createEffect(
         () => this.actionUnion$.pipe(
-            ofType(...[gameActions.EndTurn,
-            gameActions.EndGame,
-            gameActions.InfoAuction,
-            gameActions.SetOfferDealInfo,
-            gameActions.UpdateInfoCellTurn]),
+            ofType(...[
+                gameActions.EndGame,
+                gameActions.InfoAuction,
+                gameActions.SetOfferDealInfo,
+                gameActions.UpdateInfoCellTurn]),
             map((action) => {
                 switch (action.type) {
-                    case gameActions.gameActionsTypes.EndTurn:
-                        return gameActions.ControlInsideBoard({ insideBoardState: 'playerInfo' });
                     case gameActions.gameActionsTypes.EndGame:
                         return gameActions.ControlInsideBoard({ insideBoardState: 'winner' });
                     case gameActions.gameActionsTypes.InfoAuction:

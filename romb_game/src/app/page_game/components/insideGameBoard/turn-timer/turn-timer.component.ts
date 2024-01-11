@@ -1,10 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { EACTION_WEBSOCKET } from 'src/app/const/enum';
-import { AppStore } from 'src/app/types/state';
+import { gameRoom } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { selectGameRoom } from 'src/store/selectors';
 
 @Component({
   selector: 'app-turn-timer',
@@ -27,11 +25,11 @@ import { selectGameRoom } from 'src/store/selectors';
 
 export class TurnTimerComponent implements OnInit, OnDestroy {
 
-  gameRoom$ = this.store.select(selectGameRoom);
+  @Input() gameRoom: gameRoom;
   turnTime: number;
   isActive: boolean;
 
-  constructor(private store: Store<AppStore>, private webSocketConroller: WebSocketController) { }
+  constructor(private webSocketConroller: WebSocketController) { }
 
   turnEnd(): void {
     (this.isActive)

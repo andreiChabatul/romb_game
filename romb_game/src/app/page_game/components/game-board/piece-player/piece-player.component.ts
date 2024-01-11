@@ -66,6 +66,7 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   _rotate: 'deg0' | 'deg90';
   _animText: 'on' | 'off';
   isCircle: boolean;
+  gridAreaCell = gridArea;
 
   constructor(private audioServices: AudioServices) { }
 

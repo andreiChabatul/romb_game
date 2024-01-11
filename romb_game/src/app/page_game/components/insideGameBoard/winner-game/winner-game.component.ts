@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription, map, mergeMap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AudioServices } from 'src/app/shared/services/audio.services';
-import { AppStore } from 'src/app/types/state';
-import { selectGameRoom, selectInfoUser } from 'src/store/selectors';
+import { AppStore, gameRoom } from 'src/app/types/state';
+import { selectInfoUser } from 'src/store/selectors';
 
 @Component({
   selector: 'app-winner-game',
@@ -12,7 +12,7 @@ import { selectGameRoom, selectInfoUser } from 'src/store/selectors';
 })
 export class WinnerGameComponent implements OnInit, OnDestroy {
 
-  gameRoom$ = this.store.select(selectGameRoom);
+  @Input() gameRoom: gameRoom;
   infoUser$ = this.store.select(selectInfoUser);
   nameWinner: string;
   photoWinner: string;
@@ -22,16 +22,15 @@ export class WinnerGameComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppStore>, private audioServices: AudioServices) { }
 
   ngOnInit(): void {
-    this.subscription$ = this.gameRoom$.pipe(
-      mergeMap((gameRoom) => this.infoUser$.pipe(
-        map((infoUser) => {
-          if (gameRoom.winner) {
-            this.isWinner = (infoUser?.id === gameRoom.winner);
-            const player = gameRoom.players[gameRoom.winner];
-            this.nameWinner = player.nickName;
-            this.photoWinner = player.image;
-          }
-        })))).subscribe();
+
+    if (this.gameRoom.winner) {
+      const player = this.gameRoom.players[this.gameRoom.winner];
+      this.nameWinner = player.nickName;
+      this.photoWinner = player.image;
+    };
+    this.subscription$ = this.infoUser$.subscribe((infoUser) =>
+      this.isWinner = (infoUser?.id === this.gameRoom.winner)
+    );
     if (this.isWinner) {
       this.audioServices.playAudioSpec('winner');
     };

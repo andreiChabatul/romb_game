@@ -37,4 +37,12 @@ export class GameBoardTurnComponent implements OnInit {
     this.cheatNumbers = [];
   }
 
+  get isTurnTimer(): boolean {
+    return (
+      this.gameRoom.insideBoardState === 'receiveDeal' ||
+      this.gameRoom.insideBoardState === 'startButtons' ||
+      this.gameRoom.insideBoardState === 'infoCellTurn' && this.gameRoom.infoCellTurn?.buttons !== 'none' ||
+      this.gameRoom.insideBoardState === 'auction' && this.gameRoom.infoAuction?.statePlayer === 'active');
+  }
+
 }

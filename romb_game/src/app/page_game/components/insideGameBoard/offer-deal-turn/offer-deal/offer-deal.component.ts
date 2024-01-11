@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, map } from 'rxjs';
 import { ACTIONS_BUTTON, EACTION_WEBSOCKET } from 'src/app/const/enum';
 import { offerInfo, gameCell, offerDealInfo, dealPerson } from 'src/app/types';
 import { ButtonStandart } from 'src/app/types/components';
-import { AppStore } from 'src/app/types/state';
+import { AppStore, gameRoom } from 'src/app/types/state';
 import { WebSocketController } from 'src/app/webSocket/webSocket.controller';
-import { selectAllPlayerArr, selectGameRoom, selectPlayerTurnId } from 'src/store/selectors';
+import { selectAllPlayerArr, selectPlayerTurnId } from 'src/store/selectors';
 
 @Component({
   selector: 'app-offer-deal',
@@ -15,7 +14,7 @@ import { selectAllPlayerArr, selectGameRoom, selectPlayerTurnId } from 'src/stor
 })
 export class OfferDealComponent {
 
-  gameRoom$ = this.store.select(selectGameRoom);
+  @Input() gameRoom: gameRoom;
   players$ = this.store.select(selectAllPlayerArr);
   turnId$ = this.store.select(selectPlayerTurnId);
   _offerDealInfo: offerDealInfo = {} as offerDealInfo;
@@ -36,7 +35,7 @@ export class OfferDealComponent {
     this.buttonOffer[0] = { ...this.buttonOffer[0], show: this._userIdReceiver }
   }
 
-  calcBalanse(): Observable<number> {
+  calcBalanse(): number {
     const sumCompany = (board: gameCell[], offerInfo: offerInfo): number =>
       offerInfo
         ? board.reduce((prev, cur) =>
@@ -46,25 +45,18 @@ export class OfferDealComponent {
           (offerInfo ? offerInfo.valueMoney : 0))
         : 0;
 
-    return this.gameRoom$.pipe(
-      map((gameroom) => {
-        const sumOffer = sumCompany(gameroom.board, this._offerDealInfo.offerPerson);
-        const sumReceive = sumCompany(gameroom.board, this._offerDealInfo.receivePerson);
-        let result = sumOffer / sumReceive;
-        result = result > 2 ? 2 : result;
-        return result = result < 0 ? 0 : result;
-      })
-    )
+    const sumOffer = sumCompany(this.gameRoom.board, this._offerDealInfo.offerPerson);
+    const sumReceive = sumCompany(this.gameRoom.board, this._offerDealInfo.receivePerson);
+    let result = sumOffer / sumReceive;
+    result = result > 2 ? 2 : result;
+    return result = result < 0 ? 0 : result;
   }
 
-  textBalanse(): Observable<string> {
-    return this.calcBalanse().pipe(
-      map((result) =>
-        (isNaN(result))
-          ? 'nanResult'
-          : (result > 0.8 && result < 1.2) ? 'balanseDeal' : 'noBalanseDeal'
-      )
-    )
+  textBalanse(): string {
+    const result = this.calcBalanse();
+    return isNaN(result)
+      ? 'nanResult'
+      : (result > 0.8 && result < 1.2) ? 'balanseDeal' : 'noBalanseDeal';
   }
 
   clickButton(action: ACTIONS_BUTTON): void {

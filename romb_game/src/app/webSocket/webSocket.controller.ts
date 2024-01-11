@@ -29,7 +29,6 @@ export class WebSocketController {
   private handleMessage(): void {
     this.wsSocket.on("message", (mess: string) => {
       const wsMessage = JSON.parse(mess) as payloadSocket;
-
       switch (wsMessage.action) {
 
         case EACTION_WEBSOCKET.CONTROL_ROOM:
@@ -40,10 +39,6 @@ export class WebSocketController {
         case EACTION_WEBSOCKET.INFO_CELL_TURN:
           const infoCellTurn = wsMessage.payload as infoCellTurn;
           this.store.dispatch(gameActions.UpdateInfoCellTurn({ infoCellTurn }));
-          break;
-
-        case EACTION_WEBSOCKET.END_TURN:
-          this.store.dispatch(gameActions.EndTurn());
           break;
 
         case EACTION_WEBSOCKET.START_GAME:

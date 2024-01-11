@@ -3,8 +3,7 @@
     (@rotate.done)="animRotateEnd()">
 
     <svg version="1.0" class="piece-player-item" xmlns="http://www.w3.org/2000/svg" width="1.6vw" height="1.6vw"
-        viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-
+        [style.grid-area]="gridAreaCell[index]" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
         <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" [attr.fill]="player.color"
             stroke="none">
             <path d="M1995 5055 c-485 -112 -885 -335 -1244 -692 -85 -84 -152 -155 -150
