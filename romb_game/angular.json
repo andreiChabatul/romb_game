@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "romb_game:build:production"
+              "buildTarget": "romb_game:build:production"
             },
             "development": {
-              "browserTarget": "romb_game:build:development"
+              "buildTarget": "romb_game:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "romb_game:build"
+            "buildTarget": "romb_game:build"
           }
         },
         "test": {
