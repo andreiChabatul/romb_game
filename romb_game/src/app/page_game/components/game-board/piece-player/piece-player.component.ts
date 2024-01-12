@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MAX_INDEX_CELL_BOARD } from 'src/app/const';
-import { fullPlayer } from 'src/app/types';
 import { coorEndX, coorEndY, coorInitX, coorInitY, gridArea, stepX, stepY } from './const';
 import { AudioServices } from 'src/app/shared/services/audio.services';
 
@@ -55,8 +54,10 @@ import { AudioServices } from 'src/app/shared/services/audio.services';
 })
 export class PiecePlayerComponent implements OnInit, OnChanges {
 
-  @Input() player: fullPlayer;
+  @Input() cellPosition: number;
   @Input() index: number;
+  @Input() prisonPlayer: number;
+  @Input() color: string;
   changePosition: number;
   coorX: number;
   coorY: number;
@@ -71,32 +72,28 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   constructor(private audioServices: AudioServices) { }
 
   ngOnInit(): void {
-    this._rotate = 'deg0';
-    this.moveX = '';
-    this.moveY = '';
-    this.coorX = coorInitX;
-    this.coorY = coorInitY;
+    [this.coorX, this.coorY, this.moveX, this.moveY, this._rotate, this.isCircle] =
+      [coorInitX, coorInitY, '', '', 'deg0', false];
     this.gridArea = gridArea[this.index];
-    this.isCircle = false;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isCircle = true;
-    let prevPosition: number = 0;
-
     for (let propName in changes) {
-      const chng = changes[propName];
-      prevPosition = chng.previousValue ? chng.previousValue.cellPosition : 0;
-    }
-    this.changePosition = this.player.cellPosition - prevPosition;
-    this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
-    this.changePosition > 0 ? this.step() : '';
+      if (propName === 'cellPosition') {
+        this.cellPositionChange(changes[propName].previousValue)
+      };
+    };
+  }
 
-    if (this.player.cellPosition === 12 && this.player.prison.state) {
-      this.audioServices.playAudioSpec('prisonMove');
-      this.changePosition = 19;
-      this.moveRight();
-    }
+  cellPositionChange(prevPosition: number) {
+    if (this.prisonPlayer) {
+      [this.coorX, this.coorY, this.moveX, this.moveY] = [coorEndX, coorInitY, 'X', 'Y'];
+      return;
+    };
+    this.changePosition = this.cellPosition - prevPosition;
+    this.changePosition += (this.changePosition < 0) ? MAX_INDEX_CELL_BOARD : 0;
+    this.step();
   }
 
   animEndX(): void {
@@ -105,7 +102,6 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
       (this.coorX === coorInitX && this.coorY === coorEndY)
       ? this._rotate = 'deg90'
       : '';
-    this.player.prison.state ? this.moveTop() : '';
   }
 
   animEndY(): void {
@@ -126,7 +122,7 @@ export class PiecePlayerComponent implements OnInit, OnChanges {
   }
 
   step(): void {
-    if (!this.player.prison.state) {
+    if (!this.prisonPlayer) {
       this.audioServices.playAudioSpec('pieceMove');
       if (this.coorX < coorEndX && this.coorY === coorInitY) {
         this.moveRight();

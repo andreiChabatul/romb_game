@@ -3,6 +3,9 @@ import * as gameActions from '../actions/gameActions';
 import { gameRoom } from "src/app/types/state";
 import { EMPTY_GAME_ROOM } from "src/app/const";
 import { defaultCell } from "src/app/const/defaultCells";
+import { immerOn } from 'ngrx-immer/store';
+import { state } from "@angular/animations";
+import { keyUpdatePlayer } from "src/app/types";
 
 const initalState: gameRoom = EMPTY_GAME_ROOM;
 
@@ -16,17 +19,16 @@ export const gameReducers = createReducer(initalState,
     on(gameActions.SetOfferDealInfo, (state, { offerDealInfo }) => ({ ...state, offerDealInfo })),
     on(gameActions.UpdateInfoCellTurn, (state, { infoCellTurn }) => ({ ...state, infoCellTurn })),
     on(gameActions.UpdateTurn, (state, { turnId }) => ({ ...state, infoCellTurn: undefined, turnId })),
-    on(gameActions.UpdateInfoPlayer, (state, { updatePlayer }) => ({
-        ...state, players: {
-            ...state.players,
-            [updatePlayer.id]: { ...state.players[updatePlayer.id], ...updatePlayer }
-        }
-    })),
-    on(gameActions.UpdateCell, (state, { updateCell }) => {
-        const newBoard = state.board.map((cell, index) =>
-            (index === updateCell.indexCell && cell.company)
-                ? { ...cell, company: { ...cell.company, ...updateCell.company } }
-                : cell);
-        return { ...state, board: newBoard }
+    immerOn(gameActions.UpdateInfoPlayer, (state, { updatePlayer }) => {
+        (Object.keys(updatePlayer) as keyUpdatePlayer[]).forEach((value) =>
+            state.players[updatePlayer.id][value] = updatePlayer[value]);
+        return state;
+    }),
+    immerOn(gameActions.UpdateCell, (state, { updateCell }) => {
+        const cellCompany = state.board[updateCell.indexCell].company;
+        if (cellCompany) {
+            state.board[updateCell.indexCell].company = { ...cellCompany, ...updateCell.company }
+        };
+        return state;
     })
 );

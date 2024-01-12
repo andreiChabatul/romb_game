@@ -5,8 +5,9 @@ export type controlAuction = 'startAuction' | 'leaveAuction' | 'stepAuction' | '
 export type cellType = 'company' | 'empty' | 'tax' | 'profit' | 'loss';
 export type dealPerson = 'offerPerson' | 'receivePerson';
 export type statePlayer = 'active' | 'wait' | 'inactive';
-export type typeLoading = 'cell' | 'auction' | 'startGame' | 'endGame' | 'startAuction'
-export type fullPlayer = mainPlayer & updatePlayer;
+export type typeLoading = 'cell' | 'auction' | 'startGame' | 'endGame' | 'startAuction';
+export type keyUpdatePlayer = 'total' | 'capital' | 'cellPosition' | 'prison' | 'bankrupt' | 'online';
+export type fullPlayer = mainPlayer & extraPlayer;
 export type offerInfo = {
     indexCompany: number[];
     valueMoney: number;
@@ -17,7 +18,12 @@ export type offerDealInfo = {
     [key in dealPerson]: offerInfo;
 }
 
+export type updatePlayer = {
+    [key in keyUpdatePlayer]: number;
+} & { id: string }
+
 export type mainPlayer = {
+    id: string;
     nickName: string;
     image: string;
     color: string;
@@ -25,19 +31,13 @@ export type mainPlayer = {
     numberWin: number;
 }
 
-export type updatePlayer = {
-    id: string;
+export type extraPlayer = {
     total: number;
     capital: number;
     cellPosition: number;
-    prison: prisonPlayer;
-    bankrupt: boolean;
-    online: boolean;
-}
-
-export type prisonPlayer = {
-    state: boolean;
-    attempt: number;
+    prison: number;
+    bankrupt: number;
+    online: number;
 }
 
 export interface CompanyInfo {
